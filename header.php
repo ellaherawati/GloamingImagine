@@ -1,4 +1,4 @@
- <style>
+<style>
      /* Header */
      header {
             position: sticky;
@@ -36,6 +36,12 @@
         .logo {
             text-align: center;
             flex: 1;
+        }
+
+        .logo-image {
+            height: px;
+            width: auto;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -353,6 +359,7 @@
             font-size: 13px;
             letter-spacing: 1.5px;
             transition: background 0.3s;
+            text-decoration: none;
         }
 
         .cart-checkout:hover {
@@ -379,6 +386,10 @@
                 width: 100%;
                 right: -100%;
             }
+
+            .logo-image {
+                height: 40px;
+            }
         }
 
  </style>
@@ -387,19 +398,18 @@
  <header>
         <div class="header-main">
             <div class="header-left">
-                <a href="#shop">Shop</a>
-                <a href="#gift-guide">Gift Guide</a>
-                <a href="#explore">Explore</a>
+                <a href="index.php">Shop</a>
+                <a href="#gift-guide">About</a>
+                <a href="#explore">Campaign</a>
             </div>
             
             <div class="logo">
-                <span class="logo-text">GLOAMING IMAGINE</span>
-                <span class="logo-subtitle">FASHION BRAND</span>
+                <img src="logoheader.png" alt="Gloaming Imagine" class="logo-image">
             </div>
             
             <div class="header-right">
                 <a href="#search">Search</a>
-                <a href="#account">Account</a>
+                <a href="login.php">Account</a>
                 <li><a href="#" id="cartToggle">CART (<span id="cartCount">0</span>)</a></li>
             </div>
             <div id="cartContainer"></div>
@@ -483,17 +493,18 @@
                     `).join('')}
 
                     <div class="cart-gift">
-                        <div class="cart-gift-title">Complimentary Gift Bag</div>
-                        <div class="cart-gift-subtitle">Add free gift bag</div>
+                        <div class="cart-gift-title">Add Gift Bag?</div>
+                        <div class="cart-gift-subtitle">Make your purchase special with our gift bag</div>
                         <div class="cart-gift-item">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=100&q=75" alt="Gift Bag" class="cart-gift-image">
-                            <div>
+                            <div style="flex: 1;">
                                 <div class="cart-gift-name">PNS Paper Gift Bag</div>
-                                <div class="cart-gift-color">Brown</div>
+                                <div class="cart-gift-color">Brown | Rp 5.000</div>
                             </div>
-                            <a class="cart-gift-select">Select size</a>
+                            <button onclick="addGiftBag()" style="background: #000; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">Add Bag</button>
                         </div>
                     </div>
+
 
                     <div class="cart-recommendations">
                         <div class="cart-recommendations-title">You may also like</div>
@@ -521,7 +532,10 @@
                         <svg class="cart-payment-icon" viewBox="0 0 48 32"><rect width="48" height="32" rx="4" fill="#1434CB"/><path d="M19.5 11h9v10h-9z" fill="#FF5F00"/><circle cx="16" cy="16" r="7" fill="#EB001B"/><circle cx="32" cy="16" r="7" fill="#F79E1B"/></svg>
                         <svg class="cart-payment-icon" viewBox="0 0 48 32"><rect width="48" height="32" rx="4" fill="#00579F"/><path d="M20 20l4-8 4 8h-8z" fill="#FFA500"/></svg>
                     </div>
-                    <button class="cart-checkout" onclick="checkout()">Proceed to checkout</button>
+                  
+                    <a href="checkout.php" target="_blank" class="cart-checkout">
+  Checkout
+</a>
                 </div>
             `;
         }
@@ -545,6 +559,31 @@
             updateCartCount();
             renderCart();
         }
+
+        function addGiftBag() {
+            // Cek apakah gift bag sudah ada di cart
+            const existingGiftBag = cart.find(item => item.name === "PNS Paper Gift Bag");
+            
+            if (existingGiftBag) {
+                alert('Gift bag already added to cart!');
+                return;
+            }
+
+            // Tambahkan gift bag ke cart
+            const giftBag = {
+                name: "PNS Paper Gift Bag",
+                color: "Brown",
+                size: "Standard",
+                price: 5000,
+                quantity: 1,
+                image: "https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=100&q=75"
+            };
+
+            cart.push(giftBag);
+            updateCartCount();
+            renderCart();
+        }
+
 
         function checkout() {
             alert('Proceeding to checkout...');

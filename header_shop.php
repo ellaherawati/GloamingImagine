@@ -57,6 +57,12 @@
             flex: 1;
         }
 
+        .logo-image {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+        }
+
         .logo-text {
             font-size: 16px;
             font-weight: 700;
@@ -73,7 +79,6 @@
             margin-top: 2px;
             display: block;
         }
-
         .header-right {
             display: flex;
             gap: 30px;
@@ -700,8 +705,7 @@
             </div>
             
             <div class="logo">
-                <span class="logo-text">GLOAMING IMAGINE</span>
-                <span class="logo-subtitle">FASHION BRAND</span>
+                <img src="logoheader.png" alt="Gloaming Imagine" class="logo-image">
             </div>
             
             <div class="header-right">
@@ -712,12 +716,11 @@
         </div>
 
         <div class="sub-header">
+
             <div class="sub-header-left">
-                <a href="#all" class="active">All</a>
-                <a href="#new">New Arrivals</a>
-                <a href="#men">Men</a>
-                <a href="#women">Women</a>
-            </div>
+                <a href="categories.php" class="active">Categories</a>
+                
+            
             
             <div class="product-count">26 products</div>
             

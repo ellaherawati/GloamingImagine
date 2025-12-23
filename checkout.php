@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Pas Normal Studios</title>
+    <title>Checkout - Indonesia</title>
     <style>
         * {
             margin: 0;
@@ -19,26 +19,18 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .header {
-            background: white;
-            padding: 20px 40px;
-            border-bottom: 1px solid #e5e5e5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .header-image {
+            width: 100%;
+            aspect-ratio: 10 / 1;
+            overflow: hidden;
             position: relative;
         }
 
-        .logo {
-            text-align: center;
-        }
-
-        .logo-title {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            margin-bottom: 0;
-            line-height: 1.2;
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .logo-subtitle {
@@ -186,6 +178,12 @@
             background-repeat: no-repeat;
             background-position: right 14px center;
             padding-right: 40px;
+        }
+
+        select:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            opacity: 0.6;
         }
 
         .checkbox-wrapper {
@@ -400,6 +398,12 @@
             margin-top: 6px;
         }
 
+        .loading-text {
+            color: #999;
+            font-size: 13px;
+            font-style: italic;
+        }
+
         @media (max-width: 1100px) {
             .main-container {
                 grid-template-columns: 1fr;
@@ -450,93 +454,90 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <div class="logo-title">PAS NORMAL STUDIOS®</div>
-            <div class="logo-subtitle">INTERNATIONAL CYCLING CLUB</div>
-        </div>
-        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 2L9 6M15 2L15 6M4 9L20 9M5 9L5 21L19 21L19 9"></path>
-        </svg>
+    <header>
+        <?php include 'headercheckout.php'; ?>
     </header>
 
     <div class="main-container">
         <div class="left-panel">
-            <div class="express-section">
-                <div class="express-title">Express checkout</div>
-                <div class="express-buttons">
-                    <button class="express-btn">Shop Pay</button>
-                    <button class="express-btn">PayPal</button>
-                </div>
-                <div class="or-divider">OR</div>
-            </div>
-
             <form id="checkoutForm">
-                <div class="section-title">Contact</div>
+                <div class="section-title">Kontak</div>
                 <div class="form-field">
                     <input type="email" placeholder="Email" required>
                 </div>
 
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="emailNews">
-                    <label for="emailNews">Email me with news and offers</label>
+                    <label for="emailNews">Kirim saya penawaran dan berita terbaru via email</label>
                 </div>
 
-                <div class="section-title">Delivery</div>
+                <div class="section-title">Pengiriman</div>
                 
                 <div class="form-field">
-                    <label class="form-label">Country/Region</label>
-                    <select required>
-                        <option value="AT">Austria</option>
-                        <option value="AU">Australia</option>
-                        <option value="BE">Belgium</option>
-                        <option value="CA">Canada</option>
-                        <option value="DK">Denmark</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
-                        <option value="HK">Hong Kong</option>
-                        <option value="ID">Indonesia</option>
-                        <option value="JP">Japan</option>
-                        <option value="NL">Netherlands</option>
+                    <label class="form-label">Negara/Region</label>
+                    <select id="countrySelect" required>
+                        <option value="">Pilih Negara</option>
+                        <option value="ID" selected>Indonesia</option>
+                        <option value="MY">Malaysia</option>
                         <option value="SG">Singapore</option>
-                        <option value="GB">United Kingdom</option>
-                        <option value="US">United States</option>
+                        <option value="TH">Thailand</option>
                     </select>
                 </div>
 
-                <div class="form-row">
+                <div id="indonesiaFields" style="display: block;">
                     <div class="form-field">
-                        <input type="text" placeholder="First name" required>
+                        <label class="form-label">Provinsi</label>
+                        <select id="provinceSelect" required>
+                            <option value="">Pilih Provinsi</option>
+                        </select>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <input type="text" id="firstName" placeholder="Nama Depan" required>
+                        </div>
+                        <div class="form-field">
+                            <input type="text" id="lastName" placeholder="Nama Belakang" required>
+                        </div>
+                    </div>
+
                     <div class="form-field">
-                        <input type="text" placeholder="Last name" required>
+                        <label class="form-label">Kabupaten/Kota</label>
+                        <select id="citySelect" required disabled>
+                            <option value="">Pilih Provinsi Terlebih Dahulu</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="form-field">
-                    <input type="text" placeholder="Address" required>
-                </div>
-
-                <div class="form-field">
-                    <input type="text" placeholder="Apartment, suite, etc. (optional)">
-                </div>
-
-                <div class="form-row">
                     <div class="form-field">
-                        <input type="text" placeholder="Postal code" required>
+                        <label class="form-label">Kecamatan</label>
+                        <select id="districtSelect" required disabled>
+                            <option value="">Pilih Kabupaten/Kota Terlebih Dahulu</option>
+                        </select>
                     </div>
-                    <div class="form-field">
-                        <input type="text" placeholder="City" required>
-                    </div>
-                </div>
 
-                <div class="form-field">
-                    <input type="tel" placeholder="Phone (optional)">
+                    <div class="form-field">
+                        <label class="form-label">Kode Pos</label>
+                        <select id="postalCodeSelect" required disabled>
+                            <option value="">Pilih Kecamatan Terlebih Dahulu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <input type="text" id="address" placeholder="Alamat Lengkap (Nama Jalan, No. Rumah)" required>
+                    </div>
+
+                    <div class="form-field">
+                        <input type="text" id="addressDetail" placeholder="Detail Alamat (Blok, RT/RW, Patokan) - opsional">
+                    </div>
+
+                    <div class="form-field">
+                        <input type="tel" id="phone" placeholder="No. Telepon/HP" required>
+                    </div>
                 </div>
 
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="saveInfo">
-                    <label for="saveInfo">Save this information for next time</label>
+                    <label for="saveInfo">Simpan informasi ini untuk pembelian berikutnya</label>
                 </div>
             </form>
         </div>
@@ -544,80 +545,168 @@
         <div class="right-panel">
             <div class="order-product">
                 <div class="product-img-wrapper">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%232a2a2a' width='64' height='64'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='10' font-family='Arial'%3ETKO%3C/text%3E%3C/svg%3E" alt="Product">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%232a2a2a' width='64' height='64'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='10' font-family='Arial'%3EPRODUK%3C/text%3E%3C/svg%3E" alt="Product">
                     <div class="qty-badge">1</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">Women's T.K.O. Mechanism Jersey - T.K.O. Black Multi</div>
-                    <div class="product-variant">S</div>
+                    <div class="product-title">Produk Contoh - Jaket Premium</div>
+                    <div class="product-variant">Size L</div>
                 </div>
-                <div class="product-total">€205.00</div>
+                <div class="product-total">Rp 390.000</div>
             </div>
 
             <div class="promo-section">
-                <input type="text" placeholder="Discount code or gift card">
-                <button class="promo-btn" type="button">Apply</button>
+                <input type="text" placeholder="Kode diskon atau gift card">
+                <button class="promo-btn" type="button">Gunakan</button>
             </div>
 
             <div class="summary-divider">
                 <div class="summary-row">
                     <span class="label">Subtotal</span>
-                    <span class="amount">€205.00</span>
+                    <span class="amount">Rp 390.000</span>
                 </div>
                 <div class="summary-row">
                     <span class="label">
-                        Shipping
+                        Ongkos Kirim
                         <span class="info-circle">i</span>
                     </span>
-                    <span class="amount">Enter shipping address</span>
+                    <span class="amount">Masukkan alamat lengkap</span>
                 </div>
             </div>
 
             <div class="total-row">
                 <div class="total-label">Total</div>
                 <div class="total-amount">
-                    <span class="currency">EUR</span>
-                    <span class="total-price">€205.00</span>
+                    <span class="currency">IDR</span>
+                    <span class="total-price">Rp 390.000</span>
                 </div>
             </div>
-            <div class="tax-note">Including €34.17 in taxes</div>
+            <div class="tax-note">Sudah termasuk pajak</div>
         </div>
     </div>
 
     <script>
-        // Enhanced form interactions
-        const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select');
-        
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#1a1a1a';
-            });
+        // Data wilayah Indonesia (lengkap)
+        let indonesiaData = null;
+
+        // Load data wilayah Indonesia
+        async function loadIndonesiaData() {
+            try {
+                const response = await fetch('indonesia-regions.json');
+                indonesiaData = await response.json();
+                populateProvinces();
+            } catch (error) {
+                console.error('Error loading Indonesia data:', error);
+                alert('Gagal memuat data wilayah Indonesia. Silakan refresh halaman.');
+            }
+        }
+
+        // Populate provinces
+        function populateProvinces() {
+            const provinceSelect = document.getElementById('provinceSelect');
+            provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
             
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.style.borderColor = '#cfcfcf';
-                }
-            });
+            if (indonesiaData && indonesiaData.provinces) {
+                Object.keys(indonesiaData.provinces).forEach(key => {
+                    const province = indonesiaData.provinces[key];
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = province.name;
+                    provinceSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Handle province selection
+        document.getElementById('provinceSelect').addEventListener('change', function() {
+            const provinceKey = this.value;
+            const citySelect = document.getElementById('citySelect');
+            const districtSelect = document.getElementById('districtSelect');
+            const postalCodeSelect = document.getElementById('postalCodeSelect');
+
+            // Reset dependent fields
+            citySelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>';
+            districtSelect.innerHTML = '<option value="">Pilih Kabupaten/Kota Terlebih Dahulu</option>';
+            postalCodeSelect.innerHTML = '<option value="">Pilih Kecamatan Terlebih Dahulu</option>';
+            districtSelect.disabled = true;
+            postalCodeSelect.disabled = true;
+
+            if (provinceKey && indonesiaData.provinces[provinceKey]) {
+                const cities = indonesiaData.provinces[provinceKey].cities;
+                citySelect.disabled = false;
+
+                Object.keys(cities).forEach(cityKey => {
+                    const city = cities[cityKey];
+                    const option = document.createElement('option');
+                    option.value = cityKey;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                citySelect.disabled = true;
+            }
         });
 
-        // Express checkout
-        document.querySelectorAll('.express-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert(`Redirecting to ${this.textContent} checkout...`);
-            });
+        // Handle city selection
+        document.getElementById('citySelect').addEventListener('change', function() {
+            const provinceKey = document.getElementById('provinceSelect').value;
+            const cityKey = this.value;
+            const districtSelect = document.getElementById('districtSelect');
+            const postalCodeSelect = document.getElementById('postalCodeSelect');
+
+            // Reset dependent fields
+            districtSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+            postalCodeSelect.innerHTML = '<option value="">Pilih Kecamatan Terlebih Dahulu</option>';
+            postalCodeSelect.disabled = true;
+
+            if (cityKey && indonesiaData.provinces[provinceKey].cities[cityKey]) {
+                const districts = indonesiaData.provinces[provinceKey].cities[cityKey].districts;
+                districtSelect.disabled = false;
+
+                Object.keys(districts).forEach(districtKey => {
+                    const district = districts[districtKey];
+                    const option = document.createElement('option');
+                    option.value = districtKey;
+                    option.textContent = district.name;
+                    districtSelect.appendChild(option);
+                });
+            } else {
+                districtSelect.disabled = true;
+            }
         });
 
-        // Promo code
-        document.querySelector('.promo-btn').addEventListener('click', function() {
-            const promoInput = document.querySelector('.promo-section input');
-            if (promoInput.value.trim()) {
-                alert(`Applying code: ${promoInput.value}`);
-                // Simulate discount application
-                setTimeout(() => {
-                    alert('Discount applied successfully!');
-                    promoInput.value = '';
-                }, 500);
+        // Handle district selection
+        document.getElementById('districtSelect').addEventListener('change', function() {
+            const provinceKey = document.getElementById('provinceSelect').value;
+            const cityKey = document.getElementById('citySelect').value;
+            const districtKey = this.value;
+            const postalCodeSelect = document.getElementById('postalCodeSelect');
+
+            // Reset postal code field
+            postalCodeSelect.innerHTML = '<option value="">Pilih Kode Pos</option>';
+
+            if (districtKey) {
+                const district = indonesiaData.provinces[provinceKey].cities[cityKey].districts[districtKey];
+                postalCodeSelect.disabled = false;
+
+                district.postal_codes.forEach(code => {
+                    const option = document.createElement('option');
+                    option.value = code;
+                    option.textContent = code;
+                    postalCodeSelect.appendChild(option);
+                });
+            } else {
+                postalCodeSelect.disabled = true;
+            }
+        });
+
+        // Country selection handler
+        document.getElementById('countrySelect').addEventListener('change', function() {
+            const indonesiaFields = document.getElementById('indonesiaFields');
+            if (this.value === 'ID') {
+                indonesiaFields.style.display = 'block';
+            } else {
+                indonesiaFields.style.display = 'none';
             }
         });
 
@@ -625,27 +714,44 @@
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate all required fields
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#ff4444';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#cfcfcf';
-                }
-            });
-            
-            if (isValid) {
-                alert('Proceeding to shipping method selection...');
+            const formData = {
+                email: document.querySelector('input[type="email"]').value,
+                country: document.getElementById('countrySelect').value,
+                province: document.getElementById('provinceSelect').options[document.getElementById('provinceSelect').selectedIndex].text,
+                city: document.getElementById('citySelect').options[document.getElementById('citySelect').selectedIndex].text,
+                district: document.getElementById('districtSelect').options[document.getElementById('districtSelect').selectedIndex].text,
+                postalCode: document.getElementById('postalCodeSelect').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                address: document.getElementById('address').value,
+                addressDetail: document.getElementById('addressDetail').value,
+                phone: document.getElementById('phone').value
+            };
+
+            console.log('Form Data:', formData);
+            alert('Data berhasil disubmit! Lihat console untuk detail.');
+        });
+
+        // Promo code
+        document.querySelector('.promo-btn').addEventListener('click', function() {
+            const promoInput = document.querySelector('.promo-section input');
+            if (promoInput.value.trim()) {
+                alert(`Menerapkan kode: ${promoInput.value}`);
+                setTimeout(() => {
+                    alert('Kode diskon berhasil diterapkan!');
+                    promoInput.value = '';
+                }, 500);
             }
         });
 
         // Shipping info tooltip
         document.querySelector('.info-circle').addEventListener('click', function() {
-            alert('Shipping cost will be calculated based on your delivery address');
+            alert('Biaya pengiriman akan dihitung berdasarkan alamat pengiriman Anda');
+        });
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', function() {
+            loadIndonesiaData();
         });
     </script>
 </body>

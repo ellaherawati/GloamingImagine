@@ -1,6 +1,12 @@
-<style>
-    /* Cart Sidebar */
-    .cart-sidebar {
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        /* Cart Sidebar */
+        .cart-sidebar {
             position: fixed;
             top: 0;
             right: -450px;
@@ -282,6 +288,9 @@
             font-size: 13px;
             letter-spacing: 1.5px;
             transition: background 0.3s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
         }
 
         .cart-checkout:hover {
@@ -303,28 +312,145 @@
             color: #666;
         }
 
+        /* Demo Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 40px;
+        }
+
+        .demo-cart-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .demo-product {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .size-option {
+            border: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .size-option:hover {
+            border-color: #000;
+        }
+
+        .size-option.selected {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        #addToCart {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        #addToCart:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
         @media (max-width: 768px) {
             .cart-sidebar {
                 width: 100%;
                 right: -100%;
             }
         }
-</style>
-<!-- Cart Sidebar -->
-<aside class="cart-overlay" id="cartOverlay">
-  <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h2 class="cart-title">
-        Cart (<span id="cartItemCount">0</span>)
-      </h2>
-      <button class="cart-close" id="cartClose">×</button>
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>Demo Shopping Cart</h1>
+            <button class="demo-cart-btn" id="cartToggle">
+                Cart
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
+        </div>
+
+        <div class="demo-product">
+            <h2>Women's T.K.O. Mechanism Jersey</h2>
+            <p>T.K.O. Black Multi</p>
+            <p><strong>Rp 205.000</strong></p>
+            
+            <div class="size-options">
+                <div class="size-option" data-size="XS">XS</div>
+                <div class="size-option" data-size="S">S</div>
+                <div class="size-option" data-size="M">M</div>
+                <div class="size-option" data-size="L">L</div>
+                <div class="size-option" data-size="XL">XL</div>
+            </div>
+
+            <button id="addToCart" disabled>SELECT SIZE</button>
+        </div>
     </div>
-    </aside>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">
+                Cart (<span id="cartItemCount">0</span>)
+            </h2>
+            <button class="cart-close" id="cartClose">×</button>
+        </div>
 
         <div id="cartContentArea">
             <!-- Cart content will be dynamically inserted here -->
         </div>
-    </div>
+    </aside>
 
     <script>
         // Cart functionality
@@ -376,7 +502,7 @@
                             <div class="cart-item-details">
                                 <div class="cart-item-name">${item.name}</div>
                                 <div class="cart-item-variant">${item.color} | ${item.size}</div>
-                                <div class="cart-item-price">€ ${item.price.toFixed(2)}</div>
+                                <div class="cart-item-price">Rp ${item.price.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
                                 <div class="cart-item-actions">
                                     <button class="cart-item-remove" onclick="removeFromCart(${index})">Remove</button>
                                     <div class="cart-quantity">
@@ -390,15 +516,15 @@
                     `).join('')}
 
                     <div class="cart-gift">
-                        <div class="cart-gift-title">Complimentary Gift Bag</div>
-                        <div class="cart-gift-subtitle">Add free gift bag</div>
+                        <div class="cart-gift-title">Add Gift Bag?</div>
+                        <div class="cart-gift-subtitle">Make your purchase special with our gift bag</div>
                         <div class="cart-gift-item">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=100&q=75" alt="Gift Bag" class="cart-gift-image">
-                            <div>
+                            <div style="flex: 1;">
                                 <div class="cart-gift-name">PNS Paper Gift Bag</div>
-                                <div class="cart-gift-color">Brown</div>
+                                <div class="cart-gift-color">Brown | Rp 5.000</div>
                             </div>
-                            <a class="cart-gift-select">Select size</a>
+                            <button onclick="addGiftBag()" style="background: #000; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; transition: background 0.3s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#000'">Add Bag</button>
                         </div>
                     </div>
 
@@ -421,14 +547,14 @@
                 <div class="cart-footer">
                     <div class="cart-subtotal">
                         <span>Subtotal</span>
-                        <span>€ ${subtotal.toFixed(2)}</span>
+                        <span>Rp ${subtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
                     </div>
                     <div class="cart-payment-methods">
                         <span>Payment methods</span>
                         <svg class="cart-payment-icon" viewBox="0 0 48 32"><rect width="48" height="32" rx="4" fill="#1434CB"/><path d="M19.5 11h9v10h-9z" fill="#FF5F00"/><circle cx="16" cy="16" r="7" fill="#EB001B"/><circle cx="32" cy="16" r="7" fill="#F79E1B"/></svg>
                         <svg class="cart-payment-icon" viewBox="0 0 48 32"><rect width="48" height="32" rx="4" fill="#00579F"/><path d="M20 20l4-8 4 8h-8z" fill="#FFA500"/></svg>
                     </div>
-                    <button class="cart-checkout" onclick="checkout()">Proceed to checkout</button>
+                    <a href="checkout.php" class="cart-checkout">PROCEED TO CHECKOUT</a>
                 </div>
             `;
         }
@@ -453,8 +579,28 @@
             renderCart();
         }
 
-        function checkout() {
-            alert('Proceeding to checkout...');
+        function addGiftBag() {
+            // Cek apakah gift bag sudah ada di cart
+            const existingGiftBag = cart.find(item => item.name === "PNS Paper Gift Bag");
+            
+            if (existingGiftBag) {
+                alert('Gift bag sudah ditambahkan ke cart!');
+                return;
+            }
+
+            // Tambahkan gift bag ke cart
+            const giftBag = {
+                name: "PNS Paper Gift Bag",
+                color: "Brown",
+                size: "Standard",
+                price: 5000,
+                quantity: 1,
+                image: "https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=100&q=75"
+            };
+
+            cart.push(giftBag);
+            updateCartCount();
+            renderCart();
         }
 
         cartToggle.addEventListener('click', (e) => {
@@ -463,7 +609,11 @@
         });
 
         cartClose.addEventListener('click', closeCart);
-        cartOverlay.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', (e) => {
+            if (e.target === cartOverlay) {
+                closeCart();
+            }
+        });
 
         // Size Selection
         const sizeOptions = document.querySelectorAll('.size-option');
@@ -487,7 +637,7 @@
                     name: "Women's T.K.O. Mechanism Jersey",
                     color: "T.K.O. Black Multi",
                     size: selectedSize,
-                    price: 205.00,
+                    price: 205000,
                     quantity: 1,
                     image: "https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=200&q=75"
                 };
@@ -510,4 +660,11 @@
                 openCart();
             }
         });
+
+        // Load cart saat halaman dimuat
+        window.addEventListener('load', () => {
+            renderCart();
+        });
     </script>
+</body>
+</html>

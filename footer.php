@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gramicci Footer</title>
+    <title>Gloaming Footer</title>
     <style>
         * {
             margin: 0;
@@ -369,7 +369,7 @@
                         <li><a href="#" onclick="return false">Fall & Winter 2025</a></li>
                         <li><a href="#" onclick="return false">Men's Mid Season</a></li>
                         <li><a href="#" onclick="return false">Women's Mid Season</a></li>
-                        <li><a href="#" onclick="return false">Gramicci & Merrell</a></li>
+                        <li><a href="#" onclick="return false">Gloaming & Merrell</a></li>
                         <li><a href="#" onclick="return false">Sale</a></li>
                     </ul>
                 </div>
@@ -419,7 +419,7 @@
 
             <!-- Bottom Bar -->
             <div class="footer-bottom">
-                <p>&copy; 2025 Gramicci. All rights reserved.</p>
+                <p>&copy; 2025 Gloaming. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#" onclick="return false">Privacy Policy</a>
                     <a href="#" onclick="return false">Terms of Service</a>

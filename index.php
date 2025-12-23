@@ -18,7 +18,6 @@
             line-height: 1.5;
         }
 
-       
         /* Hero Section */
         .hero {
             padding: 60px 40px 40px;
@@ -31,20 +30,6 @@
             font-weight: 500;
             margin-bottom: -50px;
             letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            color: #666;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* Filter Bar */
-        .filter-bar {
-            padding: 30px 40px;
-            border-bottom: 1px solid #e0e0e0;
-            display: none;
         }
 
         /* Products Grid */
@@ -61,8 +46,10 @@
         }
 
         .product-card {
-            cursor: pointer;
             position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .product-images {
@@ -71,6 +58,7 @@
             aspect-ratio: 4/5;
             background: #f5f5f5;
             margin-bottom: 15px;
+            cursor: pointer;
         }
 
         .product-images img {
@@ -193,47 +181,62 @@
             margin-bottom: 5px;
         }
 
-        .product-variant {
+        .product-price {
             font-size: 13px;
             color: #666;
         }
 
-    
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px 20px;
+            }
+
+            .hero {
+                padding: 40px 20px 20px;
+            }
+
+            .products-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-
+    <header>
     <?php include 'header_shop.php'; ?>
-    
-   
+    </header>
     <!-- Hero Section -->
     <div class="hero">
         <h1>T-Shirts</h1>
     </div>
-    
-
-    
 
     <!-- Products Grid -->
     <div class="products-container">
         <div class="products-grid" id="productsGrid">
-        <a href="detail.php?">
-    </a>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-       <?php include 'footer.php'; ?>
-    </footer>
-
+<footer> <?php include 'footer.php'; ?>
+</footer>
     <script>
         // Product Data
         const products = [
             {
                 id: 1,
                 title: 'T.K.O. Off-Race Graphic T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=800&q=75&fit=max&auto=format',
                 isNew: true,
@@ -242,7 +245,7 @@
             {
                 id: 2,
                 title: 'T.K.O. Off-Race Long Sleeve T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=800&q=75&fit=max&auto=format',
                 isNew: true,
@@ -251,7 +254,7 @@
             {
                 id: 3,
                 title: 'Off-Race Graphic T-shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -260,7 +263,7 @@
             {
                 id: 4,
                 title: 'Off-Race Graphic Long Sleeve T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -269,7 +272,7 @@
             {
                 id: 5,
                 title: 'Off-Race Graphic T-shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/fe7f2f0d61e17a5b3ecd049ad28482a7da728cee-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -278,7 +281,7 @@
             {
                 id: 6,
                 title: 'Off-Race Graphic T-shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/3fec4647fb24efcd8de6dfb999f3040eda21caeb-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/834ece3adb4452130060504e5be5cce9b37c74bb-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -287,7 +290,7 @@
             {
                 id: 7,
                 title: 'Off-Race T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/62496f7b8af6b3e6dd6278f41c3c91e01cefca01-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/a299cc794372f9b53287223848f5bf32361649d1-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -296,7 +299,7 @@
             {
                 id: 8,
                 title: 'Off-Race Logo T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/b505ec4eda4f201ca0ad28a89f868a3b00c1a72d-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/42c99e89744c2c2ccaca3cb6706732617082c920-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -305,7 +308,7 @@
             {
                 id: 9,
                 title: 'Off-Race T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/b6713bdc16ae362a5e8137eb0f65bba19db1f455-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/e7e9bf9a768c87ffc0d725c5fa646ba8cd578c20-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -314,7 +317,7 @@
             {
                 id: 10,
                 title: 'Off-Race Logo T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/a039619638c9dd6962e9743673308987ca5758fd-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -323,7 +326,7 @@
             {
                 id: 11,
                 title: 'Women\'s Off-Race Lightweight T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/19f0811f303dcad3e99a3ad2f40c781cb2003a20-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/2aafcd025d33287f0646c6c9e570050708d978e9-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -332,7 +335,7 @@
             {
                 id: 12,
                 title: 'Off-Race PNS T-Shirt',
-                Price: 'Rp. 150.000',
+                price: 'Rp. 150.000',
                 img1: 'https://cdn.sanity.io/images/k15yl91v/production/ecaee966a1a0ae0fb19bc92216eeb8b37d58c303-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 img2: 'https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=800&q=75&fit=max&auto=format',
                 isNew: false,
@@ -350,35 +353,47 @@
             });
 
             grid.innerHTML = filteredProducts.map(product => `
-                <div class="product-card">
+                <a href="detail.php?id=${product.id}" class="product-card">
                     ${product.isNew ? '<div class="new-badge">NEW ARRIVAL</div>' : ''}
-                    <div class="product-images a href="detail.php?id=${product.id}">
+                    <div class="product-images">
                         <img src="${product.img1}" alt="${product.title}" class="img-main">
                         <img src="${product.img2}" alt="${product.title}" class="img-hover">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
+                        <button class="wishlist-btn" onclick="event.preventDefault(); addToWishlist(${product.id})" aria-label="Add to wishlist">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <div class="size-selector">
-                            <div class="size-option">XXS</div>
-                            <div class="size-option">XS</div>
-                            <div class="size-option">S</div>
-                            <div class="size-option">M</div>
-                            <div class="size-option">L</div>
-                            <div class="size-option">XL</div>
-                            <div class="size-option">XXL</div>
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'XXS')">XXS</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'XS')">XS</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'S')">S</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'M')">M</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'L')">L</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'XL')">XL</div>
+                            <div class="size-option" onclick="selectSize(event, ${product.id}, 'XXL')">XXL</div>
                         </div>
                     </div>
                     <div class="product-info">
                         <div class="product-title">${product.title}</div>
-                        <div class="product-Price">${product.Price}</div>
+                        <div class="product-price">${product.price}</div>
                     </div>
-                </div>
+                </a>
             `).join('');
         }
 
-        
+        // Add to Wishlist Function
+        function addToWishlist(productId) {
+            console.log('Added to wishlist:', productId);
+            alert('Added to wishlist!');
+        }
+
+        // Select Size Function
+        function selectSize(event, productId, size) {
+            event.stopPropagation();
+            console.log('Selected size:', size, 'for product:', productId);
+            // Redirect to detail page with size parameter
+            window.location.href = `detail.php?id=${productId}&size=${size}`;
+        }
 
         // Initial Render
         renderProducts();
