@@ -718,7 +718,7 @@
         <div class="sub-header">
 
             <div class="sub-header-left">
-                <a href="categories.php" class="active">Categories</a>
+                <a href="#all" class="active">Categories</a>
                 
             
             
