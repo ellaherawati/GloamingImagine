@@ -700,7 +700,6 @@
         <div class="header-main">
             <div class="header-left">
                 <a href="#shop">Shop</a>
-                <a href="#gift-guide">Gift Guide</a>
                 <a href="#explore">Explore</a>
             </div>
             
@@ -710,8 +709,8 @@
             
             <div class="header-right">
                 <a href="#search">Search</a>
-                <a href="#account">Account</a>
-                <li><a href="#" id="cartToggle">CART (<span id="cartCount">0</span>)</a></li>
+                <a href="login.php">Account</a>
+                <a href="#" id="cartToggle">Cart (<span id="cartCount">0</span>)</a>
             </div>
         </div>
 

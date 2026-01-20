@@ -21,7 +21,7 @@
 
         .header-image {
             width: 100%;
-            aspect-ratio: 10 / 1;
+            aspect-ratio: 17 / 1;
             overflow: hidden;
             position: relative;
         }
