@@ -2330,7 +2330,7 @@
     <?php include 'footer.php'; ?>
     </footer>
     <script>
-
+        
         // Create circle segments
         function createCircleSegments(elementId, activeCount, totalCount = 36) {
             const container = document.getElementById(elementId);
@@ -2349,11 +2349,12 @@
         createCircleSegments('insulation-circle', 36, 36); // 6/6 = full
         createCircleSegments('breathability-circle', 24, 36); // 4/6
 
-        // Gallery
+        // Gallery - UPDATED dengan infinite scroll & auto-slide
         let current = 0;
         const track = document.getElementById('track');
         const slides = track.querySelectorAll('.gallery-slide');
         const dotsContainer = document.getElementById('dots');
+        let autoSlideInterval;
 
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
@@ -2372,34 +2373,94 @@
         }
 
         function next() {
-            if (current < slides.length - 1) goTo(current + 1);
+            current = (current + 1) % slides.length; // Infinite loop
+            goTo(current);
         }
 
         function prev() {
-            if (current > 0) goTo(current - 1);
+            current = (current - 1 + slides.length) % slides.length; // Infinite loop
+            goTo(current);
         }
 
-        // Drag
-        let isDragging = false, startX = 0;
+        // Auto-slide setiap 5 detik
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(next, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Start auto-slide
+        startAutoSlide();
+
+        // Stop auto-slide saat hover
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+
+        // Drag dengan mouse
+        let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0;
+        
         track.addEventListener('mousedown', e => {
             isDragging = true;
             startX = e.pageX;
             track.classList.add('dragging');
+            stopAutoSlide();
         });
         
         track.addEventListener('mousemove', e => {
             if (!isDragging) return;
-            const diff = e.pageX - startX;
-            if (Math.abs(diff) > 100) {
-                diff > 0 ? prev() : next();
-                isDragging = false;
-                track.classList.remove('dragging');
-            }
+            e.preventDefault();
+            const currentX = e.pageX;
+            currentTranslate = prevTranslate + currentX - startX;
         });
         
-        track.addEventListener('mouseup', () => {
+        track.addEventListener('mouseup', e => {
             isDragging = false;
             track.classList.remove('dragging');
+            
+            const movedBy = e.pageX - startX;
+            
+            if (movedBy < -100 && current < slides.length - 1) {
+                next();
+            } else if (movedBy > 100 && current > 0) {
+                prev();
+            }
+            
+            prevTranslate = -current * track.offsetWidth;
+            startAutoSlide();
+        });
+
+        track.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                track.classList.remove('dragging');
+                startAutoSlide();
+            }
+        });
+
+        // Touch/Swipe support untuk mobile
+        let touchStartX = 0;
+        
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            stopAutoSlide();
+        });
+        
+        track.addEventListener('touchmove', e => {
+            if (!touchStartX) return;
+            e.preventDefault();
+        });
+        
+        track.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            
+            if (diff > 50) next();
+            if (diff < -50) prev();
+            
+            touchStartX = 0;
+            startAutoSlide();
         });
 
         // Keyboard
