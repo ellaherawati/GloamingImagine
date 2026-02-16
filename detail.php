@@ -88,8 +88,8 @@
         }
 
         .gallery-slide {
-            min-width: 100%;
-            width: 100%;
+            min-width: 50%;
+            width: 50%;
             height: 100%;
             flex-shrink: 0;
             display: flex;
@@ -173,7 +173,7 @@
             border: 1px solid #e5e5e5;
             padding: 24px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-            z-index: 500;
+            z-index: 10;
             overflow: hidden;
         }
 
@@ -209,14 +209,27 @@
             line-height: 1.6;
             color: #666;
             margin-bottom: 16px;
+            max-height: 60px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .product-description.expanded {
+            max-height: 500px;
         }
 
         .read-more {
             font-size: 12px;
-            color: #666;
+            color: #000;
             text-decoration: none;
             display: inline-block;
             margin-bottom: 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
         }
 
         .select-size-btn {
@@ -377,16 +390,28 @@
         }
 
         .color-swatch {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid transparent;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #e0e0e0;
             cursor: pointer;
             transition: all 0.2s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .color-swatch img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .color-swatch.active {
             border-color: #000;
+            border-width: 2px;
+        }
+
+        .color-swatch:hover {
+            border-color: #999;
         }
 
         .size-header {
@@ -400,7 +425,27 @@
             font-size: 10px;
             text-decoration: underline;
             cursor: pointer;
-            color: #666;
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* Size Guide Image di Sidebar */
+        .size-guide-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-bottom: 16px;
+        }
+
+        .size-guide-container.show {
+            max-height: 500px;
+        }
+
+        .size-guide-container img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e5e5e5;
+            margin-top: 10px;
         }
 
         .size-grid {
@@ -773,6 +818,12 @@
                 border-right: none;
                 min-height: 300px;
             }
+
+            /* Gallery tetap 1 gambar di mobile */
+            .gallery-slide {
+                min-width: 100%;
+                width: 100%;
+            }
         }
 
         /* Full Image Section */
@@ -820,7 +871,7 @@
         }
 
         .features-container {
-            max-width: 1400px;
+            max-width: 2000px;
             margin: 0 auto;
             padding: 0 60px;
         }
@@ -1411,7 +1462,7 @@
 }
 
 .gallery-section-container {
-    max-width: 1400px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 0 60px;
 }
@@ -1466,11 +1517,12 @@
 .gallery-scroll-container {
     display: flex;
     gap: 20px;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .gallery-scroll-container.no-transition {
-    transition: none;
+    transition: none !important;
 }
 
 .gallery-item {
@@ -1499,7 +1551,7 @@
 }
 
 .similar-products-container {
-    max-width: 1400px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 0 60px;
 }
@@ -1530,11 +1582,12 @@
 .similar-products-scroll {
     display: flex;
     gap: 20px;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .similar-products-scroll.no-transition {
-    transition: none;
+    transition: none !important;
 }
 
 .product-card-item {
@@ -1621,11 +1674,79 @@
         font-size: 24px;
     }
 }
+.color-circle.selected {
+    border: 2px solid #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+.size-btn {
+    padding: 14px 8px;
+    border: 1px solid #d0d0d0;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    display: block;
+}
+
+.size-btn input[type="radio"]:checked + span {
+    background: #000;
+    color: #fff;
+}
+
+.size-btn:has(input:checked) {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+/* Color Swatch Styles */
+.color-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.active {
+    border-color: #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+
+/* Size Button Styles */
+.size-btn {
+    padding: 14px 8px;
+    border: 1px solid #d0d0d0;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    display: block;
+}
+
+.size-btn input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.size-btn:has(input:checked) {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
     </style>
 </head>
 <body>
     <header>
-        <?php include 'header.php'; ?>
+        <?php include 'header/header.php'; ?>
     </header>
     <main>
     <!-- Full Screen Gallery -->
@@ -1657,10 +1778,12 @@
             <div class="badge">NEW ARRIVAL</div>
             <h2 class="product-title">Women's T.K.O. Mechanism Jersey</h2>
             <div class="color-name">Dark Purple</div>
-            <p class="product-description">
-                The T.K.O. Mechanism Bibs come with a mesh-structured strap fabric, which gives stretch and breathability. A high...
+            
+            <!-- Expandable Description -->
+            <p class="product-description" id="productDescription">
+                The T.K.O. Mechanism Jersey features a low-cut collar to reduce chafing and improve comfort. Lightweight fabric provides everything you need for competitive races or fast-paced training days. The mesh-structured strap fabric gives stretch and breathability. A high-quality construction ensures durability and performance in all conditions.
             </p>
-            <a href="#" class="read-more">+ Read more</a>
+            <a class="read-more" id="readMoreBtn" onclick="toggleDescription()">+ Read more</a>
             
             <button class="select-size-btn" onclick="openDrawer()">
                 <span>Select size</span>
@@ -1669,11 +1792,11 @@
 
             <div class="info-links">
                 <a href="#" class="info-link">
-                    <span></span>
+                    <span>📦</span>
                     <span>Crash Replacement</span>
                 </a>
                 <a href="#" class="info-link">
-                    <span></span>
+                    <span>🚚</span>
                     <span>Shipping & Delivery</span>
                 </a>
             </div>
@@ -1884,7 +2007,7 @@
         </div>
         <div class="floating-cart-actions">
             <button class="floating-wishlist">♡</button>
-            <button class="floating-add-cart">Add To Cart</button>
+            <button class="add-to-cart" onclick="floatingAddToCart()">ADD TO CART</button>
         </div>
     </div>
 
@@ -1915,9 +2038,15 @@
             <div class="section">
                 <div class="section-label">COLOR: T.K.O. BLACK MULTI</div>
                 <div class="color-swatches">
-                    <div class="color-swatch active" style="background: linear-gradient(135deg, #000 50%, #e74c3c 50%);" onclick="selectColor(this)"></div>
-                    <div class="color-swatch" style="background: #f5f5f5;" onclick="selectColor(this)"></div>
-                    <div class="color-swatch" style="background: rgb(13, 98, 91);" onclick="selectColor(this)"></div>
+                    <div class="color-swatch active" onclick="selectColorDrawer(this, 'T.K.O. BLACK MULTI')">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200" alt="Black Multi">
+                    </div>
+                    <div class="color-swatch" onclick="selectColorDrawer(this, 'DARK BLUE')">
+                        <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?w=200" alt="Dark Blue">
+                    </div>
+                    <div class="color-swatch" onclick="selectColorDrawer(this, 'DARK PURPLE')">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200" alt="Dark Purple">
+                    </div>
                 </div>
             </div>
 
@@ -1925,19 +2054,44 @@
             <div class="section">
                 <div class="size-header">
                     <div class="section-label">SIZE</div>
-                    <div class="size-guide">Size Guide</div>
+                    <div class="size-guide" onclick="toggleSizeGuideDrawer()">Size Guide</div>
                 </div>
-                <div class="size-grid">
-                    <button class="size-btn" onclick="selectSize(this)">XS</button>
-                    <button class="size-btn" onclick="selectSize(this)">S</button>
-                    <button class="size-btn" onclick="selectSize(this)">M</button>
-                    <button class="size-btn" onclick="selectSize(this)">L</button>
-                    <button class="size-btn" onclick="selectSize(this)">XL</button>
-                    <button class="size-btn disabled">XXL</button>
+                
+                <!-- Size Guide Image (Hidden by default) -->
+                <div class="size-guide-container" id="sizeGuideContainer">
+                    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600" alt="Size Guide Chart">
                 </div>
+                
+                <!-- GANTI bagian size grid (sekitar baris 512): -->
+<div class="size-grid">
+    <label class="size-btn">
+        <input type="radio" name="size" value="XS" style="display: none;" onchange="enableCartButton()">
+        <span>XS</span>
+    </label>
+    <label class="size-btn">
+        <input type="radio" name="size" value="S" style="display: none;" onchange="enableCartButton()">
+        <span>S</span>
+    </label>
+    <label class="size-btn">
+        <input type="radio" name="size" value="M" style="display: none;" onchange="enableCartButton()">
+        <span>M</span>
+    </label>
+    <label class="size-btn">
+        <input type="radio" name="size" value="L" style="display: none;" onchange="enableCartButton()">
+        <span>L</span>
+    </label>
+    <label class="size-btn">
+        <input type="radio" name="size" value="XL" style="display: none;" onchange="enableCartButton()">
+        <span>XL</span>
+    </label>
+    <label class="size-btn disabled">
+        <input type="radio" name="size" value="XXL" disabled style="display: none;">
+        <span>XXL</span>
+    </label>
+</div>
             </div>
 
-            <button class="add-cart-btn" id="cartBtn" disabled>SELECT A SIZE</button>
+            <button class="add-cart-btn" id="cartBtn" disabled onclick="handleAddToCart()">SELECT A SIZE</button>
 
             <div class="shipping-info">
                 Free shipping on orders over Rp.500.000. Estimated delivery: 3-5 business days.
@@ -2329,449 +2483,588 @@
     <footer>
     <?php include 'footer.php'; ?>
     </footer>
-    <script>
+    <!-- =================================================================
+     INSTRUKSI: Copy script di bawah ini dan GANTI SEMUA JavaScript
+     yang ada di file detail.php Anda (mulai dari tag <!-- Cart sidebar sudah ada di header.php -->
+
+<!-- Cart styles sudah ada di header.php -->
+
+<!-- cart.js sudah dimuat oleh header.php -->
+<script>
+// ============================================
+// COLOR SELECTION
+// ============================================
+function selectColor(element, colorName) {
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.classList.remove('active');
+    });
+    element.classList.add('active');
+    element.setAttribute('data-color', colorName);
+}
+
+// ============================================
+// SIZE SELECTION
+// ============================================
+function enableCartButton() {
+    const selectedSize = document.querySelector('input[name="size"]:checked');
+    const cartBtn = document.getElementById('cartBtn');
+    
+    if (selectedSize) {
+        cartBtn.disabled = false;
+        cartBtn.textContent = 'ADD TO CART';
         
-        // Create circle segments
-        function createCircleSegments(elementId, activeCount, totalCount = 36) {
-            const container = document.getElementById(elementId);
-            const angleStep = 360 / totalCount;
-            
-            for (let i = 0; i < totalCount; i++) {
-                const segment = document.createElement('div');
-                segment.className = i < activeCount ? 'circle-segment' : 'circle-segment inactive';
-                const angle = i * angleStep - 90; // Start from top
-                segment.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateX(35px)`;
-                container.appendChild(segment);
-            }
-        }
-
-        // Initialize circles
-        createCircleSegments('insulation-circle', 36, 36); // 6/6 = full
-        createCircleSegments('breathability-circle', 24, 36); // 4/6
-
-        // Gallery - UPDATED dengan infinite scroll & auto-slide
-        let current = 0;
-        const track = document.getElementById('track');
-        const slides = track.querySelectorAll('.gallery-slide');
-        const dotsContainer = document.getElementById('dots');
-        let autoSlideInterval;
-
-        slides.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            if (i === 0) dot.classList.add('active');
-            dot.onclick = () => goTo(i);
-            dotsContainer.appendChild(dot);
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.classList.remove('selected');
         });
+        selectedSize.closest('.size-btn').classList.add('selected');
+    }
+}
 
-        const dots = dotsContainer.querySelectorAll('.dot');
+// ============================================
+// ADD TO CART
+// ============================================
+function handleAddToCart() {
+    // Ambil data SEBELUM menutup drawer
+    const selectedSize = document.querySelector('input[name="size"]:checked');
+    const selectedColor = document.querySelector('.color-swatch.active');
+    
+    if (!selectedSize) {
+        // Kalau belum pilih size, buka drawer dulu
+        openDrawer();
+        return;
+    }
+    
+    let colorName = 'T.K.O. Black Multi';
+    if (selectedColor) {
+        colorName = selectedColor.getAttribute('data-color') || 'T.K.O. Black Multi';
+    }
+    
+    const product = {
+        name: "Women's T.K.O. Mechanism Jersey",
+        color: colorName,
+        size: selectedSize.value,
+        price: 250000,
+        quantity: 1,
+        image: "https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=200&q=75"
+    };
+    
+    // Tutup drawer SETELAH data sudah dibaca
+    closeDrawer();
+    
+    // Tunggu animasi drawer selesai baru buka cart
+    setTimeout(function() {
+        addToCart(product);
+    }, 350);
+}
 
-        function goTo(index) {
-            current = index;
-            track.style.transform = `translateX(-${index * 100}%)`;
-            dots.forEach((d, i) => d.classList.toggle('active', i === index));
-        }
+// ============================================
+// FLOATING ADD TO CART
+// ============================================
+function floatingAddToCart() {
+    const selectedSize = document.querySelector('input[name="size"]:checked');
+    if (!selectedSize) {
+        openDrawer(); // Buka drawer pilih ukuran dulu
+    } else {
+        handleAddToCart(); // Langsung masuk cart
+    }
+}
 
-        function next() {
-            current = (current + 1) % slides.length; // Infinite loop
-            goTo(current);
-        }
+// ============================================
+// DRAWER FUNCTIONS
+// ============================================
+function openDrawer() {
+    document.getElementById('overlay').classList.add('active');
+    document.getElementById('drawer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        function prev() {
-            current = (current - 1 + slides.length) % slides.length; // Infinite loop
-            goTo(current);
-        }
+function closeDrawer() {
+    document.getElementById('overlay').classList.remove('active');
+    document.getElementById('drawer').classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        // Auto-slide setiap 5 detik
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(next, 5000);
-        }
+// ============================================
+// SPECIFICATIONS & SIZE GUIDE
+// ============================================
+function openSpecsDrawer() {
+    document.getElementById('specsOverlay').classList.add('active');
+    document.getElementById('specsDrawer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
+function closeSpecsDrawer() {
+    document.getElementById('specsOverlay').classList.remove('active');
+    document.getElementById('specsDrawer').classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        // Start auto-slide
+function openSizeGuide() {
+    document.getElementById('sizeGuideOverlay').classList.add('active');
+    document.getElementById('sizeGuideDrawer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSizeGuide() {
+    document.getElementById('sizeGuideOverlay').classList.remove('active');
+    document.getElementById('sizeGuideDrawer').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function toggleUnit(unit) {
+    const cmTable = document.getElementById('cmTable');
+    const inTable = document.getElementById('inTable');
+    const buttons = document.querySelectorAll('.guide-toggle-btn');
+    
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    if (unit === 'cm') {
+        cmTable.style.display = 'block';
+        inTable.style.display = 'none';
+        buttons[0].classList.add('active');
+    } else {
+        cmTable.style.display = 'none';
+        inTable.style.display = 'block';
+        buttons[1].classList.add('active');
+    }
+}
+
+// ============================================
+// PRODUCT CARD INTERACTIONS
+// ============================================
+
+// Toggle Description (Read More)
+function toggleDescription() {
+    const description = document.getElementById('productDescription');
+    const readMoreBtn = document.getElementById('readMoreBtn');
+    
+    if (description.classList.contains('expanded')) {
+        description.classList.remove('expanded');
+        readMoreBtn.textContent = '+ Read more';
+    } else {
+        description.classList.add('expanded');
+        readMoreBtn.textContent = '- Read less';
+    }
+}
+
+// Select Color in Drawer (dengan gambar)
+function selectColorDrawer(element, colorName) {
+    // Remove active class from all color swatches
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.classList.remove('active');
+    });
+    
+    // Add active class to clicked swatch
+    element.classList.add('active');
+    
+    // Update color label
+    const colorLabel = document.querySelector('.section-label');
+    if (colorLabel) {
+        colorLabel.textContent = 'COLOR: ' + colorName;
+    }
+    
+    // Update color name di product card juga (optional)
+    const colorNameElement = document.querySelector('.color-name');
+    if (colorNameElement) {
+        colorNameElement.textContent = colorName;
+    }
+}
+
+// Toggle Size Guide Image in Drawer
+function toggleSizeGuideDrawer() {
+    const sizeGuideContainer = document.getElementById('sizeGuideContainer');
+    sizeGuideContainer.classList.toggle('show');
+}
+
+// ============================================
+// ACCORDION
+// ============================================
+function toggle(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.accordion-icon').textContent = '+';
+    });
+    if (!wasOpen) {
+        item.classList.add('open');
+        btn.querySelector('.accordion-icon').textContent = '−';
+    }
+}
+
+// ============================================
+// TABS & FEATURES
+// ============================================
+function switchTab(tabName) {
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    document.getElementById(tabName + 'Tab').classList.add('active');
+}
+
+const featureData = {
+    'on-bike': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/413c2dcc9acaf9c034626ddadaf80b3aec7e9130-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
+        description: 'Aerodynamic race fit designed for high-intensity riding. The jersey stays in place during aggressive cycling positions with elastic silicone grippers at the hem for secure fit without restricting movement.'
+    },
+    'elastic': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
+        description: 'All grippers have been fitted with soft, fully-dyed elastic that deliver the truest colour.'
+    },
+    'straps': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/c2b4f365027938fe47fb72bbb9cb3b3c09173d73-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
+        description: 'The T.K.O. Mechanism Bibs come with a mesh-structured strap fabric, which gives stretch and breathability.'
+    },
+    'chamois': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=1000&q=85&fit=max&auto=format',
+        description: 'The chamois is designed with multi-density foam to provide targeted cushioning and support.'
+    },
+    'fabric': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=1000&q=85&fit=max&auto=format',
+        description: 'High-performance technical fabric with excellent moisture wicking properties.'
+    },
+    'mesh': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=1000&q=85&fit=max&auto=format',
+        description: 'Strategic mesh panels on the front and sides enhance breathability where you need it most.'
+    },
+    'stitching': {
+        image: 'https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=1000&q=85&fit=max&auto=format',
+        description: 'Flatlock seams throughout reduce friction and prevent chafing.'
+    }
+};
+
+function selectFeature(featureName) {
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    document.querySelector(`[data-feature="${featureName}"]`).classList.add('active');
+    
+    const imageElement = document.getElementById('mainFeatureImage');
+    const descriptionElement = document.getElementById('featureDescription');
+    
+    if (featureData[featureName]) {
+        imageElement.style.opacity = '0';
+        descriptionElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            imageElement.src = featureData[featureName].image;
+            descriptionElement.textContent = featureData[featureName].description;
+            imageElement.style.opacity = '1';
+            descriptionElement.style.opacity = '1';
+        }, 300);
+    }
+}
+
+if (document.getElementById('mainFeatureImage')) {
+    document.getElementById('mainFeatureImage').style.transition = 'opacity 0.3s ease';
+    document.getElementById('featureDescription').style.transition = 'opacity 0.3s ease';
+}
+
+// ============================================
+// GALLERY
+// ============================================
+function createCircleSegments(elementId, activeCount, totalCount = 36) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+    
+    const angleStep = 360 / totalCount;
+    for (let i = 0; i < totalCount; i++) {
+        const segment = document.createElement('div');
+        segment.className = i < activeCount ? 'circle-segment' : 'circle-segment inactive';
+        const angle = i * angleStep - 90;
+        segment.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateX(35px)`;
+        container.appendChild(segment);
+    }
+}
+
+createCircleSegments('insulation-circle', 36, 36);
+createCircleSegments('breathability-circle', 24, 36);
+
+let current = 0;
+const track = document.getElementById('track');
+const slides = track.querySelectorAll('.gallery-slide');
+const dotsContainer = document.getElementById('dots');
+let autoSlideInterval;
+
+slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll('.dot');
+
+function goTo(index) {
+    current = index;
+    // Responsive: 50% untuk desktop (>768px), 100% untuk mobile
+    const isMobile = window.innerWidth <= 768;
+    const translatePercent = isMobile ? 100 : 50;
+    track.style.transform = `translateX(-${index * translatePercent}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+}
+
+function next() {
+    current = (current + 1) % slides.length;
+    goTo(current);
+}
+
+function prev() {
+    current = (current - 1 + slides.length) % slides.length;
+    goTo(current);
+}
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(next, 5000);
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+startAutoSlide();
+
+track.addEventListener('mouseenter', stopAutoSlide);
+track.addEventListener('mouseleave', startAutoSlide);
+
+let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0;
+
+track.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.pageX;
+    track.classList.add('dragging');
+    stopAutoSlide();
+});
+
+track.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    currentTranslate = prevTranslate + e.pageX - startX;
+});
+
+track.addEventListener('mouseup', e => {
+    isDragging = false;
+    track.classList.remove('dragging');
+    const movedBy = e.pageX - startX;
+    if (movedBy < -100) next();
+    else if (movedBy > 100) prev();
+    prevTranslate = -current * (track.offsetWidth / 2);
+    startAutoSlide();
+});
+
+track.addEventListener('mouseleave', () => {
+    if (isDragging) {
+        isDragging = false;
+        track.classList.remove('dragging');
         startAutoSlide();
+    }
+});
 
-        // Stop auto-slide saat hover
-        track.addEventListener('mouseenter', stopAutoSlide);
-        track.addEventListener('mouseleave', startAutoSlide);
+// Touch support
+let touchStartX = 0;
+track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    stopAutoSlide();
+});
 
-        // Drag dengan mouse
-        let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0;
-        
-        track.addEventListener('mousedown', e => {
-            isDragging = true;
-            startX = e.pageX;
-            track.classList.add('dragging');
-            stopAutoSlide();
-        });
-        
-        track.addEventListener('mousemove', e => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const currentX = e.pageX;
-            currentTranslate = prevTranslate + currentX - startX;
-        });
-        
-        track.addEventListener('mouseup', e => {
-            isDragging = false;
-            track.classList.remove('dragging');
-            
-            const movedBy = e.pageX - startX;
-            
-            if (movedBy < -100 && current < slides.length - 1) {
-                next();
-            } else if (movedBy > 100 && current > 0) {
-                prev();
-            }
-            
-            prevTranslate = -current * track.offsetWidth;
-            startAutoSlide();
-        });
+track.addEventListener('touchend', e => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 50) next();
+    if (diff < -50) prev();
+    touchStartX = 0;
+    startAutoSlide();
+});
 
-        track.addEventListener('mouseleave', () => {
-            if (isDragging) {
-                isDragging = false;
-                track.classList.remove('dragging');
-                startAutoSlide();
-            }
-        });
+// Keyboard
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'Escape') {
+        closeDrawer();
+        closeSpecsDrawer();
+        closeSizeGuide();
+    }
+});
 
-        // Touch/Swipe support untuk mobile
-        let touchStartX = 0;
-        
-        track.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            stopAutoSlide();
-        });
-        
-        track.addEventListener('touchmove', e => {
-            if (!touchStartX) return;
-            e.preventDefault();
-        });
-        
-        track.addEventListener('touchend', e => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
-            
-            if (diff > 50) next();
-            if (diff < -50) prev();
-            
-            touchStartX = 0;
-            startAutoSlide();
-        });
+// Window resize - update gallery position
+window.addEventListener('resize', () => {
+    goTo(current);
+});
 
-        // Keyboard
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft') prev();
-            if (e.key === 'ArrowRight') next();
-        });
+// ============================================
+// INFINITE CAROUSEL - Factory function untuk Gallery & Similar Products
+// ============================================
+function createInfiniteCarousel(wrapperId, containerId, itemSelector, autoInterval) {
+    const wrapper = document.getElementById(wrapperId);
+    const container = document.getElementById(containerId);
+    if (!wrapper || !container) return null;
 
-        // Drawer
-        function openDrawer() {
-            document.getElementById('overlay').classList.add('active');
-            document.getElementById('drawer').classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // Clone semua item asli di depan dan belakang untuk efek infinite
+    const origItems = Array.from(container.querySelectorAll(itemSelector));
+    const itemCount = origItems.length;
+    if (itemCount === 0) return null;
+
+    // Clone: tambahkan salinan di belakang (untuk next) dan di depan (untuk prev)
+    origItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        container.appendChild(clone);
+    });
+    origItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        container.insertBefore(clone, container.firstChild);
+    });
+
+    // Hitung lebar 1 item + gap
+    function getItemWidth() {
+        const item = container.querySelector(itemSelector);
+        const gap = parseInt(getComputedStyle(container).gap) || 20;
+        return item.offsetWidth + gap;
+    }
+
+    // Mulai di posisi set item asli (skip clone depan)
+    let currentIndex = itemCount; // index ke item asli pertama
+    let isTransitioning = false;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartTranslate = 0;
+    let autoTimer = null;
+
+    function getTranslate() {
+        return -(currentIndex * getItemWidth());
+    }
+
+    function setPosition(animate) {
+        if (!animate) container.classList.add('no-transition');
+        container.style.transform = `translateX(${getTranslate()}px)`;
+        if (!animate) {
+            // Force reflow baru hapus no-transition
+            container.getBoundingClientRect();
+            container.classList.remove('no-transition');
         }
+    }
 
-        function closeDrawer() {
-            document.getElementById('overlay').classList.remove('active');
-            document.getElementById('drawer').classList.remove('active');
-            document.body.style.overflow = '';
+    // Set posisi awal tanpa animasi
+    setPosition(false);
+
+    function goTo(index, animate) {
+        if (isTransitioning && animate) return;
+        isTransitioning = animate;
+        currentIndex = index;
+        if (!animate) container.classList.add('no-transition');
+        else container.classList.remove('no-transition');
+        container.style.transform = `translateX(${getTranslate()}px)`;
+    }
+
+    function handleTransitionEnd() {
+        isTransitioning = false;
+        // Jika sudah lewat clone belakang → lompat ke item asli pertama
+        if (currentIndex >= itemCount * 2) {
+            goTo(itemCount, false);
         }
-
-        // Specs Drawer
-        function openSpecsDrawer() {
-            document.getElementById('specsOverlay').classList.add('active');
-            document.getElementById('specsDrawer').classList.add('active');
-            document.body.style.overflow = 'hidden';
+        // Jika sudah lewat clone depan → lompat ke item asli terakhir
+        if (currentIndex < itemCount) {
+            goTo(itemCount * 2 - 1, false);
         }
+    }
 
-        function closeSpecsDrawer() {
-            document.getElementById('specsOverlay').classList.remove('active');
-            document.getElementById('specsDrawer').classList.remove('active');
-            document.body.style.overflow = '';
+    container.addEventListener('transitionend', handleTransitionEnd);
+
+    function next() {
+        if (isTransitioning) return;
+        currentIndex++;
+        container.classList.remove('no-transition');
+        container.style.transform = `translateX(${getTranslate()}px)`;
+        isTransitioning = true;
+    }
+
+    function prev() {
+        if (isTransitioning) return;
+        currentIndex--;
+        container.classList.remove('no-transition');
+        container.style.transform = `translateX(${getTranslate()}px)`;
+        isTransitioning = true;
+    }
+
+    // Auto slide
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(next, autoInterval);
+    }
+    function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = null;
+    }
+    startAuto();
+
+    // Pause saat hover
+    wrapper.addEventListener('mouseenter', stopAuto);
+    wrapper.addEventListener('mouseleave', startAuto);
+
+    // Drag support
+    wrapper.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        dragStartX = e.pageX;
+        dragStartTranslate = getTranslate();
+        stopAuto();
+        container.classList.add('no-transition');
+        wrapper.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        wrapper.style.cursor = 'grab';
+        const diff = e.pageX - dragStartX;
+        container.classList.remove('no-transition');
+        if (diff < -50) next();
+        else if (diff > 50) prev();
+        else {
+            // Kembalikan ke posisi semula
+            container.style.transform = `translateX(${getTranslate()}px)`;
         }
+        startAuto();
+    });
 
-        // Color
-        function selectColor(el) {
-            document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-            el.classList.add('active');
-        }
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const diff = e.pageX - dragStartX;
+        container.style.transform = `translateX(${dragStartTranslate + diff}px)`;
+    });
 
-        // Size
-        let selectedSize = null;
-        function selectSize(btn) {
-            if (btn.classList.contains('disabled')) return;
-            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            selectedSize = btn.textContent;
-            const cartBtn = document.getElementById('cartBtn');
-            cartBtn.disabled = false;
-            cartBtn.textContent = 'ADD TO CART';
-        }
+    // Touch support
+    let touchStartX = 0;
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAuto();
+    }, { passive: true });
+    wrapper.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (diff > 50) next();
+        else if (diff < -50) prev();
+        startAuto();
+    }, { passive: true });
 
-        document.getElementById('cartBtn').onclick = () => {
-            if (selectedSize) {
-                alert(`Added: Women's T.K.O. Jersey - Size ${selectedSize}`);
-                closeDrawer();
-            }
-        };
+    return { next, prev, startAuto, stopAuto };
+}
 
-        // Accordion
-        function toggle(btn) {
-            const item = btn.parentElement;
-            const wasOpen = item.classList.contains('open');
-            document.querySelectorAll('.accordion-item').forEach(i => {
-                i.classList.remove('open');
-                i.querySelector('.accordion-icon').textContent = '+';
-            });
-            if (!wasOpen) {
-                item.classList.add('open');
-                btn.querySelector('.accordion-icon').textContent = '−';
-            }
-        }
+// Init Gallery
+const galleryCarousel = createInfiniteCarousel('galleryWrapper', 'galleryContainer', '.gallery-item', 5000);
+function galleryNext() { if (galleryCarousel) galleryCarousel.next(); }
+function galleryPrev() { if (galleryCarousel) galleryCarousel.prev(); }
 
-        // Tab Switching
-        function switchTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabName + 'Tab').classList.add('active');
-        }
-
-        // Feature Selection with Image and Description Change
-        const featureData = {
-            'on-bike': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/413c2dcc9acaf9c034626ddadaf80b3aec7e9130-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
-                description: 'Aerodynamic race fit designed for high-intensity riding. The jersey stays in place during aggressive cycling positions with elastic silicone grippers at the hem for secure fit without restricting movement.'
-            },
-            'elastic': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
-                description: 'All grippers have been fitted with soft, fully-dyed elastic that deliver the truest colour. The elastics also feature our signature silicone gripping pattern, keeping the bibs in an optimal position to improve your aerodynamic silhouette.'
-            },
-            'straps': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/c2b4f365027938fe47fb72bbb9cb3b3c09173d73-3200x4000.jpg?w=1000&q=85&fit=max&auto=format',
-                description: 'The T.K.O. Mechanism Bibs come with a mesh-structured strap fabric, which gives stretch and breathability. A high neck at the back provides added support and a closer fit for your optimal positioning on the bike.'
-            },
-            'chamois': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=1000&q=85&fit=max&auto=format',
-                description: 'The chamois is designed with multi-density foam to provide targeted cushioning and support exactly where you need it most. Anti-bacterial treatment keeps you fresh during long rides.'
-            },
-            'fabric': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=1000&q=85&fit=max&auto=format',
-                description: 'High-performance technical fabric with excellent moisture wicking properties. The four-way stretch material moves with your body for unrestricted movement and optimal comfort.'
-            },
-            'mesh': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=1000&q=85&fit=max&auto=format',
-                description: 'Strategic mesh panels on the front and sides enhance breathability where you need it most. The open-weave structure promotes airflow while maintaining structural integrity.'
-            },
-            'stitching': {
-                image: 'https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=1000&q=85&fit=max&auto=format',
-                description: 'Flatlock seams throughout reduce friction and prevent chafing. The chamois is attached with precise multi-panel stitching for durability and a seamless feel against your skin.'
-            }
-        };
-
-        function selectFeature(featureName) {
-            // Update active state on feature items
-            document.querySelectorAll('.feature-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.querySelector(`[data-feature="${featureName}"]`).classList.add('active');
-            
-            // Update image and description
-            const imageElement = document.getElementById('mainFeatureImage');
-            const descriptionElement = document.getElementById('featureDescription');
-            
-            if (featureData[featureName]) {
-                // Fade out effect
-                imageElement.style.opacity = '0';
-                descriptionElement.style.opacity = '0';
-                
-                setTimeout(() => {
-                    // Change content
-                    imageElement.src = featureData[featureName].image;
-                    descriptionElement.textContent = featureData[featureName].description;
-                    
-                    // Fade in effect
-                    imageElement.style.opacity = '1';
-                    descriptionElement.style.opacity = '1';
-                }, 300);
-            }
-        }
-
-        // Add smooth transition for opacity changes
-        document.getElementById('mainFeatureImage').style.transition = 'opacity 0.3s ease';
-        document.getElementById('featureDescription').style.transition = 'opacity 0.3s ease';
-
-        // Keyboard
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft') prev();
-            if (e.key === 'ArrowRight') next();
-            if (e.key === 'Escape') {
-                closeDrawer();
-                closeSpecsDrawer();
-                closeSizeGuide();
-            }
-        });
-
-        // Size Guide Drawer
-        function openSizeGuide() {
-            document.getElementById('sizeGuideOverlay').classList.add('active');
-            document.getElementById('sizeGuideDrawer').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSizeGuide() {
-            document.getElementById('sizeGuideOverlay').classList.remove('active');
-            document.getElementById('sizeGuideDrawer').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Toggle Unit (CM / IN)
-        function toggleUnit(unit) {
-            const cmTable = document.getElementById('cmTable');
-            const inTable = document.getElementById('inTable');
-            const buttons = document.querySelectorAll('.guide-toggle-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            if (unit === 'cm') {
-                cmTable.style.display = 'block';
-                inTable.style.display = 'none';
-                buttons[0].classList.add('active');
-            } else {
-                cmTable.style.display = 'none';
-                inTable.style.display = 'block';
-                buttons[1].classList.add('active');
-            }
-        }
-        // JAVASCRIPT BARU UNTUK GALLERY SECTION
-        const galleryWrapper = document.getElementById('galleryWrapper');
-        const galleryContainer = document.getElementById('galleryContainer');
-        let galleryDragging = false;
-        let galleryStartX = 0;
-        let galleryScrollLeft = 0;
-        let galleryCurrentTranslate = 0;
-
-        galleryWrapper.addEventListener('mousedown', (e) => {
-            galleryDragging = true;
-            galleryStartX = e.pageX - galleryWrapper.offsetLeft;
-            galleryScrollLeft = galleryCurrentTranslate;
-            galleryContainer.classList.add('no-transition');
-            galleryWrapper.classList.add('dragging');
-        });
-
-        galleryWrapper.addEventListener('mouseleave', () => {
-            galleryDragging = false;
-            galleryContainer.classList.remove('no-transition');
-            galleryWrapper.classList.remove('dragging');
-        });
-
-        galleryWrapper.addEventListener('mouseup', () => {
-            galleryDragging = false;
-            galleryContainer.classList.remove('no-transition');
-            galleryWrapper.classList.remove('dragging');
-        });
-
-        galleryWrapper.addEventListener('mousemove', (e) => {
-            if (!galleryDragging) return;
-            e.preventDefault();
-            const x = e.pageX - galleryWrapper.offsetLeft;
-            const walk = (x - galleryStartX) * 2;
-            galleryCurrentTranslate = galleryScrollLeft + walk;
-            
-            const maxTranslate = 0;
-            const minTranslate = -(galleryContainer.scrollWidth - galleryWrapper.clientWidth);
-            
-            if (galleryCurrentTranslate > maxTranslate) galleryCurrentTranslate = maxTranslate;
-            if (galleryCurrentTranslate < minTranslate) galleryCurrentTranslate = minTranslate;
-            
-            galleryContainer.style.transform = `translateX(${galleryCurrentTranslate}px)`;
-        });
-
-        function galleryNext() {
-            const itemWidth = galleryContainer.querySelector('.gallery-item').offsetWidth + 20;
-            galleryCurrentTranslate -= itemWidth;
-            const minTranslate = -(galleryContainer.scrollWidth - galleryWrapper.clientWidth);
-            if (galleryCurrentTranslate < minTranslate) galleryCurrentTranslate = minTranslate;
-            galleryContainer.style.transform = `translateX(${galleryCurrentTranslate}px)`;
-        }
-
-        function galleryPrev() {
-            const itemWidth = galleryContainer.querySelector('.gallery-item').offsetWidth + 20;
-            galleryCurrentTranslate += itemWidth;
-            if (galleryCurrentTranslate > 0) galleryCurrentTranslate = 0;
-            galleryContainer.style.transform = `translateX(${galleryCurrentTranslate}px)`;
-        }
-
-        // JAVASCRIPT BARU UNTUK SIMILAR PRODUCTS SECTION
-        const productsWrapper = document.getElementById('productsWrapper');
-        const productsContainer = document.getElementById('productsContainer');
-        let productsDragging = false;
-        let productsStartX = 0;
-        let productsScrollLeft = 0;
-        let productsCurrentTranslate = 0;
-
-        productsWrapper.addEventListener('mousedown', (e) => {
-            productsDragging = true;
-            productsStartX = e.pageX - productsWrapper.offsetLeft;
-            productsScrollLeft = productsCurrentTranslate;
-            productsContainer.classList.add('no-transition');
-            productsWrapper.classList.add('dragging');
-        });
-
-        productsWrapper.addEventListener('mouseleave', () => {
-            productsDragging = false;
-            productsContainer.classList.remove('no-transition');
-            productsWrapper.classList.remove('dragging');
-        });
-
-        productsWrapper.addEventListener('mouseup', () => {
-            productsDragging = false;
-            productsContainer.classList.remove('no-transition');
-            productsWrapper.classList.remove('dragging');
-        });
-
-        productsWrapper.addEventListener('mousemove', (e) => {
-            if (!productsDragging) return;
-            e.preventDefault();
-            const x = e.pageX - productsWrapper.offsetLeft;
-            const walk = (x - productsStartX) * 2;
-            productsCurrentTranslate = productsScrollLeft + walk;
-            
-            const maxTranslate = 0;
-            const minTranslate = -(productsContainer.scrollWidth - productsWrapper.clientWidth);
-            
-            if (productsCurrentTranslate > maxTranslate) productsCurrentTranslate = maxTranslate;
-            if (productsCurrentTranslate < minTranslate) productsCurrentTranslate = minTranslate;
-            
-            productsContainer.style.transform = `translateX(${productsCurrentTranslate}px)`;
-        });
-
-        function productsNext() {
-            const itemWidth = productsContainer.querySelector('.product-card-item').offsetWidth + 20;
-            productsCurrentTranslate -= itemWidth;
-            const minTranslate = -(productsContainer.scrollWidth - productsWrapper.clientWidth);
-            if (productsCurrentTranslate < minTranslate) productsCurrentTranslate = minTranslate;
-            productsContainer.style.transform = `translateX(${productsCurrentTranslate}px)`;
-        }
-
-        function productsPrev() {
-            const itemWidth = productsContainer.querySelector('.product-card-item').offsetWidth + 20;
-            productsCurrentTranslate += itemWidth;
-            if (productsCurrentTranslate > 0) productsCurrentTranslate = 0;
-            productsContainer.style.transform = `translateX(${productsCurrentTranslate}px)`;
-        }
-    </script>
+// Init Similar Products
+const productsCarousel = createInfiniteCarousel('productsWrapper', 'productsContainer', '.product-card-item', 5000);
+function productsNext() { if (productsCarousel) productsCarousel.next(); }
+function productsPrev() { if (productsCarousel) productsCarousel.prev(); }
+</script>
 </body>
 </html>

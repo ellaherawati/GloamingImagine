@@ -455,7 +455,7 @@
 </head>
 <body>
     <header>
-        <?php include 'headercheckout.php'; ?>
+        <?php include 'header/headercheckout.php'; ?>
     </header>
 
     <div class="main-container">
@@ -543,34 +543,27 @@
         </div>
 
         <div class="right-panel">
-            <div class="order-product">
-                <div class="product-img-wrapper">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%232a2a2a' width='64' height='64'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23666' font-size='10' font-family='Arial'%3EPRODUK%3C/text%3E%3C/svg%3E" alt="Product">
-                    <div class="qty-badge">1</div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">Produk Contoh - Jaket Premium</div>
-                    <div class="product-variant">Size L</div>
-                </div>
-                <div class="product-total">Rp 390.000</div>
+            <!-- Produk dari cart akan dirender di sini oleh JS -->
+            <div id="checkoutCartItems">
+                <p class="loading-text">Memuat produk...</p>
             </div>
 
             <div class="promo-section">
-                <input type="text" placeholder="Kode diskon atau gift card">
-                <button class="promo-btn" type="button">Gunakan</button>
+                <input type="text" id="promoInput" placeholder="Kode diskon atau gift card">
+                <button class="promo-btn" type="button" id="promoBtn">Gunakan</button>
             </div>
 
             <div class="summary-divider">
                 <div class="summary-row">
                     <span class="label">Subtotal</span>
-                    <span class="amount">Rp 390.000</span>
+                    <span class="amount" id="checkoutSubtotal">Rp 0</span>
                 </div>
                 <div class="summary-row">
                     <span class="label">
                         Ongkos Kirim
-                        <span class="info-circle">i</span>
+                        <span class="info-circle" id="shippingInfoBtn">i</span>
                     </span>
-                    <span class="amount">Masukkan alamat lengkap</span>
+                    <span class="amount" id="checkoutShipping">Masukkan alamat lengkap</span>
                 </div>
             </div>
 
@@ -578,7 +571,7 @@
                 <div class="total-label">Total</div>
                 <div class="total-amount">
                     <span class="currency">IDR</span>
-                    <span class="total-price">Rp 390.000</span>
+                    <span class="total-price" id="checkoutTotal">Rp 0</span>
                 </div>
             </div>
             <div class="tax-note">Sudah termasuk pajak</div>
@@ -586,7 +579,71 @@
     </div>
 
     <script>
-        // Data wilayah Indonesia (lengkap)
+        // ============================
+        // CART - Baca dari localStorage
+        // ============================
+        function parsePrice(priceStr) {
+            if (typeof priceStr === 'number') return priceStr;
+            return parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
+        }
+
+        function formatPrice(num) {
+            return 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function renderCheckoutCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('checkoutCartItems');
+            const subtotalEl = document.getElementById('checkoutSubtotal');
+            const totalEl = document.getElementById('checkoutTotal');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div style="color:#999;font-size:13px;text-align:center;padding:20px 0;">
+                        Keranjang kamu kosong. <a href="index.php" style="color:#fff;text-decoration:underline;">Belanja dulu yuk!</a>
+                    </div>`;
+                subtotalEl.textContent = 'Rp 0';
+                totalEl.textContent = 'Rp 0';
+                return;
+            }
+
+            let subtotal = 0;
+            let html = '';
+            cart.forEach(item => {
+                const price = parsePrice(item.price);
+                const lineTotal = price * item.quantity;
+                subtotal += lineTotal;
+                html += `
+                    <div class="order-product">
+                        <div class="product-img-wrapper">
+                            <img src="${item.image}" alt="${item.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\'%3E%3Crect fill=\'%232a2a2a\' width=\'64\' height=\'64\'/%3E%3C/svg%3E'">
+                            <div class="qty-badge">${item.quantity}</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">${item.name}</div>
+                            <div class="product-variant">${item.color && item.color !== '-' ? item.color + ' / ' : ''}Size ${item.size}</div>
+                        </div>
+                        <div class="product-total">${formatPrice(lineTotal)}</div>
+                    </div>`;
+            });
+
+            container.innerHTML = html;
+            subtotalEl.textContent = formatPrice(subtotal);
+            totalEl.textContent = formatPrice(subtotal); // shipping dihitung terpisah
+        }
+
+        // Update total saat ongkir berubah
+        function updateTotal(shippingCost) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const subtotal = cart.reduce((sum, item) => sum + (parsePrice(item.price) * item.quantity), 0);
+            const total = subtotal + shippingCost;
+            document.getElementById('checkoutTotal').textContent = formatPrice(total);
+            document.getElementById('checkoutShipping').textContent = shippingCost > 0 ? formatPrice(shippingCost) : 'Masukkan alamat lengkap';
+        }
+
+        // ============================
+        // DATA WILAYAH INDONESIA
+        // ============================
         let indonesiaData = null;
 
         // Load data wilayah Indonesia
@@ -749,9 +806,26 @@
             alert('Biaya pengiriman akan dihitung berdasarkan alamat pengiriman Anda');
         });
 
+        // Promo code
+        document.getElementById('promoBtn').addEventListener('click', function() {
+            const promoInput = document.getElementById('promoInput');
+            if (promoInput.value.trim()) {
+                alert(`Kode diskon "${promoInput.value}" berhasil diterapkan!`);
+                promoInput.value = '';
+            } else {
+                alert('Masukkan kode diskon terlebih dahulu.');
+            }
+        });
+
+        // Shipping info tooltip
+        document.getElementById('shippingInfoBtn').addEventListener('click', function() {
+            alert('Ongkos kirim akan dihitung berdasarkan alamat pengiriman Anda');
+        });
+
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
-            loadIndonesiaData();
+            renderCheckoutCart();  // Tampilkan produk dari cart
+            loadIndonesiaData();   // Load dropdown wilayah
         });
     </script>
 </body>

@@ -33,7 +33,7 @@
 <body>
     <header class="header-image">
         <!-- Ganti URL di bawah dengan URL gambar Anda -->
-        <img src="imgheader.jpg" alt="Header Image">
+        <img src="img/imgheader.jpg" alt="Header Image">
     </header>
 
     
