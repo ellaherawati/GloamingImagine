@@ -1277,10 +1277,10 @@
         <!-- Cycling -->
         <div class="shop-section-title">Cycling</div>
         <div class="shop-category-grid">
-            <a href="index.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
+            <span><a href="index.php" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Bundles">
-                Bundles
-            </a>
+                All
+            </a></span>
             <a href="index.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Jerseys">
                 Jerseys

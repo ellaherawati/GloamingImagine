@@ -618,25 +618,24 @@
         /* Banner gambar di atas */
         .shop-sidebar-banner {
             width: 100%;
-            height: 160px;
+            height: 300px;
             overflow: hidden;
             position: relative;
+            flex-shrink: 0;
         }
         .shop-sidebar-banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 30%;
         }
         .shop-sidebar-banner-label {
             position: absolute;
-            bottom: 16px;
-            left: 24px;
-            color: #fff;
-            font-size: 18px;
+            bottom: 20px;
+            left: 30px;
+            background: #fff;
+            padding: 8px 16px;
+            font-size: 14px;
             font-weight: 600;
-            letter-spacing: -0.3px;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
 
         .shop-sidebar-body {
@@ -889,6 +888,7 @@
         </div>
     </div>
 
+    <script src="products-data.js"></script>
     <script>
     // ============ SHOP SIDEBAR LOGIC ============
     function openShopSidebar() {
@@ -910,7 +910,7 @@
         var searchDropdown = document.getElementById('searchDropdown');
 
         // Load products from centralized data file (products-data.js)
-        var products = DUMMY_PRODUCTS;
+        var products = (typeof DUMMY_PRODUCTS !== 'undefined') ? DUMMY_PRODUCTS : [];
 
         if (searchToggle) {
             searchToggle.addEventListener('click', function(e) {
@@ -1038,5 +1038,4 @@
     </script>
 
     <script src="cart.js"></script>
-    <script src="products-data.js"></script>
     <script src="wishlist.js"></script>
