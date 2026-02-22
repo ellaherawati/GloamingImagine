@@ -13,13 +13,12 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            height: 100vh;
             overflow: hidden;
         }
 
         .container {
             display: flex;
-            height: 100vh;
+            height: calc(100vh - 77px);
         }
 
         /* Left Side - Slider */
@@ -28,6 +27,7 @@
             position: relative;
             overflow: hidden;
             background: #000;
+            height: 100%;
         }
 
         .slide {
@@ -132,8 +132,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 32px;
+            padding: 24px 32px;
             background: white;
+            overflow-y: auto;
+            height: 100%;
         }
 
         .form-container {
@@ -145,12 +147,12 @@
         .toggle-buttons {
             display: flex;
             border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 32px;
+            margin-bottom: 20px;
         }
 
         .toggle-btn {
             flex: 1;
-            padding: 16px 0;
+            padding: 12px 0;
             background: none;
             border: none;
             font-size: 14px;
@@ -181,7 +183,7 @@
 
         /* Form Styles */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         .form-label {
@@ -189,13 +191,13 @@
             font-size: 12px;
             font-weight: 500;
             color: #374151;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: 0.5px;
         }
 
         .form-input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1px solid #d1d5db;
             font-size: 14px;
             transition: border-color 0.3s;
@@ -210,12 +212,12 @@
         .checkbox-group {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .checkbox {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             margin-top: 2px;
             cursor: pointer;
         }
@@ -232,8 +234,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            font-size: 14px;
+            margin-bottom: 14px;
+            font-size: 13px;
         }
 
         .remember-forgot a {
@@ -248,7 +250,7 @@
         /* Submit Button */
         .submit-btn {
             width: 100%;
-            padding: 16px;
+            padding: 13px;
             background: #000;
             color: white;
             border: none;
@@ -266,7 +268,7 @@
         /* Footer Text */
         .form-footer {
             text-align: center;
-            margin-top: 32px;
+            margin-top: 16px;
             font-size: 14px;
             color: #6b7280;
         }
@@ -288,6 +290,77 @@
             display: none;
         }
 
+        /* Submit Button Disabled State */
+        .submit-btn:disabled {
+            background: #d1d5db;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .submit-btn:disabled:hover {
+            background: #d1d5db;
+        }
+
+        /* Field Error */
+        .field-error {
+            display: none;
+            font-size: 11.5px;
+            color: #ef4444;
+            margin-top: 5px;
+            letter-spacing: 0.1px;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+
+        /* Verification Message */
+        .verify-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            margin: 0 auto 24px auto;
+            color: #374151;
+        }
+
+        .verify-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .verify-text {
+            font-size: 14px;
+            color: #6b7280;
+            text-align: center;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .verify-text strong {
+            color: #111827;
+        }
+
+        .verify-subtext {
+            font-size: 13px;
+            color: #9ca3af;
+            text-align: center;
+            line-height: 1.6;
+            padding: 16px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .slider-section {
@@ -297,6 +370,7 @@
     </style>
 </head>
 <body>
+    <?Php include 'header/header.php'; ?>
     <div class="container">
         <!-- Left Side - Slider -->
         <div class="slider-section">
@@ -375,36 +449,64 @@
 
                 <!-- Register Form -->
                 <div id="registerForm" class="hidden">
-                    <div class="form-group">
-                        <label class="form-label">FIRST NAME *</label>
-                        <input type="text" class="form-input" id="firstName" required>
+                    <div id="registerFields">
+                        <div class="form-group">
+                            <label class="form-label">NAMA *</label>
+                            <input type="text" class="form-input" id="fullName" oninput="clearError('fullName')" required>
+                            <span class="field-error" id="err-fullName">Nama wajib diisi.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">EMAIL *</label>
+                            <input type="email" class="form-input" id="registerEmail" oninput="clearError('registerEmail')" required>
+                            <span class="field-error" id="err-registerEmail">Email wajib diisi.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PASSWORD *</label>
+                            <input type="password" class="form-input" id="registerPassword" oninput="clearError('registerPassword'); clearError('confirmPassword')" required>
+                            <span class="field-error" id="err-registerPassword">Password wajib diisi.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CONFIRM PASSWORD *</label>
+                            <input type="password" class="form-input" id="confirmPassword" oninput="clearError('confirmPassword')" required>
+                            <span class="field-error" id="err-confirmPassword">Konfirmasi password wajib diisi.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" class="checkbox" id="agreeTerms" onchange="updateCreateBtn()">
+                                <span class="checkbox-label">I agree to the terms and conditions and privacy policy *</span>
+                            </label>
+                            <label class="checkbox-group">
+                                <input type="checkbox" class="checkbox" id="newsletter" onchange="updateCreateBtn()">
+                                <span class="checkbox-label">Subscribe to newsletter for exclusive updates and offers *</span>
+                            </label>
+                        </div>
+                        <button class="submit-btn" id="createAccountBtn" onclick="handleRegister()" disabled>CREATE ACCOUNT</button>
+                        <div class="form-footer">
+                            Already have an account? 
+                            <button onclick="toggleForm('login')">Login</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">LAST NAME *</label>
-                        <input type="text" class="form-input" id="lastName" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">EMAIL *</label>
-                        <input type="email" class="form-input" id="registerEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">PASSWORD *</label>
-                        <input type="password" class="form-input" id="registerPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="checkbox-group">
-                            <input type="checkbox" class="checkbox" id="agreeTerms" required>
-                            <span class="checkbox-label">I agree to the terms and conditions and privacy policy *</span>
-                        </label>
-                        <label class="checkbox-group">
-                            <input type="checkbox" class="checkbox" id="newsletter">
-                            <span class="checkbox-label">Subscribe to newsletter for exclusive updates and offers</span>
-                        </label>
-                    </div>
-                    <button class="submit-btn" onclick="handleRegister()">CREATE ACCOUNT</button>
-                    <div class="form-footer">
-                        Already have an account? 
-                        <button onclick="toggleForm('login')">Login</button>
+
+                    <!-- Verification Message (hidden by default) -->
+                    <div id="verificationMessage" class="hidden">
+                        <div class="verify-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <polyline points="2,4 12,13 22,4"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="verify-title">Cek Email Kamu</h3>
+                        <p class="verify-text">
+                            Kami telah mengirimkan link verifikasi ke<br>
+                            <strong id="verifyEmailDisplay"></strong>
+                        </p>
+                        <p class="verify-subtext">
+                            Klik link di email tersebut untuk mengaktifkan akun kamu. Pastikan cek folder <em>spam</em> jika tidak menemukan emailnya.
+                        </p>
+                        <div class="form-footer" style="margin-top: 24px;">
+                            Sudah punya akun? 
+                            <button onclick="toggleForm('login')">Login</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -412,6 +514,18 @@
     </div>
 
     <script>
+        // Auto-detect header height dan sesuaikan container
+        function adjustContainerHeight() {
+            const header = document.querySelector('header');
+            const container = document.querySelector('.container');
+            if (header && container) {
+                const headerH = header.offsetHeight;
+                container.style.height = `calc(100vh - ${headerH}px)`;
+            }
+        }
+        adjustContainerHeight();
+        window.addEventListener('resize', adjustContainerHeight);
+
         // Slider functionality
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -421,37 +535,56 @@
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             indicators.forEach(indicator => indicator.classList.remove('active'));
-            
             currentSlide = (index + totalSlides) % totalSlides;
-            
             slides[currentSlide].classList.add('active');
             indicators[currentSlide].classList.add('active');
         }
 
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-        }
+        function changeSlide(direction) { showSlide(currentSlide + direction); }
+        function goToSlide(index)       { showSlide(index); }
 
         // Auto slide
-        setInterval(() => {
-            changeSlide(1);
-        }, 5000);
+        setInterval(() => { changeSlide(1); }, 5000);
 
-        // Form toggle functionality
+        // ── Toggle CREATE ACCOUNT button (kedua checkbox wajib) ──
+        function updateCreateBtn() {
+            const agree    = document.getElementById('agreeTerms').checked;
+            const sub      = document.getElementById('newsletter').checked;
+            document.getElementById('createAccountBtn').disabled = !(agree && sub);
+        }
+
+        // ── Inline field validation helpers ───────────────────
+        function showError(fieldId, message) {
+            const input = document.getElementById(fieldId);
+            const err   = document.getElementById('err-' + fieldId);
+            if (input) input.classList.add('error');
+            if (err)   { err.textContent = message; err.classList.add('show'); }
+        }
+
+        function clearError(fieldId) {
+            const input = document.getElementById(fieldId);
+            const err   = document.getElementById('err-' + fieldId);
+            if (input) input.classList.remove('error');
+            if (err)   err.classList.remove('show');
+        }
+
+        function clearAllErrors() {
+            ['fullName','registerEmail','registerPassword','confirmPassword'].forEach(clearError);
+        }
+
+        // ── Form toggle ────────────────────────────────────────
         function toggleForm(formType) {
-            const loginForm = document.getElementById('loginForm');
+            const loginForm    = document.getElementById('loginForm');
             const registerForm = document.getElementById('registerForm');
-            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            const toggleBtns   = document.querySelectorAll('.toggle-btn');
 
             if (formType === 'login') {
                 loginForm.classList.remove('hidden');
                 registerForm.classList.add('hidden');
                 toggleBtns[0].classList.add('active');
                 toggleBtns[1].classList.remove('active');
+                document.getElementById('registerFields').classList.remove('hidden');
+                document.getElementById('verificationMessage').classList.add('hidden');
             } else {
                 loginForm.classList.add('hidden');
                 registerForm.classList.remove('hidden');
@@ -460,41 +593,63 @@
             }
         }
 
-        // Form submission handlers
+        // ── Login handler ──────────────────────────────────────
         function handleLogin() {
-            const email = document.getElementById('loginEmail').value;
+            const email    = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
-
-            if (!email || !password) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            console.log('Login:', { email, password, rememberMe });
-            alert('Login successful!');
+            console.log('Login:', { email });
+            // success flow here
         }
 
+        // ── Register handler ───────────────────────────────────
         function handleRegister() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const agreeTerms = document.getElementById('agreeTerms').checked;
-            const newsletter = document.getElementById('newsletter').checked;
+            clearAllErrors();
 
-            if (!firstName || !lastName || !email || !password) {
-                alert('Please fill in all required fields');
-                return;
+            const fullName        = document.getElementById('fullName').value.trim();
+            const email           = document.getElementById('registerEmail').value.trim();
+            const password        = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const emailRegex      = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let hasError = false;
+
+            if (!fullName) {
+                showError('fullName', 'Nama wajib diisi.');
+                hasError = true;
             }
 
-            if (!agreeTerms) {
-                alert('Please agree to the terms and conditions');
-                return;
+            if (!email) {
+                showError('registerEmail', 'Email wajib diisi.');
+                hasError = true;
+            } else if (!emailRegex.test(email)) {
+                showError('registerEmail', 'Format email tidak valid, contoh: nama@email.com');
+                hasError = true;
             }
 
-            console.log('Register:', { firstName, lastName, email, password, agreeTerms, newsletter });
-            alert('Account created successfully!');
+            if (!password) {
+                showError('registerPassword', 'Password wajib diisi.');
+                hasError = true;
+            } else if (password.length < 8) {
+                showError('registerPassword', 'Password minimal 8 karakter.');
+                hasError = true;
+            }
+
+            if (!confirmPassword) {
+                showError('confirmPassword', 'Konfirmasi password wajib diisi.');
+                hasError = true;
+            } else if (password && password !== confirmPassword) {
+                showError('confirmPassword', 'Password dan konfirmasi password tidak cocok.');
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Tampilkan pesan verifikasi email
+            document.getElementById('verifyEmailDisplay').textContent = email;
+            document.getElementById('registerFields').classList.add('hidden');
+            document.getElementById('verificationMessage').classList.remove('hidden');
+
+            console.log('Register success:', { fullName, email });
         }
     </script>
 </body>

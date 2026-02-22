@@ -1,6 +1,6 @@
 // ============================================================
 // products-data.js
-// Shared product data untuk index.php, wishlist.php, dan halaman lainnya
+// Shared product data untuk shop.php, wishlist.php, dan halaman lainnya
 // ============================================================
 
 const products = [

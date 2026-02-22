@@ -1024,7 +1024,7 @@
         </div>
         
         <div class="logo">
-            <img src="logoheader.png" alt="Gloaming Imagine" class="logo-image">
+            <img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image">
         </div>
         
         <div class="header-right">
@@ -1093,7 +1093,7 @@
 
         <!-- Tengah - Product Count -->
         <div class="sub-header-center">
-            <span class="product-count">125 Products</span>
+            <span class="product-count" id="productCount">0 Products</span>
         </div>
 
         <!-- Kanan - Filter -->
@@ -1145,6 +1145,13 @@
                 <h3 class="filter-section-title">Category</h3>
                 <div class="filter-options">
                     <div class="filter-option">
+                        <input type="checkbox" name="category" id="cat-all" value="all">
+                        <label for="cat-all">
+                            All
+                            <span class="filter-count">(125)</span>
+                        </label>
+                    </div>
+                    <div class="filter-option">
                         <input type="checkbox" name="category" id="cat-jerseys" value="jerseys">
                         <label for="cat-jerseys">
                             Jerseys
@@ -1170,6 +1177,20 @@
                         <label for="cat-accessories">
                             Accessories
                             <span class="filter-count">(32)</span>
+                        </label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" name="category" id="cat-tshirts" value="tshirts">
+                        <label for="cat-tshirts">
+                            T-Shirts
+                            <span class="filter-count">(15)</span>
+                        </label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" name="category" id="cat-sweatshirts" value="sweatshirts">
+                        <label for="cat-sweatshirts">
+                            Sweatshirts
+                            <span class="filter-count">(14)</span>
                         </label>
                     </div>
                 </div>
@@ -1277,43 +1298,43 @@
         <!-- Cycling -->
         <div class="shop-section-title">Cycling</div>
         <div class="shop-category-grid">
-            <span><a href="index.php" class="shop-category-item" onclick="closeShopSidebar()">
+            <span><a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Bundles">
                 All
             </a></span>
-            <a href="index.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Jerseys">
                 Jerseys
             </a>
-            <a href="index.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Base Layers">
                 Base Layers
             </a>
-            <a href="index.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Bibs">
                 Bibs
             </a>
-            <a href="index.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Jackets">
                 Jackets &amp; Gilets
             </a>
-            <a href="index.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/a4537ab8cea94765f8af7c303574821d73a9260a-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Speedsuits">
                 Speedsuits
             </a>
-            <a href="index.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/7832c0a863d4188453bc3a1eb6b79b203835231d-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Warmers">
                 Arm &amp; Leg Warmers
             </a>
-            <a href="index.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Socks">
                 Socks
             </a>
-            <a href="index.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Accessories">
                 Accessories
             </a>
-            <a href="index.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=80&q=75" class="shop-category-icon" alt="Helmets">
                 Helmets
             </a>
@@ -1324,27 +1345,27 @@
         <!-- Off-Race -->
         <div class="shop-section-title">Off-Race</div>
         <div class="shop-category-grid">
-            <a href="index.php" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="T-Shirts">
                 T-Shirts
             </a>
-            <a href="index.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Sweatshirts">
                 Sweatshirts &amp; Hoodies
             </a>
-            <a href="index.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Outerwear">
                 Outerwear
             </a>
-            <a href="index.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Pants">
                 Pants &amp; Shorts
             </a>
-            <a href="index.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Gym">
                 Gym &amp; Training
             </a>
-            <a href="index.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
+            <a href="shop.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Accessories">
                 Accessories
             </a>
@@ -1353,10 +1374,7 @@
         <div class="shop-divider"></div>
 
         <!-- Links tambahan -->
-        <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Collections</a>
-        <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Intended Use</a>
-        <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">About</a>
-        <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Campaign</a>
+      
     </div>
 </div>
 
@@ -1375,6 +1393,93 @@ function closeShopSidebar() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ============ PRODUCT COUNT UPDATE ============
+    function updateProductCount() {
+        let totalProducts = 0;
+        
+        // Cek apakah ada variabel products dari products-data.js
+        if (typeof products !== 'undefined' && Array.isArray(products)) {
+            totalProducts = products.length;
+        } else {
+            // Fallback: hitung dari elemen produk di halaman
+            const productElements = document.querySelectorAll('.product-item, [data-product-id]');
+            totalProducts = productElements.length;
+        }
+        
+        // Update display
+        const productCountElement = document.getElementById('productCount');
+        if (productCountElement) {
+            productCountElement.textContent = `${totalProducts} Product${totalProducts !== 1 ? 's' : ''}`;
+        }
+        
+        // Update filter counts di modal
+        updateFilterCounts();
+        
+        return totalProducts;
+    }
+    
+    // Function to update filter counts based on actual products
+    function updateFilterCounts() {
+        if (typeof products === 'undefined' || !Array.isArray(products)) {
+            return;
+        }
+        
+        // Count by category
+        const categoryCounts = {};
+        const genderCounts = {};
+        const colorCounts = {};
+        
+        products.forEach(product => {
+            // Category count
+            if (product.category) {
+                categoryCounts[product.category] = (categoryCounts[product.category] || 0) + 1;
+            }
+            
+            // Gender count
+            if (product.gender) {
+                genderCounts[product.gender] = (genderCounts[product.gender] || 0) + 1;
+            }
+            
+            // Color count
+            if (product.color) {
+                colorCounts[product.color] = (colorCounts[product.color] || 0) + 1;
+            }
+        });
+        
+        // Update "All" category count
+        const catAllCount = document.querySelector('#cat-all + label .filter-count');
+        if (catAllCount) {
+            catAllCount.textContent = `(${products.length})`;
+        }
+        
+        // Update individual category counts
+        Object.keys(categoryCounts).forEach(category => {
+            const countElement = document.querySelector(`#cat-${category} + label .filter-count`);
+            if (countElement) {
+                countElement.textContent = `(${categoryCounts[category]})`;
+            }
+        });
+        
+        // Update gender counts
+        Object.keys(genderCounts).forEach(gender => {
+            const countElement = document.querySelector(`#gender-${gender} + label .filter-count`);
+            if (countElement) {
+                countElement.textContent = `(${genderCounts[gender]})`;
+            }
+        });
+        
+        // Update color counts
+        Object.keys(colorCounts).forEach(color => {
+            const countElement = document.querySelector(`#color-${color} + label .filter-count`);
+            if (countElement) {
+                countElement.textContent = `(${colorCounts[color]})`;
+            }
+        });
+    }
+    
+    // Initialize product count
+    updateProductCount();
+    
     // ============ SEARCH BOX LOGIC WITH AUTOCOMPLETE ============
     const searchToggle = document.getElementById('searchToggle');
     const searchBox = document.getElementById('searchBox');
@@ -1527,6 +1632,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.getElementById('closeModal');
     const applyFilters = document.getElementById('applyFilters');
     const clearFilters = document.getElementById('clearFilters');
+    const categoryLabel = document.querySelector('.sub-header-left a.active');
 
     // Open modal
     if (filterToggle) {
@@ -1561,6 +1667,130 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Function to update category label in sub-header
+    function updateCategoryLabel(categories) {
+        const categoryLabelElement = document.querySelector('.sub-header-left a.active');
+        
+        if (!categories || categories.length === 0 || categories.includes('all')) {
+            categoryLabelElement.textContent = 'All';
+            categoryLabelElement.setAttribute('href', '#all');
+        } else if (categories.length === 1) {
+            // Capitalize first letter
+            const categoryName = categories[0].charAt(0).toUpperCase() + categories[0].slice(1);
+            categoryLabelElement.textContent = categoryName;
+            categoryLabelElement.setAttribute('href', '#' + categories[0]);
+        } else {
+            categoryLabelElement.textContent = 'Multiple';
+            categoryLabelElement.setAttribute('href', '#multiple');
+        }
+    }
+
+    // Function to filter and sort products
+    function filterAndSortProducts(filters) {
+        console.log('Filtering with:', filters);
+        
+        // Update category label
+        updateCategoryLabel(filters.categories);
+        
+        // Count visible products after filtering
+        let visibleCount = 0;
+        
+        // Here you would implement the actual filtering logic
+        // For example, if you have products displayed on the page:
+        if (typeof products !== 'undefined' && Array.isArray(products)) {
+            // Filter products array
+            let filteredProducts = products;
+            
+            // Filter by category
+            if (filters.categories.length > 0 && !filters.categories.includes('all')) {
+                filteredProducts = filteredProducts.filter(product => 
+                    filters.categories.includes(product.category)
+                );
+            }
+            
+            // Filter by gender
+            if (filters.genders.length > 0) {
+                filteredProducts = filteredProducts.filter(product => 
+                    filters.genders.includes(product.gender)
+                );
+            }
+            
+            // Filter by color
+            if (filters.colors.length > 0) {
+                filteredProducts = filteredProducts.filter(product => 
+                    filters.colors.includes(product.color)
+                );
+            }
+            
+            visibleCount = filteredProducts.length;
+            
+            // Sort products
+            if (filters.sort) {
+                switch(filters.sort) {
+                    case 'newest':
+                        filteredProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        break;
+                    case 'price-low':
+                        filteredProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+                        break;
+                    case 'price-high':
+                        filteredProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+                        break;
+                    default:
+                        // featured - keep original order
+                        break;
+                }
+            }
+            
+            // TODO: Update product display on page with filteredProducts
+            console.log('Filtered products:', filteredProducts);
+        } else {
+            // Fallback: work with DOM elements
+            const productElements = document.querySelectorAll('.product-item, [data-product-id]');
+            
+            productElements.forEach(product => {
+                let shouldShow = true;
+                
+                // Filter by category
+                if (filters.categories.length > 0 && !filters.categories.includes('all')) {
+                    const productCategory = product.getAttribute('data-category');
+                    if (!filters.categories.includes(productCategory)) {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Filter by gender
+                if (filters.genders.length > 0) {
+                    const productGender = product.getAttribute('data-gender');
+                    if (!filters.genders.includes(productGender)) {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Filter by color
+                if (filters.colors.length > 0) {
+                    const productColor = product.getAttribute('data-color');
+                    if (!filters.colors.includes(productColor)) {
+                        shouldShow = false;
+                    }
+                }
+                
+                if (shouldShow) {
+                    product.style.display = '';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        
+        // Update product count display
+        const productCountElement = document.getElementById('productCount');
+        if (productCountElement) {
+            productCountElement.textContent = `${visibleCount} Product${visibleCount !== 1 ? 's' : ''}`;
+        }
+    }
+
     // Apply filters
     if (applyFilters) {
         applyFilters.addEventListener('click', () => {
@@ -1587,8 +1817,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log('Applied Filters:', selectedFilters);
             
-            // Here you would filter your products
-            // For demo, just close the modal
+            // Apply filters and update display
+            filterAndSortProducts(selectedFilters);
+            
+            // Close the modal
             closeFilterModal();
         });
     }
@@ -1605,9 +1837,36 @@ document.addEventListener('DOMContentLoaded', function() {
             const sortFeatured = document.getElementById('sort-featured');
             if (sortFeatured) sortFeatured.checked = true;
 
+            // Reset category label to "All"
+            updateCategoryLabel([]);
+            
+            // Reset product count to show all
+            updateProductCount();
+
             console.log('Filters cleared');
         });
     }
+
+    // Handle "All" category checkbox - when checked, uncheck others
+    const catAllCheckbox = document.getElementById('cat-all');
+    const otherCategoryCheckboxes = document.querySelectorAll('input[name="category"]:not(#cat-all)');
+    
+    if (catAllCheckbox) {
+        catAllCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                otherCategoryCheckboxes.forEach(cb => cb.checked = false);
+            }
+        });
+    }
+    
+    // When any other category is checked, uncheck "All"
+    otherCategoryCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            if (this.checked && catAllCheckbox) {
+                catAllCheckbox.checked = false;
+            }
+        });
+    });
 
     // ============ CATEGORY FILTER (SUB-HEADER) ============
     document.querySelectorAll('.sub-header-left a').forEach(link => {
@@ -1622,7 +1881,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const filter = e.target.getAttribute('href').replace('#', '');
             console.log('Quick filter:', filter);
             
-            // Here you would filter your products
+            // Update checkboxes in filter modal to match
+            document.querySelectorAll('input[name="category"]').forEach(cb => {
+                cb.checked = false;
+            });
+            
+            if (filter === 'all') {
+                const allCheckbox = document.getElementById('cat-all');
+                if (allCheckbox) allCheckbox.checked = true;
+            } else {
+                const categoryCheckbox = document.getElementById('cat-' + filter);
+                if (categoryCheckbox) categoryCheckbox.checked = true;
+            }
+            
+            // Apply the filter
+            filterAndSortProducts({
+                categories: filter === 'all' ? [] : [filter],
+                genders: [],
+                colors: [],
+                sort: document.querySelector('input[name="sort"]:checked')?.value
+            });
         });
     });
 });

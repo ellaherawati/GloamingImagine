@@ -283,7 +283,7 @@ $resultCount = count($searchResults);
                 <div class="no-results-icon">🔍</div>
                 <h2 class="no-results-title">No results found for "<?php echo $searchQuery; ?>"</h2>
                 <p class="no-results-text">Try searching with different keywords or browse our collections</p>
-                <a href="index.php" class="back-btn">BACK TO SHOP</a>
+                <a href="shop.php" class="back-btn">BACK TO SHOP</a>
             </div>
         <?php endif; ?>
     </div>

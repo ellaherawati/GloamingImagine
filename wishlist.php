@@ -297,7 +297,7 @@
                         <div class="empty-icon">&#9825;</div>
                         <h2 class="empty-title">Your wishlist is empty</h2>
                         <p class="empty-text">Save your favorite items here and shop them later</p>
-                        <a href="index.php" class="shop-btn">START SHOPPING</a>
+                        <a href="shop.php" class="shop-btn">START SHOPPING</a>
                     </div>`;
                 return;
             }
@@ -313,7 +313,7 @@
                         <div class="empty-icon">&#9825;</div>
                         <h2 class="empty-title">Your wishlist is empty</h2>
                         <p class="empty-text">Save your favorite items here and shop them later</p>
-                        <a href="index.php" class="shop-btn">START SHOPPING</a>
+                        <a href="shop.php" class="shop-btn">START SHOPPING</a>
                     </div>`;
                 return;
             }

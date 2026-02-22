@@ -600,7 +600,7 @@
             if (cart.length === 0) {
                 container.innerHTML = `
                     <div style="color:#999;font-size:13px;text-align:center;padding:20px 0;">
-                        Keranjang kamu kosong. <a href="index.php" style="color:#fff;text-decoration:underline;">Belanja dulu yuk!</a>
+                        Keranjang kamu kosong. <a href="shop.php" style="color:#fff;text-decoration:underline;">Belanja dulu yuk!</a>
                     </div>`;
                 subtotalEl.textContent = 'Rp 0';
                 totalEl.textContent = 'Rp 0';

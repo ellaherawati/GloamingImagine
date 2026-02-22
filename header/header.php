@@ -708,7 +708,7 @@
             </div>
             
             <div class="logo">
-                <img src="logoheader.png" alt="Gloaming Imagine" class="logo-image">
+                <img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image">
             </div>
             
             <div class="header-right">
@@ -804,43 +804,43 @@
             <!-- Cycling -->
             <div class="shop-section-title">Cycling</div>
             <div class="shop-category-grid">
-                <a href="index.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Bundles">
-                    Bundles
+                    All
                 </a>
-                <a href="index.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Jerseys">
                     Jerseys
                 </a>
-                <a href="index.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Base Layers">
                     Base Layers
                 </a>
-                <a href="index.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Bibs">
                     Bibs
                 </a>
-                <a href="index.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Jackets">
                     Jackets &amp; Gilets
                 </a>
-                <a href="index.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/a4537ab8cea94765f8af7c303574821d73a9260a-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Speedsuits">
                     Speedsuits
                 </a>
-                <a href="index.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/7832c0a863d4188453bc3a1eb6b79b203835231d-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Warmers">
                     Arm &amp; Leg Warmers
                 </a>
-                <a href="index.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Socks">
                     Socks
                 </a>
-                <a href="index.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Accessories">
                     Accessories
                 </a>
-                <a href="index.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=80&q=75" class="shop-category-icon" alt="Helmets">
                     Helmets
                 </a>
@@ -851,27 +851,27 @@
             <!-- Off-Race -->
             <div class="shop-section-title">Off-Race</div>
             <div class="shop-category-grid">
-                <a href="index.php" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="T-Shirts">
                     T-Shirts
                 </a>
-                <a href="index.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Sweatshirts">
                     Sweatshirts &amp; Hoodies
                 </a>
-                <a href="index.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Outerwear">
                     Outerwear
                 </a>
-                <a href="index.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Pants">
                     Pants &amp; Shorts
                 </a>
-                <a href="index.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Gym">
                     Gym &amp; Training
                 </a>
-                <a href="index.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Accessories">
                     Accessories
                 </a>
@@ -879,12 +879,7 @@
 
             <div class="shop-divider"></div>
 
-            <!-- Links tambahan -->
-            <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Collections</a>
-            <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Intended Use</a>
-            <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">About</a>
-            <a href="#" class="shop-link-simple" onclick="closeShopSidebar()">Campaign</a>
-
+            
         </div>
     </div>
 

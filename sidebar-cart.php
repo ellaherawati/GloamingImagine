@@ -519,7 +519,7 @@
                         <div class="cart-gift-title">Add Gift Bag?</div>
                         <div class="cart-gift-subtitle">Make your purchase special with our gift bag</div>
                         <div class="cart-gift-item">
-                            <img src="paperbag.jpg?w=100&q=75" alt="Gift Bag" class="cart-gift-image">
+                            <img src="img/paperbag.jpg?w=100&q=75" alt="Gift Bag" class="cart-gift-image">
                             <div style="flex: 1;">
                                 <div class="cart-gift-name">PNS Paper Gift Bag</div>
                                 <div class="cart-gift-color">Brown | Rp 5.000</div>
@@ -595,7 +595,7 @@
                 size: "Standard",
                 price: 5000,
                 quantity: 1,
-                image: "paperbag.jpg?w=100&q=75"
+                image: "img/paperbag.jpg?w=100&q=75"
             };
 
             cart.push(giftBag);

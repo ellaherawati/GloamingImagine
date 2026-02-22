@@ -89,7 +89,7 @@ function renderCart() {
                 <div class="cart-gift-title">Tambah Gift Bag?</div>
                 <div class="cart-gift-subtitle">Jadikan pembelianmu istimewa dengan gift bag kami</div>
                 <div class="cart-gift-item">
-                    <img src="paperbag.jpg" alt="Gift Bag" class="cart-gift-image">
+                    <img src="img/paperbag.jpg" alt="Gift Bag" class="cart-gift-image">
                     <div style="flex:1;">
                         <div class="cart-gift-name">PNS Paper Gift Bag</div>
                         <div class="cart-gift-color">Brown | Rp 5.000</div>
@@ -150,7 +150,7 @@ function addGiftBag() {
         alert('Gift bag sudah ada di keranjang!');
         return;
     }
-    cart.push({ name: 'PNS Paper Gift Bag', color: 'Brown', size: 'Standard', price: 5000, quantity: 1, image: 'paperbag.jpg' });
+    cart.push({ name: 'PNS Paper Gift Bag', color: 'Brown', size: 'Standard', price: 5000, quantity: 1, image: 'img/paperbag.jpg' });
     saveCart();
     updateCartCount();
     renderCart();
