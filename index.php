@@ -34,16 +34,17 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 65vh;
-            min-height: 500px;
+            height: 100vh;
+            min-height: 100px;
             background: #2c3e50;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-end;
+            align-items: flex-start;
             color: #fff;
             text-align: center;
             overflow: hidden;
+            padding: 0px 50px 60px 50px;
         }
 
         .hero::before {
@@ -115,36 +116,36 @@
 
         /* Collection Header - PAS Normal Studios Style */
         .collection-header {
-            padding: 45px 40px 35px;
-            background: #8B6F47;
-            color: #fff;
+            padding: 32px 40px 24px;
+            background: #fff;
+            color: #000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-top: 1px solid #e5e5e5;
         }
 
         .collection-title {
-            font-size: 16px;
-            letter-spacing: 0.5px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
             font-weight: 400;
-            text-transform: none;
+            color: #000;
         }
 
         .collection-nav {
             display: flex;
-            gap: 12px;
+            gap: 8px;
         }
 
         .collection-nav button {
             width: 36px;
             height: 36px;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid #d0d0d0;
             background: transparent;
-            color: #fff;
+            color: #000;
             cursor: pointer;
             font-size: 16px;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -152,38 +153,80 @@
         }
 
         .collection-nav button:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.6);
+            background: #000;
+            border-color: #000;
+            color: #fff;
         }
 
-        /* Block Wrapper Section - PAS Normal Studios Product Grid */
+        /* Block Wrapper - Horizontal Scroll Carousel */
+        .block-wrapper-outer {
+            background: #fff;
+            overflow: hidden;
+            padding-bottom: 60px;
+        }
+
         .block-wrapper {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            background: #8B6F47;
-            margin: 0;
-            padding: 0 0 80px 0;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+            user-select: none;
+            padding: 0 40px;
+        }
+
+        .block-wrapper::-webkit-scrollbar { display: none; }
+
+        /* Custom centered scrollbar track */
+        .pns-scrollbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 0 24px;
+            background: #fff;
+        }
+
+        .pns-scrollbar-track {
+            width: 80px;
+            height: 4px;
+            background: #e0e0e0;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .pns-scrollbar-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #000;
+            border-radius: 2px;
+            transition: left 0.1s linear;
+        }
+
+        .block-wrapper.grabbing {
+            cursor: grabbing;
         }
 
         .product-block {
             position: relative;
             background: #fff;
-            border-right: 1px solid #e5e5e5;
-            border-bottom: 1px solid #e5e5e5;
+            border: none;
             text-decoration: none;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease;
+            flex: 0 0 calc((100% - 40px * 2 - 12px * 3) / 4.2);
+            min-width: calc((100% - 40px * 2 - 12px * 3) / 4.2);
+            transition: none;
         }
 
-        .product-block:nth-child(4n) {
+        .product-block:last-child {
             border-right: none;
         }
 
         .product-block:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             z-index: 10;
         }
 
@@ -194,47 +237,73 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 12px;
+            align-items: flex-start;
+            padding: 10px;
             z-index: 5;
         }
 
         .new-arrival-badge {
-            background: #fff;
-            color: #000;
-            font-size: 8px;
-            letter-spacing: 1px;
-            padding: 6px 10px;
+            background: #000;
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 5px 10px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        .wishlist-icon {
-            width: 32px;
-            height: 32px;
+        /* Wishlist btn - selalu visible di pojok kanan atas */
+        .wishlist-btn {
+            width: 40px;
+            height: 40px;
             background: #fff;
-            border: 1px solid #e5e5e5;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
+            z-index: 4;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
-        .wishlist-icon:hover {
+        .product-block:hover .wishlist-btn {
+            opacity: 1;
+        }
+
+        .wishlist-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: #000;
+            fill: none;
+            transition: all 0.2s;
+        }
+
+        .wishlist-btn:hover svg,
+        .wishlist-btn.active svg {
+            fill: #000;
+        }
+
+        .wishlist-btn.active {
             background: #000;
-            border-color: #000;
         }
 
-        .wishlist-icon:hover svg {
+        .wishlist-btn.active svg {
             stroke: #fff;
+            fill: #fff;
         }
 
         .product-image-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 125%;
+            padding-bottom: 130%;
             overflow: hidden;
-            background: #f8f8f8;
+            background: #f0f0f0;
+            border-radius: 8px;
         }
 
         .product-image {
@@ -244,15 +313,65 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.4s ease;
         }
 
-        .product-block:hover .product-image {
-            transform: scale(1.05);
+        .product-image.img-main {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .product-image.img-hover {
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .product-block:hover .img-main {
+            opacity: 0;
+        }
+
+        .product-block:hover .img-hover {
+            opacity: 1;
+        }
+
+        /* Size selector - persis shop.php */
+        .size-selector {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .product-block:hover .size-selector {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .size-selector .size-option {
+            padding: 8px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            color: #000;
+        }
+
+        .size-selector .size-option:hover {
+            border-bottom: 2px solid #000;
         }
 
         .product-info {
-            padding: 16px 14px 14px;
+            padding: 10px 2px 14px;
             background: #fff;
             flex-grow: 1;
             display: flex;
@@ -260,104 +379,43 @@
         }
 
         .product-name {
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 500;
             color: #000;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             line-height: 1.3;
         }
 
         .product-variant {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: 300;
+            display: none;
         }
 
         .product-price {
             font-size: 13px;
-            color: #000;
+            color: #666;
             font-weight: 400;
-            margin-bottom: 12px;
+            margin-bottom: 0;
         }
 
         .product-sizes {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: auto;
+            display: none;
         }
 
-        .size-option {
-            font-size: 10px;
-            color: #666;
-            padding: 2px 0;
-            min-width: 20px;
-            text-align: center;
-        }
-
-        .size-option:not(:last-child)::after {
-            content: '';
-            display: inline-block;
-            width: 1px;
-            height: 10px;
-            background: #ddd;
-            margin-left: 6px;
-            vertical-align: middle;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1400px) {
-            .block-wrapper {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .product-block:nth-child(4n) {
-                border-right: 1px solid #e5e5e5;
-            }
-            
-            .product-block:nth-child(3n) {
-                border-right: none;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .block-wrapper {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .product-block:nth-child(3n),
-            .product-block:nth-child(4n) {
-                border-right: 1px solid #e5e5e5;
-            }
-            
-            .product-block:nth-child(2n) {
-                border-right: none;
-            }
-            
-            .collection-header {
-                padding: 30px 20px;
+        /* Responsive carousel */
+        @media (max-width: 1200px) {
+            .product-block {
+                flex: 0 0 calc(100% / 3.2);
+                min-width: calc(100% / 3.2);
             }
         }
 
         @media (max-width: 768px) {
-            .block-wrapper {
-                grid-template-columns: 1fr;
-                padding-bottom: 40px;
-            }
-            
             .product-block {
-                border-right: none;
+                flex: 0 0 calc(100% / 1.8);
+                min-width: calc(100% / 1.8);
             }
-            
             .collection-header {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .collection-title {
-                font-size: 14px;
+                padding: 24px 20px 18px;
             }
         }
 
@@ -448,6 +506,254 @@
             .block-category {
                 font-size: 9px;
             }
+        }
+
+        /* ── PNS-Style Categories Section ── */
+        .pns-categories-section {
+            background: #fff;
+            padding: 0 0 60px 0;
+        }
+
+        .pns-categories-tabs {
+            display: flex;
+            gap: 0;
+            padding: 24px 40px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .pns-tab {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #999;
+            cursor: pointer;
+            padding: 0 0 14px 0;
+            margin-right: 28px;
+            letter-spacing: 0;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .pns-tab.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .pns-tab:hover {
+            color: #000;
+        }
+
+        .pns-tab-content {
+            display: none;
+            padding: 40px 40px 0;
+        }
+
+        .pns-tab-content.active {
+            display: block;
+        }
+
+        /* Categories tab — max 850px, centered */
+        #tab-categories .pns-grid {
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+        }
+
+        /* Collections tab — 1 baris horizontal scrollable */
+        #tab-collections .pns-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+
+        #tab-collections .pns-grid::-webkit-scrollbar { display: none; }
+
+        .pns-col-scrollbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 0 24px;
+            background: #fff;
+        }
+
+        .pns-col-scrollbar-track {
+            width: 80px;
+            height: 4px;
+            background: #e0e0e0;
+            position: relative;
+            border-radius: 1px;
+        }
+
+        .pns-col-scrollbar-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #000;
+            border-radius: 2px;
+            transition: left 0.1s linear;
+        }
+
+        #tab-collections .pns-grid.grabbing {
+            cursor: grabbing;
+        }
+
+        #tab-collections .pns-cat-item {
+            flex: 0 0 calc(100% / 3.3);
+            min-width: calc(100% / 3.3);
+        }
+
+        #tab-collections .pns-cat-img-wrap {
+            border-radius: 16px;
+        }
+
+        .pns-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+        }
+
+        .pns-cat-item {
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .pns-cat-img-wrap {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pns-cat-item--active .pns-cat-img-wrap {
+            outline: 2px solid #000;
+            outline-offset: -2px;
+        }
+
+        .pns-cat-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .pns-cat-item:hover .pns-cat-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .pns-cat-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-align: left;
+            color: #000;
+            padding: 0 2px 14px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 1200px) {
+            #tab-categories .pns-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            #tab-collections .pns-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #tab-categories .pns-grid,
+            #tab-collections .pns-grid,
+            .pns-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
+            }
+            .pns-categories-tabs {
+                padding: 18px 20px 0;
+            }
+            .pns-tab-content {
+                padding: 24px 20px 0;
+            }
+        }
+
+
+        /* ── PNS Marquee Ticker ── */
+        .pns-marquee-section {
+            background: #fff;
+            overflow: hidden;
+            border-top: 1px solidrgba(229, 229, 229, 0);
+            border-bottom: 1px solidrgba(229, 229, 229, 0);
+            padding: 0;
+        }
+
+        .pns-marquee-track {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .pns-marquee-inner {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: pns-marquee-scroll 8s linear infinite;
+            will-change: transform;
+        }
+
+        .pns-marquee-section:hover .pns-marquee-inner {
+            animation-play-state: paused;
+        }
+
+        @keyframes pns-marquee-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .pns-marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 40px;
+            flex-shrink: 0;
+        }
+
+        .pns-marquee-text {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: clamp(120px, 60vw, 120px);
+            font-weight: 400;
+            color: #000;
+            letter-spacing: -0.5px;
+            line-height: 1;
+            white-space: nowrap;
+            padding: 60px 0px 40px 0px;
+        }
+
+        .pns-marquee-img {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .pns-marquee-img img {
+            width: clamp(60px, 7vw, 110px);
+            height: clamp(75px, 9vw, 140px);
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            vertical-align: middle;
         }
 
         /* Category Navigation */
@@ -564,9 +870,9 @@
 <body>
     <?php include 'header/header.php'; ?>
     <!-- Top Banner -->
-    <div class="top-banner">
+    <!-- <div class="top-banner">
         Join ICC and receive 10% off your first order
-    </div>
+    </div> -->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -582,48 +888,39 @@
         </div>
     </section>
 
-    <!-- Content Blocks Section -->
-    <section class="content-blocks">
-        <a href="#" class="content-block">
-            <img src="https://cdn.sanity.io/images/k15yl91v/production/2c8e0e5e9b3e8f5d1f6e7e8e9e0e1e2e3e4e5e6e-2400x3000.jpg?w=1200&q=85" alt="Cycling Collection">
-            <div class="block-overlay">
-                <div class="block-category">SPRING/SUMMER 2026</div>
-                <h3 class="block-title">NEW SEASON</h3>
-            </div>
-        </a>
-
-        <a href="#" class="content-block">
-            <img src="https://cdn.sanity.io/images/k15yl91v/production/1f7e8e9e0e1e2e3e4e5e6e7e8e9e0e1e2e3e4e5e-2400x3000.jpg?w=1200&q=85" alt="Editorial">
-            <div class="block-overlay">
-                <div class="block-category">EDITORIAL</div>
-                <h3 class="block-title">THE LONG RIDE</h3>
-            </div>
-        </a>
-    </section>
-
-    <!-- Collection Header - PAS Normal Studios Style -->
-    <div class="collection-header">
-        <h2 class="collection-title">Off-Race Spring/Summer 2026</h2>
+     <!-- Collection Header - PAS Normal Studios Style -->
+     <div class="collection-header">
+        <h2 class="collection-title">Best Seller</h2>
         <div class="collection-nav">
-            <button>←</button>
-            <button>→</button>
+            <button id="scroll-prev">←</button>
+            <button id="scroll-next">→</button>
         </div>
     </div>
 
-    <!-- Block Wrapper - PAS Normal Studios Product Grid -->
-    <section class="block-wrapper">
+    <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
+    <div class="block-wrapper-outer">
+    <section class="block-wrapper" id="product-carousel">
         <!-- Product 1 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race Utility Jacket</div>
@@ -641,17 +938,21 @@
         </a>
 
         <!-- Product 2 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">ONE SIZE</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race 3L Poncho</div>
@@ -664,17 +965,26 @@
         </a>
 
         <!-- Product 3 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Women's Off-Race Tech Skirt</div>
@@ -692,17 +1002,26 @@
         </a>
 
         <!-- Product 4 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race Light Fleece Half-Zip</div>
@@ -720,17 +1039,25 @@
         </a>
 
         <!-- Product 5 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Men's Off-Race Heavyweight T-Shirt</div>
@@ -747,16 +1074,24 @@
         </a>
 
         <!-- Product 6 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Off-Race Cargo Pants" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Off-Race Cargo Pants" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Cargo Pants hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">28</div>
+                            <div class="size-option" onclick="event.stopPropagation()">30</div>
+                            <div class="size-option" onclick="event.stopPropagation()">32</div>
+                            <div class="size-option" onclick="event.stopPropagation()">34</div>
+                            <div class="size-option" onclick="event.stopPropagation()">36</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race Cargo Pants</div>
@@ -773,16 +1108,23 @@
         </a>
 
         <!-- Product 7 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Wool Overshirt" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Wool Overshirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Wool Overshirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race Wool Overshirt</div>
@@ -798,16 +1140,24 @@
         </a>
 
         <!-- Product 8 -->
-        <a href="#" class="product-block">
+        <a href="detail.php" class="product-block">
             <div class="product-badges">
-                <div class="wishlist-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </div>
+                </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Packable Jacket" class="product-image">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Packable Jacket" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Off-Race Packable Jacket hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">Off-Race Packable Jacket</div>
@@ -823,9 +1173,541 @@
             </div>
         </a>
     </section>
+    <!-- PNS Scrollbar: carousel 1 -->
+    <div class="pns-scrollbar">
+        <div class="pns-scrollbar-track" id="sb-track-1">
+            <div class="pns-scrollbar-thumb" id="sb-thumb-1"></div>
+        </div>
+    </div>
+    </div>
 
+     <!-- Hero Section -->
+     <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
+            <h1 class="hero-title">
+                RIDE WITH <span class="highlight">PURPOSE</span>
+            </h1>
+            <div class="hero-buttons">
+                <a href="#" class="btn">SHOP CYCLING</a>
+                <a href="#" class="btn">SHOP OFF-RACE</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PNS Categories Section -->
+    <section class="pns-categories-section">
+        <div class="pns-categories-tabs">
+            <button class="pns-tab active" onclick="switchTab(this, 'categories')">Categories</button>
+            <button class="pns-tab" onclick="switchTab(this, 'collections')">Collections</button>
+        </div>
+
+        <div id="tab-categories" class="pns-tab-content active">
+            <div class="pns-grid">
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/3ca8c9b8c53cf1a63dd3fdf88f98d7d08e8f7ad0-1920x2400.png?w=600&q=75" 
+                             onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'" alt="Bundles">
+                    </div>
+                    <span class="pns-cat-label">Bundles</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80'" alt="Jerseys">
+                    </div>
+                    <span class="pns-cat-label">Jerseys</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/7b6a5c4d3e2f1g0h9i8j7k6l5m4n3o2p1q0r9s8t-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80'" alt="Bibs">
+                    </div>
+                    <span class="pns-cat-label">Bibs</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/9c8b7a6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80'" alt="Jackets & Gilets">
+                    </div>
+                    <span class="pns-cat-label">Jackets & Gilets</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/adb7c6e5f4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1565590080825-2583c7b1f9af?w=400&q=80'" alt="Helmets">
+                    </div>
+                    <span class="pns-cat-label">Helmets</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/bec8d7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" alt="Accessories">
+                    </div>
+                    <span class="pns-cat-label">Accessories</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/cfd9e8f7g6h5i4j3k2l1m0n9o8p7q6r5s4t3u2v1-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'" alt="Socks">
+                    </div>
+                    <span class="pns-cat-label">Socks</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/dge0f9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'" alt="Outerwear">
+                    </div>
+                    <span class="pns-cat-label">Outerwear</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/ehf1g0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80'" alt="Sweatshirts & Hoodies">
+                    </div>
+                    <span class="pns-cat-label">Sweatshirts & Hoodies</span>
+                </a>
+                <a href="#" class="pns-cat-item pns-cat-item--active">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/fig2h1j0k9l8m7n6o5p4q3r2s1t0u9v8w7x6y5z4-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80'" alt="T-Shirts">
+                    </div>
+                    <span class="pns-cat-label">T-Shirts</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/gjh3i2k1l0m9n8o7p6q5r4s3t2u1v0w9x8y7z6a5-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4b4057?w=400&q=80'" alt="Pants & Shorts">
+                    </div>
+                    <span class="pns-cat-label">Pants & Shorts</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/hki4j3l2m1n0o9p8q7r6s5t4u3v2w1x0y9z8a7b6-1920x2400.jpg?w=600&q=75"
+                             onerror="this.src='https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80'" alt="Gym & Training">
+                    </div>
+                    <span class="pns-cat-label">Gym & Training</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="tab-collections" class="pns-tab-content">
+            <div class="pns-grid">
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=400&q=80" alt="Spring/Summer 2025">
+                    </div>
+                    <span class="pns-cat-label">Spring/Summer 2025</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=400&q=80" alt="Autumn/Winter 2024">
+                    </div>
+                    <span class="pns-cat-label">Autumn/Winter 2024</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Deep Winter">
+                    </div>
+                    <span class="pns-cat-label">Deep Winter</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80" alt="Limited Edition">
+                    </div>
+                    <span class="pns-cat-label">Limited Edition</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80" alt="Collaborations">
+                    </div>
+                    <span class="pns-cat-label">Collaborations</span>
+                </a>
+                <a href="#" class="pns-cat-item">
+                    <div class="pns-cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80" alt="Archive">
+                    </div>
+                    <span class="pns-cat-label">Archive</span>
+                </a>
+            </div>
+        <!-- PNS Scrollbar: collections -->
+        <div class="pns-col-scrollbar">
+            <div class="pns-col-scrollbar-track" id="sb-track-col">
+                <div class="pns-col-scrollbar-thumb" id="sb-thumb-col"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
+            <h1 class="hero-title">
+                RIDE WITH <span class="highlight">PURPOSE</span>
+            </h1>
+            <div class="hero-buttons">
+                <a href="#" class="btn">SHOP CYCLING</a>
+                <a href="#" class="btn">SHOP OFF-RACE</a>
+            </div>
+        </div>
+    </section>
+
+         <!-- Collection Header - PAS Normal Studios Style -->
+         <div class="collection-header">
+        <h2 class="collection-title">Ride Collections</h2>
+        <div class="collection-nav">
+            <button id="scroll-prev">←</button>
+            <button id="scroll-next">→</button>
+        </div>
+    </div>
+
+    <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
+    <div class="block-wrapper-outer">
+    <section class="block-wrapper" id="product-carousel">
+        <!-- Product 1 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <span class="new-arrival-badge">NEW ARRIVAL</span>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Utility Jacket</div>
+                <div class="product-variant">Steel - 2 colours</div>
+                <div class="product-price">€ 350.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">XXS</span>
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 2 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <span class="new-arrival-badge">NEW ARRIVAL</span>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">ONE SIZE</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race 3L Poncho</div>
+                <div class="product-variant">Hazel - 1 colour</div>
+                <div class="product-price">€ 300.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">ONE SIZE</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 3 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <span class="new-arrival-badge">NEW ARRIVAL</span>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Women's Off-Race Tech Skirt</div>
+                <div class="product-variant">Dark Purple - 3 colours</div>
+                <div class="product-price">€ 220.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">XXS</span>
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 4 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <span class="new-arrival-badge">NEW ARRIVAL</span>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Light Fleece Half-Zip</div>
+                <div class="product-variant">Beige - 2 colours</div>
+                <div class="product-price">€ 230.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">XXS</span>
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 5 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <span class="new-arrival-badge">NEW ARRIVAL</span>
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Men's Off-Race Heavyweight T-Shirt</div>
+                <div class="product-variant">Dark Forest - 4 colours</div>
+                <div class="product-price">€ 220.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 6 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Off-Race Cargo Pants" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Cargo Pants hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">28</div>
+                            <div class="size-option" onclick="event.stopPropagation()">30</div>
+                            <div class="size-option" onclick="event.stopPropagation()">32</div>
+                            <div class="size-option" onclick="event.stopPropagation()">34</div>
+                            <div class="size-option" onclick="event.stopPropagation()">36</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Cargo Pants</div>
+                <div class="product-variant">Olive - 3 colours</div>
+                <div class="product-price">€ 280.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">28</span>
+                    <span class="size-option">30</span>
+                    <span class="size-option">32</span>
+                    <span class="size-option">34</span>
+                    <span class="size-option">36</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 7 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Wool Overshirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Wool Overshirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Wool Overshirt</div>
+                <div class="product-variant">Charcoal - 2 colours</div>
+                <div class="product-price">€ 320.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Product 8 -->
+        <a href="detail.php" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Packable Jacket" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Off-Race Packable Jacket hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Packable Jacket</div>
+                <div class="product-variant">Navy - 3 colours</div>
+                <div class="product-price">€ 260.00</div>
+                <div class="product-sizes">
+                    <span class="size-option">XS</span>
+                    <span class="size-option">S</span>
+                    <span class="size-option">M</span>
+                    <span class="size-option">L</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        </a>
+    </section>
+    <!-- PNS Scrollbar: carousel 2 -->
+    <div class="pns-scrollbar">
+        <div class="pns-scrollbar-track" id="sb-track-2">
+            <div class="pns-scrollbar-thumb" id="sb-thumb-2"></div>
+        </div>
+    </div>
+    </div>
+     <!-- PNS Marquee Ticker -->
+     <section class="pns-marquee-section">
+        <div class="pns-marquee-track">
+            <div class="pns-marquee-inner">
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Ride with the community</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">New product releases</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Explore the collection</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Built for the ride</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'" alt=""></span>
+                </span>
+                <!-- Duplicate for seamless loop -->
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Ride with the community</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">New product releases</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Explore the collection</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'" alt=""></span>
+                </span>
+                <span class="pns-marquee-item">
+                    <span class="pns-marquee-text">Built for the ride</span>
+                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'" alt=""></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Blocks Section -->
+    <!-- <section class="content-blocks">
+        <a href="#" class="content-block">
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/2c8e0e5e9b3e8f5d1f6e7e8e9e0e1e2e3e4e5e6e-2400x3000.jpg?w=1200&q=85" alt="Cycling Collection">
+            <div class="block-overlay">
+                <div class="block-category">SPRING/SUMMER 2026</div>
+                <h3 class="block-title">NEW SEASON</h3>
+            </div>
+        </a>
+
+        <a href="#" class="content-block">
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/1f7e8e9e0e1e2e3e4e5e6e7e8e9e0e1e2e3e4e5e-2400x3000.jpg?w=1200&q=85" alt="Editorial">
+            <div class="block-overlay">
+                <div class="block-category">EDITORIAL</div>
+                <h3 class="block-title">THE LONG RIDE</h3>
+            </div>
+        </a>
+    </section> -->
+
+   
     <!-- Category Navigation -->
-    <section class="category-nav">
+    <!-- <section class="category-nav">
         <div class="category-grid">
             <div class="category-item">
                 <div class="category-name">Cycling</div>
@@ -912,7 +1794,7 @@
         </div>
     </section>
 
-    <!-- Featured Section -->
+    Featured Section
     <section class="featured-section">
         <div class="featured-content">
             <div class="featured-subtitle">EXPLORE THE COLLECTION</div>
@@ -931,7 +1813,72 @@
     </footer>
 
     <script>
-        // Simple scroll animation for hero
+        // ── Custom centered scrollbar sync ──
+        function initScrollbar(scrollEl, trackId, thumbId) {
+            const track = document.getElementById(trackId);
+            const thumb = document.getElementById(thumbId);
+            if (!scrollEl || !track || !thumb) return;
+
+            function updateThumb() {
+                const ratio = scrollEl.scrollLeft / (scrollEl.scrollWidth - scrollEl.clientWidth);
+                const trackW = track.offsetWidth;
+                const thumbW = Math.max(30, trackW * (scrollEl.clientWidth / scrollEl.scrollWidth));
+                thumb.style.width = thumbW + 'px';
+                thumb.style.left = (ratio * (trackW - thumbW)) + 'px';
+            }
+
+            scrollEl.addEventListener('scroll', updateThumb);
+            window.addEventListener('resize', updateThumb);
+            updateThumb();
+        }
+
+        // Carousel 1 (first product grid — only present after DOM ready)
+        const carousel1 = document.getElementById('product-carousel');
+        if (carousel1) initScrollbar(carousel1, 'sb-track-1', 'sb-thumb-1');
+
+        // Carousel 2 (second product grid)
+        const allCarousels = document.querySelectorAll('.block-wrapper');
+        if (allCarousels[1]) initScrollbar(allCarousels[1], 'sb-track-2', 'sb-thumb-2');
+        else if (allCarousels[0]) initScrollbar(allCarousels[0], 'sb-track-2', 'sb-thumb-2');
+
+        // Collections grid
+        const colGrid = document.querySelector('#tab-collections .pns-grid');
+        if (colGrid) initScrollbar(colGrid, 'sb-track-col', 'sb-thumb-col');
+
+        // PNS Tab Switching
+        function switchTab(btn, tabId) {
+            document.querySelectorAll('.pns-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.pns-tab-content').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // Drag scroll for collections grid
+        const collectionsGrid = document.querySelector('#tab-collections .pns-grid');
+        let colDown = false, colStartX, colScrollLeft;
+
+        collectionsGrid.addEventListener('mousedown', (e) => {
+            colDown = true;
+            collectionsGrid.classList.add('grabbing');
+            colStartX = e.pageX - collectionsGrid.offsetLeft;
+            colScrollLeft = collectionsGrid.scrollLeft;
+        });
+        collectionsGrid.addEventListener('mouseleave', () => { colDown = false; collectionsGrid.classList.remove('grabbing'); });
+        collectionsGrid.addEventListener('mouseup', () => { colDown = false; collectionsGrid.classList.remove('grabbing'); });
+        collectionsGrid.addEventListener('mousemove', (e) => {
+            if (!colDown) return;
+            e.preventDefault();
+            const x = e.pageX - collectionsGrid.offsetLeft;
+            collectionsGrid.scrollLeft = colScrollLeft - (x - colStartX) * 1.5;
+        });
+
+        // Touch support
+        collectionsGrid.addEventListener('touchstart', (e) => { colStartX = e.touches[0].pageX; colScrollLeft = collectionsGrid.scrollLeft; }, { passive: true });
+        collectionsGrid.addEventListener('touchmove', (e) => {
+            collectionsGrid.scrollLeft = colScrollLeft - (e.touches[0].pageX - colStartX) * 1.5;
+        }, { passive: true });
+
+        // Scroll animation for hero
         window.addEventListener('scroll', function() {
             const hero = document.querySelector('.hero');
             const scrolled = window.pageYOffset;
@@ -940,24 +1887,58 @@
             }
         });
 
-        // Product card hover effect
-        document.querySelectorAll('.product-block').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.zIndex = '10';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
-            });
-        });
-
         // Wishlist icon interaction
         document.querySelectorAll('.wishlist-icon').forEach(icon => {
             icon.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                // Add your wishlist logic here
-                console.log('Added to wishlist');
             });
+        });
+
+        // ── Carousel: drag scroll + button nav ──
+        const carousel = document.getElementById('product-carousel');
+        const btnPrev  = document.getElementById('scroll-prev');
+        const btnNext  = document.getElementById('scroll-next');
+
+        // Button navigation — scroll by one card width
+        btnNext.addEventListener('click', () => {
+            const cardWidth = carousel.querySelector('.product-block').offsetWidth;
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        btnPrev.addEventListener('click', () => {
+            const cardWidth = carousel.querySelector('.product-block').offsetWidth;
+            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        // Drag to scroll
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.classList.add('grabbing');
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.classList.remove('grabbing');
+        });
+
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.classList.remove('grabbing');
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x    = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            carousel.scrollLeft = scrollLeft - walk;
         });
     </script>
 </body>

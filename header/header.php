@@ -708,7 +708,7 @@
             </div>
             
             <div class="logo">
-                <img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image">
+                <a href="index.php"><img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image"></a>
             </div>
             
             <div class="header-right">
