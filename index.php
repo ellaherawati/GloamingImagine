@@ -900,276 +900,198 @@
     <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
     <div class="block-wrapper-outer">
     <section class="block-wrapper" id="product-carousel">
-        <!-- Product 1 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 1 -->
+        <a href="detail.php?id=1" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Utility Jacket</div>
-                <div class="product-variant">Steel - 2 colours</div>
-                <div class="product-price">€ 350.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 2 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 2 -->
+        <a href="detail.php?id=2" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">ONE SIZE</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race 3L Poncho</div>
-                <div class="product-variant">Hazel - 1 colour</div>
-                <div class="product-price">€ 300.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">ONE SIZE</span>
-                </div>
+                <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 3 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 3 -->
+        <a href="detail.php?id=3" class="product-block">
             <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Women's Off-Race Tech Skirt</div>
-                <div class="product-variant">Dark Purple - 3 colours</div>
-                <div class="product-price">€ 220.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Graphic T-shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 4 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 4 -->
+        <a href="detail.php?id=4" class="product-block">
             <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Light Fleece Half-Zip</div>
-                <div class="product-variant">Beige - 2 colours</div>
-                <div class="product-price">€ 230.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 5 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 5 -->
+        <a href="detail.php?id=5" class="product-block">
             <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/fe7f2f0d61e17a5b3ecd049ad28482a7da728cee-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Men's Off-Race Heavyweight T-Shirt</div>
-                <div class="product-variant">Dark Forest - 4 colours</div>
-                <div class="product-price">€ 220.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Graphic T-shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 6 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 6 -->
+        <a href="detail.php?id=6" class="product-block">
             <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Off-Race Cargo Pants" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Cargo Pants hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/3fec4647fb24efcd8de6dfb999f3040eda21caeb-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/834ece3adb4452130060504e5be5cce9b37c74bb-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">28</div>
-                            <div class="size-option" onclick="event.stopPropagation()">30</div>
-                            <div class="size-option" onclick="event.stopPropagation()">32</div>
-                            <div class="size-option" onclick="event.stopPropagation()">34</div>
-                            <div class="size-option" onclick="event.stopPropagation()">36</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Cargo Pants</div>
-                <div class="product-variant">Olive - 3 colours</div>
-                <div class="product-price">€ 280.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">28</span>
-                    <span class="size-option">30</span>
-                    <span class="size-option">32</span>
-                    <span class="size-option">34</span>
-                    <span class="size-option">36</span>
-                </div>
+                <div class="product-name">Off-Race Graphic T-shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 7 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 7 -->
+        <a href="detail.php?id=7" class="product-block">
             <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Wool Overshirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Wool Overshirt hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/62496f7b8af6b3e6dd6278f41c3c91e01cefca01-1920x2400.jpg?w=600&q=75" alt="Off-Race T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/a299cc794372f9b53287223848f5bf32361649d1-3000x3750.png?w=600&q=75" alt="Off-Race T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Wool Overshirt</div>
-                <div class="product-variant">Charcoal - 2 colours</div>
-                <div class="product-price">€ 320.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 8 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 8 -->
+        <a href="detail.php?id=8" class="product-block">
             <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Packable Jacket" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Off-Race Packable Jacket hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b505ec4eda4f201ca0ad28a89f868a3b00c1a72d-1920x2400.jpg?w=600&q=75" alt="Off-Race Logo T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/42c99e89744c2c2ccaca3cb6706732617082c920-3000x3750.png?w=600&q=75" alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Packable Jacket</div>
-                <div class="product-variant">Navy - 3 colours</div>
-                <div class="product-price">€ 260.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Logo T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
     </section>
@@ -1178,6 +1100,7 @@
         <div class="pns-scrollbar-track" id="sb-track-1">
             <div class="pns-scrollbar-thumb" id="sb-thumb-1"></div>
         </div>
+    </div>
     </div>
     </div>
 
@@ -1365,276 +1288,198 @@
     <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
     <div class="block-wrapper-outer">
     <section class="block-wrapper" id="product-carousel">
-        <!-- Product 1 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 9 -->
+        <a href="detail.php?id=9" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b6713bdc16ae362a5e8137eb0f65bba19db1f455-1920x2400.jpg?w=600&q=75" alt="Off-Race T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7e9bf9a768c87ffc0d725c5fa646ba8cd578c20-3000x3750.png?w=600&q=75" alt="Off-Race T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
+            </div>
+        </a>
+        <!-- Product — ID: 10 -->
+        <a href="detail.php?id=10" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Logo T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/a039619638c9dd6962e9743673308987ca5758fd-3000x3750.png?w=600&q=75" alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race Logo T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
+            </div>
+        </a>
+        <!-- Product — ID: 11 -->
+        <a href="detail.php?id=11" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/19f0811f303dcad3e99a3ad2f40c781cb2003a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Lightweight T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/2aafcd025d33287f0646c6c9e570050708d978e9-3000x3750.png?w=600&q=75" alt="Women's Off-Race Lightweight T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Women's Off-Race Lightweight T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
+            </div>
+        </a>
+        <!-- Product — ID: 12 -->
+        <a href="detail.php?id=12" class="product-block">
+            <div class="product-badges">
+                <button class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="product-image-wrapper">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/ecaee966a1a0ae0fb19bc92216eeb8b37d58c303-3000x3750.png?w=600&q=75" alt="Off-Race PNS T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=600&q=75" alt="Off-Race PNS T-Shirt hover" class="product-image img-hover">
+                <div class="size-selector" onclick="event.preventDefault()">
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Off-Race PNS T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
+            </div>
+        </a>
+        <!-- Product — ID: 13 -->
+        <a href="detail.php?id=13" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race Utility Jacket hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Utility Jacket</div>
-                <div class="product-variant">Steel - 2 colours</div>
-                <div class="product-price">€ 350.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 2 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 14 -->
+        <a href="detail.php?id=14" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race 3L Poncho hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">ONE SIZE</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race 3L Poncho</div>
-                <div class="product-variant">Hazel - 1 colour</div>
-                <div class="product-price">€ 300.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">ONE SIZE</span>
-                </div>
+                <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 3 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 15 -->
+        <a href="detail.php?id=15" class="product-block">
             <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Women's Off-Race Tech Skirt hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Women's Off-Race Tech Skirt</div>
-                <div class="product-variant">Dark Purple - 3 colours</div>
-                <div class="product-price">€ 220.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Graphic T-shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
-
-        <!-- Product 4 -->
-        <a href="detail.php" class="product-block">
+        <!-- Product — ID: 16 -->
+        <a href="detail.php?id=16" class="product-block">
             <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
+                <button class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
             <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Light Fleece Half-Zip hover" class="product-image img-hover">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
                 <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XXS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                    <div class="size-option" onclick="event.stopPropagation()">S</div>
+                    <div class="size-option" onclick="event.stopPropagation()">M</div>
+                    <div class="size-option" onclick="event.stopPropagation()">L</div>
+                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
                 </div>
             </div>
             <div class="product-info">
-                <div class="product-name">Off-Race Light Fleece Half-Zip</div>
-                <div class="product-variant">Beige - 2 colours</div>
-                <div class="product-price">€ 230.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XXS</span>
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Product 5 -->
-        <a href="detail.php" class="product-block">
-            <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Men's Off-Race Heavyweight T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Men's Off-Race Heavyweight T-Shirt</div>
-                <div class="product-variant">Dark Forest - 4 colours</div>
-                <div class="product-price">€ 220.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Product 6 -->
-        <a href="detail.php" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=75" alt="Off-Race Cargo Pants" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Cargo Pants hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">28</div>
-                            <div class="size-option" onclick="event.stopPropagation()">30</div>
-                            <div class="size-option" onclick="event.stopPropagation()">32</div>
-                            <div class="size-option" onclick="event.stopPropagation()">34</div>
-                            <div class="size-option" onclick="event.stopPropagation()">36</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Cargo Pants</div>
-                <div class="product-variant">Olive - 3 colours</div>
-                <div class="product-price">€ 280.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">28</span>
-                    <span class="size-option">30</span>
-                    <span class="size-option">32</span>
-                    <span class="size-option">34</span>
-                    <span class="size-option">36</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Product 7 -->
-        <a href="detail.php" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=600&q=75" alt="Off-Race Wool Overshirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Wool Overshirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Wool Overshirt</div>
-                <div class="product-variant">Charcoal - 2 colours</div>
-                <div class="product-price">€ 320.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Product 8 -->
-        <a href="detail.php" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=75" alt="Off-Race Packable Jacket" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=75" alt="Off-Race Packable Jacket hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                            <div class="size-option" onclick="event.stopPropagation()">XS</div>
-                            <div class="size-option" onclick="event.stopPropagation()">S</div>
-                            <div class="size-option" onclick="event.stopPropagation()">M</div>
-                            <div class="size-option" onclick="event.stopPropagation()">L</div>
-                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Packable Jacket</div>
-                <div class="product-variant">Navy - 3 colours</div>
-                <div class="product-price">€ 260.00</div>
-                <div class="product-sizes">
-                    <span class="size-option">XS</span>
-                    <span class="size-option">S</span>
-                    <span class="size-option">M</span>
-                    <span class="size-option">L</span>
-                    <span class="size-option">XL</span>
-                </div>
+                <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
+                <div class="product-price">Rp. 150.000</div>
             </div>
         </a>
     </section>
@@ -1643,6 +1488,7 @@
         <div class="pns-scrollbar-track" id="sb-track-2">
             <div class="pns-scrollbar-thumb" id="sb-thumb-2"></div>
         </div>
+    </div>
     </div>
     </div>
      <!-- PNS Marquee Ticker -->
@@ -1887,12 +1733,16 @@
             }
         });
 
-        // Wishlist icon interaction
-        document.querySelectorAll('.wishlist-icon').forEach(icon => {
-            icon.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });
+        // ── Wishlist init: data-product-id sudah di-set langsung di HTML
+        // Serahkan sepenuhnya ke initializeWishlistButtons() dari wishlist.js
+        // agar format penyimpanan identik dengan shop.php → tampil di wishlist.php
+        window.addEventListener('load', function() {
+            if (typeof initializeWishlistButtons === 'function') {
+                initializeWishlistButtons();
+            }
+            if (typeof updateWishlistCount === 'function') {
+                updateWishlistCount();
+            }
         });
 
         // ── Carousel: drag scroll + button nav ──
