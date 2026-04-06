@@ -608,12 +608,27 @@
             letter-spacing: -1px;
         }
 
+        .specs-grid-footer-wrapper {
+            display: block;
+        }
+
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 0;
-            margin-bottom: 80px;
+            flex: 1;
             border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .specs-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            padding-top: 32px;
+            width: 25%;
+            margin-left: auto;
+            text-align: right;
         }
 
         .spec-card {
@@ -623,6 +638,10 @@
             border-right: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
             /* min-height: 400px; */
+        }
+
+        .spec-card.has-circle {
+            justify-content: space-between;
         }
 
         .spec-card:last-child {
@@ -647,19 +666,43 @@
         }
 
         .bar-track {
-            height: 20px;
+            height: 24px;
             background: transparent;
             position: relative;
             display: flex;
-            align-items: center;
-            gap: 3px;
+            align-items: flex-end;
+            gap: 2px;
         }
 
         .bar-segment {
-            flex: 1;
-            height: 12px;
-            background: #fff;
-        }
+    flex: 1;
+    height: 8px;
+    background: #fff;
+    border-radius: 1px;
+}
+
+.bar-segment.tall {
+    height: 18px;
+}
+
+.bar-segment.inactive {
+    background: rgba(255,255,255,0.25);
+}
+
+/* Khusus bar segment DALAM circle saja */
+.circle-segments .bar-segment {
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    flex: unset;
+    left: 50%;
+    top: 50%;
+    border-radius: 1px;
+    transform: translateX(-50%) rotate(calc(var(--i) * 6deg)) translateY(-22px);
+    transform-origin: center bottom;
+}
+
+
 
         .bar-segment.inactive {
             background: rgba(255,255,255,0.25);
@@ -675,25 +718,28 @@
             text-transform: uppercase;
         }
 
-        /* Circle Style - Like PAS Normal Studios */
         .spec-circle-wrapper {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: center;
+            justify-content: flex-end;
             height: 100%;
+            flex: 1;
+            margin-top: auto;
         }
 
         .spec-circle-content {
             display: flex;
+            flex-direction: row;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
 
         .spec-icon {
             position: relative;
             width: 80px;
-            height: 60px;
+            height: 80px;
+            flex-shrink: 0;
         }
 
         /* Circle segments */
@@ -720,11 +766,11 @@
         /* Center icon in circle */
         .spec-center-icon {
             position: absolute;
-            top: 46%;
-            left: 45%;
+            top: 57%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -754,12 +800,6 @@
             font-size: 16px;
             font-weight: 400;
             letter-spacing: 0.5px;
-        }
-
-        .specs-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .specs-description {
@@ -1309,14 +1349,34 @@
             margin-bottom: 20px;
         }
 
+        /* Bar track di drawer — pakai segmen seperti product spec */
         .spec-detail-bar .bar-track {
-            height: 3px;
-            background: #e5e5e5;
-            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            background: transparent;
+            height: auto;
+            margin-bottom: 12px;
         }
 
-        .spec-detail-bar .bar-fill {
-            background: #000;
+        /* Segmen di dalam drawer: active = hitam, inactive = abu */
+        .spec-detail-bar .bar-segment.active,
+        .specs-drawer .bar-segment.active {
+            background: #000 !important;
+        }
+
+        .spec-detail-bar .bar-segment.inactive,
+        .specs-drawer .bar-segment.inactive {
+            background: rgba(0,0,0,0.15) !important;
+        }
+
+        /* Circle segments di drawer juga hitam */
+        .specs-drawer .circle-segments .bar-segment.active {
+            background: #000 !important;
+        }
+
+        .specs-drawer .circle-segments .bar-segment.inactive {
+            background: rgba(0,0,0,0.15) !important;
         }
 
         .spec-detail-bar .bar-labels {
@@ -1335,31 +1395,17 @@
             margin-bottom: 20px;
         }
 
-        .spec-circle {
-            flex: 1;
-            text-align: center;
+        /* Layout item circle di drawer */
+        .spec-circle-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        .spec-circle svg {
-            margin-bottom: 16px;
-        }
-
-        .spec-circle-name {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .spec-circle-value {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .spec-circle-desc {
-            font-size: 12px;
-            line-height: 1.6;
-            color: #999;
-            margin-top: 12px;
+        .drawer-spec-icon {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
         }
 
         /* Responsive */
@@ -1808,33 +1854,24 @@
         <div class="specs-container">
             <h2 class="specs-title">Product<br>Specifications</h2>
             
+            <div class="specs-grid-footer-wrapper">
             <div class="specs-grid">
                 <!-- Temperature -->
                 <div class="spec-card">
                     <h3 class="spec-name">Temperature</h3>
                     <div class="spec-bar">
                         <div class="bar-wrapper">
-                            <div class="bar-track">
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
+                            <?php
+                            $temp_active_start = 10;  // ← ubah di sini
+                            $temp_active_end   = 30;  // ← ubah di sini
+                            ?>
+                            <div class="bar-track"
+                                id="temp-bar"
+                                data-active-start="<?= $temp_active_start ?>"
+                                data-active-end="<?= $temp_active_end ?>">
+                                <?php for ($i = -10; $i <= 30; $i++): ?>
+                                    <div class="bar-segment" data-val="<?= $i ?>"></div>
+                                <?php endfor; ?>
                             </div>
                         </div>
                         <div class="bar-labels">
@@ -1846,86 +1883,100 @@
                     </div>
                 </div>
 
-                <!-- Intensity (Not in original design - can be removed or kept as Temperature-like) -->
+
+                <!-- Intensity -->
                 <div class="spec-card">
                     <h3 class="spec-name">Intensity</h3>
                     <div class="spec-bar">
                         <div class="bar-wrapper">
-                            <div class="bar-track">
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
-                                <div class="bar-segment inactive"></div>
+                            <?php
+                            $intensity_level = 'high'; // ← ubah: 'low' atau 'high'
+                            $intensity_active_start = ($intensity_level === 'low') ? 1  : 26;
+                            $intensity_active_end   = ($intensity_level === 'low') ? 25 : 50;
+                            ?>
+                            <div class="bar-track"
+                                id="intensity-bar"
+                                data-active-start="<?= $intensity_active_start ?>"
+                                data-active-end="<?= $intensity_active_end ?>">
+                                <?php for ($i = 1; $i <= 50; $i++): ?>
+                                    <div class="bar-segment" data-val="<?= $i ?>"></div>
+                                <?php endfor; ?>
                             </div>
                         </div>
                         <div class="bar-labels">
-                            <span>Low</span>
-                            <span>High</span>
+                            <span>LOW</span>
+                            <span>HIGH</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Insulation -->
-                <div class="spec-card">
-                    <h3 class="spec-name">Insulation</h3>
-                    <div class="spec-circle-wrapper">
-                        <div class="spec-circle-content">
-                            <div class="spec-icon">
-                                <div class="circle-segments" id="insulation-circle"></div>
-                                <div class="spec-center-icon">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
-                                        <circle cx="11.5" cy="18.5" r="1.5" fill="currentColor"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="spec-text">
-                                <div class="spec-label">Insulation</div>
-                                <div class="spec-value">6/6</div>
-                            </div>
-                        </div>
-                    </div>
+               <!-- Insulation -->
+<div class="spec-card has-circle">
+    <h3 class="spec-name">Insulation</h3>
+    <div class="spec-circle-wrapper">
+        <div class="spec-circle-content">
+            <div class="spec-icon">
+                <div class="circle-segments" id="insulation-circle">
+                    <?php
+                    $insulation_value = 6;
+                    $insulation_max = 6;
+                    $active_bars = ($insulation_value / $insulation_max) * 60;
+                    for ($i = 0; $i < 60; $i++):
+                        $active = $i < $active_bars ? 'active' : 'inactive';
+                    ?>
+                        <div class="bar-segment <?= $active ?>" style="--i: <?= $i ?>"></div>
+                    <?php endfor; ?>
                 </div>
-
-                <!-- Breathability -->
-                <div class="spec-card">
-                    <h3 class="spec-name">Breathability</h3>
-                    <div class="spec-circle-wrapper">
-                        <div class="spec-circle-content">
-                            <div class="spec-icon">
-                                <div class="circle-segments" id="breathability-circle"></div>
-                                <div class="spec-center-icon">
-                                    <svg viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="8" opacity="0.3"/>
-                                        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="spec-text">
-                                <div class="spec-label">Breathability</div>
-                                <div class="spec-value">4/6</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="spec-center-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                        <circle cx="11.5" cy="18.5" r="1.5" fill="currentColor"/>
+                    </svg>
                 </div>
             </div>
+            <div class="spec-text">
+                <div class="spec-label">Insulation</div>
+                <div class="spec-value"><?= $insulation_value ?>/<?= $insulation_max ?></div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Breathability -->
+<div class="spec-card has-circle">
+    <h3 class="spec-name">Breathability</h3>
+    <div class="spec-circle-wrapper">
+        <div class="spec-circle-content">
+            <div class="spec-icon">
+                <div class="circle-segments" id="breathability-circle">
+                    <?php
+                    $breathability_value = 4;
+                    $breathability_max = 6;
+                    $active_bars = ($breathability_value / $breathability_max) * 60;
+                    for ($i = 0; $i < 60; $i++):
+                        $active = $i < $active_bars ? 'active' : 'inactive';
+                    ?>
+                        <div class="bar-segment <?= $active ?>" style="--i: <?= $i ?>"></div>
+                    <?php endfor; ?>
+                </div>
+                <div class="spec-center-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="8" opacity="0.3"/>
+                        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="spec-text">
+                <div class="spec-label">Breathability</div>
+                <div class="spec-value"><?= $breathability_value ?>/<?= $breathability_max ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div><!-- end specs-grid-footer-wrapper -->
+
+            <!-- Footer: deskripsi + button di bawah kolom Breathability, rata kanan -->
             <div class="specs-footer">
                 <p class="specs-description">
                     The jersey has a tight, aerodynamic fit - ideal for high-intensity road riding and racing.
@@ -2034,21 +2085,6 @@
                 IN STOCK
             </div>
 
-            <!-- Color -->
-            <div class="section">
-                <div class="section-label">COLOR: T.K.O. BLACK MULTI</div>
-                <div class="color-swatches">
-                    <div class="color-swatch active" onclick="selectColorDrawer(this, 'T.K.O. BLACK MULTI')">
-                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200" alt="Black Multi">
-                    </div>
-                    <div class="color-swatch" onclick="selectColorDrawer(this, 'DARK BLUE')">
-                        <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?w=200" alt="Dark Blue">
-                    </div>
-                    <div class="color-swatch" onclick="selectColorDrawer(this, 'DARK PURPLE')">
-                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200" alt="Dark Purple">
-                    </div>
-                </div>
-            </div>
 
             <!-- Size -->
             <div class="section">
@@ -2057,9 +2093,50 @@
                     <div class="size-guide" onclick="toggleSizeGuideDrawer()">Size Guide</div>
                 </div>
                 
-                <!-- Size Guide Image (Hidden by default) -->
+                <!-- Size Guide Table (Hidden by default) -->
                 <div class="size-guide-container" id="sizeGuideContainer">
-                    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600" alt="Size Guide Chart">
+                    <div class="guide-toggle" style="margin-bottom: 16px; margin-top: 12px;">
+                        <button class="guide-toggle-btn active" onclick="toggleSidebarUnit('cm', this)">CM</button>
+                        <button class="guide-toggle-btn" onclick="toggleSidebarUnit('in', this)">IN</button>
+                    </div>
+
+                    <div id="sidebarCmTable">
+                        <div class="size-table">
+                            <div class="size-table-header">
+                                <div>SIZE</div>
+                                <div>CHEST</div>
+                                <div>WAIST</div>
+                                <div>HIP</div>
+                                <div>THIGH</div>
+                            </div>
+                            <div class="size-table-row"><div>XXS</div><div>78 - 82</div><div>63 - 67</div><div>84 - 88</div><div>49 - 51</div></div>
+                            <div class="size-table-row"><div>XS</div><div>82 - 86</div><div>67 - 71</div><div>88 - 92</div><div>51 - 53</div></div>
+                            <div class="size-table-row"><div>S</div><div>86 - 90</div><div>71 - 75</div><div>92 - 96</div><div>53 - 55</div></div>
+                            <div class="size-table-row"><div>M</div><div>90 - 94</div><div>75 - 79</div><div>96 - 100</div><div>55 - 57</div></div>
+                            <div class="size-table-row"><div>L</div><div>94 - 98</div><div>79 - 83</div><div>100 - 104</div><div>57 - 60</div></div>
+                            <div class="size-table-row"><div>XL</div><div>98 - 102</div><div>83 - 87</div><div>104 - 108</div><div>60 - 62</div></div>
+                            <div class="size-table-row"><div>XXL</div><div>102 - 106</div><div>87 - 91</div><div>108 - 112</div><div>62 - 64</div></div>
+                        </div>
+                    </div>
+
+                    <div id="sidebarInTable" style="display: none;">
+                        <div class="size-table">
+                            <div class="size-table-header">
+                                <div>SIZE</div>
+                                <div>CHEST</div>
+                                <div>WAIST</div>
+                                <div>HIP</div>
+                                <div>THIGH</div>
+                            </div>
+                            <div class="size-table-row"><div>XXS</div><div>30.7 - 32.3</div><div>24.8 - 26.4</div><div>33.1 - 34.6</div><div>19.3 - 20.1</div></div>
+                            <div class="size-table-row"><div>XS</div><div>32.3 - 33.9</div><div>26.4 - 28.0</div><div>34.6 - 36.2</div><div>20.1 - 20.9</div></div>
+                            <div class="size-table-row"><div>S</div><div>33.9 - 35.4</div><div>28.0 - 29.5</div><div>36.2 - 37.8</div><div>20.9 - 21.7</div></div>
+                            <div class="size-table-row"><div>M</div><div>35.4 - 37.0</div><div>29.5 - 31.1</div><div>37.8 - 39.4</div><div>21.7 - 22.4</div></div>
+                            <div class="size-table-row"><div>L</div><div>37.0 - 38.6</div><div>31.1 - 32.7</div><div>39.4 - 40.9</div><div>22.4 - 23.6</div></div>
+                            <div class="size-table-row"><div>XL</div><div>38.6 - 40.2</div><div>32.7 - 34.3</div><div>40.9 - 42.5</div><div>23.6 - 24.4</div></div>
+                            <div class="size-table-row"><div>XXL</div><div>40.2 - 41.7</div><div>34.3 - 35.8</div><div>42.5 - 44.1</div><div>24.4 - 25.2</div></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- GANTI bagian size grid (sekitar baris 512): -->
@@ -2140,18 +2217,7 @@
                     </div>
                 </div>
 
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggle(this)">
-                        <span>SHIPPING & RETURNS</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            Free shipping over Rp.500.000<br>
-                            30-day return policy
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -2178,8 +2244,13 @@
             <div class="spec-detail-section">
                 <h3 class="spec-detail-title">Temperature</h3>
                 <div class="spec-detail-bar">
-                    <div class="bar-track">
-                        <div class="bar-fill" style="width: 70%;"></div>
+                    <div class="bar-track"
+                        id="temp-bar-drawer"
+                        data-active-start="<?= $temp_active_start ?>"
+                        data-active-end="<?= $temp_active_end ?>">
+                        <?php for ($i = -10; $i <= 30; $i++): ?>
+                            <div class="bar-segment" data-val="<?= $i ?>"></div>
+                        <?php endfor; ?>
                     </div>
                     <div class="bar-labels">
                         <span>-10 C</span>
@@ -2197,8 +2268,13 @@
             <div class="spec-detail-section">
                 <h3 class="spec-detail-title">Intensity</h3>
                 <div class="spec-detail-bar">
-                    <div class="bar-track">
-                        <div class="bar-fill" style="width: 85%;"></div>
+                    <div class="bar-track"
+                        id="intensity-bar-drawer"
+                        data-active-start="<?= $intensity_active_start ?>"
+                        data-active-end="<?= $intensity_active_end ?>">
+                        <?php for ($i = 1; $i <= 50; $i++): ?>
+                            <div class="bar-segment" data-val="<?= $i ?>"></div>
+                        <?php endfor; ?>
                     </div>
                     <div class="bar-labels">
                         <span>LOW</span>
@@ -2213,25 +2289,57 @@
             <!-- Breathability & Insulation -->
             <div class="spec-detail-section">
                 <div class="spec-circle-container">
-                    <div class="spec-circle">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#000" stroke-width="2">
-                            <circle cx="40" cy="40" r="35" opacity="0.1"/>
-                            <circle cx="40" cy="40" r="35" stroke-dasharray="220" stroke-dashoffset="44" transform="rotate(-90 40 40)"/>
-                        </svg>
-                        <div class="spec-circle-name">Breathability</div>
-                        <div class="spec-circle-value">5/6</div>
+                    <!-- Breathability -->
+                    <div class="spec-circle-item">
+                        <div class="spec-icon drawer-spec-icon">
+                            <div class="circle-segments">
+                                <?php
+                                $active_bars = ($breathability_value / $breathability_max) * 60;
+                                for ($i = 0; $i < 60; $i++):
+                                    $active = $i < $active_bars ? 'active' : 'inactive';
+                                ?>
+                                    <div class="bar-segment <?= $active ?>" style="--i: <?= $i ?>"></div>
+                                <?php endfor; ?>
+                            </div>
+                            <div class="spec-center-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="8" opacity="0.3"/>
+                                    <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="spec-text">
+                            <div class="spec-label">Breathability</div>
+                            <div class="spec-value"><?= $breathability_value ?>/<?= $breathability_max ?></div>
+                        </div>
                     </div>
-                    <div class="spec-circle">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#000" stroke-width="2">
-                            <circle cx="40" cy="40" r="35" opacity="0.1"/>
-                            <circle cx="40" cy="40" r="35" stroke-dasharray="220" stroke-dashoffset="183" transform="rotate(-90 40 40)"/>
-                        </svg>
-                        <div class="spec-circle-name">Insulation</div>
-                        <div class="spec-circle-value">1/6</div>
+                    <!-- Insulation -->
+                    <div class="spec-circle-item">
+                        <div class="spec-icon drawer-spec-icon">
+                            <div class="circle-segments">
+                                <?php
+                                $active_bars = ($insulation_value / $insulation_max) * 60;
+                                for ($i = 0; $i < 60; $i++):
+                                    $active = $i < $active_bars ? 'active' : 'inactive';
+                                ?>
+                                    <div class="bar-segment <?= $active ?>" style="--i: <?= $i ?>"></div>
+                                <?php endfor; ?>
+                            </div>
+                            <div class="spec-center-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                                    <circle cx="11.5" cy="18.5" r="1.5" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="spec-text">
+                            <div class="spec-label">Insulation</div>
+                            <div class="spec-value"><?= $insulation_value ?>/<?= $insulation_max ?></div>
+                        </div>
                     </div>
                 </div>
                 <p class="spec-detail-text">
-                    Breathability is defined as the ability of a fabric to allow moisture vapour to be transmitted through the material. High insulation keeps you warm in cold conditions.
+                    Breathability is defined as the ability of a fabric to allow moisture vapour to be transmitted through the material. This jersey offers excellent airflow to keep you cool during high-intensity efforts.
                 </p>
             </div>
         </div>
@@ -2676,6 +2784,24 @@ function toggleSizeGuideDrawer() {
     sizeGuideContainer.classList.toggle('show');
 }
 
+// Toggle CM/IN unit in sidebar size guide
+function toggleSidebarUnit(unit, btn) {
+    const cmTable = document.getElementById('sidebarCmTable');
+    const inTable = document.getElementById('sidebarInTable');
+    const buttons = btn.parentElement.querySelectorAll('.guide-toggle-btn');
+
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (unit === 'cm') {
+        cmTable.style.display = 'block';
+        inTable.style.display = 'none';
+    } else {
+        cmTable.style.display = 'none';
+        inTable.style.display = 'block';
+    }
+}
+
 // ============================================
 // ACCORDION
 // ============================================
@@ -2777,13 +2903,56 @@ function createCircleSegments(elementId, activeCount, totalCount = 36) {
         const segment = document.createElement('div');
         segment.className = i < activeCount ? 'circle-segment' : 'circle-segment inactive';
         const angle = i * angleStep - 90;
-        segment.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateX(35px)`;
+        // Position from exact center of the container (50%, 50%)
+        segment.style.position = 'absolute';
+        segment.style.top = '50%';
+        segment.style.left = '50%';
+        segment.style.transformOrigin = '0 0';
+        segment.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-32px)`;
         container.appendChild(segment);
     }
 }
 
-createCircleSegments('insulation-circle', 36, 36);
-createCircleSegments('breathability-circle', 24, 36);
+
+// ============================================
+// DYNAMIC BAR UPDATE
+// ============================================
+function updateBar(barId, activeStart, activeEnd) {
+    const bar = document.getElementById(barId);
+    if (!bar) return;
+
+    const segments = bar.querySelectorAll('.bar-segment');
+    segments.forEach(seg => {
+        const val = parseInt(seg.dataset.val);
+        const isActive = val >= activeStart && val <= activeEnd;
+        const isTall = val === activeStart || val === activeEnd;
+
+        seg.classList.toggle('active', isActive);
+        seg.classList.toggle('inactive', !isActive);
+        seg.classList.toggle('tall', isTall);
+    });
+}
+
+function initBarsFromData() {
+    document.querySelectorAll('.bar-track[data-active-start]').forEach(bar => {
+        const activeStart = parseInt(bar.dataset.activeStart);
+        const activeEnd   = parseInt(bar.dataset.activeEnd);
+        const segments    = bar.querySelectorAll('.bar-segment');
+        segments.forEach(seg => {
+            const val      = parseInt(seg.dataset.val);
+            const isActive = val >= activeStart && val <= activeEnd;
+            const isTall   = val === activeStart || val === activeEnd;
+            seg.classList.toggle('active', isActive);
+            seg.classList.toggle('inactive', !isActive);
+            seg.classList.toggle('tall', isTall);
+        });
+    });
+}
+
+// Inisialisasi otomatis — segmen selalu -10 s/d +30 (fixed)
+// Untuk ubah range aktif, cukup ubah data-active-start & data-active-end di HTML
+// atau panggil: updateBar('temp-bar', 10, 30);
+initBarsFromData();
 
 let current = 0;
 const track = document.getElementById('track');

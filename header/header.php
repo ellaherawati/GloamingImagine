@@ -1,20 +1,30 @@
 <style>
      /* Header */
-     header {
-            position: sticky;
-            top: 0;
-            background: #fff;
-            border-bottom: 1px solid #e0e0e0;
-            z-index: 100;
-        }
+     /* Ganti bagian header */
+header {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    /* HAPUS: border-bottom: 1px solid #e0e0e0; */
+    z-index: 100;
+    transition: background 0.3s ease;
+}
 
-        .header-main {
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e0e0e0;
-        }
+header.scrolled {
+    background: transparent;
+}
+
+header.scrolled-up {
+    background: #fff;
+}
+
+.header-main {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* HAPUS: border-bottom: 1px solid #e0e0e0; */
+}
 
         .header-left {
             display: flex;
@@ -704,11 +714,11 @@
             <div class="header-left">
                 <a href="#" id="shopToggle">Shop</a>
                 <a href="#gift-guide">About</a>
-                <a href="#explore">Campaign</a>
+                <a href="explore.php">Explore</a>
             </div>
             
             <div class="logo">
-                <a href="index.php"><img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image"></a>
+                <a href="index.html"><img src="img/logoheader1.png" alt="Gloaming Imagine" class="logo-image" style></a>
             </div>
             
             <div class="header-right">
@@ -848,7 +858,7 @@
 
             <div class="shop-divider"></div>
 
-            <!-- Off-Race -->
+            <!-- Off-Race
             <div class="shop-section-title">Off-Race</div>
             <div class="shop-category-grid">
                 <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
@@ -875,7 +885,7 @@
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Accessories">
                     Accessories
                 </a>
-            </div>
+            </div> -->
 
             <div class="shop-divider"></div>
 
@@ -885,6 +895,42 @@
 
     <script src="products-data.js"></script>
     <script>
+    (function() {
+    var header = document.querySelector('header');
+    var lastScrollY = 0;
+    var ticking = false;
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                var currentScrollY = window.scrollY;
+
+                if (currentScrollY > 80) {
+                    if (currentScrollY > lastScrollY) {
+                        // Scroll ke bawah → semi transparan
+                        header.style.background = 'rgba(255, 255, 255, 0.6)';
+                        header.style.backdropFilter = 'blur(8px)';
+                        header.style.webkitBackdropFilter = 'blur(8px)';
+                    } else {
+                        // Scroll ke atas → putih penuh
+                        header.style.background = '#fff';
+                        header.style.backdropFilter = 'none';
+                        header.style.webkitBackdropFilter = 'none';
+                    }
+                } else {
+                    // Di posisi atas → putih penuh
+                    header.style.background = '#fff';
+                    header.style.backdropFilter = 'none';
+                    header.style.webkitBackdropFilter = 'none';
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
     // ============ SHOP SIDEBAR LOGIC ============
     function openShopSidebar() {
         document.getElementById('shopSidebar').classList.add('open');

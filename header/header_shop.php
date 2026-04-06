@@ -1020,11 +1020,11 @@
         <div class="header-left">
             <a href="#" id="shopToggle">Shop</a>
             <a href="#gift-guide">About</a>
-            <a href="#explore">Campaign</a>
+            <a href="#explore">Explore</a>
         </div>
         
         <div class="logo">
-            <a href="index.php"><img src="img/logoheader.png" alt="Gloaming Imagine" class="logo-image"></a>
+            <a href="index.php"><img src="img/logoheader1.png" alt="Gloaming Imagine" class="logo-image"></a>
         </div>
         
         <div class="header-right">
@@ -1342,7 +1342,7 @@
 
         <div class="shop-divider"></div>
 
-        <!-- Off-Race -->
+        <!-- Off-Race
         <div class="shop-section-title">Off-Race</div>
         <div class="shop-category-grid">
             <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
@@ -1369,7 +1369,7 @@
                 <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Accessories">
                 Accessories
             </a>
-        </div>
+        </div> -->
 
         <div class="shop-divider"></div>
 
