@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's T.K.O. Mechanism Jersey — Gloaming Imagine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Libre Franklin', -apple-system, sans-serif;
+            background: #fff;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        /* ===================================================
+           HEADER (sama persis dengan index.html)
+        =================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 100;
+            transition: background 0.3s ease;
+        }
+        .header-main {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left { display: flex; gap: 35px; align-items: center; }
+        .header-left a { color: #000; text-decoration: none; font-size: 14px; transition: opacity 0.3s; }
+        .header-left a:hover { opacity: 0.6; }
+        .logo { text-align: center; flex: 1; }
+        .logo-image { height: 35px; width: auto; object-fit: contain; }
+        .header-right { display: flex; gap: 30px; align-items: center; }
+        .header-right a { color: #000; text-decoration: none; font-size: 14px; transition: opacity 0.3s; }
+        .header-right a:hover { opacity: 0.6; }
+
+        .search-container { position: relative; }
+        .search-toggle { color: #000; text-decoration: none; font-size: 14px; cursor: pointer; transition: opacity 0.3s; }
+        .search-toggle:hover { opacity: 0.6; }
+        .search-box {
+            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            width: 0; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            background: #fff; border: 1px solid #e0e0e0; z-index: 1000;
+        }
+        .search-box.active { width: 350px; opacity: 1; visibility: visible; }
+        .search-input-wrapper { position: relative; }
+        .search-input { width: 100%; padding: 10px 35px 10px 12px; border: none; outline: none; font-size: 14px; font-family: inherit; }
+        .search-close {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; font-size: 18px; cursor: pointer; color: #666;
+            padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+        }
+        .search-dropdown {
+            position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+            border: 1px solid #e0e0e0; border-top: none; max-height: 400px; overflow-y: auto;
+            display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .search-dropdown.active { display: block; }
+
+        .badge-count {
+            display: none; position: absolute; top: -8px; right: -12px;
+            background: #000; color: #fff; font-size: 9px; font-weight: 700;
+            min-width: 16px; height: 16px; border-radius: 50%; text-align: center;
+            line-height: 16px; padding: 0 3px;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            background: none; border: none; padding: 4px; z-index: 200;
+        }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #000; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile Nav Drawer */
+        .mobile-nav {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: #fff; z-index: 150; flex-direction: column;
+            padding: 90px 32px 40px; transform: translateX(-100%);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto;
+        }
+        .mobile-nav.open { transform: translateX(0); }
+        .mobile-nav a {
+            font-size: 28px; font-weight: 300; color: #000; text-decoration: none;
+            padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: block;
+        }
+        .mobile-nav a:hover { opacity: 0.5; }
+        .mobile-nav-sub { display: flex; gap: 24px; margin-top: 40px; flex-wrap: wrap; }
+        .mobile-nav-sub a { font-size: 14px; font-weight: 400; border-bottom: none; padding: 0; color: #555; }
+
+        /* Responsive Header */
+        @media (max-width: 1024px) {
+            .header-main { padding: 18px 28px; }
+            .header-left { gap: 24px; }
+            .header-right { gap: 20px; }
+        }
+        @media (max-width: 767px) {
+            .header-main { padding: 16px 20px; }
+            .header-left, .header-right .search-container,
+            .header-right a[href="wishlist.php"], .header-right a[href="login.php"] { display: none; }
+            .hamburger { display: flex; }
+            .mobile-nav { display: flex; }
+            .header-right { gap: 16px; }
+            .logo-image { height: 28px; }
+        }
+
+        /* ===================================================
+           GALLERY (full screen hero)
+        =================================================== */
+        .gallery-container {
+            position: relative;
+            height: calc(100vh - 75px);
+            overflow: hidden;
+            background: #fafafa;
+        }
+        .gallery-track {
+            display: flex; height: 100%;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: grab; user-select: none;
+        }
+        .gallery-track.dragging { cursor: grabbing; transition: none; }
+        .gallery-slide { min-width: 50%; width: 50%; height: 100%; flex-shrink: 0; }
+        .gallery-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        .gallery-dots {
+            position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(0,0,0,0.3); cursor: pointer; transition: all 0.3s;
+        }
+        .dot.active { background: #000; width: 20px; border-radius: 3px; }
+
+        .arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 36px; height: 36px; background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(0,0,0,0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; transition: opacity 0.3s; z-index: 10; font-size: 18px;
+        }
+        .gallery-container:hover .arrow { opacity: 1; }
+        .arrow.prev { left: 24px; }
+        .arrow.next { right: 24px; }
+
+        /* Floating Product Card */
+        .product-card {
+            position: absolute; top: 75%; transform: translateY(-50%);
+            right: 40px; width: 380px; max-height: 70vh;
+            background: #fff; border: 1px solid #e5e5e5; padding: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1); z-index: 10; overflow: hidden;
+        }
+        .badge {
+            display: inline-block; font-size: 9px; font-weight: 600;
+            letter-spacing: 1px; padding: 4px 8px; border: 1px solid #000; margin-bottom: 12px;
+        }
+        .product-title { font-size: 20px; font-weight: 400; margin-bottom: 8px; line-height: 1.2; }
+        .color-name { font-size: 11px; color: #666; margin-bottom: 12px; }
+        .product-description {
+            font-size: 12px; line-height: 1.6; color: #666; margin-bottom: 16px;
+            max-height: 60px; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .product-description.expanded { max-height: 500px; }
+        .read-more {
+            font-size: 12px; color: #000; text-decoration: none;
+            display: inline-block; margin-bottom: 16px; cursor: pointer; font-weight: 500;
+        }
+        .read-more:hover { text-decoration: underline; }
+        .select-size-btn {
+            width: 100%; padding: 14px; background: #000; color: #fff; border: none;
+            cursor: pointer; font-size: 11px; letter-spacing: 1.5px; font-weight: 500;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .price-tag { font-size: 14px; }
+        .info-links { display: flex; gap: 20px; margin-top: 16px; font-size: 11px; }
+        .info-link { display: flex; align-items: center; gap: 6px; color: #666; text-decoration: none; }
+
+        /* ===================================================
+           SIDEBAR DRAWER (Select Options)
+        =================================================== */
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
+            transition: all 0.3s; z-index: 1500;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .sidebar-drawer {
+            position: fixed; top: 0; right: -450px; width: 450px; height: 100vh;
+            background: #fff; transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+            z-index: 2000; overflow-y: auto;
+        }
+        .sidebar-drawer.active { right: 0; }
+        .drawer-header {
+            position: sticky; top: 0; background: #fff;
+            border-bottom: 1px solid #e5e5e5; padding: 20px 24px;
+            display: flex; justify-content: space-between; align-items: center; z-index: 10;
+        }
+        .drawer-title { font-size: 14px; font-weight: 600; }
+        .close-btn {
+            width: 32px; height: 32px; border: none; background: none;
+            cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center;
+        }
+        .drawer-content { padding: 24px; }
+        .breadcrumb { font-size: 10px; color: #999; margin-bottom: 12px; }
+        .breadcrumb a { color: #999; text-decoration: none; }
+        .drawer-product-title { font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+        .drawer-price { font-size: 20px; margin-bottom: 16px; }
+        .stock-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 10px; color: #059669; margin-bottom: 20px; font-weight: 500;
+        }
+        .stock-dot { width: 5px; height: 5px; border-radius: 50%; background: #059669; }
+        .section { margin-bottom: 24px; }
+        .section-label { font-size: 10px; font-weight: 600; margin-bottom: 10px; letter-spacing: 1px; }
+        .size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .size-guide-link { font-size: 10px; text-decoration: underline; cursor: pointer; color: #000; font-weight: 500; }
+        .size-guide-container { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; margin-bottom: 16px; }
+        .size-guide-container.show { max-height: 500px; }
+
+        .guide-toggle { display: flex; gap: 0; margin-bottom: 16px; margin-top: 12px; border: 1px solid #000; width: fit-content; }
+        .guide-toggle-btn {
+            padding: 8px 24px; background: #fff; color: #000; border: none;
+            cursor: pointer; font-size: 11px; letter-spacing: 1px; font-weight: 600; transition: all 0.3s;
+        }
+        .guide-toggle-btn.active { background: #000; color: #fff; }
+
+        .size-table { width: 100%; margin-bottom: 40px; }
+        .size-table-header {
+            display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            border-bottom: 1px solid #000; padding-bottom: 12px; margin-bottom: 12px;
+        }
+        .size-table-header div { font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+        .size-table-row {
+            display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            padding: 12px 0; border-bottom: 1px solid #e5e5e5; font-size: 13px;
+        }
+        .size-table-row div:first-child { font-weight: 600; }
+
+        .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .size-btn {
+            padding: 14px 8px; border: 1px solid #d0d0d0; background: #fff;
+            text-align: center; cursor: pointer; font-size: 12px; transition: all 0.2s;
+            display: block; font-family: inherit;
+        }
+        .size-btn:hover:not(.disabled) { border-color: #000; }
+        .size-btn:has(input:checked) { background: #000; color: #fff; border-color: #000; }
+        .size-btn.disabled { opacity: 0.3; cursor: not-allowed; }
+        .size-btn input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+
+        .add-cart-btn {
+            width: 100%; padding: 16px; background: #000; color: #fff; border: none;
+            cursor: pointer; font-size: 11px; letter-spacing: 1.5px; font-weight: 500;
+            margin-bottom: 16px; font-family: inherit;
+        }
+        .add-cart-btn:disabled { background: #d0d0d0; cursor: not-allowed; }
+
+        .shipping-info-box { font-size: 11px; line-height: 1.6; color: #666; padding: 14px; background: #f8f8f8; margin-bottom: 20px; }
+
+        .description-section { padding: 20px 0; border-top: 1px solid #e5e5e5; }
+        .description-title { font-size: 10px; font-weight: 600; margin-bottom: 10px; letter-spacing: 1px; }
+        .description-text { font-size: 12px; line-height: 1.7; color: #333; }
+
+        .accordion { border-top: 1px solid #e5e5e5; }
+        .accordion-item { border-bottom: 1px solid #e5e5e5; }
+        .accordion-header {
+            width: 100%; padding: 16px 0; display: flex; justify-content: space-between;
+            background: none; border: none; cursor: pointer; font-size: 10px;
+            font-weight: 600; letter-spacing: 1px; text-align: left; font-family: inherit;
+        }
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .accordion-item.open .accordion-content { max-height: 600px; padding-bottom: 16px; }
+        .accordion-body { font-size: 12px; line-height: 1.7; color: #666; }
+        .accordion-body ul { list-style: none; padding: 0; }
+        .accordion-body li { margin-bottom: 6px; padding-left: 14px; position: relative; }
+        .accordion-body li:before { content: "•"; position: absolute; left: 0; }
+
+        /* Color swatches */
+        .color-swatches { display: flex; gap: 10px; }
+        .color-swatch {
+            width: 40px; height: 40px; border-radius: 50%; border: 2px solid transparent;
+            cursor: pointer; transition: all 0.2s; overflow: hidden;
+        }
+        .color-swatch:hover { transform: scale(1.1); }
+        .color-swatch.active { border-color: #000; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000; }
+        .color-swatch img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ===================================================
+           PRODUCT SPECIFICATIONS
+        =================================================== */
+        .specifications-section { background: #000; color: #fff; padding: 50px 0; }
+        .specs-container { margin: 0 auto; padding: 0 60px; }
+        .specs-title { font-size: 30px; font-weight: 450; margin-bottom: 40px; letter-spacing: -1px; }
+        .specs-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 0; border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .specs-footer {
+            display: flex; flex-direction: column; align-items: flex-end;
+            gap: 20px; padding-top: 32px; width: 25%; margin-left: auto; text-align: right;
+        }
+        .spec-card {
+            display: flex; flex-direction: column; padding: 40px;
+            border-right: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .spec-card.has-circle { justify-content: space-between; }
+        .spec-card:last-child { border-right: none; }
+        .spec-name { font-size: 15px; font-weight: 500; margin-bottom: 40px; }
+        .spec-bar { margin-top: auto; }
+        .bar-wrapper { position: relative; margin-bottom: 20px; }
+        .bar-track { height: 24px; background: transparent; position: relative; display: flex; align-items: flex-end; gap: 2px; }
+        .bar-segment { flex: 1; height: 8px; background: #fff; border-radius: 1px; }
+        .bar-segment.tall { height: 18px; }
+        .bar-segment.inactive { background: rgba(255,255,255,0.25); }
+        .circle-segments .bar-segment {
+            position: absolute; width: 2px; height: 6px; flex: unset; left: 50%; top: 50%;
+            border-radius: 1px; transform: translateX(-50%) rotate(calc(var(--i) * 6deg)) translateY(-22px);
+            transform-origin: center bottom;
+        }
+        .bar-labels {
+            display: flex; justify-content: space-between; font-size: 11px;
+            color: rgba(255,255,255,0.5); letter-spacing: 0.5px; margin-top: 12px; text-transform: uppercase;
+        }
+        .spec-circle-wrapper { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; flex: 1; margin-top: auto; }
+        .spec-circle-content { display: flex; flex-direction: row; align-items: center; gap: 16px; }
+        .spec-icon { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
+        .circle-segments { width: 100%; height: 100%; position: relative; }
+        .spec-center-icon { position: absolute; top: 57%; left: 50%; transform: translate(-50%,-50%); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+        .spec-center-icon svg { width: 100%; height: 100%; fill: none; stroke: #fff; stroke-width: 1.5; }
+        .spec-text { display: flex; flex-direction: column; gap: 5px; }
+        .spec-label { font-size: 16px; font-weight: 400; }
+        .spec-value { font-size: 16px; font-weight: 400; }
+        .specs-description { font-size: 18px; line-height: 1.6; max-width: 600px; font-weight: 300; letter-spacing: -0.2px; }
+        .specs-btn {
+            padding: 16px 40px; background: transparent; color: #fff; border: 1px solid #fff;
+            cursor: pointer; font-size: 12px; letter-spacing: 1px; transition: all 0.3s; text-transform: uppercase; font-family: inherit;
+        }
+        .specs-btn:hover { background: #fff; color: #000; }
+
+        /* ===================================================
+           SPECS DETAIL DRAWER
+        =================================================== */
+        .specs-drawer {
+            position: fixed; top: 0; right: -500px; width: 500px; height: 100vh;
+            background: #fff; transition: right 0.3s cubic-bezier(0.4,0,0.2,1); z-index: 2000; overflow-y: auto;
+        }
+        .specs-drawer.active { right: 0; }
+        .specs-drawer-header {
+            position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e5e5;
+            padding: 24px; display: flex; justify-content: space-between; align-items: center; z-index: 10;
+        }
+        .specs-drawer-title { font-size: 16px; font-weight: 600; }
+        .specs-drawer-content { padding: 40px 32px; }
+        .specs-product-info { text-align: center; margin-bottom: 40px; }
+        .specs-product-image { width: 120px; height: auto; margin: 0 auto 20px; }
+        .specs-product-title { font-size: 20px; font-weight: 400; margin-bottom: 20px; }
+        .specs-product-desc { font-size: 14px; line-height: 1.6; color: #666; }
+        .spec-detail-section { margin-bottom: 40px; }
+        .spec-detail-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+        .spec-detail-bar { margin-bottom: 20px; }
+        .spec-detail-bar .bar-track { display: flex; align-items: flex-end; gap: 2px; background: transparent; margin-bottom: 12px; }
+        .spec-detail-bar .bar-segment { background: #d0d0d0; }
+        .spec-detail-bar .bar-segment.active { background: #000 !important; }
+        .spec-detail-bar .bar-segment.inactive { background: rgba(0,0,0,0.15) !important; }
+        .specs-drawer .circle-segments .bar-segment.active { background: #000 !important; }
+        .specs-drawer .circle-segments .bar-segment.inactive { background: rgba(0,0,0,0.15) !important; }
+        .spec-detail-bar .bar-labels { color: #999; }
+        .spec-detail-text { font-size: 13px; line-height: 1.7; color: #666; }
+        .spec-circle-container { display: flex; gap: 40px; margin-bottom: 20px; flex-wrap: wrap; }
+        .spec-circle-item { display: flex; align-items: center; gap: 16px; }
+        .drawer-spec-icon { width: 80px; height: 80px; flex-shrink: 0; position: relative; }
+
+        /* ===================================================
+           FULL IMAGE SECTION
+        =================================================== */
+        .full-image-section { position: relative; width: 100%; height: 100vh; background: #f5f5f5; }
+        .full-image-section img { width: 100%; height: 100%; object-fit: cover; }
+        .image-overlay-text { position: absolute; bottom: 60px; left: 60px; color: #fff; max-width: 600px; }
+        .overlay-badge { font-size: 11px; letter-spacing: 1px; margin-bottom: 16px; padding: 6px 12px; border: 1px solid #fff; display: inline-block; }
+        .overlay-title { font-size: 42px; font-weight: 300; line-height: 1.3; letter-spacing: -0.5px; }
+
+        /* ===================================================
+           FEATURES & SIZING
+        =================================================== */
+        .features-sizing-section { background: #fff; padding: 80px 0; }
+        .features-container { max-width: 2000px; margin: 0 auto; padding: 0 60px; }
+        .section-tabs { display: flex; gap: 40px; margin-bottom: 60px; border-bottom: 1px solid #e5e5e5; }
+        .tab {
+            font-size: 18px; padding-bottom: 16px; cursor: pointer;
+            border-bottom: 2px solid transparent; transition: all 0.3s; color: #999; font-weight: 400;
+        }
+        .tab.active { color: #000; border-bottom-color: #000; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .features-grid { display: grid; grid-template-columns: 400px 1fr; gap: 0; margin-bottom: 80px; }
+        .features-left { display: flex; flex-direction: column; padding-right: 60px; }
+        .features-list { list-style: none; margin-bottom: 40px; }
+        .feature-item { font-size: 32px; font-weight: 300; margin-bottom: 20px; color: #e5e5e5; cursor: pointer; transition: color 0.3s; letter-spacing: -0.5px; }
+        .feature-item.active { color: #000; }
+        .feature-description { font-size: 15px; line-height: 1.7; color: #333; max-width: 400px; }
+        .feature-detail { position: relative; display: flex; justify-content: flex-end; }
+        .feature-image-container { width: 55%; height: auto; overflow: hidden; }
+        .feature-image { width: 100%; height: auto; display: block; transition: opacity 0.3s ease; }
+        .sizing-content { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: flex-start; }
+        .sizing-left { padding-right: 80px; display: flex; flex-direction: column; justify-content: center; min-height: 600px; }
+        .sizing-image-wrapper { display: flex; justify-content: flex-end; }
+        .sizing-image { width: 100%; height: auto; max-width: 600px; }
+        .sizing-info h3 { font-size: 28px; font-weight: 300; margin-bottom: 30px; letter-spacing: -0.3px; line-height: 1.3; }
+        .size-guide-btn {
+            padding: 14px 36px; background: transparent; color: #000; border: 1px solid #000;
+            cursor: pointer; font-size: 13px; letter-spacing: 0.5px; transition: all 0.3s; width: fit-content; font-family: inherit;
+        }
+        .size-guide-btn:hover { background: #000; color: #fff; }
+
+        /* ===================================================
+           SIZE GUIDE DRAWER
+        =================================================== */
+        .size-guide-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1500;
+        }
+        .size-guide-overlay.active { opacity: 1; visibility: visible; }
+        .size-guide-drawer {
+            position: fixed; top: 0; right: -600px; width: 600px; height: 100vh;
+            background: #fff; transition: right 0.3s cubic-bezier(0.4,0,0.2,1); z-index: 2000; overflow-y: auto;
+        }
+        .size-guide-drawer.active { right: 0; }
+        .size-guide-header {
+            position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e5e5;
+            padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; z-index: 10;
+        }
+        .size-guide-title { font-size: 18px; font-weight: 600; }
+        .size-guide-content { padding: 32px; }
+        .size-guide-image { width: 100%; height: auto; margin-top: 32px; }
+        .measurement-note { font-size: 11px; line-height: 1.6; color: #666; margin-top: 16px; }
+
+        /* ===================================================
+           FLOATING CART
+        =================================================== */
+        .floating-cart {
+            position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
+            border-top: 1px solid #e5e5e5; padding: 20px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            transform: translateY(100%); transition: transform 0.3s ease;
+            z-index: 1000; box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+        .floating-cart.visible { transform: translateY(0); }
+        .floating-cart-info { display: flex; align-items: center; gap: 20px; }
+        .floating-cart-image { width: 60px; height: 60px; object-fit: cover; }
+        .floating-cart-details h4 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+        .floating-cart-details p { font-size: 16px; font-weight: 400; }
+        .floating-cart-actions { display: flex; align-items: center; gap: 16px; }
+        .floating-wishlist {
+            width: 48px; height: 48px; border: 1px solid #e5e5e5; background: #fff;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px;
+        }
+        .floating-wishlist:hover { border-color: #000; }
+        .add-to-cart {
+            padding: 14px 40px; background: #000; color: #fff; border: none;
+            cursor: pointer; font-size: 13px; letter-spacing: 0.5px; font-weight: 500;
+            font-family: inherit; transition: background 0.3s;
+        }
+        .add-to-cart:hover { background: #333; }
+
+        /* ===================================================
+           GALLERY SECTION
+        =================================================== */
+        .gallery-section { background: #fff; padding: 80px 0; }
+        .gallery-section-container { max-width: 2000px; margin: 0 auto; padding: 0 60px; }
+        .gallery-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .gallery-section-title { font-size: 28px; font-weight: 400; letter-spacing: -0.3px; }
+        .gallery-navigation { display: flex; gap: 12px; }
+        .gallery-nav-btn {
+            width: 48px; height: 48px; border: 1px solid #e5e5e5; background: #fff;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 20px;
+        }
+        .gallery-nav-btn:hover { border-color: #000; background: #000; color: #fff; }
+        .gallery-scroll-wrapper { overflow: hidden; cursor: grab; user-select: none; }
+        .gallery-scroll-wrapper.dragging { cursor: grabbing; }
+        .gallery-scroll-container { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+        .gallery-scroll-container.no-transition { transition: none !important; }
+        .gallery-item { flex: 0 0 calc(50% - 10px); height: 600px; position: relative; overflow: hidden; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* ===================================================
+           SIMILAR PRODUCTS
+        =================================================== */
+        .similar-products-section { background: #fff; padding: 80px 0; border-top: 1px solid #e5e5e5; }
+        .similar-products-container { max-width: 2000px; margin: 0 auto; padding: 0 60px; }
+        .similar-products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .similar-products-title { font-size: 28px; font-weight: 400; letter-spacing: -0.3px; }
+        .similar-products-scroll-wrapper { overflow: hidden; cursor: grab; user-select: none; }
+        .similar-products-scroll-wrapper.dragging { cursor: grabbing; }
+        .similar-products-scroll { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+        .similar-products-scroll.no-transition { transition: none !important; }
+        .product-card-item { flex: 0 0 calc(25% - 15px); background: #fff; position: relative; cursor: pointer; }
+        .product-image-wrapper { width: 100%; height: 400px; overflow: hidden; position: relative; background: #f5f5f5; }
+        .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .product-card-item:hover .product-image { transform: scale(1.05); }
+        .wishlist-btn {
+            position: absolute; top: 16px; right: 16px; width: 40px; height: 40px;
+            background: rgba(255,255,255,0.9); border: 1px solid #e5e5e5;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px;
+        }
+        .product-info { padding: 20px 0; }
+        .product-name { font-size: 14px; font-weight: 400; margin-bottom: 8px; line-height: 1.4; }
+        .product-price { font-size: 16px; font-weight: 500; }
+
+        /* ===================================================
+           FOOTER (sama dengan index.html)
+        =================================================== */
+        /* .footer { background: #fff; border-top: 1px solid #e5e5e5; }
+        .footer-container { max-width: 1600px; margin: 0 auto; padding: 60px 40px 40px; }
+        .footer-top { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; padding-bottom: 60px; border-bottom: 1px solid #e5e5e5; }
+        .footer-column h3 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { text-decoration: none; color: #666; font-size: 13px; transition: color 0.2s; }
+        .footer-links a:hover { color: #000; }
+        .footer-column select { width: 100%; padding: 10px; border: 1px solid #e5e5e5; background: #fff; font-size: 12px; font-family: inherit; cursor: pointer; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-top: 30px; }
+        .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+        .footer-legal a { font-size: 10px; color: #999; text-decoration: none; letter-spacing: 0.5px; }
+        .footer-legal a:hover { color: #000; }
+        .footer-social { display: flex; gap: 20px; }
+        .footer-social a { font-size: 10px; color: #999; text-decoration: none; letter-spacing: 0.5px; }
+        .footer-social a:hover { color: #000; }
+        .footer-copyright { font-size: 10px; color: #999; letter-spacing: 0.5px; } */
+
+        /* ===================================================
+           RESPONSIVE — iPad (768 – 1024px)
+        =================================================== */
+        @media (max-width: 1024px) {
+            .gallery-slide { min-width: 100%; width: 100%; }
+            .product-card { width: 90%; left: 5%; right: 5%; top: auto; bottom: 20px; transform: none; }
+            .sidebar-drawer { width: 100%; right: -100%; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .specs-container { padding: 0 32px; }
+            .specs-footer { width: 50%; gap: 24px; }
+            .specs-drawer { width: 100%; right: -100%; }
+            .size-guide-drawer { width: 100%; right: -100%; }
+            .features-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-left { padding-right: 0; }
+            .feature-image-container { width: 100%; }
+            .sizing-content { grid-template-columns: 1fr; gap: 40px; }
+            .sizing-left { padding-right: 0; min-height: auto; }
+            .sizing-image-wrapper { justify-content: center; }
+            .gallery-item { flex: 0 0 calc(100% - 10px); }
+            .product-card-item { flex: 0 0 calc(50% - 10px); }
+            .features-container { padding: 0 32px; }
+            .gallery-section-container, .similar-products-container { padding: 0 32px; }
+            .full-image-section { height: 70vh; }
+            .overlay-title { font-size: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Gallery hero */
+            .gallery-container { height: 60vh; }
+            .gallery-slide { min-width: 100%; width: 100%; }
+            .arrow { display: none; }
+            .product-card { position: static; transform: none; width: 100%; max-height: none; border: none; border-top: 1px solid #e5e5e5; box-shadow: none; border-radius: 0; }
+
+            /* Specs */
+            .specs-title { font-size: 22px; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .spec-card { border-right: none; padding: 28px 20px; }
+            .specs-container { padding: 0 20px; }
+            .specs-footer { width: 100%; align-items: flex-start; text-align: left; }
+            .specs-description { font-size: 14px; }
+
+            /* Full image */
+            .full-image-section { height: 60vh; }
+            .image-overlay-text { bottom: 30px; left: 24px; }
+            .overlay-title { font-size: 24px; }
+
+            /* Features */
+            .features-sizing-section { padding: 50px 0; }
+            .features-container { padding: 0 20px; }
+            .section-tabs { gap: 24px; margin-bottom: 36px; }
+            .tab { font-size: 15px; }
+            .feature-item { font-size: 22px; }
+            .sizing-left { padding-right: 0; }
+
+            /* Gallery section */
+            .gallery-section { padding: 50px 0; }
+            .gallery-section-container { padding: 0 20px; }
+            .gallery-section-title, .similar-products-title { font-size: 22px; }
+            .gallery-item { height: 320px; }
+            .product-card-item { flex: 0 0 calc(100% - 10px); }
+
+            /* Similar products */
+            .similar-products-section { padding: 50px 0; }
+            .similar-products-container { padding: 0 20px; }
+
+            /* Footer */
+            .footer-top { grid-template-columns: 1fr; gap: 36px; padding-bottom: 36px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .footer-legal { gap: 12px; }
+            .footer-container { padding: 40px 20px 30px; }
+
+            /* Floating cart */
+            .floating-cart { padding: 16px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+            .floating-cart-actions { width: 100%; }
+            .add-to-cart { flex: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-section-header, .similar-products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .size-guide-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#" id="mobileShopToggle">Shop</a>
+        <a href="aboutus.php">About</a>
+        <a href="#explore">Explore</a>
+        <div class="mobile-nav-sub">
+            <a href="wishlist.php">Wishlist</a>
+            <a href="login.php">Account</a>
+            <a href="#" id="mobileCartToggle">Cart</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="mainHeader">
+           <div class="header-main">
+               <!-- Hamburger (mobile) -->
+               <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                   <span></span><span></span><span></span>
+               </button>
+
+               <div class="header-left">
+                   <a href="#" id="shopToggle">Shop</a>
+                   <a href="aboutus.php">About</a>
+                   <a href="#explore">Explore</a>
+               </div>
+               
+               <div class="logo">
+                   <a href="index.php"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
+               </div>
+               
+               <div class="header-right">
+                   <div class="search-container">
+                       <a class="search-toggle" id="searchToggle">Search</a>
+                       <div class="search-box" id="searchBox">
+                           <div class="search-input-wrapper">
+                               <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                               <button class="search-close" id="searchClose">×</button>
+                           </div>
+                           <div class="search-dropdown" id="searchDropdown">
+                               <!-- Results will be populated here by JavaScript -->
+                           </div>
+                       </div>
+                   </div>
+                   <a href="wishlist.php" style="position:relative; display:inline-block;">
+                       Wishlist
+                       <span id="wishlistHeaderCount" class="badge-count">0</span>
+                   </a>
+                   <a href="account.html">Account</a>
+                   <a href="#" id="cartToggle" style="position:relative; display:inline-block;">
+                       Cart
+                       <span id="cartCount" class="badge-count">0</span>
+                   </a>
+               </div>
+               <div id="cartContainer"></div>
+           </div>
+       </header>
+
+    <script>
+        // Header scroll blur
+        (function() {
+            var header = document.getElementById('mainHeader');
+            var lastScrollY = 0, ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        var cy = window.scrollY;
+                        if (cy > 80) {
+                            if (cy > lastScrollY) {
+                                header.style.background = 'rgba(255,255,255,0.7)';
+                                header.style.backdropFilter = 'blur(8px)';
+                            } else {
+                                header.style.background = '#fff';
+                                header.style.backdropFilter = 'none';
+                            }
+                        } else {
+                            header.style.background = '#fff';
+                            header.style.backdropFilter = 'none';
+                        }
+                        lastScrollY = cy; ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        })();
+        // Hamburger
+        (function() {
+            var btn = document.getElementById('hamburgerBtn');
+            var nav = document.getElementById('mobileNav');
+            if (!btn || !nav) return;
+            btn.addEventListener('click', function() {
+                btn.classList.toggle('open');
+                nav.classList.toggle('open');
+                document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+            });
+            nav.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    btn.classList.remove('open'); nav.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+    </script>
+
+    <main>
+        <!-- Full Screen Gallery -->
+        <div class="gallery-container">
+            <div class="gallery-track" id="track">
+                <div class="gallery-slide"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=1600&q=85&fit=max&auto=format" alt="T.K.O. Jersey"></div>
+                <div class="gallery-slide"><img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=1600&q=85&fit=max&auto=format" alt="T.K.O. Jersey"></div>
+                <div class="gallery-slide"><img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=1600&q=85&fit=max&auto=format" alt="T.K.O. Jersey"></div>
+                <div class="gallery-slide"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=1600&q=85&fit=max&auto=format" alt="T.K.O. Jersey"></div>
+                <div class="gallery-slide"><img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=1600&q=85&fit=max&auto=format" alt="T.K.O. Jersey"></div>
+            </div>
+            <div class="arrow prev" onclick="prev()">‹</div>
+            <div class="arrow next" onclick="next()">›</div>
+            <div class="gallery-dots" id="dots"></div>
+
+            <!-- Floating Product Card -->
+            <div class="product-card">
+                <div class="badge">NEW ARRIVAL</div>
+                <h2 class="product-title">Women's T.K.O. Mechanism Jersey</h2>
+                <div class="color-name">Dark Purple</div>
+                <p class="product-description" id="productDescription">
+                    The T.K.O. Mechanism Jersey features a low-cut collar to reduce chafing and improve comfort. Lightweight fabric provides everything you need for competitive races or fast-paced training days. The mesh-structured strap fabric gives stretch and breathability. A high-quality construction ensures durability and performance in all conditions.
+                </p>
+                <a class="read-more" id="readMoreBtn" onclick="toggleDescription()">+ Read more</a>
+                <button class="select-size-btn" onclick="openDrawer()">
+                    <span>Select size</span>
+                    <span class="price-tag">Rp 250.000</span>
+                </button>
+                <div class="info-links">
+                    <a href="#" class="info-link"><span>📦</span><span>Crash Replacement</span></a>
+                    <a href="#" class="info-link"><span>🚚</span><span>Shipping & Delivery</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Specifications (rendered by JS — no PHP) -->
+        <section class="specifications-section">
+            <div class="specs-container">
+                <h2 class="specs-title">Product<br>Specifications</h2>
+                <div class="specs-grid" id="specsGrid">
+                    <!-- Temperature -->
+                    <div class="spec-card">
+                        <h3 class="spec-name">Temperature</h3>
+                        <div class="spec-bar">
+                            <div class="bar-wrapper">
+                                <div class="bar-track" id="temp-bar" data-active-start="10" data-active-end="30" data-min="-10" data-max="30"></div>
+                            </div>
+                            <div class="bar-labels"><span>-10°C</span><span>0°C</span><span>15°C</span><span>+30°C</span></div>
+                        </div>
+                    </div>
+                    <!-- Intensity -->
+                    <div class="spec-card">
+                        <h3 class="spec-name">Intensity</h3>
+                        <div class="spec-bar">
+                            <div class="bar-wrapper">
+                                <div class="bar-track" id="intensity-bar" data-active-start="26" data-active-end="50" data-min="1" data-max="50"></div>
+                            </div>
+                            <div class="bar-labels"><span>LOW</span><span>HIGH</span></div>
+                        </div>
+                    </div>
+                    <!-- Insulation -->
+                    <div class="spec-card has-circle">
+                        <h3 class="spec-name">Insulation</h3>
+                        <div class="spec-circle-wrapper">
+                            <div class="spec-circle-content">
+                                <div class="spec-icon">
+                                    <div class="circle-segments" id="insulation-circle" data-value="6" data-max="6"></div>
+                                    <div class="spec-center-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/><circle cx="11.5" cy="18.5" r="1.5" fill="currentColor"/></svg>
+                                    </div>
+                                </div>
+                                <div class="spec-text">
+                                    <div class="spec-label">Insulation</div>
+                                    <div class="spec-value" id="insulation-value-label">6/6</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Breathability -->
+                    <div class="spec-card has-circle">
+                        <h3 class="spec-name">Breathability</h3>
+                        <div class="spec-circle-wrapper">
+                            <div class="spec-circle-content">
+                                <div class="spec-icon">
+                                    <div class="circle-segments" id="breathability-circle" data-value="4" data-max="6"></div>
+                                    <div class="spec-center-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="8" opacity="0.3"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+                                    </div>
+                                </div>
+                                <div class="spec-text">
+                                    <div class="spec-label">Breathability</div>
+                                    <div class="spec-value" id="breathability-value-label">4/6</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="specs-footer">
+                    <p class="specs-description">The jersey has a tight, aerodynamic fit — ideal for high-intensity road riding and racing.</p>
+                    <button class="specs-btn" onclick="openSpecsDrawer()">See Full Specifications</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Image Section -->
+        <section class="full-image-section">
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=1920&q=85&fit=max&auto=format" alt="T.K.O. Jersey On Bike">
+            <div class="image-overlay-text">
+                <div class="overlay-badge">INTENDED USE</div>
+                <h2 class="overlay-title">The jersey has a tight,<br>aerodynamic fit — ideal for high-intensity<br>road riding and racing.</h2>
+            </div>
+        </section>
+
+        <!-- Features & Sizing -->
+        <section class="features-sizing-section" id="featuresSection">
+            <div class="features-container">
+                <div class="section-tabs">
+                    <div class="tab active" onclick="switchTab('features', event)">Features</div>
+                    <div class="tab" onclick="switchTab('sizing', event)">Sizing</div>
+                </div>
+                <!-- Features Tab -->
+                <div class="tab-content active" id="featuresTab">
+                    <div class="features-grid">
+                        <div class="features-left">
+                            <ul class="features-list">
+                                <li class="feature-item active" data-feature="on-bike" onclick="selectFeature('on-bike')">On Bike</li>
+                                <li class="feature-item" data-feature="elastic" onclick="selectFeature('elastic')">Elastic Grippers</li>
+                                <li class="feature-item" data-feature="straps" onclick="selectFeature('straps')">Straps</li>
+                                <li class="feature-item" data-feature="chamois" onclick="selectFeature('chamois')">Chamois</li>
+                                <li class="feature-item" data-feature="fabric" onclick="selectFeature('fabric')">Fabric</li>
+                                <li class="feature-item" data-feature="mesh" onclick="selectFeature('mesh')">Front Mesh</li>
+                                <li class="feature-item" data-feature="stitching" onclick="selectFeature('stitching')">Chamois Stitching</li>
+                            </ul>
+                            <div class="feature-description" id="featureDescription">Aerodynamic race fit designed for high-intensity riding. The jersey stays in place during aggressive cycling positions with elastic silicone grippers at the hem for secure fit without restricting movement.</div>
+                        </div>
+                        <div class="feature-detail">
+                            <div class="feature-image-container">
+                                <img src="https://cdn.sanity.io/images/k15yl91v/production/413c2dcc9acaf9c034626ddadaf80b3aec7e9130-3200x4000.jpg?w=1000&q=85&fit=max&auto=format" alt="On Bike" class="feature-image" id="mainFeatureImage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sizing Tab -->
+                <div class="tab-content" id="sizingTab">
+                    <div class="sizing-content">
+                        <div class="sizing-left">
+                            <div class="sizing-info">
+                                <h3>Model is 173 cm and wearing size S.</h3>
+                                <button class="size-guide-btn" onclick="openSizeGuide()">Size Guide</button>
+                            </div>
+                        </div>
+                        <div class="sizing-image-wrapper">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=800&q=85&fit=max&auto=format" alt="Model Sizing" class="sizing-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-section-container">
+                <div class="gallery-section-header">
+                    <h2 class="gallery-section-title">Gallery</h2>
+                    <div class="gallery-navigation">
+                        <button class="gallery-nav-btn" onclick="galleryPrev()">←</button>
+                        <button class="gallery-nav-btn" onclick="galleryNext()">→</button>
+                    </div>
+                </div>
+                <div class="gallery-scroll-wrapper" id="galleryWrapper">
+                    <div class="gallery-scroll-container" id="galleryContainer">
+                        <div class="gallery-item"><img src="https://cdn.sanity.io/images/k15yl91v/production/413c2dcc9acaf9c034626ddadaf80b3aec7e9130-3200x4000.jpg?w=1200&q=85&fit=max&auto=format" alt="Gallery 1"></div>
+                        <div class="gallery-item"><img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=1200&q=85&fit=max&auto=format" alt="Gallery 2"></div>
+                        <div class="gallery-item"><img src="https://cdn.sanity.io/images/k15yl91v/production/c2b4f365027938fe47fb72bbb9cb3b3c09173d73-3200x4000.jpg?w=1200&q=85&fit=max&auto=format" alt="Gallery 3"></div>
+                        <div class="gallery-item"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=1200&q=85&fit=max&auto=format" alt="Gallery 4"></div>
+                        <div class="gallery-item"><img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=1200&q=85&fit=max&auto=format" alt="Gallery 5"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Similar Products -->
+        <section class="similar-products-section">
+            <div class="similar-products-container">
+                <div class="similar-products-header">
+                    <h2 class="similar-products-title">Similar Products</h2>
+                    <div class="gallery-navigation">
+                        <button class="gallery-nav-btn" onclick="productsPrev()">←</button>
+                        <button class="gallery-nav-btn" onclick="productsNext()">→</button>
+                    </div>
+                </div>
+                <div class="similar-products-scroll-wrapper" id="productsWrapper">
+                    <div class="similar-products-scroll" id="productsContainer">
+                        <div class="product-card-item">
+                            <div class="product-image-wrapper"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=85&fit=max&auto=format" alt="Product 1" class="product-image"><button class="wishlist-btn">♡</button></div>
+                            <div class="product-info"><div class="product-name">Women's STFR Mechanism Long Sleeve Jersey Off White</div><div class="product-price">€ 230,00</div></div>
+                        </div>
+                        <div class="product-card-item">
+                            <div class="product-image-wrapper"><img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=600&q=85&fit=max&auto=format" alt="Product 2" class="product-image"><button class="wishlist-btn">♡</button></div>
+                            <div class="product-info"><div class="product-name">Women's Mechanism Pro Long Sleeve Jersey Iron Grey</div><div class="product-price">€ 250,00</div></div>
+                        </div>
+                        <div class="product-card-item">
+                            <div class="product-image-wrapper"><img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=600&q=85&fit=max&auto=format" alt="Product 3" class="product-image"><button class="wishlist-btn">♡</button></div>
+                            <div class="product-info"><div class="product-name">Women's Mechanism Long Sleeve Jersey Steel / Dark Olive</div><div class="product-price">€ 215,00</div></div>
+                        </div>
+                        <div class="product-card-item">
+                            <div class="product-image-wrapper"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=600&q=85&fit=max&auto=format" alt="Product 4" class="product-image"><button class="wishlist-btn">♡</button></div>
+                            <div class="product-info"><div class="product-name">Women's Mechanism Long Sleeve Jersey Camel / Maroon</div><div class="product-price">€ 215,00</div></div>
+                        </div>
+                        <div class="product-card-item">
+                            <div class="product-image-wrapper"><img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=600&q=85&fit=max&auto=format" alt="Product 5" class="product-image"><button class="wishlist-btn">♡</button></div>
+                            <div class="product-info"><div class="product-name">Women's Mechanism Long Sleeve Jersey Dark Purple / Sky</div><div class="product-price">€ 215,00</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Add to Cart -->
+    <div class="floating-cart" id="floatingCart">
+        <div class="floating-cart-info">
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=100&q=85" alt="Jersey" class="floating-cart-image">
+            <div class="floating-cart-details">
+                <h4>Women's T.K.O. Mechanism Jersey</h4>
+                <p>Rp 250.000</p>
+            </div>
+        </div>
+        <div class="floating-cart-actions">
+            <button class="floating-wishlist">♡</button>
+            <button class="add-to-cart" onclick="floatingAddToCart()">ADD TO CART</button>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay & Drawer -->
+    <div class="sidebar-overlay" id="overlay" onclick="closeDrawer()"></div>
+    <div class="sidebar-drawer" id="drawer">
+        <div class="drawer-header">
+            <div class="drawer-title">Select Options</div>
+            <button class="close-btn" onclick="closeDrawer()">×</button>
+        </div>
+        <div class="drawer-content">
+            <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Women</a> / <a href="#">Jersey</a></div>
+            <h1 class="drawer-product-title">Women's T.K.O. Mechanism Jersey</h1>
+            <div class="drawer-price">Rp 250.000</div>
+            <div class="stock-badge"><span class="stock-dot"></span>IN STOCK</div>
+
+            <!-- Color -->
+            <!-- <div class="section">
+                <div class="section-label">COLOR: DARK PURPLE</div>
+                <div class="color-swatches">
+                    <div class="color-swatch active" onclick="selectColorDrawer(this, 'Dark Purple')" style="background:#4a1a6b;" title="Dark Purple"></div>
+                    <div class="color-swatch" onclick="selectColorDrawer(this, 'Iron Grey')" style="background:#555;" title="Iron Grey"></div>
+                    <div class="color-swatch" onclick="selectColorDrawer(this, 'Off White')" style="background:#f5f5f0;border:1px solid #ccc;" title="Off White"></div>
+                </div>
+            </div> -->
+
+            <!-- Size -->
+            <div class="section">
+                <div class="size-header">
+                    <div class="section-label">SIZE</div>
+                    <div class="size-guide-link" onclick="toggleSizeGuideDrawer()">Size Guide</div>
+                </div>
+                <div class="size-guide-container" id="sizeGuideContainer">
+                    <div class="guide-toggle" style="margin-bottom:16px;margin-top:12px;">
+                        <button class="guide-toggle-btn active" onclick="toggleSidebarUnit('cm',this)">CM</button>
+                        <button class="guide-toggle-btn" onclick="toggleSidebarUnit('in',this)">IN</button>
+                    </div>
+                    <div id="sidebarCmTable">
+                        <div class="size-table">
+                            <div class="size-table-header"><div>SIZE</div><div>CHEST</div><div>WAIST</div><div>HIP</div><div>THIGH</div></div>
+                            <div class="size-table-row"><div>XXS</div><div>78-82</div><div>63-67</div><div>84-88</div><div>49-51</div></div>
+                            <div class="size-table-row"><div>XS</div><div>82-86</div><div>67-71</div><div>88-92</div><div>51-53</div></div>
+                            <div class="size-table-row"><div>S</div><div>86-90</div><div>71-75</div><div>92-96</div><div>53-55</div></div>
+                            <div class="size-table-row"><div>M</div><div>90-94</div><div>75-79</div><div>96-100</div><div>55-57</div></div>
+                            <div class="size-table-row"><div>L</div><div>94-98</div><div>79-83</div><div>100-104</div><div>57-60</div></div>
+                            <div class="size-table-row"><div>XL</div><div>98-102</div><div>83-87</div><div>104-108</div><div>60-62</div></div>
+                            <div class="size-table-row"><div>XXL</div><div>102-106</div><div>87-91</div><div>108-112</div><div>62-64</div></div>
+                        </div>
+                    </div>
+                    <div id="sidebarInTable" style="display:none;">
+                        <div class="size-table">
+                            <div class="size-table-header"><div>SIZE</div><div>CHEST</div><div>WAIST</div><div>HIP</div><div>THIGH</div></div>
+                            <div class="size-table-row"><div>XXS</div><div>30.7-32.3</div><div>24.8-26.4</div><div>33.1-34.6</div><div>19.3-20.1</div></div>
+                            <div class="size-table-row"><div>XS</div><div>32.3-33.9</div><div>26.4-28.0</div><div>34.6-36.2</div><div>20.1-20.9</div></div>
+                            <div class="size-table-row"><div>S</div><div>33.9-35.4</div><div>28.0-29.5</div><div>36.2-37.8</div><div>20.9-21.7</div></div>
+                            <div class="size-table-row"><div>M</div><div>35.4-37.0</div><div>29.5-31.1</div><div>37.8-39.4</div><div>21.7-22.4</div></div>
+                            <div class="size-table-row"><div>L</div><div>37.0-38.6</div><div>31.1-32.7</div><div>39.4-40.9</div><div>22.4-23.6</div></div>
+                            <div class="size-table-row"><div>XL</div><div>38.6-40.2</div><div>32.7-34.3</div><div>40.9-42.5</div><div>23.6-24.4</div></div>
+                            <div class="size-table-row"><div>XXL</div><div>40.2-41.7</div><div>34.3-35.8</div><div>42.5-44.1</div><div>24.4-25.2</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="size-grid">
+                    <label class="size-btn"><input type="radio" name="size" value="XS" onchange="enableCartButton()"><span>XS</span></label>
+                    <label class="size-btn"><input type="radio" name="size" value="S" onchange="enableCartButton()"><span>S</span></label>
+                    <label class="size-btn"><input type="radio" name="size" value="M" onchange="enableCartButton()"><span>M</span></label>
+                    <label class="size-btn"><input type="radio" name="size" value="L" onchange="enableCartButton()"><span>L</span></label>
+                    <label class="size-btn"><input type="radio" name="size" value="XL" onchange="enableCartButton()"><span>XL</span></label>
+                    <label class="size-btn disabled"><input type="radio" name="size" value="XXL" disabled><span>XXL</span></label>
+                </div>
+            </div>
+            <button class="add-cart-btn" id="cartBtn" disabled onclick="handleAddToCart()">SELECT A SIZE</button>
+            <div class="shipping-info-box">Free shipping on orders over Rp 500.000. Estimated delivery: 3-5 business days.</div>
+            <div class="description-section">
+                <div class="description-title">DESCRIPTION</div>
+                <div class="description-text">The T.K.O. Mechanism Jersey features a low-cut collar to reduce chafing and improve comfort. Lightweight fabric provides everything you need for competitive races or fast-paced training days.</div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggle(this)"><span>FEATURES</span><span class="accordion-icon">+</span></button>
+                    <div class="accordion-content"><div class="accordion-body"><ul>
+                        <li>Low-cut collar for reduced chafing</li>
+                        <li>Lightweight performance fabric</li>
+                        <li>YKK zipper with side pocket</li>
+                        <li>Elastic silicone grippers</li>
+                        <li>Race fit design</li>
+                    </ul></div></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggle(this)"><span>MATERIALS & CARE</span><span class="accordion-icon">+</span></button>
+                    <div class="accordion-content"><div class="accordion-body">
+                        <strong>MATERIALS:</strong><br>85% Polyester, 15% Elastane<br><br>
+                        <strong>CARE:</strong><br>Machine wash cold, do not bleach, tumble dry low
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specs Detail Drawer -->
+    <div class="sidebar-overlay" id="specsOverlay" onclick="closeSpecsDrawer()"></div>
+    <div class="specs-drawer" id="specsDrawer">
+        <div class="specs-drawer-header">
+            <div class="specs-drawer-title">Women's T.K.O. Mechanism Jersey</div>
+            <button class="close-btn" onclick="closeSpecsDrawer()">×</button>
+        </div>
+        <div class="specs-drawer-content">
+            <div class="specs-product-info">
+                <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=200&q=85&fit=max&auto=format" alt="Jersey" class="specs-product-image">
+                <h2 class="specs-product-title">Women's T.K.O. Mechanism Jersey</h2>
+                <p class="specs-product-desc">The jersey has a tight, aerodynamic fit — ideal for high-intensity road riding and racing.</p>
+            </div>
+            <div class="spec-detail-section">
+                <h3 class="spec-detail-title">Temperature</h3>
+                <div class="spec-detail-bar">
+                    <div class="bar-track" id="temp-bar-drawer" data-active-start="10" data-active-end="30" data-min="-10" data-max="30"></div>
+                    <div class="bar-labels"><span>-10°C</span><span>0°C</span><span>15°C</span><span>+30°C</span></div>
+                </div>
+                <p class="spec-detail-text">The jersey is suited for rides in mild to high temperatures. Combine with arm warmers on colder rides.</p>
+            </div>
+            <div class="spec-detail-section">
+                <h3 class="spec-detail-title">Intensity</h3>
+                <div class="spec-detail-bar">
+                    <div class="bar-track" id="intensity-bar-drawer" data-active-start="26" data-active-end="50" data-min="1" data-max="50"></div>
+                    <div class="bar-labels"><span>LOW</span><span>HIGH</span></div>
+                </div>
+                <p class="spec-detail-text">The jersey is optimised for high intensity training rides and races.</p>
+            </div>
+            <div class="spec-detail-section">
+                <div class="spec-circle-container">
+                    <div class="spec-circle-item">
+                        <div class="spec-icon drawer-spec-icon">
+                            <div class="circle-segments" id="breathability-circle-drawer" data-value="4" data-max="6"></div>
+                            <div class="spec-center-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="8" opacity="0.3"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+                        </div>
+                        <div class="spec-text"><div class="spec-label">Breathability</div><div class="spec-value">4/6</div></div>
+                    </div>
+                    <div class="spec-circle-item">
+                        <div class="spec-icon drawer-spec-icon">
+                            <div class="circle-segments" id="insulation-circle-drawer" data-value="6" data-max="6"></div>
+                            <div class="spec-center-icon"><svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/><circle cx="11.5" cy="18.5" r="1.5" fill="currentColor"/></svg></div>
+                        </div>
+                        <div class="spec-text"><div class="spec-label">Insulation</div><div class="spec-value">6/6</div></div>
+                    </div>
+                </div>
+                <p class="spec-detail-text">Breathability is defined as the ability of a fabric to allow moisture vapour to be transmitted through the material. This jersey offers excellent airflow to keep you cool during high-intensity efforts.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Guide Drawer -->
+    <div class="size-guide-overlay" id="sizeGuideOverlay" onclick="closeSizeGuide()"></div>
+    <div class="size-guide-drawer" id="sizeGuideDrawer">
+        <div class="size-guide-header">
+            <div class="size-guide-title">Size Guide</div>
+            <button class="close-btn" onclick="closeSizeGuide()">×</button>
+        </div>
+        <div class="size-guide-content">
+            <div class="guide-toggle">
+                <button class="guide-toggle-btn active" onclick="toggleUnit('cm')">CM</button>
+                <button class="guide-toggle-btn" onclick="toggleUnit('in')">IN</button>
+            </div>
+            <div id="cmTable">
+                <div class="size-table">
+                    <div class="size-table-header"><div>SIZE</div><div>CHEST</div><div>WAIST</div><div>HIP</div><div>THIGH</div></div>
+                    <div class="size-table-row"><div>XXS</div><div>78-82</div><div>63-67</div><div>84-88</div><div>49-51</div></div>
+                    <div class="size-table-row"><div>XS</div><div>82-86</div><div>67-71</div><div>88-92</div><div>51-53</div></div>
+                    <div class="size-table-row"><div>S</div><div>86-90</div><div>71-75</div><div>92-96</div><div>53-55</div></div>
+                    <div class="size-table-row"><div>M</div><div>90-94</div><div>75-79</div><div>96-100</div><div>55-57</div></div>
+                    <div class="size-table-row"><div>L</div><div>94-98</div><div>79-83</div><div>100-104</div><div>57-60</div></div>
+                    <div class="size-table-row"><div>XL</div><div>98-102</div><div>83-87</div><div>104-108</div><div>60-62</div></div>
+                    <div class="size-table-row"><div>XXL</div><div>102-106</div><div>87-91</div><div>108-112</div><div>62-64</div></div>
+                </div>
+            </div>
+            <div id="inTable" style="display:none;">
+                <div class="size-table">
+                    <div class="size-table-header"><div>SIZE</div><div>CHEST</div><div>WAIST</div><div>HIP</div><div>THIGH</div></div>
+                    <div class="size-table-row"><div>XXS</div><div>30.7-32.3</div><div>24.8-26.4</div><div>33.1-34.6</div><div>19.3-20.1</div></div>
+                    <div class="size-table-row"><div>XS</div><div>32.3-33.9</div><div>26.4-28.0</div><div>34.6-36.2</div><div>20.1-20.9</div></div>
+                    <div class="size-table-row"><div>S</div><div>33.9-35.4</div><div>28.0-29.5</div><div>36.2-37.8</div><div>20.9-21.7</div></div>
+                    <div class="size-table-row"><div>M</div><div>35.4-37.0</div><div>29.5-31.1</div><div>37.8-39.4</div><div>21.7-22.4</div></div>
+                    <div class="size-table-row"><div>L</div><div>37.0-38.6</div><div>31.1-32.7</div><div>39.4-40.9</div><div>22.4-23.6</div></div>
+                    <div class="size-table-row"><div>XL</div><div>38.6-40.2</div><div>32.7-34.3</div><div>40.9-42.5</div><div>23.6-24.4</div></div>
+                    <div class="size-table-row"><div>XXL</div><div>40.2-41.7</div><div>34.3-35.8</div><div>42.5-44.1</div><div>24.4-25.2</div></div>
+                </div>
+            </div>
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=600&q=85&fit=max&auto=format" alt="Size Guide" class="size-guide-image">
+            <p class="measurement-note">Measure around the fullest part of your chest, keeping the tape horizontal. Measure around the natural waistline, keeping the tape comfortably loose. Measure around the fullest part of your hips, keeping the tape horizontal.</p>
+        </div>
+    </div>
+
+    <!-- Footer (sama dengan index.html) -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloaming Imagine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: #fff;
+            padding: 80px 40px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .newsletter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .newsletter-left {
+            flex: 1;
+        }
+
+        .newsletter-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .newsletter-title {
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.3;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        .newsletter-right {
+            flex-shrink: 0;
+        }
+
+        .newsletter-btn {
+            padding: 16px 48px;
+            background: #000;
+            color: #fff;
+            border: 1px solid #000;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Main Footer */
+        .footer {
+            background: #fff;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Footer Top - 3 Column Layout */
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .footer-column h3 {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #000;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: opacity 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Shipping Info */
+        .shipping-info {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .shipping-info select {
+            padding: 8px 32px 8px 12px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer-legal a {
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-legal a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-social a {
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .newsletter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .newsletter-btn {
+                width: 100%;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .footer-column:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-section {
+                padding: 60px 24px;
+            }
+
+            .newsletter-title {
+                font-size: 24px;
+            }
+
+            .footer {
+                padding: 40px 24px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-column:first-child {
+                grid-column: 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 30px;
+                align-items: flex-start;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-social {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-left">
+                <div class="newsletter-label">NEWSLETTER</div>
+                <h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2>
+            </div>
+            <div class="newsletter-right">
+                <button class="newsletter-btn" onclick="openNewsletterSignup()">Sign Up</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Top - 3 Columns -->
+            <div class="footer-top">
+                <!-- Column 1: Shipping -->
+                <div class="footer-column">
+                    <h3>Shipping To:</h3>
+                    <div class="shipping-info">
+                        <select id="shippingRegion">
+                            <option value="rest-of-eu">REST OF EU</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="asia">ASIA</option>
+                            <option value="australia">AUSTRALIA</option>
+                        </select>
+                    </div>
+                    <ul class="footer-links" style="margin-top: 30px;">
+                        <li><a href="#">Destination Everywhere</a></li>
+                        <li><a href="#">Sponsored Teams</a></li>
+                        <li><a href="#">Find Stores</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Customer Care -->
+                <div class="footer-column">
+                    <h3>Customer Care</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Get in Touch</a></li>
+                        <li><a href="#">Gift Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Crash Replacement</a></li>
+                        <li><a href="#">Care Guide</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: About -->
+                <div class="footer-column">
+                    <h3>About Gloaming Imagine</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Stores</a></li>
+                        <li><a href="#">International Cycling Club</a></li>
+                        <li><a href="#">Impact & Responsibility</a></li>
+                        <li><a href="#">Industry Programme</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">TERMS & CONDITIONS</a>
+                    <a href="#">PRIVACY POLICY</a>
+                    <a href="#">COOKIE POLICY</a>
+                    <a href="#">COOKIE POLICY SETTING</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#">INSTAGRAM</a>
+                    <a href="#">YOUTUBE</a>
+                    <a href="#">STRAVA</a>
+                    <a href="#">LINKEDIN</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    © GLOAMING IMAGINE 2026
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // =============================================
+    // SPECS: Generate bar segments from data attrs (replaces PHP loops)
+    // =============================================
+    function buildBarSegments(barEl) {
+        const min = parseInt(barEl.dataset.min);
+        const max = parseInt(barEl.dataset.max);
+        const activeStart = parseInt(barEl.dataset.activeStart);
+        const activeEnd   = parseInt(barEl.dataset.activeEnd);
+        barEl.innerHTML = '';
+        for (let i = min; i <= max; i++) {
+            const seg = document.createElement('div');
+            const isActive = i >= activeStart && i <= activeEnd;
+            const isTall   = i === activeStart || i === activeEnd;
+            seg.className = 'bar-segment' + (isActive ? ' active' : ' inactive') + (isTall ? ' tall' : '');
+            seg.dataset.val = i;
+            barEl.appendChild(seg);
+        }
+    }
+
+    function buildCircleSegments(circleEl) {
+        const value = parseInt(circleEl.dataset.value);
+        const maxV  = parseInt(circleEl.dataset.max);
+        const total = 60;
+        const activeBars = Math.round((value / maxV) * total);
+        circleEl.innerHTML = '';
+        for (let i = 0; i < total; i++) {
+            const seg = document.createElement('div');
+            seg.className = 'bar-segment' + (i < activeBars ? ' active' : ' inactive');
+            seg.style.setProperty('--i', i);
+            circleEl.appendChild(seg);
+        }
+    }
+
+    document.querySelectorAll('.bar-track[data-min]').forEach(buildBarSegments);
+    document.querySelectorAll('.circle-segments[data-value]').forEach(buildCircleSegments);
+
+    // =============================================
+    // GALLERY HERO
+    // =============================================
+    let current = 0;
+    const track = document.getElementById('track');
+    const slides = track.querySelectorAll('.gallery-slide');
+    const dotsContainer = document.getElementById('dots');
+    let autoSlideInterval;
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goTo(i);
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    function goTo(index) {
+        current = index;
+        const isMobile = window.innerWidth <= 768;
+        track.style.transform = `translateX(-${index * (isMobile ? 100 : 50)}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+    function next() { goTo((current + 1) % slides.length); }
+    function prev() { goTo((current - 1 + slides.length) % slides.length); }
+    function startAutoSlide() { autoSlideInterval = setInterval(next, 5000); }
+    function stopAutoSlide()  { clearInterval(autoSlideInterval); }
+
+    startAutoSlide();
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
+
+    // Drag
+    let isDragging = false, startX = 0;
+    track.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX; track.classList.add('dragging'); stopAutoSlide(); });
+    track.addEventListener('mousemove', e => { if (!isDragging) return; e.preventDefault(); });
+    track.addEventListener('mouseup', e => {
+        isDragging = false; track.classList.remove('dragging');
+        const moved = e.pageX - startX;
+        if (moved < -80) next(); else if (moved > 80) prev();
+        startAutoSlide();
+    });
+    track.addEventListener('mouseleave', () => { if (isDragging) { isDragging = false; track.classList.remove('dragging'); startAutoSlide(); } });
+
+    // Touch
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; stopAutoSlide(); }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (diff > 50) next(); else if (diff < -50) prev();
+        startAutoSlide();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => goTo(current));
+
+    // =============================================
+    // FLOATING CART (shows after scrolling past gallery)
+    // =============================================
+    window.addEventListener('scroll', () => {
+        const floatingCart = document.getElementById('floatingCart');
+        if (window.scrollY > window.innerHeight * 0.5) {
+            floatingCart.classList.add('visible');
+        } else {
+            floatingCart.classList.remove('visible');
+        }
+    });
+
+    // =============================================
+    // DRAWER
+    // =============================================
+    function openDrawer() {
+        document.getElementById('overlay').classList.add('active');
+        document.getElementById('drawer').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        document.getElementById('overlay').classList.remove('active');
+        document.getElementById('drawer').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    function openSpecsDrawer() {
+        document.getElementById('specsOverlay').classList.add('active');
+        document.getElementById('specsDrawer').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSpecsDrawer() {
+        document.getElementById('specsOverlay').classList.remove('active');
+        document.getElementById('specsDrawer').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    function openSizeGuide() {
+        document.getElementById('sizeGuideOverlay').classList.add('active');
+        document.getElementById('sizeGuideDrawer').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSizeGuide() {
+        document.getElementById('sizeGuideOverlay').classList.remove('active');
+        document.getElementById('sizeGuideDrawer').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // =============================================
+    // SIZE & CART
+    // =============================================
+    function enableCartButton() {
+        const btn = document.getElementById('cartBtn');
+        btn.disabled = false;
+        btn.textContent = 'ADD TO CART';
+    }
+    function handleAddToCart() {
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        if (!selectedSize) { openDrawer(); return; }
+        alert('Added to cart: ' + selectedSize.value);
+        closeDrawer();
+    }
+    function floatingAddToCart() {
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        if (!selectedSize) { openDrawer(); } else { handleAddToCart(); }
+    }
+
+    // =============================================
+    // ACCORDION
+    // =============================================
+    function toggle(btn) {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('open'); i.querySelector('.accordion-icon').textContent = '+'; });
+        if (!wasOpen) { item.classList.add('open'); btn.querySelector('.accordion-icon').textContent = '−'; }
+    }
+
+    // =============================================
+    // DESCRIPTION READ MORE
+    // =============================================
+    function toggleDescription() {
+        const desc = document.getElementById('productDescription');
+        const btn  = document.getElementById('readMoreBtn');
+        if (desc.classList.contains('expanded')) {
+            desc.classList.remove('expanded'); btn.textContent = '+ Read more';
+        } else {
+            desc.classList.add('expanded'); btn.textContent = '− Read less';
+        }
+    }
+
+    // =============================================
+    // COLOR SELECTION
+    // =============================================
+    function selectColorDrawer(element, colorName) {
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        element.classList.add('active');
+        document.querySelector('.section-label').textContent = 'COLOR: ' + colorName.toUpperCase();
+        const cn = document.querySelector('.color-name');
+        if (cn) cn.textContent = colorName;
+    }
+
+    // =============================================
+    // SIZE GUIDE TOGGLE
+    // =============================================
+    function toggleSizeGuideDrawer() {
+        document.getElementById('sizeGuideContainer').classList.toggle('show');
+    }
+    function toggleSidebarUnit(unit, btn) {
+        const cm = document.getElementById('sidebarCmTable');
+        const inc = document.getElementById('sidebarInTable');
+        btn.parentElement.querySelectorAll('.guide-toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        cm.style.display  = unit === 'cm' ? 'block' : 'none';
+        inc.style.display = unit === 'in' ? 'block' : 'none';
+    }
+    function toggleUnit(unit) {
+        const cm  = document.getElementById('cmTable');
+        const inc = document.getElementById('inTable');
+        document.querySelectorAll('.guide-toggle-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        cm.style.display  = unit === 'cm' ? 'block' : 'none';
+        inc.style.display = unit === 'in' ? 'block' : 'none';
+    }
+
+    // =============================================
+    // TABS & FEATURES
+    // =============================================
+    function switchTab(tabName, e) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(tabName + 'Tab').classList.add('active');
+    }
+
+    const featureData = {
+        'on-bike':   { image: 'https://cdn.sanity.io/images/k15yl91v/production/413c2dcc9acaf9c034626ddadaf80b3aec7e9130-3200x4000.jpg?w=1000&q=85&fit=max&auto=format', description: 'Aerodynamic race fit designed for high-intensity riding. The jersey stays in place during aggressive cycling positions with elastic silicone grippers at the hem.' },
+        'elastic':   { image: 'https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=1000&q=85&fit=max&auto=format', description: 'All grippers have been fitted with soft, fully-dyed elastic that deliver the truest colour.' },
+        'straps':    { image: 'https://cdn.sanity.io/images/k15yl91v/production/c2b4f365027938fe47fb72bbb9cb3b3c09173d73-3200x4000.jpg?w=1000&q=85&fit=max&auto=format', description: 'The T.K.O. Mechanism Bibs come with a mesh-structured strap fabric, which gives stretch and breathability.' },
+        'chamois':   { image: 'https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=1000&q=85&fit=max&auto=format', description: 'The chamois is designed with multi-density foam to provide targeted cushioning and support.' },
+        'fabric':    { image: 'https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=1000&q=85&fit=max&auto=format', description: 'High-performance technical fabric with excellent moisture wicking properties.' },
+        'mesh':      { image: 'https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=1000&q=85&fit=max&auto=format', description: 'Strategic mesh panels on the front and sides enhance breathability where you need it most.' },
+        'stitching': { image: 'https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=1000&q=85&fit=max&auto=format', description: 'Flatlock seams throughout reduce friction and prevent chafing.' }
+    };
+
+    function selectFeature(name) {
+        document.querySelectorAll('.feature-item').forEach(i => i.classList.remove('active'));
+        document.querySelector(`[data-feature="${name}"]`).classList.add('active');
+        const img  = document.getElementById('mainFeatureImage');
+        const desc = document.getElementById('featureDescription');
+        if (featureData[name]) {
+            img.style.opacity = '0'; desc.style.opacity = '0';
+            setTimeout(() => {
+                img.src = featureData[name].image;
+                desc.textContent = featureData[name].description;
+                img.style.opacity = '1'; desc.style.opacity = '1';
+            }, 300);
+        }
+    }
+    document.getElementById('mainFeatureImage').style.transition = 'opacity 0.3s ease';
+    document.getElementById('featureDescription').style.transition = 'opacity 0.3s ease';
+
+    // =============================================
+    // INFINITE CAROUSELS (Gallery & Similar Products)
+    // =============================================
+    function createInfiniteCarousel(wrapperId, containerId, itemSelector, autoInterval) {
+        const wrapper   = document.getElementById(wrapperId);
+        const container = document.getElementById(containerId);
+        if (!wrapper || !container) return null;
+
+        const origItems = Array.from(container.querySelectorAll(itemSelector));
+        if (!origItems.length) return null;
+
+        origItems.forEach(item => {
+            const c = item.cloneNode(true); c.setAttribute('aria-hidden','true'); container.appendChild(c);
+        });
+        origItems.forEach(item => {
+            const c = item.cloneNode(true); c.setAttribute('aria-hidden','true'); container.insertBefore(c, container.firstChild);
+        });
+
+        const itemCount = origItems.length;
+        let currentIndex = itemCount, isTransitioning = false, isDragging = false;
+        let dragStartX = 0, dragStartTranslate = 0, autoTimer = null;
+
+        function getItemWidth() {
+            const item = container.querySelector(itemSelector);
+            const gap = parseInt(getComputedStyle(container).gap) || 20;
+            return item ? item.offsetWidth + gap : 0;
+        }
+        function getTranslate() { return -(currentIndex * getItemWidth()); }
+        function setPosition(animate) {
+            if (!animate) container.classList.add('no-transition');
+            container.style.transform = `translateX(${getTranslate()}px)`;
+            if (!animate) { container.getBoundingClientRect(); container.classList.remove('no-transition'); }
+        }
+        setPosition(false);
+
+        function navTo(index, animate) {
+            isTransitioning = animate;
+            currentIndex = index;
+            if (!animate) container.classList.add('no-transition');
+            else container.classList.remove('no-transition');
+            container.style.transform = `translateX(${getTranslate()}px)`;
+        }
+        container.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (currentIndex >= itemCount * 2) navTo(itemCount, false);
+            if (currentIndex < itemCount) navTo(itemCount * 2 - 1, false);
+        });
+
+        function slideNext() { if (!isTransitioning) { currentIndex++; container.classList.remove('no-transition'); container.style.transform = `translateX(${getTranslate()}px)`; isTransitioning = true; } }
+        function slidePrev() { if (!isTransitioning) { currentIndex--; container.classList.remove('no-transition'); container.style.transform = `translateX(${getTranslate()}px)`; isTransitioning = true; } }
+
+        function startAuto() { stopAuto(); autoTimer = setInterval(slideNext, autoInterval); }
+        function stopAuto()  { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+        startAuto();
+
+        wrapper.addEventListener('mouseenter', stopAuto);
+        wrapper.addEventListener('mouseleave', startAuto);
+
+        wrapper.addEventListener('mousedown', e => {
+            isDragging = true; dragStartX = e.pageX; dragStartTranslate = getTranslate();
+            stopAuto(); container.classList.add('no-transition'); wrapper.style.cursor = 'grabbing';
+        });
+        document.addEventListener('mouseup', e => {
+            if (!isDragging) return; isDragging = false; wrapper.style.cursor = 'grab';
+            const diff = e.pageX - dragStartX; container.classList.remove('no-transition');
+            if (diff < -50) slideNext(); else if (diff > 50) slidePrev(); else container.style.transform = `translateX(${getTranslate()}px)`;
+            startAuto();
+        });
+        document.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            container.style.transform = `translateX(${dragStartTranslate + (e.pageX - dragStartX)}px)`;
+        });
+
+        let tStart = 0;
+        wrapper.addEventListener('touchstart', e => { tStart = e.touches[0].clientX; stopAuto(); }, { passive: true });
+        wrapper.addEventListener('touchend', e => {
+            const diff = tStart - e.changedTouches[0].clientX;
+            if (diff > 50) slideNext(); else if (diff < -50) slidePrev();
+            startAuto();
+        }, { passive: true });
+
+        return { next: slideNext, prev: slidePrev };
+    }
+
+    const galleryCarousel  = createInfiniteCarousel('galleryWrapper', 'galleryContainer', '.gallery-item', 5000);
+    const productsCarousel = createInfiniteCarousel('productsWrapper', 'productsContainer', '.product-card-item', 4000);
+    function galleryNext()  { if (galleryCarousel)  galleryCarousel.next(); }
+    function galleryPrev()  { if (galleryCarousel)  galleryCarousel.prev(); }
+    function productsNext() { if (productsCarousel) productsCarousel.next(); }
+    function productsPrev() { if (productsCarousel) productsCarousel.prev(); }
+
+    // =============================================
+    // KEYBOARD
+    // =============================================
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft')  prev();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'Escape') { closeDrawer(); closeSpecsDrawer(); closeSizeGuide(); }
+    });
+    </script>
+</body>
+</html>

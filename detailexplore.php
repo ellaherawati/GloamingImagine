@@ -557,10 +557,7 @@ p strong { font-weight: 600; color: var(--black); }
 </style>
 </head>
 <body>
-    <?php include 'header/header.php'; ?>
-
     <div class="blog-grid" id="blog-grid">
-
   <!-- Card 1 — Stories -->
   <div class="blog-card" data-cat="stories">
     <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=1400&q=80');"></div>
@@ -580,25 +577,16 @@ p strong { font-weight: 600; color: var(--black); }
 </div>
 <div class="page">
 
-  <span class="brand">About Us</span>
-
   <!-- ── INTRO ── -->
   <div class="block fade">
-    <h1 class="section-title">Gloaming <br> Imagine</h1>
+    <h1 class="section-title">Gloaming Imagine</h1>
     <div class="divider"></div>
     <p>Gloaming Imagine adalah brand lifestyle dan home goods berbasis di Jakarta. Kami ada di persimpangan antara desain yang dipertimbangkan dan fungsi keseharian — mengkurasi objek yang benar-benar memiliki tempat di ruang yang Anda tinggali.</p>
     <p>Didirikan tahun 2019, Gloaming Imagine lahir dari satu obsesi: menemukan benda-benda yang dibuat dengan jujur. Bukan produk tren, bukan barang cepat — melainkan benda dengan integritas material dan alasan nyata untuk ada.</p>
     <p>Nama kami berasal dari <em>gloaming</em> — jam singkat antara siang dan malam yang tidak masuk kategori mana pun. Kami percaya desain yang baik hidup di sana: cukup spesifik untuk menjadi dirinya sendiri, cukup terbuka untuk cocok di mana saja.</p>
   </div>
-
-  
-
-
-
 </div>
-<footer>
-    <?php include 'footer.php'; ?>
-</footer>
+
 
 <script>
   /* ── Fade-in for general blocks ── */

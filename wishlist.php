@@ -322,7 +322,7 @@
             wishlistProducts.forEach(function(product) {
                 html += `
                     <div class="product-card-wrapper">
-                        <a href="detail.php?id=${product.id}" class="product-card">
+                        <a href="detail.html?id=${product.id}" class="product-card">
                             <div class="product-image-wrapper">
                                 ${product.isNew ? '<div class="product-badge">NEW ARRIVAL</div>' : ''}
                                 <button class="wishlist-btn active"

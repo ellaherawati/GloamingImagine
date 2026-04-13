@@ -20,6 +20,567 @@
             background: #fff;
             color: #000;
             overflow-x: hidden;
+            transition: background 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                        color 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Global smooth transition for all theme-affected elements */
+        *, *::before, *::after {
+            transition:
+                background-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.55s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        /* Theme ripple overlay */
+        .theme-ripple {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: scale(0);
+            opacity: 0.18;
+            will-change: transform, opacity;
+        }
+
+        .theme-ripple.expanding {
+            transform: scale(1) !important;
+            opacity: 0 !important;
+        }
+
+        /* Toggle icon spin */
+        .dark-mode-toggle .toggle-icon {
+            display: inline-block;
+        }
+
+        .dark-mode-toggle.spinning .toggle-icon {
+            animation: spin-bounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes spin-bounce {
+            0%   { transform: rotate(0deg) scale(1); }
+            50%  { transform: rotate(200deg) scale(1.5); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* ── Dark Mode ── */
+        body.dark-mode {
+            background: #111;
+            color: #f0f0f0;
+            scrollbar-color: #fff #222;
+        }
+
+        body.dark-mode::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body.dark-mode::-webkit-scrollbar-track {
+            background: #222;
+        }
+
+        body.dark-mode::-webkit-scrollbar-thumb {
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        body.dark-mode::-webkit-scrollbar-thumb:hover {
+            background: #ccc;
+        }
+
+        body.dark-mode header {
+            background: #1a1a1a !important;
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .header-main {
+            border-bottom-color: #333 !important;
+        }
+
+        /* ── Frosted Glass Header on Scroll ── */
+        /* Transisi halus header */
+        header {
+            transition:
+                background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow       0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter  0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        /* Light mode — at top: normal solid */
+        header.at-top {
+            background: #fff !important;
+            border-bottom-color: #e0e0e0 !important;
+            backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Light mode — scroll ke atas: solid */
+        header.scrolled {
+            background: #fff !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            /* border-bottom-color: #e0e0e0 !important; */
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07) !important;
+        }
+
+        header.scrolled .header-main {
+            /* border-bottom-color: transparent !important; */
+        }
+
+        /* Light mode — scroll ke bawah: transparan frosted */
+        header.scrolling-down {
+            background: rgba(255, 255, 255, 0.55) !important;
+            backdrop-filter: blur(18px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+            /* border-bottom-color: rgba(98, 98, 98, 0) !important; */
+            box-shadow: none !important;
+        }
+
+        header.scrolling-down .header-main {
+            /* border-bottom-color: transparent !important; */
+        }
+
+        /* Dark mode — at top: transparan penuh */
+        body.dark-mode header.at-top {
+            background: transparent !important;
+            border-bottom-color: transparent !important;
+            backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+
+        body.dark-mode header.at-top .header-main {
+            border-bottom-color: transparent !important;
+        }
+
+        body.dark-mode header.at-top .header-left a,
+        body.dark-mode header.at-top .header-right a,
+        body.dark-mode header.at-top .search-toggle,
+        body.dark-mode header.at-top .dark-mode-toggle {
+            color: #fff !important;
+        }
+
+        /* Dark mode — scroll ke atas: solid gelap */
+        body.dark-mode header.scrolled {
+            background: #1a1a1a !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom-color: #333 !important;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        body.dark-mode header.scrolled .header-main {
+            border-bottom-color: transparent !important;
+        }
+
+        /* Dark mode — scroll ke bawah: transparan frosted gelap */
+        body.dark-mode header.scrolling-down {
+            background: rgba(17, 17, 17, 0.45) !important;
+            backdrop-filter: blur(18px) saturate(160%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+            border-bottom-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        body.dark-mode header.scrolling-down .header-main {
+            border-bottom-color: transparent !important;
+        }
+
+        body.dark-mode header.scrolling-down .header-left a,
+        body.dark-mode header.scrolling-down .header-right a,
+        body.dark-mode header.scrolling-down .search-toggle,
+        body.dark-mode header.scrolling-down .dark-mode-toggle {
+            color: #fff !important;
+        }
+
+        body.dark-mode .header-left a,
+        body.dark-mode .header-right a,
+        body.dark-mode .search-toggle {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .collection-header,
+        body.dark-mode .block-wrapper-outer,
+        body.dark-mode .pns-scrollbar,
+        body.dark-mode .pns-col-scrollbar,
+        body.dark-mode .pns-categories-section,
+        body.dark-mode .pns-tab-content,
+        body.dark-mode .our-story-section,
+        body.dark-mode .pns-marquee-section,
+        body.dark-mode .category-nav {
+            background: #111 !important;
+        }
+
+        body.dark-mode .collection-title,
+        body.dark-mode .pns-cat-label,
+        body.dark-mode .pns-cat-item,
+        body.dark-mode .our-story-card,
+        body.dark-mode .our-story-title,
+        body.dark-mode .our-story-cta,
+        body.dark-mode .category-name {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .product-block,
+        body.dark-mode .product-info {
+            background: #111 !important;
+        }
+
+        body.dark-mode .product-name {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .product-price {
+            color: #aaa !important;
+        }
+
+        body.dark-mode .product-image-wrapper {
+            background: #222 !important;
+        }
+
+        body.dark-mode .pns-tab {
+            color: #666 !important;
+        }
+
+        body.dark-mode .pns-tab.active,
+        body.dark-mode .pns-tab:hover {
+            color: #f0f0f0 !important;
+            border-bottom-color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .pns-categories-tabs {
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .pns-cat-img-wrap,
+        body.dark-mode .our-story-img-wrap {
+            background: #222 !important;
+        }
+
+        body.dark-mode .pns-marquee-text {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .pns-scrollbar-track,
+        body.dark-mode .pns-col-scrollbar-track {
+            background: #333 !important;
+        }
+
+        body.dark-mode .collection-header {
+            border-top-color: #333 !important;
+        }
+
+        body.dark-mode .collection-nav button {
+            border-color: #444 !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .collection-nav button:hover {
+            background: #f0f0f0 !important;
+            color: #111 !important;
+        }
+
+        body.dark-mode .our-story-section {
+            border-top-color: #333 !important;
+        }
+
+        body.dark-mode .our-story-card-desc,
+        body.dark-mode .subcategory-list li {
+            color: #aaa !important;
+        }
+
+        body.dark-mode .our-story-card-tag {
+            color: #666 !important;
+        }
+
+        body.dark-mode .search-box {
+            background: #1a1a1a !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .search-input {
+            background: #1a1a1a !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .search-dropdown {
+            background: #1a1a1a !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .search-result-item {
+            color: #f0f0f0 !important;
+            border-bottom-color: #2a2a2a !important;
+        }
+
+        body.dark-mode .search-result-item:hover {
+            background: #2a2a2a !important;
+        }
+
+        body.dark-mode .cart-sidebar,
+        body.dark-mode .shop-sidebar {
+            background: #1a1a1a !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .shop-sidebar-header,
+        body.dark-mode .cart-header {
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .shop-sidebar-close,
+        body.dark-mode .cart-close {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .shop-section-title {
+            color: #666 !important;
+        }
+
+        body.dark-mode .shop-category-item,
+        body.dark-mode .shop-link-simple {
+            color: #f0f0f0 !important;
+            border-bottom-color: #2a2a2a !important;
+        }
+
+        body.dark-mode .shop-divider {
+            background: #2a2a2a !important;
+        }
+
+        body.dark-mode .wishlist-btn {
+            background: #222 !important;
+        }
+
+        body.dark-mode .wishlist-btn svg {
+            stroke: #f0f0f0 !important;
+        }
+
+        body.dark-mode .size-selector {
+            background: rgba(26, 26, 26, 0.97) !important;
+        }
+
+        body.dark-mode .size-selector .size-option {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .size-selector .size-option:hover {
+            border-bottom-color: #f0f0f0 !important;
+        }
+
+        body.dark-mode footer,
+        body.dark-mode .footer {
+            background: #111 !important;
+        }
+
+        body.dark-mode .newsletter-section {
+            background: #1a1a1a !important;
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .newsletter-label,
+        body.dark-mode .newsletter-title {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .newsletter-btn {
+            background: #f0f0f0 !important;
+            color: #111 !important;
+            border-color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .newsletter-btn:hover {
+            background: #333 !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .footer-top {
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .footer-column h3 {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .footer-links a {
+            color: #ccc !important;
+        }
+
+        body.dark-mode .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        body.dark-mode .footer-legal a,
+        body.dark-mode .footer-social a,
+        body.dark-mode .footer-copyright {
+            color: #aaa !important;
+        }
+
+        body.dark-mode .shipping-info select {
+            background-color: #222 !important;
+            color: #f0f0f0 !important;
+            border-color: #555 !important;
+        }
+
+        /* ── Dark Mode: Cart & Sidebar completions ── */
+
+        /* Cart sidebar body */
+        body.dark-mode .cart-sidebar {
+            background: #1a1a1a !important;
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-header {
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .cart-title {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-close {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-item {
+            border-bottom-color: #2a2a2a !important;
+        }
+
+        body.dark-mode .cart-item-image {
+            background: #2a2a2a !important;
+        }
+
+        body.dark-mode .cart-item-name {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-item-variant,
+        body.dark-mode .cart-item-remove,
+        body.dark-mode .cart-empty-text {
+            color: #888 !important;
+        }
+
+        body.dark-mode .cart-item-remove:hover {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-item-price,
+        body.dark-mode .cart-empty-title {
+            color: #f0f0f0 !important;
+        }
+
+        /* Tombol +/- quantity */
+        body.dark-mode .cart-quantity {
+            border-color: #444 !important;
+            background: #222 !important;
+        }
+
+        body.dark-mode .cart-quantity button {
+            color: #f0f0f0 !important;
+            background: transparent !important;
+        }
+
+        body.dark-mode .cart-quantity button:hover {
+            color: #ccc !important;
+        }
+
+        body.dark-mode .cart-quantity span {
+            color: #f0f0f0 !important;
+        }
+
+        /* Cart gift section */
+        body.dark-mode .cart-gift {
+            background: #222 !important;
+        }
+
+        body.dark-mode .cart-gift-title {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-gift-subtitle,
+        body.dark-mode .cart-gift-color {
+            color: #888 !important;
+        }
+
+        body.dark-mode .cart-gift-name,
+        body.dark-mode .cart-gift-select {
+            color: #f0f0f0 !important;
+        }
+
+        /* Cart recommendations */
+        body.dark-mode .cart-recommendations-title {
+            color: #f0f0f0 !important;
+        }
+
+        body.dark-mode .cart-recommendation-image {
+            background: #2a2a2a !important;
+        }
+
+        /* Cart footer (sticky checkout area) */
+        body.dark-mode .cart-footer {
+            background: #1a1a1a !important;
+            border-top-color: #333 !important;
+        }
+
+        body.dark-mode .cart-subtotal,
+        body.dark-mode .cart-total {
+            color: #f0f0f0 !important;
+        }
+
+        /* Payment icons — filter supaya terlihat di background gelap */
+        body.dark-mode .cart-payment-icon {
+            filter: invert(1) brightness(0.85) !important;
+        }
+
+        body.dark-mode .cart-payment-methods span {
+            color: #666 !important;
+        }
+
+        /* Checkout button — invert di dark mode */
+        body.dark-mode .cart-checkout {
+            background: #f0f0f0 !important;
+            color: #111 !important;
+        }
+
+        body.dark-mode .cart-checkout:hover {
+            background: #ccc !important;
+        }
+
+        /* Search no results */
+        body.dark-mode .search-no-results {
+            color: #888 !important;
+        }
+
+        body.dark-mode .search-footer {
+            border-top-color: #333 !important;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 14px;
+            color: #000;
+            padding: 0;
+            transition: opacity 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            opacity: 0.6;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: #f0f0f0;
+        }
+
+        .dark-mode-toggle .toggle-icon {
+            font-size: 15px;
+            line-height: 1;
         }
 
         /* Top Banner */
@@ -76,7 +637,7 @@
         }
 
         .hero-title {
-            font-size: 48px;
+            font-size: 50px;
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 50px;
@@ -90,7 +651,7 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             justify-content: center;
             margin-top: 0;
         }
@@ -1707,14 +2268,19 @@
                <div class="header-left">
                    <a href="#" id="shopToggle">Shop</a>
                    <a href="aboutus.php">About</a>
-                   <a href="#explore">Campaign</a>
+                   <a href="explore.html">Campaign</a>
+                   <a href="account.html">Account</a>
                </div>
                
                <div class="logo">
-                   <a href="index.php"><img src="img/logoheader1.png" alt="Gloaming Imagine" class="logo-image"></a>
+                   <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
                </div>
                
                <div class="header-right">
+                   <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+                       <span class="toggle-icon"></span>
+                       <span class="toggle-label">Dark Mode</span>
+                   </button>
                    <div class="search-container">
                        <a class="search-toggle" id="searchToggle">Search</a>
                        <div class="search-box" id="searchBox">
@@ -1747,7 +2313,7 @@
                            letter-spacing: 0;
                        ">0</span>
                    </a>
-                   <a href="login.php">Account</a>
+                   
                    <a href="#" id="cartToggle" style="position:relative; display:inline-block;">
                        Cart
                        <span id="cartCount" style="
@@ -1967,7 +2533,7 @@
                var html = '';
                
                displayResults.forEach(function(product) {
-                   html += '<a href="detail.php?id=' + product.id + '" class="search-result-item">';
+                   html += '<a href="detail.html?id=' + product.id + '" class="search-result-item">';
                    html += '<img src="' + product.image + '" alt="' + product.name + '" class="search-result-image">';
                    html += '<div class="search-result-info">';
                    html += '<div class="search-result-name">' + product.name + '</div>';
@@ -2041,10 +2607,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
             <h1 class="hero-title">
-                RIDE WITH <span class="highlight">PURPOSE</span>
+                New Season <span class="highlight"> <br> Essential</span>
             </h1>
+            <div class="hero-subtitle">Breathable comfort. Designed for distance. <br> For long summer days where rythem matters more than moreright <br> speed</div>
+            
             <div class="hero-buttons">
                 <a href="#" class="btn">SHOP CYCLING</a>
                 <a href="#" class="btn">SHOP OFF-RACE</a>
@@ -2065,7 +2632,7 @@
     <div class="block-wrapper-outer">
     <section class="block-wrapper" id="product-carousel">
         <!-- Product — ID: 1 -->
-        <a href="detail.php?id=1" class="product-block">
+        <a href="detail.html?id=1" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
                 <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">
@@ -2090,7 +2657,7 @@
             </div>
         </a>
         <!-- Product — ID: 2 -->
-        <a href="detail.php?id=2" class="product-block">
+        <a href="detail.html?id=2" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
                 <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">
@@ -2115,7 +2682,7 @@
             </div>
         </a>
         <!-- Product — ID: 3 -->
-        <a href="detail.php?id=3" class="product-block">
+        <a href="detail.html?id=3" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2139,7 +2706,7 @@
             </div>
         </a>
         <!-- Product — ID: 4 -->
-        <a href="detail.php?id=4" class="product-block">
+        <a href="detail.html?id=4" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2163,7 +2730,7 @@
             </div>
         </a>
         <!-- Product — ID: 5 -->
-        <a href="detail.php?id=5" class="product-block">
+        <a href="detail.html?id=5" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2187,7 +2754,7 @@
             </div>
         </a>
         <!-- Product — ID: 6 -->
-        <a href="detail.php?id=6" class="product-block">
+        <a href="detail.html?id=6" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2211,7 +2778,7 @@
             </div>
         </a>
         <!-- Product — ID: 7 -->
-        <a href="detail.php?id=7" class="product-block">
+        <a href="detail.html?id=7" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2235,7 +2802,7 @@
             </div>
         </a>
         <!-- Product — ID: 8 -->
-        <a href="detail.php?id=8" class="product-block">
+        <a href="detail.html?id=8" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2272,13 +2839,13 @@
      <section class="hero">
         <div class="hero-content">
             <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
-            <h1 class="hero-title">
+            <!-- <h1 class="hero-title">
                 RIDE WITH <span class="highlight">PURPOSE</span>
             </h1>
             <div class="hero-buttons">
                 <a href="#" class="btn">SHOP CYCLING</a>
                 <a href="#" class="btn">SHOP OFF-RACE</a>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -2430,13 +2997,13 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
-            <h1 class="hero-title">
+            <!-- <h1 class="hero-title">
                 RIDE WITH <span class="highlight">PURPOSE</span>
             </h1>
             <div class="hero-buttons">
                 <a href="#" class="btn">SHOP CYCLING</a>
                 <a href="#" class="btn">SHOP OFF-RACE</a>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -2453,7 +3020,7 @@
     <div class="block-wrapper-outer">
     <section class="block-wrapper" id="product-carousel">
         <!-- Product — ID: 9 -->
-        <a href="detail.php?id=9" class="product-block">
+        <a href="detail.html?id=9" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2477,7 +3044,7 @@
             </div>
         </a>
         <!-- Product — ID: 10 -->
-        <a href="detail.php?id=10" class="product-block">
+        <a href="detail.html?id=10" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2501,7 +3068,7 @@
             </div>
         </a>
         <!-- Product — ID: 11 -->
-        <a href="detail.php?id=11" class="product-block">
+        <a href="detail.html?id=11" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2525,7 +3092,7 @@
             </div>
         </a>
         <!-- Product — ID: 12 -->
-        <a href="detail.php?id=12" class="product-block">
+        <a href="detail.html?id=12" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2549,7 +3116,7 @@
             </div>
         </a>
         <!-- Product — ID: 13 -->
-        <a href="detail.php?id=13" class="product-block">
+        <a href="detail.html?id=13" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
                 <button class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist">
@@ -2574,7 +3141,7 @@
             </div>
         </a>
         <!-- Product — ID: 14 -->
-        <a href="detail.php?id=14" class="product-block">
+        <a href="detail.html?id=14" class="product-block">
             <div class="product-badges">
                 <span class="new-arrival-badge">NEW ARRIVAL</span>
                 <button class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist">
@@ -2599,7 +3166,7 @@
             </div>
         </a>
         <!-- Product — ID: 15 -->
-        <a href="detail.php?id=15" class="product-block">
+        <a href="detail.html?id=15" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2623,7 +3190,7 @@
             </div>
         </a>
         <!-- Product — ID: 16 -->
-        <a href="detail.php?id=16" class="product-block">
+        <a href="detail.html?id=16" class="product-block">
             <div class="product-badges">
                 <button class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2660,10 +3227,10 @@
     <section class="our-story-section">
         <div class="our-story-header">
             <div>
-                <div class="our-story-label">About Us</div>
+                
                 <h2 class="our-story-title">Our Story</h2>
             </div>
-            <a href="#" class="our-story-cta">Read More →</a>
+            <a href="explore.html" class="our-story-cta">Read More →</a>
         </div>
 
         <div class="our-story-grid">
@@ -3236,6 +3803,75 @@
             // In production, this would open a modal/popup for email signup
         }
 
+        // Dark Mode Toggle — smooth animated
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const icon  = toggleBtn ? toggleBtn.querySelector('.toggle-icon') : null;
+            const label = toggleBtn ? toggleBtn.querySelector('.toggle-label') : null;
+
+            function spawnRipple(x, y, toDark) {
+                const size = Math.hypot(window.innerWidth, window.innerHeight) * 2.2;
+                const ripple = document.createElement('div');
+                ripple.className = 'theme-ripple';
+                ripple.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x - size / 2}px;
+                    top:  ${y - size / 2}px;
+                    background: ${toDark ? '#111' : '#fff'};
+                    transition: transform 0.7s cubic-bezier(0.4,0,0.2,1),
+                                opacity  0.7s cubic-bezier(0.4,0,0.2,1);
+                `;
+                document.body.appendChild(ripple);
+                // Force reflow
+                ripple.getBoundingClientRect();
+                ripple.classList.add('expanding');
+                ripple.addEventListener('transitionend', () => ripple.remove(), { once: true });
+            }
+
+            function applyDarkMode(enabled, animate, originX, originY) {
+                if (animate && toggleBtn) {
+                    // Spin the icon
+                    toggleBtn.classList.remove('spinning');
+                    void toggleBtn.offsetWidth; // reflow
+                    toggleBtn.classList.add('spinning');
+                    toggleBtn.addEventListener('animationend', () => {
+                        toggleBtn.classList.remove('spinning');
+                    }, { once: true });
+
+                    // Ripple from button center
+                    const rect = toggleBtn.getBoundingClientRect();
+                    const cx = originX ?? rect.left + rect.width / 2;
+                    const cy = originY ?? rect.top  + rect.height / 2;
+                    spawnRipple(cx, cy, enabled);
+                }
+
+                // Small delay so ripple starts before theme flips
+                setTimeout(() => {
+                    if (enabled) {
+                        document.body.classList.add('dark-mode');
+                        if (icon)  icon.textContent  = '🌙';
+                        if (label) label.textContent = 'Light Mode';
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        if (icon)  icon.textContent  = '☀️';
+                        if (label) label.textContent = 'Dark Mode';
+                    }
+                    localStorage.setItem('darkMode', enabled ? '1' : '0');
+                }, animate ? 80 : 0);
+            }
+
+            // Restore saved preference (no animation on load)
+            const saved = localStorage.getItem('darkMode');
+            if (saved === '1') applyDarkMode(true, false);
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function(e) {
+                    applyDarkMode(!document.body.classList.contains('dark-mode'), true, e.clientX, e.clientY);
+                });
+            }
+        })();
+
         // Shipping region selector
         document.getElementById('shippingRegion').addEventListener('change', function(e) {
             console.log('Shipping region changed to:', e.target.value);
@@ -3352,10 +3988,38 @@
                 initAutoScroll(colGrid, 5000);
             }
 
+            let lastScrollY = window.pageYOffset;
+
             window.addEventListener('scroll', () => {
                 const hero = document.querySelector('.hero');
                 if (hero) hero.style.opacity = 1 - (window.pageYOffset / 800);
+
+                const header = document.querySelector('header');
+                if (!header) return;
+
+                const currentY = window.pageYOffset;
+                const scrollingDown = currentY > lastScrollY;
+
+                if (currentY < 10) {
+                    // Paling atas
+                    header.classList.add('at-top');
+                    header.classList.remove('scrolled', 'scrolling-down');
+                } else if (scrollingDown) {
+                    // Scroll ke bawah → transparan
+                    header.classList.remove('at-top', 'scrolled');
+                    header.classList.add('scrolling-down');
+                } else {
+                    // Scroll ke atas → solid
+                    header.classList.remove('at-top', 'scrolling-down');
+                    header.classList.add('scrolled');
+                }
+
+                lastScrollY = currentY;
             });
+
+            // Set initial state
+            const header = document.querySelector('header');
+            if (header) header.classList.add('at-top');
 
             if (typeof initializeWishlistButtons === 'function') initializeWishlistButtons();
             if (typeof updateWishlistCount === 'function') updateWishlistCount();

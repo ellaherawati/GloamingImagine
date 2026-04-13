@@ -1024,7 +1024,7 @@
         </div>
         
         <div class="logo">
-            <a href="index.php"><img src="img/logoheader1.png" alt="Gloaming Imagine" class="logo-image"></a>
+            <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
         </div>
         
         <div class="header-right">
@@ -1554,7 +1554,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         displayResults.forEach(product => {
             html += `
-                <a href="detail.php?id=${product.id}" class="search-result-item">
+                <a href="detail.html?id=${product.id}" class="search-result-item">
                     <img src="${product.image}" alt="${product.name}" class="search-result-image">
                     <div class="search-result-info">
                         <div class="search-result-name">${product.name}</div>

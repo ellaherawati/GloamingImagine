@@ -260,7 +260,7 @@ $resultCount = count($searchResults);
         <?php if ($resultCount > 0): ?>
             <div class="products-grid">
                 <?php foreach ($searchResults as $product): ?>
-                    <a href="detail.php?id=<?php echo $product['id']; ?>" class="product-card">
+                    <a href="detail.html?id=<?php echo $product['id']; ?>" class="product-card">
                         <div class="product-image-wrapper">
                             <?php if (!empty($product['badge'])): ?>
                                 <div class="product-badge"><?php echo $product['badge']; ?></div>

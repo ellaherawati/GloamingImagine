@@ -718,7 +718,7 @@ header.scrolled-up {
             </div>
             
             <div class="logo">
-                <a href="index.html"><img src="img/logoheader1.png" alt="Gloaming Imagine" class="logo-image" style></a>
+                <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image" style></a>
             </div>
             
             <div class="header-right">
@@ -1010,7 +1010,7 @@ header.scrolled-up {
             var html = '';
             
             displayResults.forEach(function(product) {
-                html += '<a href="detail.php?id=' + product.id + '" class="search-result-item">';
+                html += '<a href="detail.html?id=' + product.id + '" class="search-result-item">';
                 html += '<img src="' + product.image + '" alt="' + product.name + '" class="search-result-image">';
                 html += '<div class="search-result-info">';
                 html += '<div class="search-result-name">' + product.name + '</div>';

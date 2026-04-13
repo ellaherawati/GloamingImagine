@@ -260,7 +260,7 @@
 
             grid.innerHTML = filteredProducts.map(product => {
                 return `
-                <a href="detail.php?id=${product.id}" class="product-card">
+                <a href="detail.html?id=${product.id}" class="product-card">
                     ${product.isNew ? '<div class="new-badge">NEW ARRIVAL</div>' : ''}
                     <div class="product-images">
                         <img src="${product.img1}" alt="${product.title}" class="img-main">
