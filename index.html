@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gloaming Imagine - Performance Cycling</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="img/logo.png">
     <style>
         * {
@@ -21,11 +23,13 @@
             color: #000;
             overflow-x: hidden;
             transition: background 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-                        color 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+                color 0.55s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Global smooth transition for all theme-affected elements */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             transition:
                 background-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
@@ -60,9 +64,17 @@
         }
 
         @keyframes spin-bounce {
-            0%   { transform: rotate(0deg) scale(1); }
-            50%  { transform: rotate(200deg) scale(1.5); }
-            100% { transform: rotate(360deg) scale(1); }
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(200deg) scale(1.5);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
         }
 
         /* ── Dark Mode ── */
@@ -103,9 +115,9 @@
         header {
             transition:
                 background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow       0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                backdrop-filter  0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         /* Light mode — at top: normal solid */
@@ -663,7 +675,7 @@
             letter-spacing: 2.5px;
             text-transform: uppercase;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             background: transparent;
             color: #fff;
             cursor: pointer;
@@ -739,7 +751,9 @@
             padding: 0 40px;
         }
 
-        .block-wrapper::-webkit-scrollbar { display: none; }
+        .block-wrapper::-webkit-scrollbar {
+            display: none;
+        }
 
         /* Custom centered scrollbar track */
         .pns-scrollbar {
@@ -828,7 +842,7 @@
             z-index: 4;
             opacity: 0;
             transition: opacity 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             margin-left: auto;
             flex-shrink: 0;
         }
@@ -976,6 +990,7 @@
                 flex: 0 0 calc(100% / 1.8);
                 min-width: calc(100% / 1.8);
             }
+
             .collection-header {
                 padding: 24px 20px 18px;
             }
@@ -1050,7 +1065,7 @@
             .content-blocks {
                 grid-template-columns: 1fr;
             }
-            
+
             .content-block {
                 height: 70vh;
                 min-height: 500px;
@@ -1137,7 +1152,9 @@
             scroll-snap-type: x mandatory;
         }
 
-        #tab-collections .pns-grid::-webkit-scrollbar { display: none; }
+        #tab-collections .pns-grid::-webkit-scrollbar {
+            display: none;
+        }
 
         .pns-col-scrollbar {
             display: flex;
@@ -1236,21 +1253,25 @@
             #tab-categories .pns-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
+
             #tab-collections .pns-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
+
             #tab-categories .pns-grid,
             #tab-collections .pns-grid,
             .pns-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1px;
             }
+
             .pns-categories-tabs {
                 padding: 18px 20px 0;
             }
+
             .pns-tab-content {
                 padding: 24px 20px 0;
             }
@@ -1261,8 +1282,8 @@
         .pns-marquee-section {
             background: #fff;
             overflow: hidden;
-            border-top: 1px solidrgba(229, 229, 229, 0);
-            border-bottom: 1px solidrgba(229, 229, 229, 0);
+            border-top: 1px solid rgba(229, 229, 229, 0);
+            border-bottom: 1px solid rgba(229, 229, 229, 0);
             padding: 0;
         }
 
@@ -1284,8 +1305,13 @@
         }
 
         @keyframes pns-marquee-scroll {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .pns-marquee-item {
@@ -1376,7 +1402,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
-            
+
             .category-nav {
                 padding: 50px 20px;
             }
@@ -1413,20 +1439,20 @@
         .featured-description {
             font-size: 14px;
             line-height: 1.8;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 40px;
             font-weight: 300;
         }
 
         .featured-section .btn {
-            border-color: rgba(255,255,255,0.6);
+            border-color: rgba(255, 255, 255, 0.6);
         }
 
         @media (max-width: 768px) {
             .featured-section {
                 padding: 80px 20px;
             }
-            
+
             .featured-title {
                 font-size: 32px;
             }
@@ -1477,7 +1503,9 @@
             align-self: flex-end;
         }
 
-        .our-story-cta:hover { opacity: 0.5; }
+        .our-story-cta:hover {
+            opacity: 0.5;
+        }
 
         .our-story-grid {
             display: grid;
@@ -1506,7 +1534,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center top;
-            transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: block;
         }
 
@@ -1542,21 +1570,39 @@
         }
 
         @media (max-width: 768px) {
-            .our-story-section { padding: 60px 20px 80px; }
-            .our-story-title { font-size: 28px; }
-            .our-story-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .our-story-grid { grid-template-columns: 1fr; gap: 40px; }
-            .our-story-img-wrap { aspect-ratio: 4/3; }
+            .our-story-section {
+                padding: 60px 20px 80px;
+            }
+
+            .our-story-title {
+                font-size: 28px;
+            }
+
+            .our-story-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .our-story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .our-story-img-wrap {
+                aspect-ratio: 4/3;
+            }
         }
 
         @media (min-width: 769px) and (max-width: 1200px) {
-            .our-story-grid { grid-template-columns: repeat(2, 1fr); }
+            .our-story-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-
     </style>
 </head>
+
 <body>
-    <?php include 'header/header.php'; ?>
     <!-- Top Banner -->
     <!-- <div class="top-banner">
         Join ICC and receive 10% off your first order
@@ -1565,737 +1611,758 @@
     <style>
         /* Header */
         header {
-               position: sticky;
-               top: 0;
-               background: #fff;
-               border-bottom: 1px solid #e0e0e0;
-               z-index: 100;
-           }
-   
-           .header-main {
-               padding: 20px 40px;
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-               border-bottom: 1px solid #e0e0e0;
-           }
-   
-           .header-left {
-               display: flex;
-               gap: 35px;
-               align-items: center;
-           }
-   
-           .header-left a {
-               color: #000;
-               text-decoration: none;
-               font-size: 14px;
-               transition: opacity 0.3s;
-           }
-   
-           .header-left a:hover {
-               opacity: 0.6;
-           }
-   
-           .logo {
-               text-align: center;
-               flex: 1;
-           }
-   
-           .logo-image {
-               height: 35px;
-               width: auto;
-               object-fit: contain;
-           }
-   
-           .logo-text {
-               font-size: 16px;
-               font-weight: 700;
-               letter-spacing: 1.5px;
-               text-transform: uppercase;
-               line-height: 1.2;
-               display: block;
-           }
-   
-           .logo-subtitle {
-               font-size: 8px;
-               font-weight: 400;
-               letter-spacing: 2px;
-               margin-top: 2px;
-               display: block;
-           }
-   
-           .header-right {
-               display: flex;
-               gap: 30px;
-               align-items: center;
-           }
-   
-           .header-right a {
-               color: #000;
-               text-decoration: none;
-               font-size: 14px;
-               transition: opacity 0.3s;
-           }
-   
-           .header-right a:hover {
-               opacity: 0.6;
-           }
-   
-           /* Search Box */
-           .search-container {
-               position: relative;
-           }
-   
-           .search-toggle {
-               color: #000;
-               text-decoration: none;
-               font-size: 14px;
-               transition: opacity 0.3s;
-               cursor: pointer;
-           }
-   
-           .search-toggle:hover {
-               opacity: 0.6;
-           }
-   
-           .search-box {
-               position: absolute;
-               right: 0;
-               top: 50%;
-               transform: translateY(-50%);
-               width: 0;
-               opacity: 0;
-               visibility: hidden;
-               transition: all 0.3s ease;
-               background: #fff;
-               border: 1px solid #e0e0e0;
-               border-radius: 0;
-               overflow: visible;
-               z-index: 1000;
-           }
-   
-           .search-box.active {
-               width: 350px;
-               opacity: 1;
-               visibility: visible;
-           }
-   
-           .search-input-wrapper {
-               position: relative;
-           }
-   
-           .search-input {
-               width: 100%;
-               padding: 10px 35px 10px 12px;
-               border: none;
-               outline: none;
-               font-size: 14px;
-               font-family: inherit;
-           }
-   
-           .search-close {
-               position: absolute;
-               right: 10px;
-               top: 50%;
-               transform: translateY(-50%);
-               background: none;
-               border: none;
-               font-size: 18px;
-               cursor: pointer;
-               color: #666;
-               padding: 0;
-               width: 20px;
-               height: 20px;
-               display: flex;
-               align-items: center;
-               justify-content: center;
-           }
-   
-           .search-close:hover {
-               color: #000;
-           }
-   
-           /* Search Dropdown */
-           .search-dropdown {
-               position: absolute;
-               top: 100%;
-               left: 0;
-               right: 0;
-               background: #fff;
-               border: 1px solid #e0e0e0;
-               border-top: none;
-               max-height: 400px;
-               overflow-y: auto;
-               display: none;
-               box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-           }
-   
-           .search-dropdown.active {
-               display: block;
-           }
-   
-           .search-result-item {
-               display: flex;
-               align-items: center;
-               gap: 12px;
-               padding: 12px;
-               text-decoration: none;
-               color: #000;
-               border-bottom: 1px solid #f5f5f5;
-               transition: background 0.2s;
-           }
-   
-           .search-result-item:hover {
-               background: #f8f8f8;
-           }
-   
-           .search-result-image {
-               width: 50px;
-               height: 50px;
-               object-fit: cover;
-               background: #f5f5f5;
-               flex-shrink: 0;
-           }
-   
-           .search-result-info {
-               flex: 1;
-           }
-   
-           .search-result-name {
-               font-size: 13px;
-               font-weight: 500;
-               margin-bottom: 2px;
-           }
-   
-           .search-result-variant {
-               font-size: 11px;
-               color: #666;
-           }
-   
-           .search-result-price {
-               font-size: 13px;
-               font-weight: 600;
-               flex-shrink: 0;
-           }
-   
-           .search-footer {
-               padding: 12px;
-               text-align: center;
-               border-top: 1px solid #e0e0e0;
-           }
-   
-           .search-see-all {
-               display: inline-block;
-               padding: 8px 24px;
-               background: #000;
-               color: #fff;
-               text-decoration: none;
-               font-size: 12px;
-               font-weight: 600;
-               letter-spacing: 0.5px;
-               transition: background 0.3s;
-           }
-   
-           .search-see-all:hover {
-               background: #333;
-           }
-   
-           .search-no-results {
-               padding: 24px;
-               text-align: center;
-               color: #666;
-               font-size: 13px;
-           }
-           /* Cart Sidebar */
-           .cart-sidebar {
-               position: fixed;
-               top: 0;
-               right: -450px;
-               width: 450px;
-               height: 100vh;
-               background: #fff;
-               z-index: 10000;
-               box-shadow: -2px 0 20px rgba(0,0,0,0.1);
-               transition: right 0.4s ease;
-               overflow-y: auto;
-           }
-           .cart-sidebar.open {
-               right: 0;
-           }
-   
-           .cart-overlay {
-               position: fixed;
-               top: 0;
-               left: 0;
-               width: 100%;
-               height: 100vh;
-               background: rgba(0,0,0,0.5);
-               z-index: 9999;
-               opacity: 0;
-               pointer-events: none;
-               transition: opacity 0.4s ease;
-           }
-   
-           .cart-overlay.open {
-               opacity: 1;
-               pointer-events: all;
-           }
-   
-           .cart-header {
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-               padding: 25px 30px;
-               border-bottom: 1px solid #e0e0e0;
-           }
-   
-           .cart-title {
-               font-size: 18px;
-               font-weight: 600;
-               letter-spacing: 0.5px;
-           }
-   
-           .cart-close {
-               background: none;
-               border: none;
-               font-size: 24px;
-               cursor: pointer;
-               padding: 0;
-               width: 30px;
-               height: 30px;
-               display: flex;
-               align-items: center;
-               justify-content: center;
-               transition: opacity 0.3s;
-           }
-   
-           .cart-close:hover {
-               opacity: 0.6;
-           }
-   
-           .cart-content {
-               padding: 30px;
-           }
-   
-           .cart-item {
-               display: flex;
-               gap: 20px;
-               padding-bottom: 30px;
-               margin-bottom: 30px;
-               border-bottom: 1px solid #e0e0e0;
-           }
-   
-           .cart-item-image {
-               width: 80px;
-               height: 80px;
-               object-fit: cover;
-               background: #f5f5f5;
-           }
-   
-           .cart-item-details {
-               flex: 1;
-           }
-   
-           .cart-item-name {
-               font-size: 14px;
-               font-weight: 500;
-               margin-bottom: 5px;
-           }
-   
-           .cart-item-variant {
-               font-size: 12px;
-               color: #666;
-               margin-bottom: 10px;
-           }
-   
-           .cart-item-price {
-               font-size: 14px;
-               font-weight: 600;
-           }
-   
-           .cart-item-actions {
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-               margin-top: 15px;
-           }
-   
-           .cart-item-remove {
-               font-size: 12px;
-               color: #666;
-               background: none;
-               border: none;
-               cursor: pointer;
-               text-decoration: underline;
-               padding: 0;
-           }
-   
-           .cart-item-remove:hover {
-               color: #000;
-           }
-   
-           .cart-quantity {
-               display: flex;
-               align-items: center;
-               gap: 15px;
-               border: 1px solid #e0e0e0;
-               padding: 5px 10px;
-           }
-   
-           .cart-quantity button {
-               background: none;
-               border: none;
-               font-size: 16px;
-               cursor: pointer;
-               padding: 0;
-               width: 20px;
-               height: 20px;
-               display: flex;
-               align-items: center;
-               justify-content: center;
-           }
-   
-           .cart-quantity span {
-               font-size: 14px;
-               min-width: 20px;
-               text-align: center;
-           }
-   
-           .cart-gift {
-               background: #f9f9f9;
-               padding: 20px;
-               margin-bottom: 30px;
-               border-radius: 4px;
-           }
-   
-           .cart-gift-title {
-               font-size: 14px;
-               font-weight: 600;
-               margin-bottom: 5px;
-           }
-   
-           .cart-gift-subtitle {
-               font-size: 12px;
-               color: #666;
-               margin-bottom: 15px;
-           }
-   
-           .cart-gift-item {
-               display: flex;
-               gap: 15px;
-               align-items: center;
-           }
-   
-           .cart-gift-image {
-               width: 50px;
-               height: 50px;
-               object-fit: cover;
-           }
-   
-           .cart-gift-name {
-               font-size: 13px;
-               font-weight: 500;
-           }
-   
-           .cart-gift-color {
-               font-size: 12px;
-               color: #666;
-           }
-   
-           .cart-gift-select {
-               margin-left: auto;
-               font-size: 12px;
-               text-decoration: underline;
-               cursor: pointer;
-           }
-   
-           .cart-recommendations {
-               margin-bottom: 30px;
-           }
-   
-           .cart-recommendations-title {
-               font-size: 14px;
-               font-weight: 600;
-               margin-bottom: 20px;
-           }
-   
-           .cart-recommendations-grid {
-               display: grid;
-               grid-template-columns: repeat(3, 1fr);
-               gap: 15px;
-           }
-   
-           .cart-recommendation-item {
-               cursor: pointer;
-           }
-   
-           .cart-recommendation-image {
-               width: 100%;
-               height: 120px;
-               object-fit: cover;
-               background: #f5f5f5;
-               margin-bottom: 8px;
-           }
-   
-           .cart-footer {
-               padding: 30px;
-               border-top: 1px solid #e0e0e0;
-               position: sticky;
-               bottom: 0;
-               background: #fff;
-           }
-   
-           .cart-subtotal {
-               display: flex;
-               justify-content: space-between;
-               margin-bottom: 10px;
-               font-size: 14px;
-           }
-   
-           .cart-total {
-               display: flex;
-               justify-content: space-between;
-               margin-bottom: 20px;
-               font-size: 18px;
-               font-weight: 600;
-           }
-   
-           .cart-payment-methods {
-               display: flex;
-               gap: 10px;
-               justify-content: flex-end;
-               margin-bottom: 20px;
-               align-items: center;
-           }
-   
-           .cart-payment-methods span {
-               font-size: 11px;
-               color: #999;
-           }
-   
-           .cart-payment-icon {
-               width: 35px;
-               height: auto;
-           }
-   
-           .cart-checkout {
-               width: 100%;
-               padding: 18px;
-               background: #000;
-               color: #fff;
-               border: none;
-               cursor: pointer;
-               font-size: 13px;
-               letter-spacing: 1.5px;
-               transition: background 0.3s;
-               text-decoration: none;
-           }
-   
-           .cart-checkout:hover {
-               background: #333;
-           }
-   
-           .cart-empty {
-               text-align: center;
-               padding: 60px 30px;
-           }
-   
-           .cart-empty-title {
-               font-size: 16px;
-               margin-bottom: 10px;
-           }
-   
-           .cart-empty-text {
-               font-size: 13px;
-               color: #666;
-           }
-   
-           @media (max-width: 768px) {
-               .cart-sidebar {
-                   width: 100%;
-                   right: -100%;
-               }
-   
-               .logo-image {
-                   height: 40px;
-               }
-           }
-   
-   
-           /* ============ SHOP SIDEBAR ============ */
-           .shop-overlay {
-               position: fixed;
-               top: 0; left: 0;
-               width: 100%; height: 100vh;
-               background: rgba(0,0,0,0.5);
-               z-index: 9998;
-               opacity: 0;
-               pointer-events: none;
-               transition: opacity 0.35s ease;
-           }
-           .shop-overlay.open {
-               opacity: 1;
-               pointer-events: all;
-           }
-   
-           .shop-sidebar {
-               position: fixed;
-               top: 0; left: -560px;
-               width: 560px;
-               height: 100vh;
-               background: #fff;
-               z-index: 9999;
-               transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-               overflow-y: auto;
-               display: flex;
-               flex-direction: column;
-           }
-           .shop-sidebar.open {
-               left: 0;
-           }
-   
-           .shop-sidebar-header {
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-               padding: 28px 36px 20px;
-               border-bottom: 1px solid #f0f0f0;
-           }
-           .shop-sidebar-header span {
-               font-size: 13px;
-               font-weight: 600;
-               letter-spacing: 1px;
-               text-transform: uppercase;
-           }
-           .shop-sidebar-close {
-               background: none;
-               border: none;
-               font-size: 22px;
-               cursor: pointer;
-               color: #000;
-               line-height: 1;
-               padding: 0;
-           }
-           .shop-sidebar-close:hover { opacity: 0.5; }
-   
-           /* Banner gambar di atas */
-           .shop-sidebar-banner {
-               width: 100%;
-               height: 300px;
-               overflow: hidden;
-               position: relative;
-               flex-shrink: 0;
-           }
-           .shop-sidebar-banner img {
-               width: 100%;
-               height: 100%;
-               object-fit: cover;
-           }
-           .shop-sidebar-banner-label {
-               position: absolute;
-               bottom: 20px;
-               left: 30px;
-               background: #fff;
-               padding: 8px 16px;
-               font-size: 14px;
-               font-weight: 600;
-           }
-   
-           .shop-sidebar-body {
-               padding: 0 36px 36px;
-               flex: 1;
-           }
-   
-           .shop-section-title {
-               font-size: 11px;
-               font-weight: 700;
-               letter-spacing: 1.5px;
-               text-transform: uppercase;
-               color: #999;
-               margin: 28px 0 16px;
-           }
-   
-           .shop-category-grid {
-               display: grid;
-               grid-template-columns: 1fr 1fr;
-               gap: 6px 24px;
-           }
-   
-           .shop-category-item {
-               display: flex;
-               align-items: center;
-               gap: 14px;
-               padding: 10px 0;
-               text-decoration: none;
-               color: #000;
-               font-size: 14px;
-               border-bottom: 1px solid #f5f5f5;
-               transition: opacity 0.2s;
-           }
-           .shop-category-item:hover { opacity: 0.5; }
-   
-           .shop-category-icon {
-               width: 36px;
-               height: 36px;
-               object-fit: contain;
-               flex-shrink: 0;
-               filter: grayscale(100%);
-           }
-   
-           .shop-divider {
-               height: 1px;
-               background: #e8e8e8;
-               margin: 8px 0 4px;
-           }
-   
-           .shop-link-simple {
-               display: block;
-               padding: 11px 0;
-               text-decoration: none;
-               color: #000;
-               font-size: 14px;
-               border-bottom: 1px solid #f5f5f5;
-               transition: opacity 0.2s;
-           }
-           .shop-link-simple:hover { opacity: 0.5; }
-           /* ====================================== */
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 100;
+        }
+
+        .header-main {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .header-left {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .header-left a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .header-left a:hover {
+            opacity: 0.6;
+        }
+
+        .logo {
+            text-align: center;
+            flex: 1;
+        }
+
+        .logo-image {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .logo-subtitle {
+            font-size: 8px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-right a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .header-right a:hover {
+            opacity: 0.6;
+        }
+
+        /* Search Box */
+        .search-container {
+            position: relative;
+        }
+
+        .search-toggle {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .search-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .search-box {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 0;
+            overflow: visible;
+            z-index: 1000;
+        }
+
+        .search-box.active {
+            width: 350px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 35px 10px 12px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .search-close {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-close:hover {
+            color: #000;
+        }
+
+        /* Search Dropdown */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-dropdown.active {
+            display: block;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            text-decoration: none;
+            color: #000;
+            border-bottom: 1px solid #f5f5f5;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #f8f8f8;
+        }
+
+        .search-result-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            background: #f5f5f5;
+            flex-shrink: 0;
+        }
+
+        .search-result-info {
+            flex: 1;
+        }
+
+        .search-result-name {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .search-result-variant {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .search-result-price {
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .search-footer {
+            padding: 12px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .search-see-all {
+            display: inline-block;
+            padding: 8px 24px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+
+        .search-see-all:hover {
+            background: #333;
+        }
+
+        .search-no-results {
+            padding: 24px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-title {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+
+        .cart-close:hover {
+            opacity: 0.6;
+        }
+
+        .cart-content {
+            padding: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-variant {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-price {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .cart-item-remove {
+            font-size: 12px;
+            color: #666;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+        }
+
+        .cart-item-remove:hover {
+            color: #000;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #e0e0e0;
+            padding: 5px 10px;
+        }
+
+        .cart-quantity button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-quantity span {
+            font-size: 14px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-gift {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .cart-gift-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-gift-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cart-gift-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cart-gift-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .cart-gift-name {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .cart-gift-color {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .cart-gift-select {
+            margin-left: auto;
+            font-size: 12px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .cart-recommendations {
+            margin-bottom: 30px;
+        }
+
+        .cart-recommendations-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .cart-recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .cart-recommendation-item {
+            cursor: pointer;
+        }
+
+        .cart-recommendation-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #f5f5f5;
+            margin-bottom: 8px;
+        }
+
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid #e0e0e0;
+            position: sticky;
+            bottom: 0;
+            background: #fff;
+        }
+
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .cart-payment-methods {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .cart-payment-methods span {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .cart-payment-icon {
+            width: 35px;
+            height: auto;
+        }
+
+        .cart-checkout {
+            width: 100%;
+            padding: 18px;
+            background: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .cart-checkout:hover {
+            background: #333;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .cart-empty-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .cart-empty-text {
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+        }
+
+
+        /* ============ SHOP SIDEBAR ============ */
+        .shop-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .shop-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .shop-sidebar {
+            position: fixed;
+            top: 0;
+            left: -560px;
+            width: 560px;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-sidebar.open {
+            left: 0;
+        }
+
+        .shop-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 36px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .shop-sidebar-header span {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .shop-sidebar-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #000;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .shop-sidebar-close:hover {
+            opacity: 0.5;
+        }
+
+        /* Banner gambar di atas */
+        .shop-sidebar-banner {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .shop-sidebar-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .shop-sidebar-banner-label {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            background: #fff;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .shop-sidebar-body {
+            padding: 0 36px 36px;
+            flex: 1;
+        }
+
+        .shop-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #999;
+            margin: 28px 0 16px;
+        }
+
+        .shop-category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+
+        .shop-category-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 0;
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            border-bottom: 1px solid #f5f5f5;
+            transition: opacity 0.2s;
+        }
+
+        .shop-category-item:hover {
+            opacity: 0.5;
+        }
+
+        .shop-category-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: grayscale(100%);
+        }
+
+        .shop-divider {
+            height: 1px;
+            background: #e8e8e8;
+            margin: 8px 0 4px;
+        }
+
+        .shop-link-simple {
+            display: block;
+            padding: 11px 0;
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            border-bottom: 1px solid #f5f5f5;
+            transition: opacity 0.2s;
+        }
+
+        .shop-link-simple:hover {
+            opacity: 0.5;
+        }
+
+        /* ====================================== */
     </style>
-    
+
     <!-- Header -->
     <header>
-           <div class="header-main">
-               <div class="header-left">
-                   <a href="#" id="shopToggle">Shop</a>
-                   <a href="aboutus.php">About</a>
-                   <a href="explore.html">Campaign</a>
-                   <a href="account.html">Account</a>
-               </div>
-               
-               <div class="logo">
-                   <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
-               </div>
-               
-               <div class="header-right">
-                   <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
-                       <span class="toggle-icon"></span>
-                       <span class="toggle-label">Dark Mode</span>
-                   </button>
-                   <div class="search-container">
-                       <a class="search-toggle" id="searchToggle">Search</a>
-                       <div class="search-box" id="searchBox">
-                           <div class="search-input-wrapper">
-                               <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
-                               <button class="search-close" id="searchClose">×</button>
-                           </div>
-                           <div class="search-dropdown" id="searchDropdown">
-                               <!-- Results will be populated here by JavaScript -->
-                           </div>
-                       </div>
-                   </div>
-                   <a href="wishlist.php" style="position:relative; display:inline-block;">
-                       Wishlist
-                       <span id="wishlistHeaderCount" style="
+        <div class="header-main">
+            <div class="header-left">
+                <a href="#" id="shopToggle">Shop</a>
+                <a href="aboutus.php">About</a>
+                <a href="explore.html">Campaign</a>
+                <a href="account.html">Account</a>
+            </div>
+
+            <div class="logo">
+                <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
+            </div>
+
+            <div class="header-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+                    <span class="toggle-icon"></span>
+                    <span class="toggle-label">Dark Mode</span>
+                </button>
+                <div class="search-container">
+                    <a class="search-toggle" id="searchToggle">Search</a>
+                    <div class="search-box" id="searchBox">
+                        <div class="search-input-wrapper">
+                            <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                            <button class="search-close" id="searchClose">×</button>
+                        </div>
+                        <div class="search-dropdown" id="searchDropdown">
+                            <!-- Results will be populated here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <a href="wishlist.php" style="position:relative; display:inline-block;">
+                    Wishlist
+                    <span id="wishlistHeaderCount" style="
                            display: none;
                            position: absolute;
                            top: -8px;
@@ -2312,11 +2379,11 @@
                            padding: 0 3px;
                            letter-spacing: 0;
                        ">0</span>
-                   </a>
-                   
-                   <a href="#" id="cartToggle" style="position:relative; display:inline-block;">
-                       Cart
-                       <span id="cartCount" style="
+                </a>
+
+                <a href="#" id="cartToggle" style="position:relative; display:inline-block;">
+                    Cart
+                    <span id="cartCount" style="
                            display: none;
                            position: absolute;
                            top: -8px;
@@ -2333,998 +2400,1127 @@
                            padding: 0 3px;
                            letter-spacing: 0;
                        ">0</span>
-                   </a>
-               </div>
-               <div id="cartContainer"></div>
-           </div>
-       </header>
-      
-           <!-- Cart Sidebar -->
-       <div class="cart-overlay" id="cartOverlay"></div>
-       <div class="cart-sidebar" id="cartSidebar">
-           <div class="cart-header">
-               <h2 class="cart-title">Cart (<span id="cartItemCount">0</span>)</h2>
-               <button class="cart-close" id="cartClose">×</button>
-           </div>
-   
-           <div id="cartContentArea">
-               <!-- Cart content will be dynamically inserted here -->
-           </div>
-       </div>
-   
-       
-       <!-- Shop Sidebar -->
-       <div class="shop-overlay" id="shopOverlay"></div>
-       <div class="shop-sidebar" id="shopSidebar">
-   
-           <div class="shop-sidebar-header">
-               <span>Menu</span>
-               <button class="shop-sidebar-close" id="shopClose">&#x2715;</button>
-           </div>
-   
-           <!-- Banner New Arrivals -->
-           <div class="shop-sidebar-banner">
-               <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format" alt="New Arrivals">
-               <div class="shop-sidebar-banner-label">New Arrivals</div>
-           </div>
-   
-           <div class="shop-sidebar-body">
-   
-               <!-- Cycling -->
-               <div class="shop-section-title">Cycling</div>
-               <div class="shop-category-grid">
-                   <a href="shop.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Bundles">
-                       All
-                   </a>
-                   <a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Jerseys">
-                       Jerseys
-                   </a>
-                   <a href="shop.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Base Layers">
-                       Base Layers
-                   </a>
-                   <a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Bibs">
-                       Bibs
-                   </a>
-                   <a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Jackets">
-                       Jackets &amp; Gilets
-                   </a>
-                   <a href="shop.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/a4537ab8cea94765f8af7c303574821d73a9260a-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Speedsuits">
-                       Speedsuits
-                   </a>
-                   <a href="shop.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/7832c0a863d4188453bc3a1eb6b79b203835231d-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Warmers">
-                       Arm &amp; Leg Warmers
-                   </a>
-                   <a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Socks">
-                       Socks
-                   </a>
-                   <a href="shop.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Accessories">
-                       Accessories
-                   </a>
-                   <a href="shop.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=80&q=75" class="shop-category-icon" alt="Helmets">
-                       Helmets
-                   </a>
-               </div>
-   
-               <div class="shop-divider"></div>
-   
-               <!-- Off-Race -->
-               <div class="shop-section-title">Off-Race</div>
-               <div class="shop-category-grid">
-                   <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="T-Shirts">
-                       T-Shirts
-                   </a>
-                   <a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Sweatshirts">
-                       Sweatshirts &amp; Hoodies
-                   </a>
-                   <a href="shop.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Outerwear">
-                       Outerwear
-                   </a>
-                   <a href="shop.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Pants">
-                       Pants &amp; Shorts
-                   </a>
-                   <a href="shop.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Gym">
-                       Gym &amp; Training
-                   </a>
-                   <a href="shop.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
-                       <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Accessories">
-                       Accessories
-                   </a>
-               </div>
-   
-               <div class="shop-divider"></div>
-   
-               
-           </div>
-       </div>
-   
-       <script src="products-data.js"></script>
-       <script>
-       // ============ SHOP SIDEBAR LOGIC ============
-       function openShopSidebar() {
-           document.getElementById('shopSidebar').classList.add('open');
-           document.getElementById('shopOverlay').classList.add('open');
-           document.body.style.overflow = 'hidden';
-       }
-       function closeShopSidebar() {
-           document.getElementById('shopSidebar').classList.remove('open');
-           document.getElementById('shopOverlay').classList.remove('open');
-           document.body.style.overflow = '';
-       }
-       document.addEventListener('DOMContentLoaded', function() {
-           // ============ SEARCH BOX LOGIC WITH AUTOCOMPLETE ============
-           var searchToggle = document.getElementById('searchToggle');
-           var searchBox = document.getElementById('searchBox');
-           var searchInput = document.getElementById('searchInput');
-           var searchClose = document.getElementById('searchClose');
-           var searchDropdown = document.getElementById('searchDropdown');
-   
-           // Load products from centralized data file (products-data.js)
-           var products = (typeof DUMMY_PRODUCTS !== 'undefined') ? DUMMY_PRODUCTS : [];
-   
-           if (searchToggle) {
-               searchToggle.addEventListener('click', function(e) {
-                   e.preventDefault();
-                   searchBox.classList.add('active');
-                   searchInput.focus();
-               });
-           }
-   
-           if (searchClose) {
-               searchClose.addEventListener('click', function() {
-                   searchBox.classList.remove('active');
-                   searchDropdown.classList.remove('active');
-                   searchInput.value = '';
-               });
-           }
-   
-           // Search input handler
-           if (searchInput) {
-               searchInput.addEventListener('input', function() {
-                   var searchTerm = this.value.trim().toLowerCase();
-                   
-                   if (searchTerm.length > 0) {
-                       // Filter products
-                       var results = products.filter(function(product) {
-                           return product.name.toLowerCase().indexOf(searchTerm) !== -1 || 
-                                  product.variant.toLowerCase().indexOf(searchTerm) !== -1;
-                       });
-                       
-                       displaySearchResults(results, searchTerm);
-                   } else {
-                       searchDropdown.classList.remove('active');
-                   }
-               });
-   
-               // Handle Enter key
-               searchInput.addEventListener('keypress', function(e) {
-                   if (e.key === 'Enter') {
-                       var searchTerm = searchInput.value.trim();
-                       if (searchTerm) {
-                           window.location.href = 'search_result.php?q=' + encodeURIComponent(searchTerm);
-                       }
-                   }
-               });
-           }
-   
-           function displaySearchResults(results, searchTerm) {
-               if (results.length === 0) {
-                   searchDropdown.innerHTML = '<div class="search-no-results">No products found</div>';
-                   searchDropdown.classList.add('active');
-                   return;
-               }
-   
-               // Show max 5 results in dropdown
-               var displayResults = results.slice(0, 5);
-               var html = '';
-               
-               displayResults.forEach(function(product) {
-                   html += '<a href="detail.html?id=' + product.id + '" class="search-result-item">';
-                   html += '<img src="' + product.image + '" alt="' + product.name + '" class="search-result-image">';
-                   html += '<div class="search-result-info">';
-                   html += '<div class="search-result-name">' + product.name + '</div>';
-                   html += '<div class="search-result-variant">' + product.variant + '</div>';
-                   html += '</div>';
-                   html += '<div class="search-result-price">' + product.price + '</div>';
-                   html += '</a>';
-               });
-   
-               // Add "See All Results" button
-               if (results.length > 5) {
-                   html += '<div class="search-footer">';
-                   html += '<a href="search_result.php?q=' + encodeURIComponent(searchTerm) + '" class="search-see-all">';
-                   html += 'SEE ALL ' + results.length + ' RESULTS';
-                   html += '</a>';
-                   html += '</div>';
-               } else if (results.length > 0) {
-                   html += '<div class="search-footer">';
-                   html += '<a href="search_result.php?q=' + encodeURIComponent(searchTerm) + '" class="search-see-all">';
-                   html += 'SEE ALL RESULTS';
-                   html += '</a>';
-                   html += '</div>';
-               }
-   
-               searchDropdown.innerHTML = html;
-               searchDropdown.classList.add('active');
-           }
-   
-           // Close dropdown when clicking outside
-           document.addEventListener('click', function(e) {
-               if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
-                   searchBox.classList.remove('active');
-                   searchDropdown.classList.remove('active');
-                   searchInput.value = '';
-               }
-           });
-   
-           // Close search on ESC key
-           document.addEventListener('keydown', function(e) {
-               if (e.key === 'Escape' && searchBox.classList.contains('active')) {
-                   searchBox.classList.remove('active');
-                   searchDropdown.classList.remove('active');
-                   searchInput.value = '';
-               }
-           });
-   
-           // ============ SHOP SIDEBAR LOGIC ============
-           var shopToggle = document.getElementById('shopToggle');
-           if (shopToggle) {
-               shopToggle.addEventListener('click', function(e) {
-                   e.preventDefault();
-                   openShopSidebar();
-               });
-           }
-           var shopClose = document.getElementById('shopClose');
-           if (shopClose) shopClose.addEventListener('click', closeShopSidebar);
-   
-           var shopOverlay = document.getElementById('shopOverlay');
-           if (shopOverlay) {
-               shopOverlay.addEventListener('click', function(e) {
-                   if (e.target === shopOverlay) closeShopSidebar();
-               });
-           }
-       });
-       // ============================================
-       </script>
-   
-       <script src="cart.js"></script>
-       <script src="wishlist.js"></script>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                New Season <span class="highlight"> <br> Essential</span>
-            </h1>
-            <div class="hero-subtitle">Breathable comfort. Designed for distance. <br> For long summer days where rythem matters more than moreright <br> speed</div>
-            
-            <div class="hero-buttons">
-                <a href="#" class="btn">SHOP CYCLING</a>
-                <a href="#" class="btn">SHOP OFF-RACE</a>
+                </a>
             </div>
+            <div id="cartContainer"></div>
         </div>
-    </section>
+    </header>
 
-     <!-- Collection Header - PAS Normal Studios Style -->
-     <div class="collection-header">
-        <h2 class="collection-title">Best Seller</h2>
-        <div class="collection-nav">
-            <button id="scroll-prev">←</button>
-            <button id="scroll-next">→</button>
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Cart (<span id="cartItemCount">0</span>)</h2>
+            <button class="cart-close" id="cartClose">×</button>
+        </div>
+
+        <div id="cartContentArea">
+            <!-- Cart content will be dynamically inserted here -->
         </div>
     </div>
 
-    <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
-    <div class="block-wrapper-outer">
-    <section class="block-wrapper" id="product-carousel">
-        <!-- Product — ID: 1 -->
-        <a href="detail.html?id=1" class="product-block">
-            <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+
+    <!-- Shop Sidebar -->
+    <div class="shop-overlay" id="shopOverlay"></div>
+    <div class="shop-sidebar" id="shopSidebar">
+
+        <div class="shop-sidebar-header">
+            <span>Menu</span>
+            <button class="shop-sidebar-close" id="shopClose">&#x2715;</button>
+        </div>
+
+        <!-- Banner New Arrivals -->
+        <div class="shop-sidebar-banner">
+            <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format"
+                alt="New Arrivals">
+            <div class="shop-sidebar-banner-label">New Arrivals</div>
+        </div>
+
+        <div class="shop-sidebar-body">
+
+            <!-- Cycling -->
+            <div class="shop-section-title">Cycling</div>
+            <div class="shop-category-grid">
+                <a href="shop.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Bundles">
+                    All
+                </a>
+                <a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75"
+                        class="shop-category-icon" alt="Jerseys">
+                    Jerseys
+                </a>
+                <a href="shop.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Base Layers">
+                    Base Layers
+                </a>
+                <a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75"
+                        class="shop-category-icon" alt="Bibs">
+                    Bibs
+                </a>
+                <a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Jackets">
+                    Jackets &amp; Gilets
+                </a>
+                <a href="shop.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/a4537ab8cea94765f8af7c303574821d73a9260a-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Speedsuits">
+                    Speedsuits
+                </a>
+                <a href="shop.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/7832c0a863d4188453bc3a1eb6b79b203835231d-1920x2400.png?w=80&q=75"
+                        class="shop-category-icon" alt="Warmers">
+                    Arm &amp; Leg Warmers
+                </a>
+                <a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Socks">
+                    Socks
+                </a>
+                <a href="shop.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Accessories">
+                    Accessories
+                </a>
+                <a href="shop.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Helmets">
+                    Helmets
+                </a>
             </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
+
+            <div class="shop-divider"></div>
+
+            <!-- Off-Race -->
+            <div class="shop-section-title">Off-Race</div>
+            <div class="shop-category-grid">
+                <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="T-Shirts">
+                    T-Shirts
+                </a>
+                <a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75"
+                        class="shop-category-icon" alt="Sweatshirts">
+                    Sweatshirts &amp; Hoodies
+                </a>
+                <a href="shop.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Outerwear">
+                    Outerwear
+                </a>
+                <a href="shop.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Pants">
+                    Pants &amp; Shorts
+                </a>
+                <a href="shop.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Gym">
+                    Gym &amp; Training
+                </a>
+                <a href="shop.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
+                    <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75"
+                        class="shop-category-icon" alt="Accessories">
+                    Accessories
+                </a>
             </div>
-            <div class="product-info">
-                <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 2 -->
-        <a href="detail.html?id=2" class="product-block">
-            <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 3 -->
-        <a href="detail.html?id=3" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic T-shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 4 -->
-        <a href="detail.html?id=4" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 5 -->
-        <a href="detail.html?id=5" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/fe7f2f0d61e17a5b3ecd049ad28482a7da728cee-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic T-shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 6 -->
-        <a href="detail.html?id=6" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/3fec4647fb24efcd8de6dfb999f3040eda21caeb-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/834ece3adb4452130060504e5be5cce9b37c74bb-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic T-shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 7 -->
-        <a href="detail.html?id=7" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/62496f7b8af6b3e6dd6278f41c3c91e01cefca01-1920x2400.jpg?w=600&q=75" alt="Off-Race T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/a299cc794372f9b53287223848f5bf32361649d1-3000x3750.png?w=600&q=75" alt="Off-Race T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 8 -->
-        <a href="detail.html?id=8" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b505ec4eda4f201ca0ad28a89f868a3b00c1a72d-1920x2400.jpg?w=600&q=75" alt="Off-Race Logo T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/42c99e89744c2c2ccaca3cb6706732617082c920-3000x3750.png?w=600&q=75" alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Logo T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-    </section>
-    <!-- PNS Scrollbar: carousel 1 -->
-    <div class="pns-scrollbar">
-        <div class="pns-scrollbar-track" id="sb-track-1">
-            <div class="pns-scrollbar-thumb" id="sb-thumb-1"></div>
+
+            <div class="shop-divider"></div>
+
+
         </div>
     </div>
-    </div>
-    </div>
 
-     <!-- Hero Section -->
-     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
-            <!-- <h1 class="hero-title">
+    <script src="products-data.js"></script>
+    <script>
+        // ============ SHOP SIDEBAR LOGIC ============
+        function openShopSidebar() {
+            document.getElementById('shopSidebar').classList.add('open');
+            document.getElementById('shopOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeShopSidebar() {
+            document.getElementById('shopSidebar').classList.remove('open');
+            document.getElementById('shopOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            // ============ SEARCH BOX LOGIC WITH AUTOCOMPLETE ============
+            var searchToggle = document.getElementById('searchToggle');
+            var searchBox = document.getElementById('searchBox');
+            var searchInput = document.getElementById('searchInput');
+            var searchClose = document.getElementById('searchClose');
+            var searchDropdown = document.getElementById('searchDropdown');
+
+            // Load products from centralized data file (products-data.js)
+            var products = (typeof DUMMY_PRODUCTS !== 'undefined') ? DUMMY_PRODUCTS : [];
+
+            if (searchToggle) {
+                searchToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    searchBox.classList.add('active');
+                    searchInput.focus();
+                });
+            }
+
+            if (searchClose) {
+                searchClose.addEventListener('click', function () {
+                    searchBox.classList.remove('active');
+                    searchDropdown.classList.remove('active');
+                    searchInput.value = '';
+                });
+            }
+
+            // Search input handler
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    var searchTerm = this.value.trim().toLowerCase();
+
+                    if (searchTerm.length > 0) {
+                        // Filter products
+                        var results = products.filter(function (product) {
+                            return product.name.toLowerCase().indexOf(searchTerm) !== -1 ||
+                                product.variant.toLowerCase().indexOf(searchTerm) !== -1;
+                        });
+
+                        displaySearchResults(results, searchTerm);
+                    } else {
+                        searchDropdown.classList.remove('active');
+                    }
+                });
+
+                // Handle Enter key
+                searchInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        var searchTerm = searchInput.value.trim();
+                        if (searchTerm) {
+                            window.location.href = 'search_result.php?q=' + encodeURIComponent(searchTerm);
+                        }
+                    }
+                });
+            }
+
+            function displaySearchResults(results, searchTerm) {
+                if (results.length === 0) {
+                    searchDropdown.innerHTML = '<div class="search-no-results">No products found</div>';
+                    searchDropdown.classList.add('active');
+                    return;
+                }
+
+                // Show max 5 results in dropdown
+                var displayResults = results.slice(0, 5);
+                var html = '';
+
+                displayResults.forEach(function (product) {
+                    html += '<a href="detail.html?id=' + product.id + '" class="search-result-item">';
+                    html += '<img src="' + product.image + '" alt="' + product.name + '" class="search-result-image">';
+                    html += '<div class="search-result-info">';
+                    html += '<div class="search-result-name">' + product.name + '</div>';
+                    html += '<div class="search-result-variant">' + product.variant + '</div>';
+                    html += '</div>';
+                    html += '<div class="search-result-price">' + product.price + '</div>';
+                    html += '</a>';
+                });
+
+                // Add "See All Results" button
+                if (results.length > 5) {
+                    html += '<div class="search-footer">';
+                    html += '<a href="search_result.php?q=' + encodeURIComponent(searchTerm) + '" class="search-see-all">';
+                    html += 'SEE ALL ' + results.length + ' RESULTS';
+                    html += '</a>';
+                    html += '</div>';
+                } else if (results.length > 0) {
+                    html += '<div class="search-footer">';
+                    html += '<a href="search_result.php?q=' + encodeURIComponent(searchTerm) + '" class="search-see-all">';
+                    html += 'SEE ALL RESULTS';
+                    html += '</a>';
+                    html += '</div>';
+                }
+
+                searchDropdown.innerHTML = html;
+                searchDropdown.classList.add('active');
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+                    searchBox.classList.remove('active');
+                    searchDropdown.classList.remove('active');
+                    searchInput.value = '';
+                }
+            });
+
+            // Close search on ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && searchBox.classList.contains('active')) {
+                    searchBox.classList.remove('active');
+                    searchDropdown.classList.remove('active');
+                    searchInput.value = '';
+                }
+            });
+
+            // ============ SHOP SIDEBAR LOGIC ============
+            var shopToggle = document.getElementById('shopToggle');
+            if (shopToggle) {
+                shopToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openShopSidebar();
+                });
+            }
+            var shopClose = document.getElementById('shopClose');
+            if (shopClose) shopClose.addEventListener('click', closeShopSidebar);
+
+            var shopOverlay = document.getElementById('shopOverlay');
+            if (shopOverlay) {
+                shopOverlay.addEventListener('click', function (e) {
+                    if (e.target === shopOverlay) closeShopSidebar();
+                });
+            }
+        });
+        // ============================================
+    </script>
+
+    <script src="cart.js"></script>
+    <script src="wishlist.js"></script>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    New Season <span class="highlight"> <br> Essential</span>
+                </h1>
+                <div class="hero-subtitle">Breathable comfort. Designed for distance. <br> For long summer days where
+                    rhythm matters more than outright <br> speed.</div>
+
+                <div class="hero-buttons">
+                    <a href="shop.php?cat=jerseys" class="btn">SHOP CYCLING</a>
+                    <a href="shop.php" class="btn">SHOP OFF-RACE</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Header - PAS Normal Studios Style -->
+        <div class="collection-header">
+            <h2 class="collection-title">Best Seller</h2>
+            <div class="collection-nav">
+                <button type="button" class="collection-prev" aria-label="Scroll Best Seller left">←</button>
+                <button type="button" class="collection-next" aria-label="Scroll Best Seller right">→</button>
+            </div>
+        </div>
+
+        <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
+        <div class="block-wrapper-outer">
+            <section class="block-wrapper" data-carousel="best-seller">
+                <!-- Product — ID: 1 -->
+                <a href="detail.html?id=1" class="product-block">
+                    <div class="product-badges">
+                        <span class="new-arrival-badge">NEW ARRIVAL</span>
+                        <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75"
+                            alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75"
+                            alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 2 -->
+                <a href="detail.html?id=2" class="product-block">
+                    <div class="product-badges">
+                        <span class="new-arrival-badge">NEW ARRIVAL</span>
+                        <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75"
+                            alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75"
+                            alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 3 -->
+                <a href="detail.html?id=3" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic T-shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 4 -->
+                <a href="detail.html?id=4" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 5 -->
+                <a href="detail.html?id=5" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/fe7f2f0d61e17a5b3ecd049ad28482a7da728cee-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic T-shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 6 -->
+                <a href="detail.html?id=6" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/3fec4647fb24efcd8de6dfb999f3040eda21caeb-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/834ece3adb4452130060504e5be5cce9b37c74bb-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic T-shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 7 -->
+                <a href="detail.html?id=7" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/62496f7b8af6b3e6dd6278f41c3c91e01cefca01-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/a299cc794372f9b53287223848f5bf32361649d1-3000x3750.png?w=600&q=75"
+                            alt="Off-Race T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 8 -->
+                <a href="detail.html?id=8" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/b505ec4eda4f201ca0ad28a89f868a3b00c1a72d-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Logo T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/42c99e89744c2c2ccaca3cb6706732617082c920-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Logo T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+            </section>
+            <!-- PNS Scrollbar: carousel 1 -->
+            <div class="pns-scrollbar">
+                <div class="pns-scrollbar-track" id="sb-track-1">
+                    <div class="pns-scrollbar-thumb" id="sb-thumb-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
+                <!-- <h1 class="hero-title">
                 RIDE WITH <span class="highlight">PURPOSE</span>
             </h1>
             <div class="hero-buttons">
                 <a href="#" class="btn">SHOP CYCLING</a>
                 <a href="#" class="btn">SHOP OFF-RACE</a>
             </div> -->
-        </div>
-    </section>
-
-
-    <!-- PNS Categories Section -->
-    <section class="pns-categories-section">
-        <div class="pns-categories-tabs">
-            <button class="pns-tab active" onclick="switchTab(this, 'categories')">Categories</button>
-            <button class="pns-tab" onclick="switchTab(this, 'collections')">Collections</button>
-        </div>
-
-        <div id="tab-categories" class="pns-tab-content active">
-            <div class="pns-grid">
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/3ca8c9b8c53cf1a63dd3fdf88f98d7d08e8f7ad0-1920x2400.png?w=600&q=75" 
-                             onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'" alt="Bundles">
-                    </div>
-                    <span class="pns-cat-label">Bundles</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80'" alt="Jerseys">
-                    </div>
-                    <span class="pns-cat-label">Jerseys</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/7b6a5c4d3e2f1g0h9i8j7k6l5m4n3o2p1q0r9s8t-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80'" alt="Bibs">
-                    </div>
-                    <span class="pns-cat-label">Bibs</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/9c8b7a6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80'" alt="Jackets & Gilets">
-                    </div>
-                    <span class="pns-cat-label">Jackets & Gilets</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/adb7c6e5f4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1565590080825-2583c7b1f9af?w=400&q=80'" alt="Helmets">
-                    </div>
-                    <span class="pns-cat-label">Helmets</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/bec8d7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" alt="Accessories">
-                    </div>
-                    <span class="pns-cat-label">Accessories</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/cfd9e8f7g6h5i4j3k2l1m0n9o8p7q6r5s4t3u2v1-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'" alt="Socks">
-                    </div>
-                    <span class="pns-cat-label">Socks</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/dge0f9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'" alt="Outerwear">
-                    </div>
-                    <span class="pns-cat-label">Outerwear</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/ehf1g0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80'" alt="Sweatshirts & Hoodies">
-                    </div>
-                    <span class="pns-cat-label">Sweatshirts & Hoodies</span>
-                </a>
-                <a href="#" class="pns-cat-item pns-cat-item--active">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/fig2h1j0k9l8m7n6o5p4q3r2s1t0u9v8w7x6y5z4-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80'" alt="T-Shirts">
-                    </div>
-                    <span class="pns-cat-label">T-Shirts</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/gjh3i2k1l0m9n8o7p6q5r4s3t2u1v0w9x8y7z6a5-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4b4057?w=400&q=80'" alt="Pants & Shorts">
-                    </div>
-                    <span class="pns-cat-label">Pants & Shorts</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://cdn.sanity.io/images/k15yl91v/production/hki4j3l2m1n0o9p8q7r6s5t4u3v2w1x0y9z8a7b6-1920x2400.jpg?w=600&q=75"
-                             onerror="this.src='https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80'" alt="Gym & Training">
-                    </div>
-                    <span class="pns-cat-label">Gym & Training</span>
-                </a>
             </div>
-        </div>
+        </section>
 
-        <div id="tab-collections" class="pns-tab-content">
-            <div class="pns-grid">
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=400&q=80" alt="Spring/Summer 2025">
-                    </div>
-                    <span class="pns-cat-label">Spring/Summer 2025</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=400&q=80" alt="Autumn/Winter 2024">
-                    </div>
-                    <span class="pns-cat-label">Autumn/Winter 2024</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Deep Winter">
-                    </div>
-                    <span class="pns-cat-label">Deep Winter</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80" alt="Limited Edition">
-                    </div>
-                    <span class="pns-cat-label">Limited Edition</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80" alt="Collaborations">
-                    </div>
-                    <span class="pns-cat-label">Collaborations</span>
-                </a>
-                <a href="#" class="pns-cat-item">
-                    <div class="pns-cat-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80" alt="Archive">
-                    </div>
-                    <span class="pns-cat-label">Archive</span>
-                </a>
-            </div>
-        <!-- PNS Scrollbar: collections -->
-        <div class="pns-col-scrollbar">
-            <div class="pns-col-scrollbar-track" id="sb-track-col">
-                <div class="pns-col-scrollbar-thumb" id="sb-thumb-col"></div>
-            </div>
-        </div>
-        </div>
-    </section>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
-            <!-- <h1 class="hero-title">
+        <!-- PNS Categories Section -->
+        <section class="pns-categories-section">
+            <div class="pns-categories-tabs">
+                <button class="pns-tab active" onclick="switchTab(this, 'categories')">Categories</button>
+                <button class="pns-tab" onclick="switchTab(this, 'collections')">Collections</button>
+            </div>
+
+            <div id="tab-categories" class="pns-tab-content active">
+                <div class="pns-grid">
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/3ca8c9b8c53cf1a63dd3fdf88f98d7d08e8f7ad0-1920x2400.png?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'"
+                                alt="Bundles">
+                        </div>
+                        <span class="pns-cat-label">Bundles</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80'"
+                                alt="Jerseys">
+                        </div>
+                        <span class="pns-cat-label">Jerseys</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/7b6a5c4d3e2f1g0h9i8j7k6l5m4n3o2p1q0r9s8t-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80'"
+                                alt="Bibs">
+                        </div>
+                        <span class="pns-cat-label">Bibs</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/9c8b7a6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80'"
+                                alt="Jackets & Gilets">
+                        </div>
+                        <span class="pns-cat-label">Jackets & Gilets</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/adb7c6e5f4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1565590080825-2583c7b1f9af?w=400&q=80'"
+                                alt="Helmets">
+                        </div>
+                        <span class="pns-cat-label">Helmets</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/bec8d7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'"
+                                alt="Accessories">
+                        </div>
+                        <span class="pns-cat-label">Accessories</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/cfd9e8f7g6h5i4j3k2l1m0n9o8p7q6r5s4t3u2v1-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'"
+                                alt="Socks">
+                        </div>
+                        <span class="pns-cat-label">Socks</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/dge0f9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'"
+                                alt="Outerwear">
+                        </div>
+                        <span class="pns-cat-label">Outerwear</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/ehf1g0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80'"
+                                alt="Sweatshirts & Hoodies">
+                        </div>
+                        <span class="pns-cat-label">Sweatshirts & Hoodies</span>
+                    </a>
+                    <a href="#" class="pns-cat-item pns-cat-item--active">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/fig2h1j0k9l8m7n6o5p4q3r2s1t0u9v8w7x6y5z4-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80'"
+                                alt="T-Shirts">
+                        </div>
+                        <span class="pns-cat-label">T-Shirts</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/gjh3i2k1l0m9n8o7p6q5r4s3t2u1v0w9x8y7z6a5-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4b4057?w=400&q=80'"
+                                alt="Pants & Shorts">
+                        </div>
+                        <span class="pns-cat-label">Pants & Shorts</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://cdn.sanity.io/images/k15yl91v/production/hki4j3l2m1n0o9p8q7r6s5t4u3v2w1x0y9z8a7b6-1920x2400.jpg?w=600&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80'"
+                                alt="Gym & Training">
+                        </div>
+                        <span class="pns-cat-label">Gym & Training</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="tab-collections" class="pns-tab-content">
+                <div class="pns-grid">
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=400&q=80"
+                                alt="Spring/Summer 2025">
+                        </div>
+                        <span class="pns-cat-label">Spring/Summer 2025</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=400&q=80"
+                                alt="Autumn/Winter 2024">
+                        </div>
+                        <span class="pns-cat-label">Autumn/Winter 2024</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+                                alt="Deep Winter">
+                        </div>
+                        <span class="pns-cat-label">Deep Winter</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80"
+                                alt="Limited Edition">
+                        </div>
+                        <span class="pns-cat-label">Limited Edition</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80"
+                                alt="Collaborations">
+                        </div>
+                        <span class="pns-cat-label">Collaborations</span>
+                    </a>
+                    <a href="#" class="pns-cat-item">
+                        <div class="pns-cat-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80"
+                                alt="Archive">
+                        </div>
+                        <span class="pns-cat-label">Archive</span>
+                    </a>
+                </div>
+                <!-- PNS Scrollbar: collections -->
+                <div class="pns-col-scrollbar">
+                    <div class="pns-col-scrollbar-track" id="sb-track-col">
+                        <div class="pns-col-scrollbar-thumb" id="sb-thumb-col"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
+                <!-- <h1 class="hero-title">
                 RIDE WITH <span class="highlight">PURPOSE</span>
             </h1>
             <div class="hero-buttons">
                 <a href="#" class="btn">SHOP CYCLING</a>
                 <a href="#" class="btn">SHOP OFF-RACE</a>
             </div> -->
-        </div>
-    </section>
+            </div>
+        </section>
 
-         <!-- Collection Header - PAS Normal Studios Style -->
-         <div class="collection-header">
-        <h2 class="collection-title">Ride Collections</h2>
-        <div class="collection-nav">
-            <button id="scroll-prev">←</button>
-            <button id="scroll-next">→</button>
-        </div>
-    </div>
-
-    <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
-    <div class="block-wrapper-outer">
-    <section class="block-wrapper" id="product-carousel">
-        <!-- Product — ID: 9 -->
-        <a href="detail.html?id=9" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+        <!-- Collection Header - PAS Normal Studios Style -->
+        <div class="collection-header">
+            <h2 class="collection-title">Ride Collections</h2>
+            <div class="collection-nav">
+                <button type="button" class="collection-prev" aria-label="Scroll Ride Collections left">←</button>
+                <button type="button" class="collection-next" aria-label="Scroll Ride Collections right">→</button>
             </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b6713bdc16ae362a5e8137eb0f65bba19db1f455-1920x2400.jpg?w=600&q=75" alt="Off-Race T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7e9bf9a768c87ffc0d725c5fa646ba8cd578c20-3000x3750.png?w=600&q=75" alt="Off-Race T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 10 -->
-        <a href="detail.html?id=10" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75" alt="Off-Race Logo T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/a039619638c9dd6962e9743673308987ca5758fd-3000x3750.png?w=600&q=75" alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Logo T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 11 -->
-        <a href="detail.html?id=11" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/19f0811f303dcad3e99a3ad2f40c781cb2003a20-3000x3750.png?w=600&q=75" alt="Women's Off-Race Lightweight T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/2aafcd025d33287f0646c6c9e570050708d978e9-3000x3750.png?w=600&q=75" alt="Women's Off-Race Lightweight T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Women's Off-Race Lightweight T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 12 -->
-        <a href="detail.html?id=12" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/ecaee966a1a0ae0fb19bc92216eeb8b37d58c303-3000x3750.png?w=600&q=75" alt="Off-Race PNS T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=600&q=75" alt="Off-Race PNS T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race PNS T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 13 -->
-        <a href="detail.html?id=13" class="product-block">
-            <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 14 -->
-        <a href="detail.html?id=14" class="product-block">
-            <div class="product-badges">
-                <span class="new-arrival-badge">NEW ARRIVAL</span>
-                <button class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75" alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 15 -->
-        <a href="detail.html?id=15" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic T-shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75" alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic T-shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-        <!-- Product — ID: 16 -->
-        <a href="detail.html?id=16" class="product-block">
-            <div class="product-badges">
-                <button class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="product-image-wrapper">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
-                <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75" alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
-                <div class="size-selector" onclick="event.preventDefault()">
-                    <div class="size-option" onclick="event.stopPropagation()">S</div>
-                    <div class="size-option" onclick="event.stopPropagation()">M</div>
-                    <div class="size-option" onclick="event.stopPropagation()">L</div>
-                    <div class="size-option" onclick="event.stopPropagation()">XL</div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
-                <div class="product-price">Rp. 150.000</div>
-            </div>
-        </a>
-    </section>
-    <!-- PNS Scrollbar: carousel 2 -->
-    <div class="pns-scrollbar">
-        <div class="pns-scrollbar-track" id="sb-track-2">
-            <div class="pns-scrollbar-thumb" id="sb-thumb-2"></div>
-        </div>
-    </div>
-    </div>
-    </div>
-
-    <!-- Our Story Section -->
-    <section class="our-story-section">
-        <div class="our-story-header">
-            <div>
-                
-                <h2 class="our-story-title">Our Story</h2>
-            </div>
-            <a href="explore.html" class="our-story-cta">Read More →</a>
         </div>
 
-        <div class="our-story-grid">
-
-            <!-- Card 1 — The Beginning -->
-            <a href="#" class="our-story-card">
-                <div class="our-story-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-                         onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800&q=80'"
-                         alt="The Beginning">
+        <!-- Block Wrapper - PAS Normal Studios Horizontal Scroll -->
+        <div class="block-wrapper-outer">
+            <section class="block-wrapper" data-carousel="ride-collections">
+                <!-- Product — ID: 9 -->
+                <a href="detail.html?id=9" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/b6713bdc16ae362a5e8137eb0f65bba19db1f455-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/e7e9bf9a768c87ffc0d725c5fa646ba8cd578c20-3000x3750.png?w=600&q=75"
+                            alt="Off-Race T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 10 -->
+                <a href="detail.html?id=10" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Logo T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/a039619638c9dd6962e9743673308987ca5758fd-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Logo T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Logo T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 11 -->
+                <a href="detail.html?id=11" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/19f0811f303dcad3e99a3ad2f40c781cb2003a20-3000x3750.png?w=600&q=75"
+                            alt="Women's Off-Race Lightweight T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/2aafcd025d33287f0646c6c9e570050708d978e9-3000x3750.png?w=600&q=75"
+                            alt="Women's Off-Race Lightweight T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Women's Off-Race Lightweight T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 12 -->
+                <a href="detail.html?id=12" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/ecaee966a1a0ae0fb19bc92216eeb8b37d58c303-3000x3750.png?w=600&q=75"
+                            alt="Off-Race PNS T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=600&q=75"
+                            alt="Off-Race PNS T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race PNS T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 13 -->
+                <a href="detail.html?id=13" class="product-block">
+                    <div class="product-badges">
+                        <span class="new-arrival-badge">NEW ARRIVAL</span>
+                        <button class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75"
+                            alt="T.K.O. Off-Race Graphic T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/36ab7ba25a0677a35050692cf5b911ce139812d6-1920x2400.png?w=600&q=75"
+                            alt="T.K.O. Off-Race Graphic T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">T.K.O. Off-Race Graphic T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 14 -->
+                <a href="detail.html?id=14" class="product-block">
+                    <div class="product-badges">
+                        <span class="new-arrival-badge">NEW ARRIVAL</span>
+                        <button class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75"
+                            alt="T.K.O. Off-Race Long Sleeve T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/bc2416b2980f1c484907b22fd78154eeb5735851-1920x2400.png?w=600&q=75"
+                            alt="T.K.O. Off-Race Long Sleeve T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">T.K.O. Off-Race Long Sleeve T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 15 -->
+                <a href="detail.html?id=15" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic T-shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic T-shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+                <!-- Product — ID: 16 -->
+                <a href="detail.html?id=16" class="product-block">
+                    <div class="product-badges">
+                        <button class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-image-wrapper">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75"
+                            alt="Off-Race Graphic Long Sleeve T-Shirt" class="product-image img-main">
+                        <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=600&q=75"
+                            alt="Off-Race Graphic Long Sleeve T-Shirt hover" class="product-image img-hover">
+                        <div class="size-selector" onclick="event.preventDefault()">
+                            <div class="size-option" onclick="event.stopPropagation()">S</div>
+                            <div class="size-option" onclick="event.stopPropagation()">M</div>
+                            <div class="size-option" onclick="event.stopPropagation()">L</div>
+                            <div class="size-option" onclick="event.stopPropagation()">XL</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Off-Race Graphic Long Sleeve T-Shirt</div>
+                        <div class="product-price">Rp. 150.000</div>
+                    </div>
+                </a>
+            </section>
+            <!-- PNS Scrollbar: carousel 2 -->
+            <div class="pns-scrollbar">
+                <div class="pns-scrollbar-track" id="sb-track-2">
+                    <div class="pns-scrollbar-thumb" id="sb-thumb-2"></div>
                 </div>
-                <div class="our-story-card-body">
-                    <div class="our-story-card-tag">Founded 2020</div>
-                    <h3 class="our-story-card-title">Born from a Passion for Riding</h3>
-                    <p class="our-story-card-desc">Gloaming started in a small garage with one simple idea — clothing that moves as fast as you do. Every stitch tells the story of thousands of kilometers ridden.</p>
-                </div>
-            </a>
-
-            <!-- Card 2 — The Craft -->
-            <a href="#" class="our-story-card">
-                <div class="our-story-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
-                         onerror="this.src='https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=800&q=80'"
-                         alt="The Craft">
-                </div>
-                <div class="our-story-card-body">
-                    <div class="our-story-card-tag">Craftsmanship</div>
-                    <h3 class="our-story-card-title">Made with Intention, Built to Last</h3>
-                    <p class="our-story-card-desc">We obsess over every detail — from fabric selection to final seam. Our pieces are designed for real riders, tested on real roads, and built to outlast every season.</p>
-                </div>
-            </a>
-
-            <!-- Card 3 — The Community -->
-            <a href="#" class="our-story-card">
-                <div class="our-story-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&q=80"
-                         onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80'"
-                         alt="The Community">
-                </div>
-                <div class="our-story-card-body">
-                    <div class="our-story-card-tag">Community</div>
-                    <h3 class="our-story-card-title">Riding Together, Growing Together</h3>
-                    <p class="our-story-card-desc">The Gloaming community spans cities and climbs. From solo dawn rides to group adventures — we are united by the rhythm of the road and the glow at day's end.</p>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-     <!-- PNS Marquee Ticker -->
-     <section class="pns-marquee-section">
-        <div class="pns-marquee-track">
-            <div class="pns-marquee-inner">
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Ride with the community</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">New product releases</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Explore the collection</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Built for the ride</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'" alt=""></span>
-                </span>
-                <!-- Duplicate for seamless loop -->
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Ride with the community</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">New product releases</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Explore the collection</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'" alt=""></span>
-                </span>
-                <span class="pns-marquee-item">
-                    <span class="pns-marquee-text">Built for the ride</span>
-                    <span class="pns-marquee-img"><img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'" alt=""></span>
-                </span>
             </div>
         </div>
-    </section>
 
-    
+        <!-- Our Story Section -->
+        <section class="our-story-section">
+            <div class="our-story-header">
+                <div>
 
-    <!-- Content Blocks Section -->
-    <!-- <section class="content-blocks">
+                    <h2 class="our-story-title">Our Story</h2>
+                </div>
+                <a href="explore.html" class="our-story-cta">Read More →</a>
+            </div>
+
+            <div class="our-story-grid">
+
+                <!-- Card 1 — The Beginning -->
+                <a href="#" class="our-story-card">
+                    <div class="our-story-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+                            onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800&q=80'"
+                            alt="The Beginning">
+                    </div>
+                    <div class="our-story-card-body">
+                        <div class="our-story-card-tag">Founded 2020</div>
+                        <h3 class="our-story-card-title">Born from a Passion for Riding</h3>
+                        <p class="our-story-card-desc">Gloaming started in a small garage with one simple idea —
+                            clothing that moves as fast as you do. Every stitch tells the story of thousands of
+                            kilometers ridden.</p>
+                    </div>
+                </a>
+
+                <!-- Card 2 — The Craft -->
+                <a href="#" class="our-story-card">
+                    <div class="our-story-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
+                            onerror="this.src='https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=800&q=80'"
+                            alt="The Craft">
+                    </div>
+                    <div class="our-story-card-body">
+                        <div class="our-story-card-tag">Craftsmanship</div>
+                        <h3 class="our-story-card-title">Made with Intention, Built to Last</h3>
+                        <p class="our-story-card-desc">We obsess over every detail — from fabric selection to final
+                            seam. Our pieces are designed for real riders, tested on real roads, and built to outlast
+                            every season.</p>
+                    </div>
+                </a>
+
+                <!-- Card 3 — The Community -->
+                <a href="#" class="our-story-card">
+                    <div class="our-story-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&q=80"
+                            onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80'"
+                            alt="The Community">
+                    </div>
+                    <div class="our-story-card-body">
+                        <div class="our-story-card-tag">Community</div>
+                        <h3 class="our-story-card-title">Riding Together, Growing Together</h3>
+                        <p class="our-story-card-desc">The Gloaming community spans cities and climbs. From solo dawn
+                            rides to group adventures — we are united by the rhythm of the road and the glow at day's
+                            end.</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- PNS Marquee Ticker -->
+        <section class="pns-marquee-section">
+            <div class="pns-marquee-track">
+                <div class="pns-marquee-inner">
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Ride with the community</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">New product releases</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Explore the collection</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Built for the ride</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Ride with the community</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">New product releases</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Explore the collection</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                    <span class="pns-marquee-item">
+                        <span class="pns-marquee-text">Built for the ride</span>
+                        <span class="pns-marquee-img"><img
+                                src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=160&q=75"
+                                onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&q=80'"
+                                alt=""></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Content Blocks Section -->
+        <!-- <section class="content-blocks">
         <a href="#" class="content-block">
             <img src="https://cdn.sanity.io/images/k15yl91v/production/2c8e0e5e9b3e8f5d1f6e7e8e9e0e1e2e3e4e5e6e-2400x3000.jpg?w=1200&q=85" alt="Cycling Collection">
             <div class="block-overlay">
@@ -3342,9 +3538,9 @@
         </a>
     </section> -->
 
-   
-    <!-- Category Navigation -->
-    <!-- <section class="category-nav">
+
+        <!-- Category Navigation -->
+        <!-- <section class="category-nav">
         <div class="category-grid">
             <div class="category-item">
                 <div class="category-name">Cycling</div>
@@ -3431,30 +3627,21 @@
         </div>
     </section>
 
-    Featured Section
-    <section class="featured-section">
-        <div class="featured-content">
-            <div class="featured-subtitle">EXPLORE THE COLLECTION</div>
-            <h2 class="featured-title">Deep Winter</h2>
-            <p class="featured-description">
-                Built for the harshest conditions, our Deep Winter collection combines advanced thermal technology 
-                with refined aesthetics. Ride through rain, wind, and cold with confidence.
-            </p>
-            <a href="#" class="btn">SHOP COLLECTION</a>
-        </div>
-    </section>
+    <!-- Featured Section -->
+        <section class="featured-section">
+            <div class="featured-content">
+                <div class="featured-subtitle">EXPLORE THE COLLECTION</div>
+                <h2 class="featured-title">Deep Winter</h2>
+                <p class="featured-description">
+                    Built for the harshest conditions, our Deep Winter collection combines advanced thermal technology
+                    with refined aesthetics. Ride through rain, wind, and cold with confidence.
+                </p>
+                <a href="shop.php" class="btn">SHOP COLLECTION</a>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <?php include 'footer.php'; ?>
-    </footer>
+    </main>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gloaming Imagine</title>
     <style>
         * {
             margin: 0;
@@ -3706,8 +3893,6 @@
             }
         }
     </style>
-</head>
-<body>
     <!-- Newsletter Section -->
     <section class="newsletter-section">
         <div class="newsletter-container">
@@ -3716,7 +3901,7 @@
                 <h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2>
             </div>
             <div class="newsletter-right">
-                <button class="newsletter-btn" onclick="openNewsletterSignup()">Sign Up</button>
+                <button type="button" class="newsletter-btn" onclick="openNewsletterSignup()">Sign Up</button>
             </div>
         </div>
     </section>
@@ -3782,14 +3967,14 @@
                     <a href="#">COOKIE POLICY</a>
                     <a href="#">COOKIE POLICY SETTING</a>
                 </div>
-                
+
                 <div class="footer-social">
                     <a href="#">INSTAGRAM</a>
                     <a href="#">YOUTUBE</a>
                     <a href="#">STRAVA</a>
                     <a href="#">LINKEDIN</a>
                 </div>
-                
+
                 <div class="footer-copyright">
                     © GLOAMING IMAGINE 2026
                 </div>
@@ -3804,9 +3989,9 @@
         }
 
         // Dark Mode Toggle — smooth animated
-        (function() {
+        (function () {
             const toggleBtn = document.getElementById('darkModeToggle');
-            const icon  = toggleBtn ? toggleBtn.querySelector('.toggle-icon') : null;
+            const icon = toggleBtn ? toggleBtn.querySelector('.toggle-icon') : null;
             const label = toggleBtn ? toggleBtn.querySelector('.toggle-label') : null;
 
             function spawnRipple(x, y, toDark) {
@@ -3842,7 +4027,7 @@
                     // Ripple from button center
                     const rect = toggleBtn.getBoundingClientRect();
                     const cx = originX ?? rect.left + rect.width / 2;
-                    const cy = originY ?? rect.top  + rect.height / 2;
+                    const cy = originY ?? rect.top + rect.height / 2;
                     spawnRipple(cx, cy, enabled);
                 }
 
@@ -3850,11 +4035,11 @@
                 setTimeout(() => {
                     if (enabled) {
                         document.body.classList.add('dark-mode');
-                        if (icon)  icon.textContent  = '🌙';
+                        if (icon) icon.textContent = '🌙';
                         if (label) label.textContent = 'Light Mode';
                     } else {
                         document.body.classList.remove('dark-mode');
-                        if (icon)  icon.textContent  = '☀️';
+                        if (icon) icon.textContent = '☀️';
                         if (label) label.textContent = 'Dark Mode';
                     }
                     localStorage.setItem('darkMode', enabled ? '1' : '0');
@@ -3866,28 +4051,28 @@
             if (saved === '1') applyDarkMode(true, false);
 
             if (toggleBtn) {
-                toggleBtn.addEventListener('click', function(e) {
+                toggleBtn.addEventListener('click', function (e) {
                     applyDarkMode(!document.body.classList.contains('dark-mode'), true, e.clientX, e.clientY);
                 });
             }
         })();
 
         // Shipping region selector
-        document.getElementById('shippingRegion').addEventListener('change', function(e) {
-            console.log('Shipping region changed to:', e.target.value);
-            // In production, this would update shipping options/prices
-        });
+        const shippingRegion = document.getElementById('shippingRegion');
+        if (shippingRegion) {
+            shippingRegion.addEventListener('change', function (e) {
+                console.log('Shipping region changed to:', e.target.value);
+                // In production, this would update shipping options/prices
+            });
+        }
 
         // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
             });
         });
     </script>
-</body>
-</html>
-
     <script>
         function initInfiniteCarousel(wrapper, trackId, thumbId) {
             if (!wrapper) return;
@@ -3895,7 +4080,7 @@
             if (!origItems.length) return;
             origItems.forEach(item => {
                 const c1 = item.cloneNode(true); const c2 = item.cloneNode(true);
-                c1.setAttribute('aria-hidden','true'); c2.setAttribute('aria-hidden','true');
+                c1.setAttribute('aria-hidden', 'true'); c2.setAttribute('aria-hidden', 'true');
                 wrapper.insertBefore(c1, wrapper.firstChild); wrapper.appendChild(c2);
             });
             const n = origItems.length;
@@ -3921,7 +4106,7 @@
                 const trackW = track.offsetWidth;
                 const thumbW = Math.max(16, trackW / n);
                 thumb.style.width = thumbW + 'px';
-                thumb.style.left  = (ratio * (trackW - thumbW)) + 'px';
+                thumb.style.left = (ratio * (trackW - thumbW)) + 'px';
             }
             wrapper.addEventListener('scroll', updateThumb, { passive: true });
             window.addEventListener('resize', updateThumb);
@@ -3930,34 +4115,34 @@
                 const sw = setWidth(); if (!sw) return;
                 const sl = wrapper.scrollLeft;
                 if (sl >= sw * 2) { wrapper.style.scrollBehavior = 'auto'; wrapper.scrollLeft = sl - sw; }
-                if (sl < sw)      { wrapper.style.scrollBehavior = 'auto'; wrapper.scrollLeft = sl + sw; }
+                if (sl < sw) { wrapper.style.scrollBehavior = 'auto'; wrapper.scrollLeft = sl + sw; }
                 requestAnimationFrame(() => { wrapper.style.scrollBehavior = 'smooth'; });
             }, { passive: true });
-            let down=false, sx, sl2;
-            wrapper.addEventListener('mousedown', e => { down=true; wrapper.classList.add('grabbing'); sx=e.pageX; sl2=wrapper.scrollLeft; wrapper.style.scrollBehavior='auto'; });
-            wrapper.addEventListener('mouseleave',() => { down=false; wrapper.classList.remove('grabbing'); });
-            wrapper.addEventListener('mouseup',   () => { down=false; wrapper.classList.remove('grabbing'); wrapper.style.scrollBehavior='smooth'; });
-            wrapper.addEventListener('mousemove', e => { if(!down) return; e.preventDefault(); wrapper.scrollLeft = sl2-(e.pageX-sx)*1.4; });
+            let down = false, sx, sl2;
+            wrapper.addEventListener('mousedown', e => { down = true; wrapper.classList.add('grabbing'); sx = e.pageX; sl2 = wrapper.scrollLeft; wrapper.style.scrollBehavior = 'auto'; });
+            wrapper.addEventListener('mouseleave', () => { down = false; wrapper.classList.remove('grabbing'); });
+            wrapper.addEventListener('mouseup', () => { down = false; wrapper.classList.remove('grabbing'); wrapper.style.scrollBehavior = 'smooth'; });
+            wrapper.addEventListener('mousemove', e => { if (!down) return; e.preventDefault(); wrapper.scrollLeft = sl2 - (e.pageX - sx) * 1.4; });
             let tx, tsl;
-            wrapper.addEventListener('touchstart', e => { tx=e.touches[0].pageX; tsl=wrapper.scrollLeft; wrapper.style.scrollBehavior='auto'; }, {passive:true});
-            wrapper.addEventListener('touchmove',  e => { wrapper.scrollLeft = tsl-(e.touches[0].pageX-tx); }, {passive:true});
-            wrapper.addEventListener('touchend',   () => { wrapper.style.scrollBehavior='smooth'; });
+            wrapper.addEventListener('touchstart', e => { tx = e.touches[0].pageX; tsl = wrapper.scrollLeft; wrapper.style.scrollBehavior = 'auto'; }, { passive: true });
+            wrapper.addEventListener('touchmove', e => { wrapper.scrollLeft = tsl - (e.touches[0].pageX - tx); }, { passive: true });
+            wrapper.addEventListener('touchend', () => { wrapper.style.scrollBehavior = 'smooth'; });
         }
 
         function initAutoScroll(wrapper, ms) {
             if (!wrapper) return;
-            let timer=null, paused=false;
+            let timer = null, paused = false;
             function oneItemWidth() {
                 const item = wrapper.querySelector('.pns-cat-item');
                 return item ? item.offsetWidth : 200;
             }
-            function step() { if (!paused) { wrapper.style.scrollBehavior='smooth'; wrapper.scrollLeft += oneItemWidth(); } }
+            function step() { if (!paused) { wrapper.style.scrollBehavior = 'smooth'; wrapper.scrollLeft += oneItemWidth(); } }
             function start() { clearInterval(timer); timer = setInterval(step, ms); }
-            function stop()  { clearInterval(timer); timer = null; }
-            wrapper.addEventListener('mouseenter', () => { paused=true;  stop(); });
-            wrapper.addEventListener('mouseleave', () => { paused=false; start(); });
-            wrapper.addEventListener('touchstart', () => { paused=true;  stop(); }, {passive:true});
-            wrapper.addEventListener('touchend',   () => { paused=false; start(); }, {passive:true});
+            function stop() { clearInterval(timer); timer = null; }
+            wrapper.addEventListener('mouseenter', () => { paused = true; stop(); });
+            wrapper.addEventListener('mouseleave', () => { paused = false; start(); });
+            wrapper.addEventListener('touchstart', () => { paused = true; stop(); }, { passive: true });
+            wrapper.addEventListener('touchend', () => { paused = false; start(); }, { passive: true });
             start();
         }
 
@@ -3970,16 +4155,16 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const wrappers = document.querySelectorAll('.block-wrapper');
-            const trackIds = ['sb-track-1','sb-track-2'];
-            const thumbIds = ['sb-thumb-1','sb-thumb-2'];
+            const trackIds = ['sb-track-1', 'sb-track-2'];
+            const thumbIds = ['sb-thumb-1', 'sb-thumb-2'];
             wrappers.forEach((w, i) => initInfiniteCarousel(w, trackIds[i], thumbIds[i]));
 
-            const allPrev = document.querySelectorAll('#scroll-prev');
-            const allNext = document.querySelectorAll('#scroll-next');
+            const allPrev = document.querySelectorAll('.collection-prev');
+            const allNext = document.querySelectorAll('.collection-next');
             wrappers.forEach((w, i) => {
-                function cw() { const c=w.querySelector('.product-block'); return c ? c.offsetWidth+12 : 200; }
-                if (allPrev[i]) allPrev[i].addEventListener('click', () => { w.style.scrollBehavior='smooth'; w.scrollLeft -= cw(); });
-                if (allNext[i]) allNext[i].addEventListener('click', () => { w.style.scrollBehavior='smooth'; w.scrollLeft += cw(); });
+                function cw() { const c = w.querySelector('.product-block'); return c ? c.offsetWidth + 12 : 200; }
+                if (allPrev[i]) allPrev[i].addEventListener('click', () => { w.style.scrollBehavior = 'smooth'; w.scrollLeft -= cw(); });
+                if (allNext[i]) allNext[i].addEventListener('click', () => { w.style.scrollBehavior = 'smooth'; w.scrollLeft += cw(); });
             });
 
             const colGrid = document.querySelector('#tab-collections .pns-grid');
@@ -4026,4 +4211,5 @@
         });
     </script>
 </body>
+
 </html>
