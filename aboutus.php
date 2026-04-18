@@ -3,753 +3,559 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Gloaming Imagine</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<style>
+<title>About — Gloaming Imagine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black:  #1a1a1a;
-  --mid:rgb(255, 255, 255);
-  --border: #e0e0e0;
-  --white:  #ffffff;
+  --bg:      #ffffff;
+  --surface: #ffffff;
+  --border:  #e8e8e8;
+  --text:    #111111;
+  --muted:   #888888;
+  --header-h: 61px;
 }
 
-html { font-size: 16px; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--white);
-  color: var(--black);
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: -0.03em;
+  font-family: 'Libre Franklin', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* ── PAGE ── */
-.page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px 120px;
+body.dark-mode {
+  --bg:      #111111;
+  --surface: #111111;
+  --border:  #2a2a2a;
+  --text:    #f0f0f0;
+  --muted:   #666666;
 }
 
-/* ── LOGO LINE ── */
-.brand {
+*, *::before, *::after {
+  transition:
+    background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    color            0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow       0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.theme-ripple {
+  position: fixed; border-radius: 50%;
+  pointer-events: none; z-index: 99998;
+  transform: scale(0); opacity: 0.18;
+  will-change: transform, opacity;
+}
+.theme-ripple.expanding { transform: scale(1) !important; opacity: 0 !important; }
+.dark-mode-toggle .toggle-icon { display: inline-block; }
+.dark-mode-toggle.spinning .toggle-icon {
+  animation: spin-bounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes spin-bounce {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(200deg) scale(1.5); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--text);
+  color: var(--bg);
+  text-align: center;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  /* margin-bottom: 72px; */
-  display: block;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 10px 40px;
+  position: relative;
+}
+.announce-close {
+  position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none; color: inherit;
+  font-size: 18px; cursor: pointer; opacity: 0.5; padding: 0 4px;
+}
+.announce-close:hover { opacity: 1; }
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+header.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+body.dark-mode header.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.4); }
+
+.header-main {
+  padding: 0 40px; height: var(--header-h);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.header-left { display: flex; gap: 32px; align-items: center; }
+.header-left a {
+  color: var(--text); text-decoration: none;
+  font-size: 13px; font-weight: 400;
+}
+.header-left a:hover { opacity: 0.5; }
+
+.logo { flex: 1; text-align: center; }
+.logo a { text-decoration: none; }
+.logo-image { height: 32px; width: auto; object-fit: contain; }
+.logo-text {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text); display: block; line-height: 1.2;
+}
+.logo-sub {
+  font-size: 7px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); display: block; margin-top: 2px;
 }
 
-/* ── SECTION HEADING ── */
-.section-title {
-  font-size: 60px;
+.header-right { display: flex; gap: 28px; align-items: center; }
+.header-right a {
+  color: var(--text); text-decoration: none;
+  font-size: 13px; font-weight: 400;
+}
+.header-right a:hover { opacity: 0.5; }
+
+.dark-mode-toggle {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 13px; color: var(--text); padding: 0;
+}
+.dark-mode-toggle:hover { opacity: 0.5; }
+.dark-mode-toggle .toggle-icon { font-size: 14px; }
+
+/* ── PAGE CONTENT ── */
+.page-wrap {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 80px 40px 0;
+}
+
+.about-title {
+  font-size: clamp(36px, 5vw, 60px);
   font-weight: 700;
-  line-height: 1.1;
   letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+.about-body {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text);
   margin-bottom: 20px;
-  color: var(--black);
 }
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-  margin-bottom: 28px;
-}
-
-/* ── BODY TEXT ── */
-p {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.3;
-  color: #3a3a3a;
-  margin-bottom: 18px;
-}
-p:last-child { margin-bottom: 0; }
-p strong { font-weight: 600; color: var(--black); }
 
 /* ── INFO TABLE ── */
-.info-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 56px 0;
+.info-block {
+  margin-top: 64px;
+  margin-bottom: 80px;
 }
-.info-table tr {
-  border-bottom: 1px solid var(--border);
-}
-.info-table tr:first-child {
-  border-top: 1px solid var(--border);
-}
-.info-table td {
+.info-row {
+  display: flex;
   padding: 14px 0;
-  font-size: 13px;
-  line-height: 1.5;
-  vertical-align: top;
-}
-.info-table .lbl {
-  font-weight: 600;
-  color: var(--black);
-  width: 200px;
-  padding-right: 24px;
-  letter-spacing: -0.01em;
-}
-.info-table .val {
-  font-weight: 300;
-  color: #3a3a3a;
-}
-.info-table .val a {
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1px;
-  transition: border-color 0.15s;
-}
-.info-table .val a:hover {
-  border-color: var(--black);
-}
-
-/* ── BLOCK SEPARATOR ── */
-.block {
-  padding: 56px 0;
   border-top: 1px solid var(--border);
+  gap: 24px;
 }
-.block:first-of-type { border-top: none; }
+.info-row:last-child { border-bottom: 1px solid var(--border); }
+.info-key {
+  font-size: 14px; font-weight: 400;
+  color: var(--text); min-width: 200px; flex-shrink: 0;
+}
+.info-val {
+  font-size: 14px; font-weight: 400; color: var(--text);
+}
+.info-val a { color: var(--text); text-decoration: none; }
+.info-val a:hover { text-decoration: underline; }
 
-/* ── PILLARS ── */
-.pillar-num {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--mid);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 12px;
-}
-.pillar-name {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  margin-bottom: 14px;
-  color: var(--black);
-}
-
-/* ── TEAM ── */
-.team-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  margin-top: 40px;
-  border: 1px solid var(--border);
-}
-.team-member {
-  background: var(--white);
-  padding: 28px 24px 32px;
-}
-.member-name {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  margin-bottom: 2px;
-  color: var(--black);
-}
-.member-role {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 14px;
-}
-.member-bio {
-  font-size: 12px;
-  line-height: 1.75;
-  font-weight: 300;
-  color: #555;
-  margin: 0;
-}
-
-/* ── STATS ── */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 40px;
-}
-.stat {
-  background: var(--white);
-  padding: 28px 20px;
-}
-.stat-num {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  margin-bottom: 6px;
-  color: var(--black);
-}
-.stat-lbl {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mid);
-  line-height: 1.5;
-}
-
-/* ── SUSTAIN LIST ── */
-.sustain-list {
-  list-style: none;
-  border-top: 1px solid var(--border);
-  margin-top: 28px;
-}
-.sustain-list li {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--black);
-  letter-spacing: -0.01em;
-}
-.sustain-list li::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: var(--black);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* ── QUOTE ── */
-.quote-block {
-  padding: 56px 0;
-  border-top: 1px solid var(--border);
-}
-.quote-text {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 1.2;
-  color: var(--black);
-  margin-bottom: 20px;
-}
-.quote-attr {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mid);
-  margin: 0;
-}
-
-/* ── CTA BUTTON ── */
-.btn-wrap {
-  margin-top: 40px;
-}
-.btn {
-  display: inline-block;
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 14px 40px;
-  letter-spacing: -0.01em;
-  transition: opacity 0.15s;
-}
-.btn:hover { opacity: 0.75; }
-.btn-ghost {
-  background: transparent;
-  color: var(--black);
-  border: 1px solid var(--border);
-  margin-left: 12px;
-}
-.btn-ghost:hover { border-color: var(--black); opacity: 1; }
-
-/* ── FADE IN ── */
-.fade {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade.in { opacity: 1; transform: none; }
-
-/* ════════════════════════════════════════
-   ── FULL-SCREEN BANNER ──
-   ════════════════════════════════════════ */
-
-.banner-section {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-  background: #0f0f0f;
-}
-
-/* Layered gradient atmosphere */
-.banner-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(90, 75, 55, 0.35) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 70% at 20% 80%, rgba(45, 55, 60, 0.4) 0%, transparent 60%),
-    linear-gradient(160deg, #0f0f0f 0%, #1c1a16 40%, #111213 100%);
-}
-
-/* Subtle grain texture via SVG filter */
-.banner-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  pointer-events: none;
-}
-
-/* Thin horizontal rule lines — editorial atmosphere */
-.banner-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.banner-lines::before,
-.banner-lines::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0;
-  height: 1px;
-  background: rgba(255,255,255,0.06);
-}
-.banner-lines::before { top: 38%; }
-.banner-lines::after  { top: 62%; }
-
-/* Large ghost letter watermark */
-.banner-watermark {
-  position: absolute;
-  bottom: -0.12em;
-  right: -0.05em;
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(180px, 28vw, 380px);
-  font-weight: 700;
-  letter-spacing: -0.06em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Vertical side label */
-.banner-side-label {
-  position: absolute;
-  left: 48px;
-  bottom: 48px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
-}
-
-/* Content container */
-.banner-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 80px 72px;
-  max-width: 1200px;
+/* ── PRESS SECTION ── */
+.press-section {
+  max-width: 740px;
   margin: 0 auto;
+  padding: 0 40px 100px;
 }
-
-/* Top badge */
-.banner-badge {
-  position: absolute;
-  top: 48px;
-  left: 80px;
-  font-size: 9px;
+.press-title {
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: 36px;
 }
-.banner-badge::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: rgba(255,255,255,0.3);
+.press-item {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+}
+.press-item:last-child { border-bottom: 1px solid var(--border); }
+.press-item-title {
+  font-size: 15px; font-weight: 600;
+  color: var(--text); margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.press-item-body {
+  font-size: 14px; font-weight: 400;
+  line-height: 1.7; color: var(--text);
+  opacity: 0.7; margin-bottom: 12px;
+}
+.press-link {
+  font-size: 13px; font-weight: 500;
+  color: var(--text); text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.press-link:hover { opacity: 0.5; }
+
+/* ── HERO IMAGE ── */
+.hero-image {
+  width: 100%; height: 70vh; min-height: 400px;
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
   display: block;
 }
 
-/* Year tag top right */
-.banner-year {
-  position: absolute;
-  top: 48px;
-  right: 80px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.2);
+/* ── NEWSLETTER ── */
+.newsletter-section {
+  padding: 72px 40px;
+  border-top: 1px solid var(--border);
 }
+.newsletter-container {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 40px;
+}
+.newsletter-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 14px;
+}
+.newsletter-title {
+  font-size: clamp(20px, 2.8vw, 32px);
+  font-weight: 400; line-height: 1.3;
+  letter-spacing: -0.03em; color: var(--text);
+}
+.newsletter-btn {
+  flex-shrink: 0; padding: 14px 40px;
+  background: transparent; color: var(--text);
+  border: 1px solid var(--text);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer; font-family: inherit;
+}
+.newsletter-btn:hover { background: var(--text); color: var(--bg); }
 
-/* Headline */
-.banner-headline {
-  font-size: clamp(44px, 7vw, 88px);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
-  color: #f5f0e8;
-  margin-bottom: 32px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--surface);
+  padding: 60px 40px 36px;
+  border-top: 1px solid var(--border);
 }
-.banner-headline em {
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(245,240,232,0.5);
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 56px; padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
 }
-.banner-headline.reveal {
-  opacity: 1;
-  transform: none;
+.footer-col-brand .shipping-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
 }
-
-/* Sub row */
-.banner-sub-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
+.shipping-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text);
+  margin-bottom: 36px; cursor: pointer;
 }
-
-.banner-tagline {
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.7;
-  color: rgba(245,240,232,0.45);
-  max-width: 400px;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.9s ease 0.45s, transform 0.9s ease 0.45s;
+.shipping-row:hover { opacity: 0.6; }
+.shipping-arrow { font-size: 9px; color: var(--muted); }
+.footer-brand-links { list-style: none; }
+.footer-brand-links li { margin-bottom: 14px; }
+.footer-brand-links a {
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -0.03em; color: var(--text);
+  text-decoration: none; line-height: 1.2; display: block;
 }
-.banner-tagline.reveal {
-  opacity: 1;
-  transform: none;
+.footer-brand-links a:hover { opacity: 0.5; }
+.footer-col h3 {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
 }
-
-/* Scroll cue */
-.banner-scroll-cue {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  transition: opacity 0.9s ease 0.7s;
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 11px; }
+.footer-links a { color: var(--text); text-decoration: none; font-size: 14px; }
+.footer-links a:hover { opacity: 0.5; }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
 }
-.banner-scroll-cue.reveal { opacity: 1; }
-.banner-scroll-cue span {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a {
+  color: var(--text); text-decoration: none;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
 }
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
-  animation: scrollDrop 1.8s ease-in-out infinite;
+.footer-legal a:hover { opacity: 0.5; }
+.footer-social { display: flex; gap: 20px; }
+.footer-social a {
+  color: var(--text); text-decoration: none;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
 }
-@keyframes scrollDrop {
-  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
-  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  51%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-
-/* Horizontal divider line inside banner */
-.banner-divider {
-  position: absolute;
-  left: 80px;
-  right: 80px;
-  bottom: 140px;
-  height: 1px;
-  background: rgba(255,255,255,0.07);
-  opacity: 0;
-  transition: opacity 1s ease 0.3s;
-}
-.banner-divider.reveal { opacity: 1; }
+.footer-social a:hover { opacity: 0.5; }
+.footer-copy { font-size: 11px; color: var(--muted); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 680px) {
-  .banner-content  { padding: 0 28px 52px; }
-  .banner-badge,
-  .banner-year     { left: 28px; right: 28px; }
-  .banner-year     { left: auto; }
-  .banner-side-label { left: 16px; bottom: 32px; }
-  .banner-divider  { left: 28px; right: 28px; }
-  .banner-sub-row  { flex-direction: column; align-items: flex-start; }
-  .banner-scroll-cue { display: none; }
+@media (max-width: 768px) {
+  .header-main { padding: 0 20px; }
+  .header-left { display: none; }
+  .page-wrap { padding: 48px 20px 0; }
+  .press-section { padding: 0 20px 60px; }
+  .info-key { min-width: 120px; font-size: 13px; }
+  .info-val { font-size: 13px; }
+  .newsletter-container { flex-direction: column; align-items: flex-start; }
+  .newsletter-btn { width: 100%; text-align: center; }
+  .newsletter-section { padding: 48px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; margin-bottom: 40px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .site-footer { padding: 48px 20px 32px; }
 }
-
 </style>
 </head>
+
 <body>
-    <?php include 'header/header.php'; ?>
 
-<div class="page">
-
-  <span class="brand">About Us</span>
-
-  <!-- ── INTRO ── -->
-  <div class="block fade">
-    <h1 class="section-title">Gloaming <br> Imagine</h1>
-    <div class="divider"></div>
-    <p>Gloaming Imagine adalah brand lifestyle dan home goods berbasis di Jakarta. Kami ada di persimpangan antara desain yang dipertimbangkan dan fungsi keseharian — mengkurasi objek yang benar-benar memiliki tempat di ruang yang Anda tinggali.</p>
-    <p>Didirikan tahun 2019, Gloaming Imagine lahir dari satu obsesi: menemukan benda-benda yang dibuat dengan jujur. Bukan produk tren, bukan barang cepat — melainkan benda dengan integritas material dan alasan nyata untuk ada.</p>
-    <p>Nama kami berasal dari <em>gloaming</em> — jam singkat antara siang dan malam yang tidak masuk kategori mana pun. Kami percaya desain yang baik hidup di sana: cukup spesifik untuk menjadi dirinya sendiri, cukup terbuka untuk cocok di mana saja.</p>
-  </div>
-
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announce-bar" id="announceBar">
+  Join ICC and receive 10% off your first order
+  <button class="announce-close" onclick="document.getElementById('announceBar').style.display='none'">×</button>
 </div>
 
-<!-- ════════════════════════════════════════
-     FULL-SCREEN BANNER — outside .page container
-     ════════════════════════════════════════ -->
-<section class="banner-section" id="banner">
-  <!-- Atmosphere layers -->
-  <div class="banner-bg"></div>
-  <div class="banner-grain"></div>
-  <div class="banner-lines"></div>
-  <div class="banner-watermark">G</div>
-
-  <!-- Top bar -->
-  <span class="banner-badge">Jakarta · Indonesia</span>
-  <span class="banner-year">Est. 2019</span>
-
-  <!-- Vertical side label -->
-  <span class="banner-side-label">Objects with Purpose</span>
-
-  <!-- Horizontal divider -->
-  <div class="banner-divider" id="bannerDivider"></div>
-
-  <!-- Main content -->
-  <div class="banner-content">
-    <h2 class="banner-headline" id="bannerHeadline">
-      Things<br>
-      made<br>
-      <em>with intent.</em>
-    </h2>
-
-    <div class="banner-sub-row">
-      <p class="banner-tagline" id="bannerTagline">
-        Kami mengkurasi benda-benda yang dibuat oleh tangan yang peduli — bukan oleh jadwal tren. Setiap objek ada di sini karena alasan.
-      </p>
-
-      <div class="banner-scroll-cue" id="bannerScroll">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
+<!-- ── HEADER ── -->
+<header id="siteHeader">
+  <div class="header-main">
+    <div class="header-left">
+      <a href="#">Shop</a>
+      <a href="explore.html">Explore</a>
+      <a href="#">Flagship Stores</a>
     </div>
+
+    <div class="logo">
+      <a href="#">
+        <img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none;">GLOAMING IMAGINE<span class="logo-sub">International Cycling Club</span></span>
+      </a>
+    </div>
+
+    <div class="header-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <span class="toggle-icon">☀️</span>
+        <span class="toggle-label">Dark Mode</span>
+      </button>
+      <a href="#">Search</a>
+      <a href="#">Account</a>
+      <a href="#">Cart</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── ABOUT TEXT ── -->
+<div class="page-wrap">
+  <h1 class="about-title">Gloaming Imagine</h1>
+
+  <p class="about-body">Gloaming Imagine is a Copenhagen-based brand of contemporary, technical cycling clothing. The concept of Gloaming Imagine is to create technically perfect apparel, combined with visionary aesthetics. Through innovative designs, brand collaborations, and sourcing of new production methods, Gloaming Imagine strives to bring out collections that define modern cycling in a different context.</p>
+
+  <p class="about-body">The brand honours the great traditions of cycling, but is above all committed to the patterns and colours that define state of the art fashion today. The uncompromising attention to detail and hand-made, sustainable quality is paired with an inspired take on today's look and feel. Gloaming Imagine produces high-end clothing with textiles and methods at the same level as demanded by professional riders — but at the same time, all styles are created for long-term usage and durability. Based in Scandinavia, but with a specific international element, Gloaming Imagine can now be found throughout Europe, parts of Asia, and North America.</p>
+
+  <!-- ── COMPANY INFO ── -->
+  <div class="info-block">
+    <div class="info-row">
+      <span class="info-key">Company Name</span>
+      <span class="info-val">Gloaming Imagine</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Legal Name</span>
+      <span class="info-val">Gloaming Imagine ApS</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">CVR no.</span>
+      <span class="info-val">36440473</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Year Founded</span>
+      <span class="info-val">2016</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Address</span>
+      <span class="info-val">Århusgade 126, DK-2150, Copenhagen, Denmark</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Office Tel.</span>
+      <span class="info-val"><a href="tel:+4531333338">+45 3133 3338</a></span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">General Info</span>
+      <span class="info-val"><a href="mailto:support@gloamingimagine.com">support@gloamingimagine.com</a></span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Customer Support</span>
+      <span class="info-val"><a href="mailto:support@gloamingimagine.com">support@gloamingimagine.com</a></span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Press Requests</span>
+      <span class="info-val"><a href="mailto:press@gloamingimagine.com">press@gloamingimagine.com</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRESS RELEASES ── -->
+<div class="press-section">
+  <h2 class="press-title">Press releases</h2>
+
+  <div class="press-item">
+    <div class="press-item-title">Archive and Gloaming Imagine Sign a Strategic Partnership</div>
+    <p class="press-item-body">The investment company Archive Srl and Gloaming Imagine ApS, a company specializing in technical cycling clothing, announce the signature of a partnership agreement.</p>
+    <a href="#" class="press-link">Full press release</a>
+  </div>
+
+  <div class="press-item">
+    <div class="press-item-title">Gloaming Imagine Opens First Flagship Store in Copenhagen</div>
+    <p class="press-item-body">The brand's first physical retail space opens at Nørreport, bringing the full collection and ICC membership programme to the Danish capital.</p>
+    <a href="#" class="press-link">Full press release</a>
+  </div>
+
+  <div class="press-item">
+    <div class="press-item-title">The Merino Project — Transparency Report 2024</div>
+    <p class="press-item-body">Full disclosure of material sourcing, manufacturing partners, and environmental offset for the Spring/Summer 2024 collection.</p>
+    <a href="#" class="press-link">Full press release</a>
+  </div>
+</div>
+
+<!-- ── HERO IMAGE ── -->
+<div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=1800&q=85" alt="Riders on road">
+</div>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter-section">
+  <div class="newsletter-container">
+    <div>
+      <div class="newsletter-label">Newsletter</div>
+      <h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2>
+    </div>
+    <button class="newsletter-btn">Sign Up</button>
   </div>
 </section>
 
-<!-- Resume .page after banner -->
-<div class="page">
-
-  <!-- ── COMPANY INFO ── -->
-  <div class="block fade">
-    <table class="info-table">
-      <tr>
-        <td class="lbl">Company Name</td>
-        <td class="val">Gloaming Imagine</td>
-      </tr>
-      <tr>
-        <td class="lbl">Founded</td>
-        <td class="val">2019</td>
-      </tr>
-      <tr>
-        <td class="lbl">Headquarters</td>
-        <td class="val">Jakarta, Indonesia</td>
-      </tr>
-      <tr>
-        <td class="lbl">Category</td>
-        <td class="val">Curated Lifestyle & Home Goods</td>
-      </tr>
-      <tr>
-        <td class="lbl">Shipping</td>
-        <td class="val">Indonesia & 18 negara di seluruh dunia</td>
-      </tr>
-      <tr>
-        <td class="lbl">Contact</td>
-        <td class="val"><a href="mailto:hello@gloamingimagine.com">hello@gloamingimagine.com</a></td>
-      </tr>
-      <tr>
-        <td class="lbl">Instagram</td>
-        <td class="val"><a href="#">@gloamingimagine</a></td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- ── PILLARS ── -->
-  <div class="block fade">
-    <h2 class="section-title">What We Stand For</h2>
-    <div class="divider"></div>
-
-    <div style="padding: 32px 0; border-bottom: 1px solid var(--border);">
-      <span class="pillar-num">01 — Considered Craft</span>
-      <div class="pillar-name">Material Honesty</div>
-      <p style="margin:0;">Setiap produk yang kami pilih dipilih karena kejujuran materialnya. Kami hanya bekerja dengan pengrajin yang peduli pada proses sebanyak mereka peduli pada hasil akhir — tanpa pengecualian.</p>
-    </div>
-
-    <div style="padding: 32px 0; border-bottom: 1px solid var(--border);">
-      <span class="pillar-num">02 — Slow Commerce</span>
-      <div class="pillar-name">Against the Noise</div>
-      <p style="margin:0;">Kami menolak siklus tren. Katalog kami berkembang dengan sengaja. Kami menambahkan sesuatu ketika menemukan yang layak ditambahkan — dan melepasnya ketika menemukan yang lebih baik.</p>
-    </div>
-
-    <div style="padding: 32px 0;">
-      <span class="pillar-num">03 — Quiet Sustainability</span>
-      <div class="pillar-name">The Baseline</div>
-      <p style="margin:0;">Keberlanjutan bukan kampanye bagi kami. Ini adalah standar dasar: lebih sedikit limbah, material lebih baik, umur produk lebih panjang. Kami lebih memilih menjual lebih sedikit hal yang lebih baik.</p>
-    </div>
-  </div>
-
-  <!-- ── STATS ── -->
-  <div class="block fade">
-    <div class="stats-row">
-      <div class="stat">
-        <div class="stat-num">6+</div>
-        <div class="stat-lbl">Years of<br>Curation</div>
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col-brand">
+        <div class="shipping-label">Shipping To</div>
+        <div class="shipping-row">REST OF EU <span class="shipping-arrow">▾</span></div>
+        <ul class="footer-brand-links">
+          <li><a href="#">Destination Everywhere</a></li>
+          <li><a href="#">Sponsored Teams</a></li>
+          <li><a href="#">Find Stores</a></li>
+        </ul>
       </div>
-      <div class="stat">
-        <div class="stat-num">120</div>
-        <div class="stat-lbl">Artisan<br>Partners</div>
+      <div class="footer-col">
+        <h3>Customer Care</h3>
+        <ul class="footer-links">
+          <li><a href="#">Get in Touch</a></li>
+          <li><a href="#">Gift Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Crash Replacement</a></li>
+          <li><a href="#">Care Guide</a></li>
+        </ul>
       </div>
-      <div class="stat">
-        <div class="stat-num">18</div>
-        <div class="stat-lbl">Countries<br>Shipped To</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">40k</div>
-        <div class="stat-lbl">Customers<br>Worldwide</div>
+      <div class="footer-col">
+        <h3>About Gloaming Imagine</h3>
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Career</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">International Cycling Club</a></li>
+          <li><a href="#">Impact &amp; Responsibility</a></li>
+          <li><a href="#">Industry Programme</a></li>
+        </ul>
       </div>
     </div>
-  </div>
 
-  <!-- ── TEAM ── -->
-  <div class="block fade">
-    <h2 class="section-title">The People Behind It</h2>
-    <div class="divider"></div>
-    <div class="team-row">
-      <div class="team-member">
-        <div class="member-name">Amara Wulandari</div>
-        <div class="member-role">Co-Founder & Creative Director</div>
-        <p class="member-bio">Bertanggung jawab atas kurasi, arahan kreatif, dan hubungan dengan para pengrajin. Ia mendirikan Gloaming setelah frustrasi dengan jurang antara benda indah dan benda jujur.</p>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Cookie Policy Setting</a>
       </div>
-      <div class="team-member">
-        <div class="member-name">Rian Saputra</div>
-        <div class="member-role">Co-Founder & Head of Product</div>
-        <p class="member-bio">Menangani sourcing dan logika diam di balik keputusan katalog. Aturannya sederhana: kalau ia tidak akan menyimpannya sendiri, kami tidak menjualnya.</p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Strava</a>
+        <a href="#">LinkedIn</a>
       </div>
-      <div class="team-member">
-        <div class="member-name">Nadia Kusuma</div>
-        <div class="member-role">Operations & Community</div>
-        <p class="member-bio">Menjalankan semua yang terjadi setelah checkout — logistik, pengalaman pelanggan, dan komunitas yang tumbuh di sekitar brand. Ia memperlakukan setiap pesanan sebagai tindakan kecil yang penuh perhatian.</p>
-      </div>
+      <span class="footer-copy">© Gloaming Imagine 2026</span>
     </div>
   </div>
-
-  <!-- ── SUSTAINABILITY ── -->
-  <div class="block fade">
-    <h2 class="section-title">Built to Last</h2>
-    <div class="divider"></div>
-    <p>Kami tidak melihat keberlanjutan sebagai lencana. Ini hanyalah tampilan dari melakukan sesuatu dengan benar. Itu berarti bekerja dengan pemasok yang membayar upah layak, menggunakan material yang tahan lama, dan merancang katalog yang menolak tekanan kebaruan terus-menerus.</p>
-    <ul class="sustain-list">
-      <li>Ethically sourced materials</li>
-      <li>Fair-wage maker partnerships</li>
-      <li>Plastic-free packaging</li>
-      <li>Carbon-offset shipping options</li>
-      <li>Repair & return programme</li>
-      <li>No seasonal clearance cycles</li>
-      <li>Transparent supply chain</li>
-    </ul>
-  </div>
-
-  <!-- ── QUOTE ── -->
-  <div class="quote-block fade">
-    <p class="quote-text">"A thing well made<br>doesn't need<br>to announce itself."</p>
-    <p class="quote-attr">— Gloaming Imagine, Jakarta · 2019</p>
-  </div>
-
-  <!-- ── CTA ── -->
-  <div class="block fade" style="padding-bottom: 0;">
-    <h2 class="section-title">Find Things Worth Keeping</h2>
-    <div class="divider"></div>
-    <p>Jelajahi koleksi kami — benda-benda yang dipilih karena alasan, bukan karena tren.</p>
-    <div class="btn-wrap">
-      <a href="#" class="btn">Shop Now</a>
-      <a href="#" class="btn btn-ghost">Our Journal</a>
-    </div>
-  </div>
-
-</div>
-<footer>
-    <?php include 'footer.php'; ?>
 </footer>
 
 <script>
-  /* ── Fade-in for general blocks ── */
-  const els = document.querySelectorAll('.fade');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: 0.08 });
-  els.forEach(el => io.observe(el));
+(function() {
+  const btn = document.getElementById('darkModeToggle');
 
-  /* ── Banner reveal on scroll into view ── */
-  const bannerHeadline = document.getElementById('bannerHeadline');
-  const bannerTagline  = document.getElementById('bannerTagline');
-  const bannerScroll   = document.getElementById('bannerScroll');
-  const bannerDivider  = document.getElementById('bannerDivider');
+  function spawnRipple(x, y, toDark) {
+    const size = Math.hypot(window.innerWidth, window.innerHeight) * 2.2;
+    const r = document.createElement('div');
+    r.className = 'theme-ripple';
+    r.style.cssText = `width:${size}px;height:${size}px;left:${x - size/2}px;top:${y - size/2}px;background:${toDark ? '#111' : '#fff'};transition:transform 0.7s cubic-bezier(0.4,0,0.2,1),opacity 0.7s cubic-bezier(0.4,0,0.2,1);`;
+    document.body.appendChild(r);
+    r.getBoundingClientRect();
+    r.classList.add('expanding');
+    r.addEventListener('transitionend', () => r.remove(), { once: true });
+  }
 
-  const bannerObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        bannerHeadline.classList.add('reveal');
-        bannerTagline.classList.add('reveal');
-        bannerScroll.classList.add('reveal');
-        bannerDivider.classList.add('reveal');
-        bannerObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.15 });
+  function apply(dark, animate, x, y) {
+    const icon  = btn.querySelector('.toggle-icon');
+    const label = btn.querySelector('.toggle-label');
+    if (animate) {
+      btn.classList.remove('spinning'); void btn.offsetWidth; btn.classList.add('spinning');
+      btn.addEventListener('animationend', () => btn.classList.remove('spinning'), { once: true });
+      spawnRipple(x ?? window.innerWidth/2, y ?? window.innerHeight/2, dark);
+    }
+    setTimeout(() => {
+      document.body.classList.toggle('dark-mode', dark);
+      if (icon)  icon.textContent  = dark ? '🌙' : '☀️';
+      if (label) label.textContent = dark ? 'Light Mode' : 'Dark Mode';
+      localStorage.setItem('darkMode', dark ? '1' : '0');
+    }, animate ? 80 : 0);
+  }
 
-  bannerObserver.observe(document.getElementById('banner'));
+  if (localStorage.getItem('darkMode') === '1') apply(true, false);
+  btn.addEventListener('click', e => apply(!document.body.classList.contains('dark-mode'), true, e.clientX, e.clientY));
+})();
+
+window.addEventListener('scroll', () => {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
 </script>
 
 </body>
