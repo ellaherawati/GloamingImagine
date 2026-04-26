@@ -1,1921 +1,3302 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Account — Gloaming Imagine</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body {
-   font-family: 'Libre Franklin', -apple-system, sans-serif;
-   background: #f5f5f0;
-   color: #000;
-   overflow-x: hidden;
-   transition: background 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-   color 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* Global smooth transition for all theme-affected elements */
-  *, *::before, *::after {
-   transition:
-   background-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-   border-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-   color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-   box-shadow 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-   filter 0.55s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-  
-  /* Theme ripple overlay */
-  .theme-ripple {
-   position: fixed;
-   border-radius: 50%;
-   pointer-events: none;
-   z-index: 99998;
-   transform: scale(0);
-   opacity: 0.18;
-   will-change: transform, opacity;
-  }
-  .theme-ripple.expanding {
-   transform: scale(1) !important;
-   opacity: 0 !important;
-  }
-  
-  /* Toggle icon spin */
-  .dark-mode-toggle .toggle-icon { display: inline-block; }
-  .dark-mode-toggle.spinning .toggle-icon {
-   animation: spin-bounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  }
-  @keyframes spin-bounce {
-   0% { transform: rotate(0deg) scale(1); }
-   50% { transform: rotate(200deg) scale(1.5); }
-   100% { transform: rotate(360deg) scale(1); }
-  }
-  
-  /* ════════════════════════════════
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account — Gloaming Imagine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Libre Franklin', -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #000;
+      overflow-x: hidden;
+      transition: background 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Global smooth transition for all theme-affected elements */
+    *,
+    *::before,
+    *::after {
+      transition:
+        background-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.55s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* Theme ripple overlay */
+    .theme-ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: scale(0);
+      opacity: 0.18;
+      will-change: transform, opacity;
+    }
+
+    .theme-ripple.expanding {
+      transform: scale(1) !important;
+      opacity: 0 !important;
+    }
+
+    /* Toggle icon spin */
+    .dark-mode-toggle .toggle-icon {
+      display: inline-block;
+    }
+
+    .dark-mode-toggle.spinning .toggle-icon {
+      animation: spin-bounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes spin-bounce {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(200deg) scale(1.5);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    /* ════════════════════════════════
    DARK MODE
   ════════════════════════════════ */
-  body.dark-mode {
-   background: #111;
-   color: #f0f0f0;
-   scrollbar-color: #fff #222;
-  }
-  body.dark-mode::-webkit-scrollbar { width: 8px; }
-  body.dark-mode::-webkit-scrollbar-track { background: #222; }
-  body.dark-mode::-webkit-scrollbar-thumb { background: #fff; border-radius: 4px; }
-  body.dark-mode::-webkit-scrollbar-thumb:hover { background: #ccc; }
-  
-  /* Header dark */
-  body.dark-mode header { background: #1a1a1a !important; border-bottom-color: #333 !important; }
-  body.dark-mode .header-main { border-bottom-color: #333 !important; }
-  
-  /* Header scroll state — dark at-top */
-  body.dark-mode header.at-top {
-   background: transparent !important;
-   border-bottom-color: transparent !important;
-   backdrop-filter: none !important;
-   box-shadow: none !important;
-  }
-  body.dark-mode header.at-top .header-main { border-bottom-color: transparent !important; }
-  body.dark-mode header.at-top .header-left a,
-  body.dark-mode header.at-top .header-right a,
-  body.dark-mode header.at-top .search-toggle,
-  body.dark-mode header.at-top .dark-mode-toggle { color: #fff !important; }
-  
-  /* Header scroll — dark scrolled */
-  body.dark-mode header.scrolled {
-   background: #1a1a1a !important;
-   backdrop-filter: none !important;
-   border-bottom-color: #333 !important;
-   box-shadow: 0 2px 16px rgba(0,0,0,0.4) !important;
-  }
-  body.dark-mode header.scrolled .header-main { border-bottom-color: transparent !important; }
-  
-  /* Header scroll — dark scrolling-down */
-  body.dark-mode header.scrolling-down {
-   background: rgba(17, 17, 17, 0.45) !important;
-   backdrop-filter: blur(18px) saturate(160%) !important;
-   -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-   border-bottom-color: transparent !important;
-   box-shadow: none !important;
-  }
-  body.dark-mode header.scrolling-down .header-main { border-bottom-color: transparent !important; }
-  body.dark-mode header.scrolling-down .header-left a,
-  body.dark-mode header.scrolling-down .header-right a,
-  body.dark-mode header.scrolling-down .search-toggle,
-  body.dark-mode header.scrolling-down .dark-mode-toggle { color: #fff !important; }
-  
-  body.dark-mode .header-left a,
-  body.dark-mode .header-right a,
-  body.dark-mode .search-toggle { color: #f0f0f0 !important; }
-  
-  /* Dark mode toggle button */
-  body.dark-mode .dark-mode-toggle { color: #f0f0f0; }
-  
-  /* Dark mode: account page elements */
-  body.dark-mode .right-panel { background: #1a1a1a !important; }
-  body.dark-mode .welcome-heading { color: #f0f0f0 !important; }
-  body.dark-mode .account-tabs { border-bottom-color: #333 !important; }
-  body.dark-mode .account-tab { color: #555 !important; }
-  body.dark-mode .account-tab:hover { color: #ccc !important; }
-  body.dark-mode .account-tab.active { color: #f0f0f0 !important; border-bottom-color: #f0f0f0 !important; }
-  body.dark-mode .profile-section { background: #222 !important; }
-  body.dark-mode .section-title { color: #f0f0f0 !important; }
-  body.dark-mode .edit-btn { color: #f0f0f0 !important; }
-  body.dark-mode .field-label { color: #888 !important; }
-  body.dark-mode .field-value { color: #f0f0f0 !important; }
-  body.dark-mode .field-action { border-top-color: #333 !important; }
-  body.dark-mode .field-action-text { color: #666 !important; }
-  body.dark-mode .field-action-arrow { color: #555 !important; }
-  body.dark-mode .profile-section.dark { background: #0a0a0a !important; }
-  body.dark-mode .signout-row { background: #222 !important; }
-  body.dark-mode .signout-btn { color: #f0f0f0 !important; }
-  body.dark-mode .footer-area { background: #1a1a1a !important; }
-  body.dark-mode .newsletter-section { background: #222 !important; border-bottom-color: #333 !important; }
-  body.dark-mode .newsletter-label { color: #f0f0f0 !important; }
-  body.dark-mode .newsletter-title { color: #f0f0f0 !important; }
-  body.dark-mode .newsletter-btn {
-   background: #f0f0f0 !important;
-   color: #111 !important;
-   border-color: #f0f0f0 !important;
-  }
-  body.dark-mode .newsletter-btn:hover {
-   background: #333 !important;
-   color: #f0f0f0 !important;
-  }
-  body.dark-mode .footer-main { background: #1a1a1a !important; }
-  body.dark-mode .footer-top { border-bottom-color: #333 !important; }
-  body.dark-mode .footer-col-title { color: #666 !important; }
-  body.dark-mode .shipping-label { color: #666 !important; }
-  body.dark-mode .shipping-select { color: #f0f0f0 !important; background: #1a1a1a !important; border-color: #555 !important; }
-  body.dark-mode .shipping-arrow { color: #666 !important; }
-  body.dark-mode .footer-links a { color: #ccc !important; }
-  body.dark-mode .footer-links a:hover { opacity: 0.6; }
-  body.dark-mode .footer-bottom { border-top-color: #333; }
-  body.dark-mode .footer-legal a { color: #aaa !important; }
-  body.dark-mode .footer-social a { color: #aaa !important; }
-  body.dark-mode .footer-copyright { color: #aaa !important; }
-  
-  body.dark-mode .edit-overlay { background: rgba(0,0,0,0.65) !important; }
-  
-  /* Dark mode: search */
-  body.dark-mode .search-box { background: #1a1a1a !important; border-color: #333 !important; }
-  body.dark-mode .search-input { background: #1a1a1a !important; color: #f0f0f0 !important; }
-  body.dark-mode .search-dropdown { background: #1a1a1a !important; border-color: #333 !important; }
-  body.dark-mode .search-result-item { color: #f0f0f0 !important; border-bottom-color: #2a2a2a !important; }
-  body.dark-mode .search-result-item:hover { background: #2a2a2a !important; }
-  body.dark-mode .search-no-results { color: #888 !important; }
-  body.dark-mode .search-footer { border-top-color: #333 !important; }
-  
-  /* Dark mode: sidebars */
-  body.dark-mode .cart-sidebar,
-  body.dark-mode .shop-sidebar { background: #1a1a1a !important; color: #f0f0f0 !important; }
-  body.dark-mode .cart-header,
-  body.dark-mode .shop-sidebar-header { border-bottom-color: #333 !important; }
-  body.dark-mode .cart-close,
-  body.dark-mode .shop-sidebar-close { color: #f0f0f0 !important; }
-  body.dark-mode .cart-title { color: #f0f0f0 !important; }
-  body.dark-mode .cart-item { border-bottom-color: #2a2a2a !important; }
-  body.dark-mode .cart-item-image { background: #2a2a2a !important; }
-  body.dark-mode .cart-item-name { color: #f0f0f0 !important; }
-  body.dark-mode .cart-item-variant,
-  body.dark-mode .cart-item-remove,
-  body.dark-mode .cart-empty-text { color: #888 !important; }
-  body.dark-mode .cart-item-price,
-  body.dark-mode .cart-empty-title { color: #f0f0f0 !important; }
-  body.dark-mode .cart-quantity { border-color: #444 !important; background: #222 !important; }
-  body.dark-mode .cart-quantity button { color: #f0f0f0 !important; background: transparent !important; }
-  body.dark-mode .cart-quantity span { color: #f0f0f0 !important; }
-  body.dark-mode .cart-footer { background: #1a1a1a !important; border-top-color: #333 !important; }
-  body.dark-mode .cart-subtotal,
-  body.dark-mode .cart-total { color: #f0f0f0 !important; }
-  body.dark-mode .cart-checkout { background: #f0f0f0 !important; color: #111 !important; }
-  body.dark-mode .cart-checkout:hover { background: #ccc !important; }
-  body.dark-mode .shop-section-title { color: #666 !important; }
-  body.dark-mode .shop-category-item,
-  body.dark-mode .shop-link-simple { color: #f0f0f0 !important; border-bottom-color: #2a2a2a !important; }
-  body.dark-mode .shop-divider { background: #2a2a2a !important; }
-  
-  /* Mobile menu dark */
-  body.dark-mode .mobile-menu { background: #1a1a1a !important; }
-  body.dark-mode .mobile-menu a { color: #f0f0f0 !important; border-bottom-color: #2a2a2a !important; }
-  body.dark-mode .mobile-menu-header { border-bottom-color: #333 !important; }
-  
-  /* ════════════════════════════════
+    body.dark-mode {
+      background: #111;
+      color: #f0f0f0;
+      scrollbar-color: #fff #222;
+    }
+
+    body.dark-mode::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    body.dark-mode::-webkit-scrollbar-track {
+      background: #222;
+    }
+
+    body.dark-mode::-webkit-scrollbar-thumb {
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    body.dark-mode::-webkit-scrollbar-thumb:hover {
+      background: #ccc;
+    }
+
+    /* Header dark */
+    body.dark-mode header {
+      background: #1a1a1a !important;
+      border-bottom-color: #333 !important;
+    }
+
+    body.dark-mode .header-main {
+      border-bottom-color: #333 !important;
+    }
+
+    /* Header scroll state — dark at-top */
+    body.dark-mode header.at-top {
+      background: transparent !important;
+      border-bottom-color: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+    }
+
+    body.dark-mode header.at-top .header-main {
+      border-bottom-color: transparent !important;
+    }
+
+    body.dark-mode header.at-top .header-left a,
+    body.dark-mode header.at-top .header-right a,
+    body.dark-mode header.at-top .search-toggle,
+    body.dark-mode header.at-top .dark-mode-toggle {
+      color: #fff !important;
+    }
+
+    /* Header scroll — dark scrolled */
+    body.dark-mode header.scrolled {
+      background: #1a1a1a !important;
+      backdrop-filter: none !important;
+      border-bottom-color: #333 !important;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode header.scrolled .header-main {
+      border-bottom-color: transparent !important;
+    }
+
+    /* Header scroll — dark scrolling-down */
+    body.dark-mode header.scrolling-down {
+      background: rgba(17, 17, 17, 0.45) !important;
+      backdrop-filter: blur(18px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    body.dark-mode header.scrolling-down .header-main {
+      border-bottom-color: transparent !important;
+    }
+
+    body.dark-mode header.scrolling-down .header-left a,
+    body.dark-mode header.scrolling-down .header-right a,
+    body.dark-mode header.scrolling-down .search-toggle,
+    body.dark-mode header.scrolling-down .dark-mode-toggle {
+      color: #fff !important;
+    }
+
+    body.dark-mode .header-left a,
+    body.dark-mode .header-right a,
+    body.dark-mode .search-toggle {
+      color: #f0f0f0 !important;
+    }
+
+    /* Dark mode toggle button */
+    body.dark-mode .dark-mode-toggle {
+      color: #f0f0f0;
+    }
+
+    /* Dark mode: account page elements */
+    body.dark-mode .right-panel {
+      background: #1a1a1a !important;
+    }
+
+    body.dark-mode .welcome-heading {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .account-tabs {
+      border-bottom-color: #333 !important;
+    }
+
+    body.dark-mode .account-tab {
+      color: #555 !important;
+    }
+
+    body.dark-mode .account-tab:hover {
+      color: #ccc !important;
+    }
+
+    body.dark-mode .account-tab.active {
+      color: #f0f0f0 !important;
+      border-bottom-color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .profile-section {
+      background: #222 !important;
+    }
+
+    body.dark-mode .section-title {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .edit-btn {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .field-label {
+      color: #888 !important;
+    }
+
+    body.dark-mode .field-value {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .field-action {
+      border-top-color: #333 !important;
+    }
+
+    body.dark-mode .field-action-text {
+      color: #666 !important;
+    }
+
+    body.dark-mode .field-action-arrow {
+      color: #555 !important;
+    }
+
+    body.dark-mode .profile-section.dark {
+      background: #0a0a0a !important;
+    }
+
+    body.dark-mode .signout-row {
+      background: #222 !important;
+    }
+
+    body.dark-mode .signout-btn {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .footer-area {
+      background: #1a1a1a !important;
+    }
+
+    body.dark-mode .newsletter-section {
+      background: #222 !important;
+      border-bottom-color: #333 !important;
+    }
+
+    body.dark-mode .newsletter-label {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .newsletter-title {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .newsletter-btn {
+      background: #f0f0f0 !important;
+      color: #111 !important;
+      border-color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .newsletter-btn:hover {
+      background: #333 !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .footer-main {
+      background: #1a1a1a !important;
+    }
+
+    body.dark-mode .footer-top {
+      border-bottom-color: #333 !important;
+    }
+
+    body.dark-mode .footer-col-title {
+      color: #666 !important;
+    }
+
+    body.dark-mode .shipping-label {
+      color: #666 !important;
+    }
+
+    body.dark-mode .shipping-select {
+      color: #f0f0f0 !important;
+      background: #1a1a1a !important;
+      border-color: #555 !important;
+    }
+
+    body.dark-mode .shipping-arrow {
+      color: #666 !important;
+    }
+
+    body.dark-mode .footer-links a {
+      color: #ccc !important;
+    }
+
+    body.dark-mode .footer-links a:hover {
+      opacity: 0.6;
+    }
+
+    body.dark-mode .footer-bottom {
+      border-top-color: #333;
+    }
+
+    body.dark-mode .footer-legal a {
+      color: #aaa !important;
+    }
+
+    body.dark-mode .footer-social a {
+      color: #aaa !important;
+    }
+
+    body.dark-mode .footer-copyright {
+      color: #aaa !important;
+    }
+
+    body.dark-mode .edit-overlay {
+      background: rgba(0, 0, 0, 0.65) !important;
+    }
+
+    /* Dark mode: search */
+    body.dark-mode .search-box {
+      background: #1a1a1a !important;
+      border-color: #333 !important;
+    }
+
+    body.dark-mode .search-input {
+      background: #1a1a1a !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .search-dropdown {
+      background: #1a1a1a !important;
+      border-color: #333 !important;
+    }
+
+    body.dark-mode .search-result-item {
+      color: #f0f0f0 !important;
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .search-result-item:hover {
+      background: #2a2a2a !important;
+    }
+
+    body.dark-mode .search-no-results {
+      color: #888 !important;
+    }
+
+    body.dark-mode .search-footer {
+      border-top-color: #333 !important;
+    }
+
+    /* Dark mode: sidebars */
+    body.dark-mode .cart-sidebar,
+    body.dark-mode .shop-sidebar {
+      background: #1a1a1a !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-header,
+    body.dark-mode .shop-sidebar-header {
+      border-bottom-color: #333 !important;
+    }
+
+    body.dark-mode .cart-close,
+    body.dark-mode .shop-sidebar-close {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-title {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-item {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .cart-item-image {
+      background: #2a2a2a !important;
+    }
+
+    body.dark-mode .cart-item-name {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-item-variant,
+    body.dark-mode .cart-item-remove,
+    body.dark-mode .cart-empty-text {
+      color: #888 !important;
+    }
+
+    body.dark-mode .cart-item-price,
+    body.dark-mode .cart-empty-title {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-quantity {
+      border-color: #444 !important;
+      background: #222 !important;
+    }
+
+    body.dark-mode .cart-quantity button {
+      color: #f0f0f0 !important;
+      background: transparent !important;
+    }
+
+    body.dark-mode .cart-quantity span {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-footer {
+      background: #1a1a1a !important;
+      border-top-color: #333 !important;
+    }
+
+    body.dark-mode .cart-subtotal,
+    body.dark-mode .cart-total {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .cart-checkout {
+      background: #f0f0f0 !important;
+      color: #111 !important;
+    }
+
+    body.dark-mode .cart-checkout:hover {
+      background: #ccc !important;
+    }
+
+    body.dark-mode .shop-section-title {
+      color: #666 !important;
+    }
+
+    body.dark-mode .shop-category-item,
+    body.dark-mode .shop-link-simple {
+      color: #f0f0f0 !important;
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .shop-divider {
+      background: #2a2a2a !important;
+    }
+
+    /* Mobile menu dark */
+    body.dark-mode .mobile-menu {
+      background: #1a1a1a !important;
+    }
+
+    body.dark-mode .mobile-menu a {
+      color: #f0f0f0 !important;
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .mobile-menu-header {
+      border-bottom-color: #333 !important;
+    }
+
+    /* ════════════════════════════════
    HEADER (from index.html)
   ════════════════════════════════ */
-  header {
-   position: sticky;
-   top: 0;
-   background: #fff;
-   border-bottom: 1px solid #e0e0e0;
-   z-index: 100;
-   transition:
-   background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-   border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-   box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-   backdrop-filter 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-  
-  header.at-top {
-   background: #fff !important;
-   border-bottom-color: #e0e0e0 !important;
-   backdrop-filter: none !important;
-   box-shadow: none !important;
-  }
-  header.scrolled {
-   background: #fff !important;
-   backdrop-filter: none !important;
-   -webkit-backdrop-filter: none !important;
-   border-bottom-color: #e0e0e0 !important;
-   box-shadow: 0 2px 16px rgba(0,0,0,0.07) !important;
-  }
-  header.scrolled .header-main { border-bottom-color: transparent !important; }
-  header.scrolling-down {
-   background: rgba(255,255,255,0.55) !important;
-   backdrop-filter: blur(18px) saturate(180%) !important;
-   -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-   border-bottom-color: rgba(0,0,0,0.06) !important;
-   box-shadow: none !important;
-  }
-  header.scrolling-down .header-main { border-bottom-color: transparent !important; }
-  
-  .header-main {
-   padding: 20px 40px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   border-bottom: 1px solid #e0e0e0;
-  }
-  .header-left {
-   display: flex;
-   gap: 35px;
-   align-items: center;
-  }
-  .header-left a {
-   color: #000;
-   text-decoration: none;
-   font-size: 14px;
-   transition: opacity 0.3s;
-  }
-  .header-left a:hover { opacity: 0.6; }
-  
-  .logo { text-align: center; flex: 1; }
-  .logo-image { height: 35px; width: auto; object-fit: contain; }
-  .logo-text {
-   font-size: 16px;
-   font-weight: 700;
-   letter-spacing: 1.5px;
-   text-transform: uppercase;
-   line-height: 1.2;
-   display: block;
-  }
-  .logo-subtitle {
-   font-size: 8px;
-   font-weight: 400;
-   letter-spacing: 2px;
-   margin-top: 2px;
-   display: block;
-  }
-  
-  .header-right {
-   display: flex;
-   gap: 30px;
-   align-items: center;
-  }
-  .header-right a {
-   color: #000;
-   text-decoration: none;
-   font-size: 14px;
-   transition: opacity 0.3s;
-  }
-  .header-right a:hover { opacity: 0.6; }
-  
-  /* Dark Mode Toggle */
-  .dark-mode-toggle {
-   background: none;
-   border: none;
-   cursor: pointer;
-   display: flex;
-   align-items: center;
-   gap: 6px;
-   font-family: 'Libre Franklin', sans-serif;
-   font-size: 14px;
-   color: #000;
-   padding: 0;
-   transition: opacity 0.3s;
-  }
-  .dark-mode-toggle:hover { opacity: 0.6; }
-  .dark-mode-toggle .toggle-icon { font-size: 15px; line-height: 1; }
-  
-  /* Mobile hamburger */
-  .hamburger-btn {
-   display: none;
-   background: none;
-   border: none;
-   cursor: pointer;
-   flex-direction: column;
-   gap: 5px;
-   padding: 4px;
-  }
-  .hamburger-btn span {
-   display: block;
-   width: 22px;
-   height: 2px;
-   background: #000;
-   border-radius: 2px;
-   transition: background 0.3s;
-  }
-  body.dark-mode .hamburger-btn span { background: #f0f0f0; }
-  
-  /* Mobile Menu */
-  .mobile-menu {
-   display: none;
-   position: fixed;
-   top: 0;
-   left: -100%;
-   width: 100%;
-   max-width: 360px;
-   height: 100vh;
-   background: #fff;
-   z-index: 99999;
-   flex-direction: column;
-   overflow-y: auto;
-   transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-  }
-  .mobile-menu.open { left: 0; }
-  .mobile-overlay {
-   display: none;
-   position: fixed;
-   inset: 0;
-   background: rgba(0,0,0,0.5);
-   z-index: 99998;
-   opacity: 0;
-   transition: opacity 0.35s;
-  }
-  .mobile-overlay.open { opacity: 1; }
-  .mobile-menu-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 20px 24px;
-   border-bottom: 1px solid #e0e0e0;
-  }
-  .mobile-menu-close {
-   background: none;
-   border: none;
-   font-size: 22px;
-   cursor: pointer;
-   color: #000;
-  }
-  body.dark-mode .mobile-menu-close { color: #f0f0f0; }
-  .mobile-menu a {
-   display: block;
-   padding: 16px 24px;
-   font-size: 15px;
-   color: #000;
-   text-decoration: none;
-   border-bottom: 1px solid #f0f0f0;
-  }
-  .mobile-menu a:hover { opacity: 0.6; }
-  
-  /* Search */
-  .search-container { position: relative; }
-  .search-toggle {
-   color: #000;
-   text-decoration: none;
-   font-size: 14px;
-   transition: opacity 0.3s;
-   cursor: pointer;
-  }
-  .search-toggle:hover { opacity: 0.6; }
-  .search-box {
-   position: absolute;
-   right: 0;
-   top: 50%;
-   transform: translateY(-50%);
-   width: 0;
-   opacity: 0;
-   visibility: hidden;
-   transition: all 0.3s ease;
-   background: #fff;
-   border: 1px solid #e0e0e0;
-   overflow: visible;
-   z-index: 1000;
-  }
-  .search-box.active { width: 350px; opacity: 1; visibility: visible; }
-  .search-input-wrapper { position: relative; }
-  .search-input {
-   width: 100%;
-   padding: 10px 35px 10px 12px;
-   border: none;
-   outline: none;
-   font-size: 14px;
-   font-family: inherit;
-  }
-  .search-close {
-   position: absolute;
-   right: 10px;
-   top: 50%;
-   transform: translateY(-50%);
-   background: none;
-   border: none;
-   font-size: 18px;
-   cursor: pointer;
-   color: #666;
-   padding: 0;
-   width: 20px;
-   height: 20px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-  }
-  .search-close:hover { color: #000; }
-  .search-dropdown {
-   position: absolute;
-   top: 100%;
-   left: 0;
-   right: 0;
-   background: #fff;
-   border: 1px solid #e0e0e0;
-   border-top: none;
-   max-height: 400px;
-   overflow-y: auto;
-   display: none;
-   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .search-dropdown.active { display: block; }
-  .search-result-item {
-   display: flex;
-   align-items: center;
-   gap: 12px;
-   padding: 12px;
-   text-decoration: none;
-   color: #000;
-   border-bottom: 1px solid #f5f5f5;
-   transition: background 0.2s;
-  }
-  .search-result-item:hover { background: #f8f8f8; }
-  .search-result-image { width: 50px; height: 50px; object-fit: cover; background: #f5f5f5; flex-shrink: 0; }
-  .search-result-info { flex: 1; }
-  .search-result-name { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
-  .search-result-variant { font-size: 11px; color: #666; }
-  .search-result-price { font-size: 13px; font-weight: 600; flex-shrink: 0; }
-  .search-footer { padding: 12px; text-align: center; border-top: 1px solid #e0e0e0; }
-  .search-see-all {
-   display: inline-block;
-   padding: 8px 24px;
-   background: #000;
-   color: #fff;
-   text-decoration: none;
-   font-size: 12px;
-   font-weight: 600;
-   letter-spacing: 0.5px;
-   transition: background 0.3s;
-  }
-  .search-see-all:hover { background: #333; }
-  .search-no-results { padding: 24px; text-align: center; color: #666; font-size: 13px; }
-  
-  /* Cart Sidebar */
-  .cart-sidebar {
-   position: fixed;
-   top: 0; right: -450px;
-   width: 450px;
-   height: 100vh;
-   background: #fff;
-   z-index: 10000;
-   box-shadow: -2px 0 20px rgba(0,0,0,0.1);
-   transition: right 0.4s ease;
-   overflow-y: auto;
-  }
-  .cart-sidebar.open { right: 0; }
-  .cart-overlay {
-   position: fixed;
-   top: 0; left: 0;
-   width: 100%; height: 100vh;
-   background: rgba(0,0,0,0.5);
-   z-index: 9999;
-   opacity: 0;
-   pointer-events: none;
-   transition: opacity 0.4s ease;
-  }
-  .cart-overlay.open { opacity: 1; pointer-events: all; }
-  .cart-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 25px 30px;
-   border-bottom: 1px solid #e0e0e0;
-  }
-  .cart-title { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
-  .cart-close {
-   background: none;
-   border: none;
-   font-size: 24px;
-   cursor: pointer;
-   padding: 0;
-   width: 30px;
-   height: 30px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   transition: opacity 0.3s;
-  }
-  .cart-close:hover { opacity: 0.6; }
-  .cart-empty { text-align: center; padding: 60px 30px; }
-  .cart-empty-title { font-size: 16px; margin-bottom: 10px; }
-  .cart-empty-text { font-size: 13px; color: #666; }
-  .cart-footer {
-   padding: 30px;
-   border-top: 1px solid #e0e0e0;
-   position: sticky;
-   bottom: 0;
-   background: #fff;
-  }
-  .cart-checkout {
-   width: 100%;
-   padding: 18px;
-   background: #000;
-   color: #fff;
-   border: none;
-   cursor: pointer;
-   font-size: 13px;
-   letter-spacing: 1.5px;
-   transition: background 0.3s;
-   text-decoration: none;
-   display: block;
-   text-align: center;
-  }
-  .cart-checkout:hover { background: #333; }
-  
-  /* Shop Sidebar */
-  .shop-overlay {
-   position: fixed;
-   top: 0; left: 0;
-   width: 100%; height: 100vh;
-   background: rgba(0,0,0,0.5);
-   z-index: 9998;
-   opacity: 0;
-   pointer-events: none;
-   transition: opacity 0.35s ease;
-  }
-  .shop-overlay.open { opacity: 1; pointer-events: all; }
-  .shop-sidebar {
-   position: fixed;
-   top: 0; left: -560px;
-   width: 560px;
-   height: 100vh;
-   background: #fff;
-   z-index: 9999;
-   transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-   overflow-y: auto;
-   display: flex;
-   flex-direction: column;
-  }
-  .shop-sidebar.open { left: 0; }
-  .shop-sidebar-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 28px 36px 20px;
-   border-bottom: 1px solid #f0f0f0;
-  }
-  .shop-sidebar-header span { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-  .shop-sidebar-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #000; line-height: 1; padding: 0; }
-  .shop-sidebar-close:hover { opacity: 0.5; }
-  .shop-sidebar-banner { width: 100%; height: 300px; overflow: hidden; position: relative; flex-shrink: 0; }
-  .shop-sidebar-banner img { width: 100%; height: 100%; object-fit: cover; }
-  .shop-sidebar-banner-label {
-   position: absolute;
-   bottom: 20px; left: 30px;
-   background: #fff;
-   padding: 8px 16px;
-   font-size: 14px;
-   font-weight: 600;
-  }
-  .shop-sidebar-body { padding: 0 36px 36px; flex: 1; }
-  .shop-section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #999; margin: 28px 0 16px; }
-  .shop-category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
-  .shop-category-item {
-   display: flex;
-   align-items: center;
-   gap: 14px;
-   padding: 10px 0;
-   text-decoration: none;
-   color: #000;
-   font-size: 14px;
-   border-bottom: 1px solid #f5f5f5;
-   transition: opacity 0.2s;
-  }
-  .shop-category-item:hover { opacity: 0.5; }
-  .shop-category-icon { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: grayscale(100%); }
-  .shop-divider { height: 1px; background: #e8e8e8; margin: 8px 0 4px; }
-  .shop-link-simple {
-   display: block;
-   padding: 11px 0;
-   text-decoration: none;
-   color: #000;
-   font-size: 14px;
-   border-bottom: 1px solid #f5f5f5;
-   transition: opacity 0.2s;
-  }
-  .shop-link-simple:hover { opacity: 0.5; }
-  
-  /* Wishlist count badge */
-  .badge-count {
-   display: none;
-   position: absolute;
-   top: -8px;
-   right: -12px;
-   background: #000;
-   color: #fff;
-   font-size: 9px;
-   font-weight: 700;
-   min-width: 16px;
-   height: 16px;
-   border-radius: 50%;
-   text-align: center;
-   line-height: 16px;
-   padding: 0 3px;
-   letter-spacing: 0;
-  }
-  
-  /* ════════════════════════════════
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      z-index: 100;
+      transition:
+        background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        backdrop-filter 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    header.at-top {
+      background: #fff !important;
+      border-bottom-color: #e0e0e0 !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+    }
+
+    header.scrolled {
+      background: #fff !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-bottom-color: #e0e0e0 !important;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07) !important;
+    }
+
+    header.scrolled .header-main {
+      border-bottom-color: transparent !important;
+    }
+
+    header.scrolling-down {
+      background: rgba(255, 255, 255, 0.55) !important;
+      backdrop-filter: blur(18px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+      border-bottom-color: rgba(0, 0, 0, 0.06) !important;
+      box-shadow: none !important;
+    }
+
+    header.scrolling-down .header-main {
+      border-bottom-color: transparent !important;
+    }
+
+    .header-main {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .header-left {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .header-left a {
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.3s;
+    }
+
+    .header-left a:hover {
+      opacity: 0.6;
+    }
+
+    .logo {
+      text-align: center;
+      flex: 1;
+    }
+
+    .logo-image {
+      height: 35px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      display: block;
+    }
+
+    .logo-subtitle {
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .header-right a {
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.3s;
+    }
+
+    .header-right a:hover {
+      opacity: 0.6;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 14px;
+      color: #000;
+      padding: 0;
+      transition: opacity 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      opacity: 0.6;
+    }
+
+    .dark-mode-toggle .toggle-icon {
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    /* Mobile hamburger */
+    .hamburger-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #000;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    body.dark-mode .hamburger-btn span {
+      background: #f0f0f0;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      max-width: 360px;
+      height: 100vh;
+      background: #fff;
+      z-index: 99999;
+      flex-direction: column;
+      overflow-y: auto;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99998;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .mobile-overlay.open {
+      opacity: 1;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+    }
+
+    body.dark-mode .mobile-menu-close {
+      color: #f0f0f0;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px 24px;
+      font-size: 15px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-menu a:hover {
+      opacity: 0.6;
+    }
+
+    /* Search */
+    .search-container {
+      position: relative;
+    }
+
+    .search-toggle {
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+
+    .search-toggle:hover {
+      opacity: 0.6;
+    }
+
+    .search-box {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      overflow: visible;
+      z-index: 1000;
+    }
+
+    .search-box.active {
+      width: 350px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 35px 10px 12px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .search-close {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-close:hover {
+      color: #000;
+    }
+
+    .search-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: none;
+      max-height: 400px;
+      overflow-y: auto;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-dropdown.active {
+      display: block;
+    }
+
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      text-decoration: none;
+      color: #000;
+      border-bottom: 1px solid #f5f5f5;
+      transition: background 0.2s;
+    }
+
+    .search-result-item:hover {
+      background: #f8f8f8;
+    }
+
+    .search-result-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      background: #f5f5f5;
+      flex-shrink: 0;
+    }
+
+    .search-result-info {
+      flex: 1;
+    }
+
+    .search-result-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .search-result-variant {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .search-result-price {
+      font-size: 13px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .search-footer {
+      padding: 12px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .search-see-all {
+      display: inline-block;
+      padding: 8px 24px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: background 0.3s;
+    }
+
+    .search-see-all:hover {
+      background: #333;
+    }
+
+    .search-no-results {
+      padding: 24px;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -450px;
+      width: 450px;
+      height: 100vh;
+      background: #fff;
+      z-index: 10000;
+      box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+      transition: right 0.4s ease;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 30px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .cart-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+
+    .cart-close:hover {
+      opacity: 0.6;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    .cart-empty-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .cart-empty-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .cart-footer {
+      padding: 30px;
+      border-top: 1px solid #e0e0e0;
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+    }
+
+    .cart-checkout {
+      width: 100%;
+      padding: 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+
+    .cart-checkout:hover {
+      background: #333;
+    }
+
+    /* Shop Sidebar */
+    .shop-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .shop-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .shop-sidebar {
+      position: fixed;
+      top: 0;
+      left: -560px;
+      width: 560px;
+      height: 100vh;
+      background: #fff;
+      z-index: 9999;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shop-sidebar.open {
+      left: 0;
+    }
+
+    .shop-sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 36px 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .shop-sidebar-header span {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .shop-sidebar-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .shop-sidebar-close:hover {
+      opacity: 0.5;
+    }
+
+    .shop-sidebar-banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .shop-sidebar-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .shop-sidebar-banner-label {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      background: #fff;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .shop-sidebar-body {
+      padding: 0 36px 36px;
+      flex: 1;
+    }
+
+    .shop-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      margin: 28px 0 16px;
+    }
+
+    .shop-category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .shop-category-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      border-bottom: 1px solid #f5f5f5;
+      transition: opacity 0.2s;
+    }
+
+    .shop-category-item:hover {
+      opacity: 0.5;
+    }
+
+    .shop-category-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: grayscale(100%);
+    }
+
+    .shop-divider {
+      height: 1px;
+      background: #e8e8e8;
+      margin: 8px 0 4px;
+    }
+
+    .shop-link-simple {
+      display: block;
+      padding: 11px 0;
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      border-bottom: 1px solid #f5f5f5;
+      transition: opacity 0.2s;
+    }
+
+    .shop-link-simple:hover {
+      opacity: 0.5;
+    }
+
+    /* Wishlist count badge */
+    .badge-count {
+      display: none;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #000;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 16px;
+      padding: 0 3px;
+      letter-spacing: 0;
+    }
+
+    /* ════════════════════════════════
    MAIN LAYOUT
   ════════════════════════════════ */
-  .page-wrapper {
-   display: flex;
-   min-height: calc(100vh - 61px);
-  }
-  
-  /* Left: sticky image panel */
-  .left-panel {
-    width: 50%;
-    position: sticky;
-    top: 61px;
-    height: calc(100vh - 61px);
-    align-self: flex-start;
-    flex-shrink: 0;
-  }
-  .left-sticky {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-  }
-  .left-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #2c2c2c;
-  }
-  .left-card-overlay {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-  }
-  .icc-card {
-   width: 180px;
-   height: 115px;
-   background: #6b7c5c;
-   border-radius: 8px;
-   padding: 14px;
-   color: #fff;
-   position: relative;
-   overflow: hidden;
-  }
-  .icc-card-name { font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
-  .icc-card-type {
-   position: absolute;
-   top: 14px; right: 14px;
-   font-size: 8px;
-   letter-spacing: 0.5px;
-   opacity: 0.9;
-   background: rgba(255,255,255,0.2);
-   padding: 2px 6px;
-   border-radius: 3px;
-  }
-  .icc-card-bg {
-   position: absolute;
-   bottom: -10px; left: -10px; right: -10px;
-   font-size: 52px;
-   font-weight: 700;
-   letter-spacing: -2px;
-   opacity: 0.18;
-   color: #fff;
-   line-height: 1;
-   user-select: none;
-  }
-  .icc-card-bottom {
-   position: absolute;
-   bottom: 12px; left: 14px; right: 14px;
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-end;
-  }
-  .icc-card-city {
-   font-size: 8px;
-   letter-spacing: 1px;
-   opacity: 0.85;
-   writing-mode: vertical-lr;
-   transform: rotate(180deg);
-  }
-  .icc-card-logo { font-size: 7px; letter-spacing: 0.5px; text-align: right; opacity: 0.9; line-height: 1.4; }
-  
-  /* Right: scrollable content */
-  .right-panel {
-   width: 50%;
-   background: #f2f2f2;
-   padding: 60px 60px 0;
-  }
-  .welcome-heading {
-   font-size: 40px;
-   font-weight: 300;
-   letter-spacing: -0.5px;
-   line-height: 1.1;
-   margin-bottom: 32px;
-   color: #000;
-  }
-  
-  /* Tabs */
-  .account-tabs {
-   display: flex;
-   gap: 24px;
-   margin-bottom: 28px;
-   border-bottom: 1px solid #ddd;
-   overflow-x: auto;
-   -webkit-overflow-scrolling: touch;
-   scrollbar-width: none;
-  }
-  .account-tabs::-webkit-scrollbar { display: none; }
-  .account-tab {
-   font-size: 13px;
-   color: #999;
-   text-decoration: none;
-   padding-bottom: 12px;
-   border-bottom: 2px solid transparent;
-   margin-bottom: -1px;
-   transition: color 0.2s;
-   cursor: pointer;
-   background: none;
-   border-left: none;
-   border-right: none;
-   border-top: none;
-   font-family: inherit;
-   white-space: nowrap;
-   flex-shrink: 0;
-  }
-  .account-tab:hover { color: #000; }
-  .account-tab.active { color: #000; font-weight: 500; border-bottom: 2px solid #000; }
-  
-  /* Profile sections */
-  .profile-section { background: #fff; margin-bottom: 4px; padding: 20px 24px; }
-  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-  .section-title { font-size: 15px; font-weight: 500; letter-spacing: 0.1px; }
-  .edit-btn {
-   display: flex;
-   align-items: center;
-   gap: 4px;
-   font-size: 12px;
-   color: #000;
-   cursor: pointer;
-   background: none;
-   border: none;
-   font-family: inherit;
-  }
-  .edit-btn:hover { opacity: 0.6; }
-  .edit-btn::after { content: '›'; font-size: 14px; }
-  .field-row { margin-bottom: 14px; }
-  .field-label { font-size: 11px; color: #999; letter-spacing: 0.2px; margin-bottom: 2px; }
-  .field-value { font-size: 13px; color: #000; }
-  .field-action {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 14px 0;
-   border-top: 1px solid #f0f0f0;
-   cursor: pointer;
-  }
-  .field-action-text { font-size: 13px; color: #bbb; }
-  .field-action-arrow { font-size: 16px; color: #bbb; }
-  
-  /* ICC Preferences — dark card */
-  .profile-section.dark { background: #111; color: #fff; }
-  .profile-section.dark .section-title { color: #fff; }
-  .profile-section.dark .edit-btn { color: #fff; }
-  .profile-section.dark .field-label { color: #888; }
-  .profile-section.dark .field-value { color: #fff; }
-  
-  /* Sign out */
-  .signout-row {
-   background: #fff;
-   padding: 16px 24px;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   margin-bottom: 60px;
-   cursor: pointer;
-  }
-  .signout-btn {
-   display: flex;
-   align-items: center;
-   gap: 4px;
-   font-size: 13px;
-   color: #000;
-   background: none;
-   border: none;
-   font-family: inherit;
-   cursor: pointer;
-  }
-  .signout-btn:hover { opacity: 0.6; }
-  .signout-btn::after { content: '›'; font-size: 16px; }
-  
-  /* Footer (inside right panel) */
-  .footer-area { 
-   background: #fff; 
-   margin: 0 -60px; 
-   padding: 0 60px;}
-  .newsletter-section {
-   padding: 80px 60px;
-   border-bottom: 1px solid #e5e5e5;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   gap: 40px;
-  }
-  .newsletter-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #000; margin-bottom: 12px; }
-  .newsletter-title { font-size: 28px; font-weight: 400; line-height: 1.3; letter-spacing: -0.3px; color: #000; }
-  .newsletter-btn {
-   flex-shrink: 0;
-   padding: 14px 40px;
-   border: 1px solid #000;
-   background: transparent;
-   font-size: 11px;
-   font-weight: 600;
-   letter-spacing: 2px;
-   text-transform: uppercase;
-   cursor: pointer;
-   font-family: inherit;
-   white-space: nowrap;
-  }
-  .newsletter-btn:hover { background: #000; color: #fff; }
-  .footer-main { padding: 60px 60px 40px; }
-  .footer-top {
-   display: grid;
-   grid-template-columns: 1.2fr 1fr 1fr;
-   gap: 60px;
-   padding-bottom: 50px;
-   border-bottom: 1px solid #e5e5e5;
-   margin-bottom: 30px;
-  }
-  .footer-col-title { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 18px; font-weight: 600; }
-  .shipping-to { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
-  .shipping-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #999; }
-  .shipping-select {
-   font-size: 9px;
-   letter-spacing: 1px;
-   text-transform: uppercase;
-   border: none;
-   background: transparent;
-   color: #000;
-   font-family: inherit;
-   cursor: pointer;
-   appearance: none;
-   -webkit-appearance: none;
-  }
-  .shipping-arrow { font-size: 10px; color: #999; }
-  .footer-links { list-style: none; }
-  .footer-links li { margin-bottom: 10px; }
-  .footer-links a { font-size: 15px; color: #000; text-decoration: none; font-weight: 400; }
-  .footer-links a:hover { opacity: 0.6; }
-  .footer-bottom {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   flex-wrap: wrap;
-   gap: 16px;
-  }
-  .footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
-  .footer-legal a { font-size: 11px; color: #000; text-decoration: none; letter-spacing: 0.5px; }
-  .footer-legal a:hover { opacity: 0.6; }
-  .footer-social { display: flex; gap: 20px; }
-  .footer-social a { font-size: 11px; color: #000; text-decoration: none; letter-spacing: 0.5px; }
-  .footer-social a:hover { opacity: 0.6; }
-  .footer-copyright { font-size: 11px; color: #000; letter-spacing: 0.5px; }
-  
-  /* ════════════════════════════════
+    .page-wrapper {
+      display: flex;
+      min-height: calc(100vh - 61px);
+    }
+
+    /* Left: sticky image panel */
+    .left-panel {
+      width: 50%;
+      position: sticky;
+      top: 61px;
+      height: calc(100vh - 61px);
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+
+    .left-sticky {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .left-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #2c2c2c;
+    }
+
+    .left-card-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .icc-card {
+      width: 180px;
+      height: 115px;
+      background: #6b7c5c;
+      border-radius: 8px;
+      padding: 14px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icc-card-name {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .icc-card-type {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 8px;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .icc-card-bg {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      right: -10px;
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      opacity: 0.18;
+      color: #fff;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .icc-card-bottom {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .icc-card-city {
+      font-size: 8px;
+      letter-spacing: 1px;
+      opacity: 0.85;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+    }
+
+    .icc-card-logo {
+      font-size: 7px;
+      letter-spacing: 0.5px;
+      text-align: right;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    /* Right: scrollable content */
+    .right-panel {
+      width: 50%;
+      background: #f2f2f2;
+      padding: 60px 60px 0;
+    }
+
+    .welcome-heading {
+      font-size: 40px;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: #000;
+    }
+
+    /* Tabs */
+    .account-tabs {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid #ddd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .account-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .account-tab {
+      font-size: 13px;
+      color: #999;
+      text-decoration: none;
+      padding-bottom: 12px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      font-family: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .account-tab:hover {
+      color: #000;
+    }
+
+    .account-tab.active {
+      color: #000;
+      font-weight: 500;
+      border-bottom: 2px solid #000;
+    }
+
+    /* Profile sections */
+    .profile-section {
+      background: #fff;
+      margin-bottom: 4px;
+      padding: 20px 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+    }
+
+    .edit-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #000;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .edit-btn:hover {
+      opacity: 0.6;
+    }
+
+    .edit-btn::after {
+      content: '›';
+      font-size: 14px;
+    }
+
+    .field-row {
+      margin-bottom: 14px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 0.2px;
+      margin-bottom: 2px;
+    }
+
+    .field-value {
+      font-size: 13px;
+      color: #000;
+    }
+
+    .field-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid #f0f0f0;
+      cursor: pointer;
+    }
+
+    .field-action-text {
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .field-action-arrow {
+      font-size: 16px;
+      color: #bbb;
+    }
+
+    /* ICC Preferences — dark card */
+    .profile-section.dark {
+      background: #111;
+      color: #fff;
+    }
+
+    .profile-section.dark .section-title {
+      color: #fff;
+    }
+
+    .profile-section.dark .edit-btn {
+      color: #fff;
+    }
+
+    .profile-section.dark .field-label {
+      color: #888;
+    }
+
+    .profile-section.dark .field-value {
+      color: #fff;
+    }
+
+    /* Sign out */
+    .signout-row {
+      background: #fff;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 60px;
+      cursor: pointer;
+    }
+
+    .signout-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: #000;
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .signout-btn:hover {
+      opacity: 0.6;
+    }
+
+    .signout-btn::after {
+      content: '›';
+      font-size: 16px;
+    }
+
+    /* Footer (inside right panel) */
+    .footer-area {
+      background: #fff;
+      margin: 0 -60px;
+      padding: 0 60px;
+    }
+
+    .newsletter-section {
+      padding: 80px 60px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .newsletter-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-title {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+      color: #000;
+    }
+
+    .newsletter-btn {
+      flex-shrink: 0;
+      padding: 14px 40px;
+      border: 1px solid #000;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .newsletter-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .footer-main {
+      padding: 60px 60px 40px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 30px;
+    }
+
+    .footer-col-title {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .shipping-to {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .shipping-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .shipping-select {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      background: transparent;
+      color: #000;
+      font-family: inherit;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .shipping-arrow {
+      font-size: 10px;
+      color: #999;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      font-size: 15px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.6;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal a {
+      font-size: 11px;
+      color: #000;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-legal a:hover {
+      opacity: 0.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-social a {
+      font-size: 11px;
+      color: #000;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-social a:hover {
+      opacity: 0.6;
+    }
+
+    .footer-copyright {
+      font-size: 11px;
+      color: #000;
+      letter-spacing: 0.5px;
+    }
+
+    /* ════════════════════════════════
    EDIT SIDEBAR
   ════════════════════════════════ */
-  .edit-overlay {
-   position: fixed;
-   inset: 0;
-   background: rgba(0,0,0,0.45);
-   z-index: 19999;
-   opacity: 0;
-   pointer-events: none;
-   transition: opacity 0.35s ease;
-  }
-  .edit-overlay.open { opacity: 1; pointer-events: all; }
-  
-  .edit-sidebar {
-   position: fixed;
-   top: 0; right: -520px;
-   width: 100%;
-   max-width: 480px;
-   height: 100vh;
-   background: #fff;
-   z-index: 20000;
-   box-shadow: -4px 0 30px rgba(0,0,0,0.12);
-   transition: right 0.38s cubic-bezier(0.4,0,0.2,1);
-   display: flex;
-   flex-direction: column;
-   overflow: hidden;
-  }
-  .edit-sidebar.open { right: 0; }
-  
-  body.dark-mode .edit-sidebar {
-   background: #1a1a1a !important;
-   color: #f0f0f0 !important;
-  }
-  
-  .edit-sidebar-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 24px 28px 20px;
-   border-bottom: 1px solid #e8e8e8;
-   flex-shrink: 0;
-  }
-  body.dark-mode .edit-sidebar-header { border-bottom-color: #333 !important; }
-  
-  .edit-sidebar-title {
-   font-size: 15px;
-   font-weight: 600;
-   letter-spacing: 0.1px;
-  }
-  
-  .edit-sidebar-close {
-   background: none;
-   border: none;
-   font-size: 22px;
-   cursor: pointer;
-   color: #000;
-   padding: 0;
-   width: 28px;
-   height: 28px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   transition: opacity 0.2s;
-   border-radius: 50%;
-  }
-  .edit-sidebar-close:hover { opacity: 0.5; }
-  body.dark-mode .edit-sidebar-close { color: #f0f0f0 !important; }
-  
-  .edit-sidebar-body {
-   flex: 1;
-   overflow-y: auto;
-   padding: 28px 28px 20px;
-   scrollbar-width: thin;
-   scrollbar-color: #ccc transparent;
-  }
-  body.dark-mode .edit-sidebar-body { scrollbar-color: #444 transparent !important; }
-  
-  /* Form field styles */
-  .form-group {
-   margin-bottom: 20px;
-   position: relative;
-  }
-  .form-label {
-   font-size: 11px;
-   color: #888;
-   letter-spacing: 0.3px;
-   margin-bottom: 0;
-   position: absolute;
-   top: 10px;
-   left: 16px;
-   pointer-events: none;
-   transition: all 0.2s;
-  }
-  body.dark-mode .form-label { color: #666 !important; }
-  
-  .form-input, .form-textarea, .form-select {
-   width: 100%;
-   padding: 28px 16px 10px;
-   font-size: 14px;
-   font-family: 'Libre Franklin', sans-serif;
-   color: #000;
-   background: #fff;
-   border: 1px solid #e0e0e0;
-   border-radius: 4px;
-   outline: none;
-   transition: border-color 0.2s;
-   appearance: none;
-   -webkit-appearance: none;
-  }
-  .form-input:focus, .form-textarea:focus, .form-select:focus {
-   border-color: #000;
-  }
-  body.dark-mode .form-input,
-  body.dark-mode .form-textarea,
-  body.dark-mode .form-select {
-   background: #2a2a2a !important;
-   border-color: #444 !important;
-   color: #f0f0f0 !important;
-  }
-  body.dark-mode .form-input:focus,
-  body.dark-mode .form-textarea:focus,
-  body.dark-mode .form-select:focus {
-   border-color: #aaa !important;
-  }
-  
-  .form-textarea {
-   resize: none;
-   min-height: 100px;
-   padding-top: 28px;
-  }
-  
-  .form-select-wrapper {
-   position: relative;
-  }
-  .form-select-wrapper::after {
-   content: '∨';
-   position: absolute;
-   right: 14px;
-   top: 50%;
-   transform: translateY(-50%);
-   font-size: 11px;
-   color: #999;
-   pointer-events: none;
-  }
-  body.dark-mode .form-select-wrapper::after { color: #666 !important; }
-  
-  .char-count {
-   text-align: right;
-   font-size: 10px;
-   color: #bbb;
-   margin-top: 4px;
-  }
-  body.dark-mode .char-count { color: #555 !important; }
-  
-  /* Pinpoint row */
-  .pinpoint-row {
-   display: flex;
-   align-items: center;
-   gap: 10px;
-   padding: 14px 16px;
-   border: 1px solid #e0e0e0;
-   border-radius: 4px;
-   margin-bottom: 20px;
-   cursor: pointer;
-   transition: border-color 0.2s;
-  }
-  .pinpoint-row:hover { border-color: #000; }
-  body.dark-mode .pinpoint-row { border-color: #444 !important; }
-  body.dark-mode .pinpoint-row:hover { border-color: #aaa !important; }
-  
-  .pinpoint-icon {
-   font-size: 16px;
-   flex-shrink: 0;
-   color: #555;
-  }
-  body.dark-mode .pinpoint-icon { color: #aaa !important; }
-  
-  .pinpoint-label {
-   font-size: 10px;
-   color: #888;
-   margin-bottom: 1px;
-  }
-  body.dark-mode .pinpoint-label { color: #666 !important; }
-  
-  .pinpoint-value {
-   font-size: 13px;
-   color: #000;
-  }
-  body.dark-mode .pinpoint-value { color: #f0f0f0 !important; }
-  
-  .pinpoint-change {
-   margin-left: auto;
-   font-size: 12px;
-   color: #2e7d32;
-   font-weight: 500;
-   white-space: nowrap;
-  }
-  
-  .form-section-divider {
-   height: 1px;
-   background: #f0f0f0;
-   margin: 4px 0 20px;
-  }
-  body.dark-mode .form-section-divider { background: #2a2a2a !important; }
-  
-  /* Radio gender */
-  .gender-options {
-   display: flex;
-   gap: 10px;
-   margin-top: 6px;
-  }
-  .gender-opt {
-   flex: 1;
-   border: 1px solid #e0e0e0;
-   border-radius: 4px;
-   padding: 12px 16px;
-   cursor: pointer;
-   display: flex;
-   align-items: center;
-   gap: 8px;
-   font-size: 13px;
-   transition: border-color 0.2s, background 0.2s;
-  }
-  .gender-opt:hover { border-color: #999; }
-  .gender-opt.selected { border-color: #000; background: #f8f8f8; }
-  body.dark-mode .gender-opt { border-color: #444 !important; color: #f0f0f0 !important; }
-  body.dark-mode .gender-opt.selected { border-color: #f0f0f0 !important; background: #222 !important; }
-  
-  .gender-dot {
-   width: 14px;
-   height: 14px;
-   border-radius: 50%;
-   border: 2px solid #ccc;
-   flex-shrink: 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   transition: border-color 0.2s;
-  }
-  .gender-opt.selected .gender-dot { border-color: #000; }
-  .gender-opt.selected .gender-dot::after {
-   content: '';
-   width: 6px;
-   height: 6px;
-   border-radius: 50%;
-   background: #000;
-   display: block;
-  }
-  body.dark-mode .gender-opt.selected .gender-dot { border-color: #f0f0f0 !important; }
-  body.dark-mode .gender-opt.selected .gender-dot::after { background: #f0f0f0 !important; }
-  
-  /* Birthday read-only hint */
-  .birthday-hint {
-   font-size: 11px;
-   color: #999;
-   margin-top: 6px;
-   line-height: 1.4;
-  }
-  body.dark-mode .birthday-hint { color: #555 !important; }
-  
-  /* Sidebar footer */
-  .edit-sidebar-footer {
-   padding: 20px 28px 28px;
-   border-top: 1px solid #e8e8e8;
-   flex-shrink: 0;
-  }
-  body.dark-mode .edit-sidebar-footer { border-top-color: #333 !important; }
-  
-  .save-btn {
-   width: 100%;
-   padding: 18px;
-   background: #000;
-   color: #fff;
-   border: none;
-   font-size: 13px;
-   font-weight: 600;
-   letter-spacing: 1.5px;
-   text-transform: uppercase;
-   cursor: pointer;
-   font-family: 'Libre Franklin', sans-serif;
-   transition: background 0.25s;
-  }
-  .save-btn:hover { background: #333; }
-  body.dark-mode .save-btn { background: #f0f0f0 !important; color: #111 !important; }
-  body.dark-mode .save-btn:hover { background: #ccc !important; }
-  
-  /* Label chips */
-  .label-chip {
-   background: #f5f5f5;
-   border: 1px solid #e0e0e0;
-   border-radius: 20px;
-   padding: 6px 12px;
-   font-size: 12px;
-   cursor: pointer;
-   font-family: 'Libre Franklin', sans-serif;
-   color: #333;
-   transition: background 0.2s, border-color 0.2s;
-   white-space: nowrap;
-  }
-  .label-chip:hover { background: #ebebeb; border-color: #bbb; }
-  body.dark-mode .label-chip { background: #2a2a2a !important; border-color: #444 !important; color: #ccc !important; }
-  body.dark-mode .label-chip:hover { background: #333 !important; }
-  
-  /* Address cards in list */
-  .addr-card {
-   border: 1px solid #e8e8e8;
-   border-radius: 6px;
-   padding: 16px 18px;
-   margin-bottom: 12px;
-   cursor: pointer;
-   transition: border-color 0.2s, box-shadow 0.2s;
-   background: #fff;
-  }
-  .addr-card:hover { border-color: #999; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  body.dark-mode .addr-card { background: #222 !important; border-color: #333 !important; }
-  body.dark-mode .addr-card:hover { border-color: #666 !important; }
-  
-  .addr-card-top {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   margin-bottom: 8px;
-  }
-  .addr-card-label {
-   font-size: 13px;
-   font-weight: 600;
-   letter-spacing: 0.1px;
-   text-transform: capitalize;
-  }
-  .addr-primary-badge {
-   font-size: 10px;
-   font-weight: 600;
-   letter-spacing: 0.5px;
-   background: #000;
-   color: #fff;
-   padding: 3px 8px;
-   border-radius: 2px;
-   text-transform: uppercase;
-  }
-  body.dark-mode .addr-primary-badge { background: #f0f0f0 !important; color: #111 !important; }
-  
-  .addr-set-primary {
-   font-size: 11px;
-   color: #666;
-   background: none;
-   border: 1px solid #e0e0e0;
-   border-radius: 2px;
-   padding: 3px 8px;
-   cursor: pointer;
-   font-family: inherit;
-   transition: border-color 0.2s, color 0.2s;
-  }
-  .addr-set-primary:hover { border-color: #000; color: #000; }
-  body.dark-mode .addr-set-primary { color: #aaa !important; border-color: #444 !important; }
-  body.dark-mode .addr-set-primary:hover { color: #f0f0f0 !important; border-color: #aaa !important; }
-  
-  .addr-card-recipient { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-  .addr-card-full { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 4px; }
-  body.dark-mode .addr-card-full { color: #aaa !important; }
-  .addr-card-note { font-size: 11px; color: #888; margin-bottom: 4px; }
-  body.dark-mode .addr-card-note { color: #666 !important; }
-  .addr-card-pinpoint { font-size: 11px; color: #999; margin-bottom: 6px; }
-  body.dark-mode .addr-card-pinpoint { color: #555 !important; }
-  .addr-card-edit-hint {
-   font-size: 10px;
-   color: #bbb;
-   text-align: right;
-   letter-spacing: 0.3px;
-  }
-  body.dark-mode .addr-card-edit-hint { color: #444 !important; }
-  
-  /* Location options in pinpoint picker */
-  .location-option {
-   display: flex;
-   align-items: flex-start;
-   gap: 12px;
-   padding: 14px 20px;
-   cursor: pointer;
-   border-bottom: 1px solid #f0f0f0;
-   transition: background 0.15s;
-  }
-  .location-option:hover { background: #f8f8f8; }
-  .location-option.active { background: #f5f5f5; }
-  body.dark-mode .location-option { border-bottom-color: #2a2a2a !important; }
-  body.dark-mode .location-option:hover { background: #2a2a2a !important; }
-  body.dark-mode .location-option.active { background: #252525 !important; }
-  
-  .loc-radio {
-   width: 18px;
-   height: 18px;
-   border-radius: 50%;
-   border: 2px solid #ccc;
-   flex-shrink: 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-top: 2px;
-   transition: border-color 0.2s;
-  }
-  .location-option.active .loc-radio { border-color: #000; }
-  body.dark-mode .location-option.active .loc-radio { border-color: #f0f0f0 !important; }
-  
-  .loc-dot {
-   width: 8px; height: 8px;
-   border-radius: 50%;
-   background: transparent;
-   transition: background 0.2s;
-  }
-  .loc-dot.filled { background: #000; }
-  body.dark-mode .loc-dot.filled { background: #f0f0f0 !important; }
-  
-  .loc-name { font-size: 13px; color: #000; margin-bottom: 2px; font-weight: 400; }
-  body.dark-mode .loc-name { color: #f0f0f0 !important; }
-  .loc-coords { font-size: 11px; color: #999; font-family: monospace; }
-  body.dark-mode .loc-coords { color: #555 !important; }
-  
-  /* ════════════════════════════════
+    .edit-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 19999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .edit-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .edit-sidebar {
+      position: fixed;
+      top: 0;
+      right: -520px;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background: #fff;
+      z-index: 20000;
+      box-shadow: -4px 0 30px rgba(0, 0, 0, 0.12);
+      transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .edit-sidebar.open {
+      right: 0;
+    }
+
+    body.dark-mode .edit-sidebar {
+      background: #1a1a1a !important;
+      color: #f0f0f0 !important;
+    }
+
+    .edit-sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid #e8e8e8;
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .edit-sidebar-header {
+      border-bottom-color: #333 !important;
+    }
+
+    .edit-sidebar-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+    }
+
+    .edit-sidebar-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+      padding: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      border-radius: 50%;
+    }
+
+    .edit-sidebar-close:hover {
+      opacity: 0.5;
+    }
+
+    body.dark-mode .edit-sidebar-close {
+      color: #f0f0f0 !important;
+    }
+
+    .edit-sidebar-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 28px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #ccc transparent;
+    }
+
+    body.dark-mode .edit-sidebar-body {
+      scrollbar-color: #444 transparent !important;
+    }
+
+    /* Form field styles */
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-label {
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 0.3px;
+      margin-bottom: 0;
+      position: absolute;
+      top: 10px;
+      left: 16px;
+      pointer-events: none;
+      transition: all 0.2s;
+    }
+
+    body.dark-mode .form-label {
+      color: #666 !important;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 28px 16px 10px;
+      font-size: 14px;
+      font-family: 'Libre Franklin', sans-serif;
+      color: #000;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: #000;
+    }
+
+    body.dark-mode .form-input,
+    body.dark-mode .form-textarea,
+    body.dark-mode .form-select {
+      background: #2a2a2a !important;
+      border-color: #444 !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .form-input:focus,
+    body.dark-mode .form-textarea:focus,
+    body.dark-mode .form-select:focus {
+      border-color: #aaa !important;
+    }
+
+    .form-textarea {
+      resize: none;
+      min-height: 100px;
+      padding-top: 28px;
+    }
+
+    .form-select-wrapper {
+      position: relative;
+    }
+
+    .form-select-wrapper::after {
+      content: '∨';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: #999;
+      pointer-events: none;
+    }
+
+    body.dark-mode .form-select-wrapper::after {
+      color: #666 !important;
+    }
+
+    .char-count {
+      text-align: right;
+      font-size: 10px;
+      color: #bbb;
+      margin-top: 4px;
+    }
+
+    body.dark-mode .char-count {
+      color: #555 !important;
+    }
+
+    /* Pinpoint row */
+    .pinpoint-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .pinpoint-row:hover {
+      border-color: #000;
+    }
+
+    body.dark-mode .pinpoint-row {
+      border-color: #444 !important;
+    }
+
+    body.dark-mode .pinpoint-row:hover {
+      border-color: #aaa !important;
+    }
+
+    .pinpoint-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      color: #555;
+    }
+
+    body.dark-mode .pinpoint-icon {
+      color: #aaa !important;
+    }
+
+    .pinpoint-label {
+      font-size: 10px;
+      color: #888;
+      margin-bottom: 1px;
+    }
+
+    body.dark-mode .pinpoint-label {
+      color: #666 !important;
+    }
+
+    .pinpoint-value {
+      font-size: 13px;
+      color: #000;
+    }
+
+    body.dark-mode .pinpoint-value {
+      color: #f0f0f0 !important;
+    }
+
+    .pinpoint-change {
+      margin-left: auto;
+      font-size: 12px;
+      color: #2e7d32;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .form-section-divider {
+      height: 1px;
+      background: #f0f0f0;
+      margin: 4px 0 20px;
+    }
+
+    body.dark-mode .form-section-divider {
+      background: #2a2a2a !important;
+    }
+
+    /* Radio gender */
+    .gender-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .gender-opt {
+      flex: 1;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .gender-opt:hover {
+      border-color: #999;
+    }
+
+    .gender-opt.selected {
+      border-color: #000;
+      background: #f8f8f8;
+    }
+
+    body.dark-mode .gender-opt {
+      border-color: #444 !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .gender-opt.selected {
+      border-color: #f0f0f0 !important;
+      background: #222 !important;
+    }
+
+    .gender-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+    }
+
+    .gender-opt.selected .gender-dot {
+      border-color: #000;
+    }
+
+    .gender-opt.selected .gender-dot::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #000;
+      display: block;
+    }
+
+    body.dark-mode .gender-opt.selected .gender-dot {
+      border-color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .gender-opt.selected .gender-dot::after {
+      background: #f0f0f0 !important;
+    }
+
+    /* Birthday read-only hint */
+    .birthday-hint {
+      font-size: 11px;
+      color: #999;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    body.dark-mode .birthday-hint {
+      color: #555 !important;
+    }
+
+    /* Sidebar footer */
+    .edit-sidebar-footer {
+      padding: 20px 28px 28px;
+      border-top: 1px solid #e8e8e8;
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .edit-sidebar-footer {
+      border-top-color: #333 !important;
+    }
+
+    .save-btn {
+      width: 100%;
+      padding: 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Libre Franklin', sans-serif;
+      transition: background 0.25s;
+    }
+
+    .save-btn:hover {
+      background: #333;
+    }
+
+    body.dark-mode .save-btn {
+      background: #f0f0f0 !important;
+      color: #111 !important;
+    }
+
+    body.dark-mode .save-btn:hover {
+      background: #ccc !important;
+    }
+
+    /* Label chips */
+    .label-chip {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'Libre Franklin', sans-serif;
+      color: #333;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .label-chip:hover {
+      background: #ebebeb;
+      border-color: #bbb;
+    }
+
+    body.dark-mode .label-chip {
+      background: #2a2a2a !important;
+      border-color: #444 !important;
+      color: #ccc !important;
+    }
+
+    body.dark-mode .label-chip:hover {
+      background: #333 !important;
+    }
+
+    /* Address cards in list */
+    .addr-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    .addr-card:hover {
+      border-color: #999;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark-mode .addr-card {
+      background: #222 !important;
+      border-color: #333 !important;
+    }
+
+    body.dark-mode .addr-card:hover {
+      border-color: #666 !important;
+    }
+
+    .addr-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .addr-card-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      text-transform: capitalize;
+    }
+
+    .addr-primary-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: #000;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .addr-primary-badge {
+      background: #f0f0f0 !important;
+      color: #111 !important;
+    }
+
+    .addr-set-primary {
+      font-size: 11px;
+      color: #666;
+      background: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      padding: 3px 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .addr-set-primary:hover {
+      border-color: #000;
+      color: #000;
+    }
+
+    body.dark-mode .addr-set-primary {
+      color: #aaa !important;
+      border-color: #444 !important;
+    }
+
+    body.dark-mode .addr-set-primary:hover {
+      color: #f0f0f0 !important;
+      border-color: #aaa !important;
+    }
+
+    .addr-card-recipient {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .addr-card-full {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+
+    body.dark-mode .addr-card-full {
+      color: #aaa !important;
+    }
+
+    .addr-card-note {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    body.dark-mode .addr-card-note {
+      color: #666 !important;
+    }
+
+    .addr-card-pinpoint {
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 6px;
+    }
+
+    body.dark-mode .addr-card-pinpoint {
+      color: #555 !important;
+    }
+
+    .addr-card-edit-hint {
+      font-size: 10px;
+      color: #bbb;
+      text-align: right;
+      letter-spacing: 0.3px;
+    }
+
+    body.dark-mode .addr-card-edit-hint {
+      color: #444 !important;
+    }
+
+    /* Location options in pinpoint picker */
+    .location-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.15s;
+    }
+
+    .location-option:hover {
+      background: #f8f8f8;
+    }
+
+    .location-option.active {
+      background: #f5f5f5;
+    }
+
+    body.dark-mode .location-option {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .location-option:hover {
+      background: #2a2a2a !important;
+    }
+
+    body.dark-mode .location-option.active {
+      background: #252525 !important;
+    }
+
+    .loc-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .location-option.active .loc-radio {
+      border-color: #000;
+    }
+
+    body.dark-mode .location-option.active .loc-radio {
+      border-color: #f0f0f0 !important;
+    }
+
+    .loc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      transition: background 0.2s;
+    }
+
+    .loc-dot.filled {
+      background: #000;
+    }
+
+    body.dark-mode .loc-dot.filled {
+      background: #f0f0f0 !important;
+    }
+
+    .loc-name {
+      font-size: 13px;
+      color: #000;
+      margin-bottom: 2px;
+      font-weight: 400;
+    }
+
+    body.dark-mode .loc-name {
+      color: #f0f0f0 !important;
+    }
+
+    .loc-coords {
+      font-size: 11px;
+      color: #999;
+      font-family: monospace;
+    }
+
+    body.dark-mode .loc-coords {
+      color: #555 !important;
+    }
+
+    /* ════════════════════════════════
    RESPONSIVE — iPad (768–1024px)
   ════════════════════════════════ */
-  @media (max-width: 1024px) {
-   .header-main { padding: 18px 28px; }
-   .header-left { gap: 24px; }
-   .header-right { gap: 20px; }
-   .dark-mode-toggle .toggle-label { display: none; }
-  
-   .right-panel { padding: 48px 40px 0; }
-   .footer-area { margin: 0 -40px; }
-   .newsletter-section { padding: 60px 40px; }
-   .footer-main { padding: 50px 40px 30px; }
-   .footer-top { gap: 36px; }
-   .welcome-heading { font-size: 34px; }
-  }
-  
-  /* ════════════════════════════════
+    @media (max-width: 1024px) {
+      .header-main {
+        padding: 18px 28px;
+      }
+
+      .header-left {
+        gap: 24px;
+      }
+
+      .header-right {
+        gap: 20px;
+      }
+
+      .dark-mode-toggle .toggle-label {
+        display: none;
+      }
+
+      .right-panel {
+        padding: 48px 40px 0;
+      }
+
+      .footer-area {
+        margin: 0 -40px;
+      }
+
+      .newsletter-section {
+        padding: 60px 40px;
+      }
+
+      .footer-main {
+        padding: 50px 40px 30px;
+      }
+
+      .footer-top {
+        gap: 36px;
+      }
+
+      .welcome-heading {
+        font-size: 34px;
+      }
+    }
+
+    /* ════════════════════════════════
    RESPONSIVE — Mobile (< 768px)
   ════════════════════════════════ */
-  @media (max-width: 768px) {
-   /* Header mobile */
-   .header-main { padding: 14px 20px; }
-   .header-left,
-   .header-right { display: none; }
-   .hamburger-btn { display: flex; }
-   .logo { flex: 0; margin: auto; }
-   .header-main {
-   display: grid;
-   grid-template-columns: auto 1fr auto;
-   align-items: center;
-   }
-  
-   /* Mobile menu visible */
-   .mobile-menu { display: flex; }
-  
-   /* Page layout: stack panels */
-   .page-wrapper { flex-direction: column; }
-   .left-panel { width: 100%; height: 260px; }
-   .left-sticky { position: relative; top: 0; height: 260px; }
-  
-   .right-panel { width: 100%; padding: 32px 20px 0; }
-   .welcome-heading { font-size: 28px; margin-bottom: 24px; }
-  
-   .footer-area { margin: 0 -20px; }
-   .newsletter-section { flex-direction: column; padding: 48px 20px; gap: 24px; text-align: left; }
-   .newsletter-title { font-size: 22px; }
-   .newsletter-btn { width: 100%; text-align: center; }
-   .footer-main { padding: 40px 20px 30px; }
-   .footer-top { grid-template-columns: 1fr; gap: 32px; }
-   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
-   .footer-legal { gap: 16px; }
-  
-   /* Cart sidebar full width on mobile */
-   .cart-sidebar { width: 100%; right: -100%; }
-   .shop-sidebar { width: 100%; left: -100%; }
-   .search-box.active { width: 260px; }
-  }
-  
-  /* ════════════════════════════════
+    @media (max-width: 768px) {
+
+      /* Header mobile */
+      .header-main {
+        padding: 14px 20px;
+      }
+
+      .header-left,
+      .header-right {
+        display: none;
+      }
+
+      .hamburger-btn {
+        display: flex;
+      }
+
+      .logo {
+        flex: 0;
+        margin: auto;
+      }
+
+      .header-main {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+      }
+
+      /* Mobile menu visible */
+      .mobile-menu {
+        display: flex;
+      }
+
+      /* Page layout: stack panels */
+      .page-wrapper {
+        flex-direction: column;
+      }
+
+      .left-panel {
+        width: 100%;
+        height: 260px;
+      }
+
+      .left-sticky {
+        position: relative;
+        top: 0;
+        height: 260px;
+      }
+
+      .right-panel {
+        width: 100%;
+        padding: 32px 20px 0;
+      }
+
+      .welcome-heading {
+        font-size: 28px;
+        margin-bottom: 24px;
+      }
+
+      .footer-area {
+        margin: 0 -20px;
+      }
+
+      .newsletter-section {
+        flex-direction: column;
+        padding: 48px 20px;
+        gap: 24px;
+        text-align: left;
+      }
+
+      .newsletter-title {
+        font-size: 22px;
+      }
+
+      .newsletter-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-main {
+        padding: 40px 20px 30px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .footer-legal {
+        gap: 16px;
+      }
+
+      /* Cart sidebar full width on mobile */
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+
+      .shop-sidebar {
+        width: 100%;
+        left: -100%;
+      }
+
+      .search-box.active {
+        width: 260px;
+      }
+    }
+
+    /* ════════════════════════════════
    RESPONSIVE — Small mobile (< 480px)
   ════════════════════════════════ */
-  @media (max-width: 480px) {
-   .account-tab { font-size: 12px; gap: 16px; }
-   .account-tabs { gap: 16px; }
-   .profile-section { padding: 16px 16px; }
-   .signout-row { padding: 14px 16px; }
-   .welcome-heading { font-size: 24px; }
-  }
-  </style></head><body><!-- Cart Sidebar --><div class="cart-overlay" id="cartOverlay"></div><div class="cart-sidebar" id="cartSidebar"><div class="cart-header"><h2 class="cart-title">Cart (<span id="cartItemCount">0</span>)</h2><button class="cart-close" id="cartClose">×</button></div><div id="cartContentArea"><div class="cart-empty"><div class="cart-empty-title">Your cart is empty</div><div class="cart-empty-text">Looks like you haven't added anything yet.</div></div></div></div><!-- Shop Sidebar --><div class="shop-overlay" id="shopOverlay"></div><div class="shop-sidebar" id="shopSidebar"><div class="shop-sidebar-header"><span>Menu</span><button class="shop-sidebar-close" id="shopClose">&#x2715;</button></div><div class="shop-sidebar-banner"><img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format" alt="New Arrivals"><div class="shop-sidebar-banner-label">New Arrivals</div></div><div class="shop-sidebar-body"><div class="shop-section-title">Cycling</div><div class="shop-category-grid"><a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Jerseys"> Jerseys
-   </a><a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75" class="shop-category-icon" alt="Bibs"> Bibs
-   </a><a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75" class="shop-category-icon" alt="Jackets"> Jackets &amp; Gilets
-   </a><a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Socks"> Socks
-   </a></div><div class="shop-divider"></div><div class="shop-section-title">Off-Race</div><div class="shop-category-grid"><a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="T-Shirts"> T-Shirts
-   </a><a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()"><img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75" class="shop-category-icon" alt="Sweatshirts"> Sweatshirts
-   </a></div></div></div><!-- Mobile Overlay & Menu --><div class="mobile-overlay" id="mobileOverlay"></div><div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><span style="font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Menu</span><button class="mobile-menu-close" id="mobileMenuClose">&#x2715;</button></div><a href="#" id="mobileShopToggle">Shop</a><a href="aboutus.php">About</a><a href="#">Campaign</a><a href="wishlist.php">Wishlist</a><a href="account.php" style="font-weight:500;">Account</a><a href="#" id="mobileCartToggle">Cart</a><div style="padding: 16px 24px; border-bottom: 1px solid #f0f0f0;"><button class="dark-mode-toggle" id="darkModeToggleMobile" style="font-size:14px;"><span class="toggle-icon"></span><span class="toggle-label">Dark Mode</span></button></div></div><!-- HEADER (identical to index.html) --><header id="siteHeader"><div class="header-main"><!-- Hamburger (mobile only) --><button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button><div class="header-left"><a href="#" id="shopToggle">Shop</a><a href="aboutus.php">About</a><a href="#">Campaign</a></div><div class="logo"><a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"
-   onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">GLOAMING IMAGINE</span></a></div><div class="header-right"><button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"><span class="toggle-icon"></span><span class="toggle-label">Dark Mode</span></button><div class="search-container"><a class="search-toggle" id="searchToggle">Search</a><div class="search-box" id="searchBox"><div class="search-input-wrapper"><input type="text" class="search-input" placeholder="Search products..." id="searchInput"><button class="search-close" id="searchClose">×</button></div><div class="search-dropdown" id="searchDropdown"></div></div></div><a href="wishlist.php" style="position:relative;display:inline-block;">
-   Wishlist
-   <span id="wishlistHeaderCount" class="badge-count">0</span></a><a href="account.php" style="font-weight:500;">Account</a><a href="#" id="cartToggle" style="position:relative;display:inline-block;">
-   Cart
-   <span id="cartCount" class="badge-count">0</span></a></div></div></header><!-- MAIN --><div class="page-wrapper"><!-- LEFT: sticky image --><div class="left-panel" id="leftPanel"><div class="left-sticky"><img class="left-image"
-   src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=900&q=80"
-   alt="Account hero"><div class="left-card-overlay"><div class="icc-card"><div class="icc-card-name">Ela</div><div class="icc-card-type">Off-Bike Training</div><div class="icc-card-bg">IRNA<br>CYC</div><div class="icc-card-bottom"><div class="icc-card-city">Munich</div><div class="icc-card-logo">INTERNATIONAL<br>CYCLING CLUB</div></div></div></div></div></div><!-- RIGHT: scrollable profile + footer --><div class="right-panel" id="rightPanel"><h1 class="welcome-heading">Welcome,<br>Ela</h1><!-- Tabs -->
-    <div class="account-tabs"><button class="account-tab">Orders</button><button class="account-tab active">Profile details</button></div><!-- Basic Information --><div class="profile-section"><div class="section-header"><span class="section-title">Basic information</span><button class="edit-btn">Edit</button></div><div class="field-row"><div class="field-label">First Name</div><div class="field-value">Ela</div></div><div class="field-row"><div class="field-label">Last Name</div><div class="field-value"></div></div><div class="field-row"><div class="field-label">Email</div><div class="field-value">ela@example.com</div></div><div class="field-row"><div class="field-label">Phone Number</div><div class="field-value">085612345678</div></div><div class="field-row" style="margin-top:14px;"><div class="field-label">Gender</div><div class="field-value">Woman</div></div><!-- <div class="field-action"><span class="field-action-text">Add your phone number for a easier checkout experience</span><span class="field-action-arrow">›</span></div><div class="field-row"><div class="field-label">Connections</div><div class="field-value">Google<br>Apple</div></div> --></div><!-- Address --><div class="profile-section"><div class="section-header"><span class="section-title">Address</span><button class="edit-btn">Edit</button></div><div class="field-action"><span class="field-action-text">Add your address for an easier checkout experience</span><span class="field-action-arrow">›</span></div></div><!-- Sign out --><div class="signout-row"><button class="signout-btn">Sign out</button></div><!-- FOOTER (flows naturally after profile content) --></div><!-- /right-panel --></div><!-- /page-wrapper --><div class="footer-area"><!-- Newsletter --><div class="newsletter-section"><div><div class="newsletter-label">Newsletter</div><h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2></div><button class="newsletter-btn" onclick="alert('Newsletter signup!')">Sign Up</button></div><!-- Footer links --><div class="footer-main"><div class="footer-top"><!-- Col 1 --><div><div class="shipping-to"><span class="shipping-label">Shipping to:</span><select class="shipping-select" id="shippingRegion"><option>REST OF EU</option><option>USA</option><option>UK</option><option>ASIA</option><option>AUSTRALIA</option></select><span class="shipping-arrow">∨</span></div><ul class="footer-links"><li><a href="#">Destination Everywhere</a></li><li><a href="#">Sponsored Teams</a></li><li><a href="#">Find Stores</a></li></ul></div><!-- Col 2 --><div><div class="footer-col-title">Customer Care</div><ul class="footer-links"><li><a href="#">Get in Touch</a></li><li><a href="#">Gift Guide</a></li><li><a href="#">FAQ</a></li><li><a href="#">Returns</a></li><li><a href="#">Shipping</a></li><li><a href="#">Crash Replacement</a></li><li><a href="#">Care Guide</a></li></ul></div><!-- Col 3 --><div><div class="footer-col-title">About Gloaming Imagine</div><ul class="footer-links"><li><a href="#">About</a></li><li><a href="#">Press</a></li><li><a href="#">Career</a></li><li><a href="#">Stores</a></li><li><a href="#">International Cycling Club</a></li><li><a href="#">Impact &amp; Responsibility</a></li><li><a href="#">Industry Programme</a></li></ul></div></div><div class="footer-bottom"><div class="footer-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Cookie Policy Setting</a></div><div class="footer-social"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Strava</a><a href="#">LinkedIn</a></div><div class="footer-copyright">© Gloaming Imagine 2026</div></div></div></div><!-- /footer-area --><!-- EDIT OVERLAY (shared) --><div class="edit-overlay" id="editOverlay"></div><!-- BASIC INFO SIDEBAR --><div class="edit-sidebar" id="basicInfoSidebar"><div class="edit-sidebar-header"><span class="edit-sidebar-title">Basic information</span><button class="edit-sidebar-close" id="basicInfoClose">&#x2715;</button></div><div class="edit-sidebar-body"><div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" id="editFirstName" value="Ela"></div><div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" id="editLastName" value=""></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="editEmail" value="ellaherwati05@gmail.com"></div><div class="form-group"><label class="form-label">Phone number</label><input type="tel" class="form-input" id="editPhone" value="" placeholder="+xx country code"><div class="birthday-hint">Your phone number with +xx country prefix</div></div><div class="form-group"><label class="form-label">Birthday</label><input type="date" class="form-input" id="editBirthday" value="2004-12-05" readonly style="cursor:default;"><div class="birthday-hint">You can only set your birthday once. Please contact us to make a change.</div></div><div class="form-group"><div class="form-label" style="position:static;font-size:11px;margin-bottom:8px;">Gender</div><div class="gender-options"><div class="gender-opt" data-gender="Man" onclick="selectGender(this)"><div class="gender-dot"></div> Man
-   </div><div class="gender-opt selected" data-gender="Woman" onclick="selectGender(this)"><div class="gender-dot"></div> Woman
-   </div><div class="gender-opt" data-gender="Non-binary" onclick="selectGender(this)"><div class="gender-dot"></div> Non-binary
-   </div></div></div></div><div class="edit-sidebar-footer"><button class="save-btn" onclick="saveBasicInfo()">Save</button></div></div><!-- ADDRESS LIST SIDEBAR --><div class="edit-sidebar" id="addressSidebar"><div class="edit-sidebar-header"><span class="edit-sidebar-title">Alamat Saya</span><button class="edit-sidebar-close" id="addressClose">&#x2715;</button></div><div class="edit-sidebar-body" id="addressListBody"></div><div class="edit-sidebar-footer"><button class="save-btn" onclick="AddrMgr.openForm(null)" style="display:flex;align-items:center;justify-content:center;gap:8px;"><span style="font-size:18px;line-height:1;">+</span> Tambah Alamat Baru
-   </button></div></div><!-- ADDRESS FORM SIDEBAR --><div class="edit-sidebar" id="addressFormSidebar"><div class="edit-sidebar-header"><div style="display:flex;align-items:center;gap:10px;"><button onclick="AddrMgr.backToList()" style="background:none;border:none;cursor:pointer;font-size:18px;color:inherit;padding:0;line-height:1;">&#x2190;</button><span class="edit-sidebar-title" id="addrFormTitle">Tambah Alamat</span></div><button class="edit-sidebar-close" id="addressFormClose">&#x2715;</button></div><div class="edit-sidebar-body"><div class="form-group" style="margin-bottom:0;"><div style="font-size:11px;color:#888;margin-bottom:8px;letter-spacing:0.3px;">Pinpoint</div><div class="pinpoint-row" onclick="AddrMgr.openPinpointPicker()"><span class="pinpoint-icon">&#x25CE;</span><div style="flex:1;min-width:0;"><div class="pinpoint-label">Lokasi</div><div class="pinpoint-value" id="addrFormPinpoint" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pilih lokasi...</div></div><span class="pinpoint-change">Ubah</span></div></div><div class="form-section-divider"></div><div class="form-group"><label class="form-label">Label Alamat</label><input type="text" class="form-input" id="addrFormLabel" maxlength="30" oninput="updateCount(this,'addrLabelCount')" placeholder=" "><div class="char-count"><span id="addrLabelCount">0</span>/30</div></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:-12px;margin-bottom:20px;"><button class="label-chip" onclick="AddrMgr.setLabel('rumah')">rumah</button><button class="label-chip" onclick="AddrMgr.setLabel('kantor')">kantor</button><button class="label-chip" onclick="AddrMgr.setLabel('kos')">kos</button><button class="label-chip" onclick="AddrMgr.setLabel('orang tua')">orang tua</button></div><div class="form-group"><label class="form-label">Alamat Lengkap</label><textarea class="form-textarea" id="addrFormFull" maxlength="200" oninput="updateCount(this,'addrFullCount')" placeholder=" "></textarea><div class="char-count"><span id="addrFullCount">0</span>/200</div></div><div class="form-group"><label class="form-label">Catatan Untuk Kurir (Opsional)</label><input type="text" class="form-input" id="addrFormNote" maxlength="45" oninput="updateCount(this,'addrNoteCount')" placeholder="Warna rumah, patokan, pesan khusus, dll."><div class="char-count"><span id="addrNoteCount">0</span>/45</div></div><div class="form-section-divider"></div><div class="form-group"><label class="form-label">Nama Penerima</label><input type="text" class="form-input" id="addrFormRecipient" placeholder=" "></div><div class="form-group"><label class="form-label">No. HP Penerima</label><input type="tel" class="form-input" id="addrFormPhone" placeholder="+62"><div class="birthday-hint">Nomor telepon dengan kode negara, contoh: +628xxxxxxxxxx</div></div></div><div class="edit-sidebar-footer" style="display:flex;gap:10px;"><button class="save-btn" id="addrDeleteBtn" onclick="AddrMgr.deleteAddress()" style="background:#fff;color:#c00;border:1px solid #e0e0e0;flex:0 0 auto;width:auto;padding:18px 20px;display:none;font-size:12px;letter-spacing:0.5px;">Hapus</button><button class="save-btn" onclick="AddrMgr.saveForm()" style="flex:1;">Simpan</button></div></div><!-- PINPOINT PICKER SIDEBAR --><div class="edit-sidebar" id="pinpointSidebar"><div class="edit-sidebar-header"><div style="display:flex;align-items:center;gap:10px;"><button onclick="AddrMgr.closePinpointPicker()" style="background:none;border:none;cursor:pointer;font-size:18px;color:inherit;padding:0;line-height:1;">&#x2190;</button><span class="edit-sidebar-title">Pilih Lokasi</span></div><button class="edit-sidebar-close" id="pinpointClose">&#x2715;</button></div><div class="edit-sidebar-body" style="padding:0;overflow-y:auto;"><div style="position:relative;width:100%;height:240px;background:linear-gradient(135deg,#e8f0e8,#d4e6d4 40%,#c8dfc8 70%,#dde8dd);overflow:hidden;flex-shrink:0;"><svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.22;"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2d6a2d" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/><path d="M0,130 Q120,110 240,125 T480,120" stroke="#fff" stroke-width="8" fill="none" opacity="0.7"/><path d="M0,130 Q120,110 240,125 T480,120" stroke="#e0d0a0" stroke-width="5" fill="none" opacity="0.5"/><path d="M80,0 Q100,65 95,130 T90,240" stroke="#fff" stroke-width="6" fill="none" opacity="0.5"/><rect x="105" y="55" width="50" height="28" rx="2" fill="#d4c9a8" opacity="0.5"/><rect x="280" y="85" width="40" height="22" rx="2" fill="#d4c9a8" opacity="0.4"/></svg><div id="mapPin" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));"><svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22S28 23.333 28 14C28 6.268 21.732 0 14 0z" fill="#e53935"/><circle cx="14" cy="14" r="5" fill="white"/></svg></div><div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.65);color:#fff;font-size:10px;padding:4px 12px;border-radius:20px;letter-spacing:0.3px;" id="mapCoords">-7.8853°, 110.3347°</div></div><div style="padding:16px 20px 4px;"><div style="font-size:11px;color:#888;margin-bottom:10px;letter-spacing:0.3px;font-weight:600;">PILIH AREA</div><div id="locationOptionsList"></div></div></div><div class="edit-sidebar-footer"><button class="save-btn" onclick="AddrMgr.confirmPinpoint()">Konfirmasi Lokasi</button></div></div><script>
-  // ════════════════════════════════
-  // EDIT SIDEBARS
-  // ════════════════════════════════
-  (function() {
-   const overlay = document.getElementById('editOverlay');
-  
-   function openSidebar(id) {
-   document.getElementById(id).classList.add('open');
-   overlay.classList.add('open');
-   document.body.style.overflow = 'hidden';
-   }
-   function closeAllSidebars() {
-   document.querySelectorAll('.edit-sidebar').forEach(s => s.classList.remove('open'));
-   overlay.classList.remove('open');
-   document.body.style.overflow = '';
-   }
-  
-   var editBtns = document.querySelectorAll('.edit-btn');
-   editBtns[0] && editBtns[0].addEventListener('click', function() { openSidebar('basicInfoSidebar'); });
-   editBtns[1] && editBtns[1].addEventListener('click', function() { AddrMgr.openList(); });
-  
-   document.getElementById('basicInfoClose').addEventListener('click', closeAllSidebars);
-   document.getElementById('addressClose').addEventListener('click', closeAllSidebars);
-   document.getElementById('addressFormClose').addEventListener('click', closeAllSidebars);
-   document.getElementById('pinpointClose').addEventListener('click', closeAllSidebars);
-   overlay.addEventListener('click', closeAllSidebars);
-   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllSidebars(); });
-  
-   window.openSidebar = openSidebar;
-   window.closeAllSidebars = closeAllSidebars;
-  })();
-  
-  function selectGender(el) {
-   document.querySelectorAll('#basicInfoSidebar .gender-opt').forEach(o => o.classList.remove('selected'));
-   el.classList.add('selected');
-  }
-  
-  function updateCount(el, countId) {
-   var span = document.getElementById(countId);
-   if (span) span.textContent = el.value.length;
-  }
-  
-  function saveBasicInfo() {
-   var firstName = document.getElementById('editFirstName').value.trim();
-   var lastName = document.getElementById('editLastName').value.trim();
-   var email = document.getElementById('editEmail').value.trim();
-   var phone = document.getElementById('editPhone').value.trim();
-   var genderEl = document.querySelector('#basicInfoSidebar .gender-opt.selected');
-   var gender = genderEl ? genderEl.dataset.gender : '';
-  
-   document.querySelectorAll('#rightPanel .profile-section').forEach(function(sec) {
-   var title = sec.querySelector('.section-title');
-   if (title && title.textContent === 'Basic information') {
-   var rows = sec.querySelectorAll('.field-row');
-   if (rows[0]) rows[0].querySelector('.field-value').textContent = firstName;
-   if (rows[1]) rows[1].querySelector('.field-value').textContent = lastName;
-   if (rows[2]) rows[2].querySelector('.field-value').textContent = email;
-   if (rows[3]) rows[3].querySelector('.field-value').textContent = phone;
-   if (rows[4]) rows[4].querySelector('.field-value').textContent = gender;
-   }
-   });
-   if (firstName) {
-   var welcome = document.querySelector('.welcome-heading');
-   if (welcome) welcome.innerHTML = 'Welcome,<br>' + firstName;
-   var cardName = document.querySelector('.icc-card-name');
-   if (cardName) cardName.textContent = firstName;
-   }
-   window.closeAllSidebars();
-  }
-  
-  // ════════════════════════════════
-  // ADDRESS MANAGER
-  // ════════════════════════════════
-  var AddrMgr = (function() {
-   var addresses = [
-   {
-   id: 1,
-   pinpoint: 'Sewon, Kab. Bantul, D.I. Yogyakarta',
-   label: 'rumah',
-   full: 'jl kh alimaksum no 258 RT 04 Panggungharjo sewon bantul 55797',
-   note: 'Gmaps, Rumah Nisa Fauzi, Fiber biru.',
-   recipient: 'Pak Yusuf',
-   phone: '',
-   isPrimary: true
-   }
-   ];
-   var nextId = 2;
-   var editingId = null;
-   var tempPinpoint = '';
-  
-   var LOCATIONS = [
-   { name: 'Sewon, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8853°, 110.3347°' },
-   { name: 'Depok, Sleman, D.I. Yogyakarta', coords: '-7.7699°, 110.3780°' },
-   { name: 'Gondokusuman, Kota Yogyakarta', coords: '-7.7878°, 110.3740°' },
-   { name: 'Mlati, Sleman, D.I. Yogyakarta', coords: '-7.7560°, 110.3420°' },
-   { name: 'Banguntapan, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8317°, 110.4143°' },
-   { name: 'Umbulharjo, Kota Yogyakarta', coords: '-7.8120°, 110.3950°' },
-   { name: 'Kasihan, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8378°, 110.3325°' },
-   { name: 'Gamping, Sleman, D.I. Yogyakarta', coords: '-7.7900°, 110.3200°' },
-   ];
-  
-   var selectedLocationIdx = 0;
-  
-   function labelIcon(lbl) { return ''; }
-  
-   function renderList() {
-   var body = document.getElementById('addressListBody');
-   if (!body) return;
-  
-   if (addresses.length === 0) {
-   body.innerHTML = '<div style="padding:40px 20px;text-align:center;color:#aaa;font-size:13px;">Belum ada alamat tersimpan.<br>Tambahkan alamat pertamamu!</div>';
-   return;
-   }
-  
-   var html = '';
-   addresses.forEach(function(addr) {
-   html += '<div class="addr-card" onclick="AddrMgr.openForm(' + addr.id + ')">' +
-   '<div class="addr-card-top">' +
-   '<div class="addr-card-label">' + labelIcon(addr.label) + ' ' + (addr.label || 'Tanpa label') + '</div>' +
-   (addr.isPrimary ? '<span class="addr-primary-badge">Utama</span>' : '<button class="addr-set-primary" onclick="event.stopPropagation();AddrMgr.setPrimary(' + addr.id + ')">Jadikan Utama</button>') +
-   '</div>' +
-   '<div class="addr-card-recipient">' + (addr.recipient || '—') + (addr.phone ? ' · ' + addr.phone : '') + '</div>' +
-   '<div class="addr-card-full">' + (addr.full || '') + '</div>' +
-   (addr.note ? '<div class="addr-card-note">' + addr.note + '</div>' : '') +
-   '<div class="addr-card-pinpoint">&#x25CE; ' + (addr.pinpoint || 'Lokasi belum dipilih') + '</div>' +
-   '<div class="addr-card-edit-hint">Ketuk untuk edit →</div>' +
-   '</div>';
-   });
-  
-   body.innerHTML = html;
-   renderProfileSection();
-   }
-  
-   function renderProfileSection() {
-   var primary = addresses.find(function(a) { return a.isPrimary; }) || addresses[0];
-   var addrSection = null;
-   document.querySelectorAll('#rightPanel .profile-section').forEach(function(sec) {
-   var t = sec.querySelector('.section-title');
-   if (t && t.textContent === 'Address') addrSection = sec;
-   });
-   if (!addrSection) return;
-  
-   if (!primary) {
-   addrSection.innerHTML = '<div class="section-header"><span class="section-title">Address</span><button class="edit-btn" onclick="AddrMgr.openList()">Edit</button></div>' +
-   '<div class="field-action"><span class="field-action-text">Tambahkan alamat untuk kemudahan checkout</span><span class="field-action-arrow">›</span></div>';
-   return;
-   }
-  
-   var otherCount = addresses.length - 1;
-   addrSection.innerHTML = '<div class="section-header"><span class="section-title">Address</span><button class="edit-btn" onclick="AddrMgr.openList()">Edit</button></div>' +
-   '<div class="field-row"><div class="field-label">Label</div><div class="field-value">' + labelIcon(primary.label) + ' ' + (primary.label||'—') + '</div></div>' +
-   (primary.pinpoint ? '<div class="field-row"><div class="field-label">Pinpoint</div><div class="field-value">' + primary.pinpoint + '</div></div>' : '') +
-   '<div class="field-row"><div class="field-label">Alamat Lengkap</div><div class="field-value">' + (primary.full||'—') + '</div></div>' +
-   (primary.note ? '<div class="field-row"><div class="field-label">Catatan Kurir</div><div class="field-value">' + primary.note + '</div></div>' : '') +
-   (primary.recipient ? '<div class="field-row"><div class="field-label">Nama Penerima</div><div class="field-value">' + primary.recipient + '</div></div>' : '') +
-   (otherCount > 0 ? '<div class="field-action" onclick="AddrMgr.openList()" style="cursor:pointer;"><span class="field-action-text">+' + otherCount + ' alamat lainnya</span><span class="field-action-arrow">›</span></div>' : '');
-   }
-  
-   function openList() {
-   renderList();
-   window.openSidebar('addressSidebar');
-   }
-  
-   function openForm(id) {
-   editingId = id;
-   var addr = id ? addresses.find(function(a) { return a.id === id; }) : null;
-  
-   document.getElementById('addrFormTitle').textContent = addr ? 'Edit Alamat' : 'Tambah Alamat';
-   document.getElementById('addrFormLabel').value = addr ? addr.label : '';
-   document.getElementById('addrFormFull').value = addr ? addr.full : '';
-   document.getElementById('addrFormNote').value = addr ? addr.note : '';
-   document.getElementById('addrFormRecipient').value = addr ? addr.recipient : '';
-   document.getElementById('addrFormPhone').value = addr ? addr.phone : '';
-   document.getElementById('addrFormPinpoint').textContent = addr && addr.pinpoint ? addr.pinpoint : 'Pilih lokasi...';
-   tempPinpoint = addr ? addr.pinpoint : '';
-  
-   document.getElementById('addrLabelCount').textContent = (addr ? addr.label : '').length;
-   document.getElementById('addrFullCount').textContent = (addr ? addr.full : '').length;
-   document.getElementById('addrNoteCount').textContent = (addr ? addr.note : '').length;
-  
-   var delBtn = document.getElementById('addrDeleteBtn');
-   delBtn.style.display = addr ? 'flex' : 'none';
-  
-   document.querySelectorAll('.edit-sidebar').forEach(function(s) { s.classList.remove('open'); });
-   document.getElementById('addressFormSidebar').classList.add('open');
-   document.getElementById('editOverlay').classList.add('open');
-   document.body.style.overflow = 'hidden';
-   }
-  
-   function backToList() {
-   document.getElementById('addressFormSidebar').classList.remove('open');
-   document.getElementById('pinpointSidebar').classList.remove('open');
-   openList();
-   }
-  
-   function saveForm() {
-   var label = document.getElementById('addrFormLabel').value.trim();
-   var full = document.getElementById('addrFormFull').value.trim();
-   var note = document.getElementById('addrFormNote').value.trim();
-   var recipient = document.getElementById('addrFormRecipient').value.trim();
-   var phone = document.getElementById('addrFormPhone').value.trim();
-   var pinpoint = document.getElementById('addrFormPinpoint').textContent.trim();
-   if (pinpoint === 'Pilih lokasi...') pinpoint = tempPinpoint || '';
-  
-   if (!full) {
-   document.getElementById('addrFormFull').focus();
-   return;
-   }
-  
-   if (editingId) {
-   var addr = addresses.find(function(a) { return a.id === editingId; });
-   if (addr) { addr.label = label; addr.full = full; addr.note = note; addr.recipient = recipient; addr.phone = phone; addr.pinpoint = pinpoint; }
-   } else {
-   var isPrimary = addresses.length === 0;
-   addresses.push({ id: nextId++, label: label, full: full, note: note, recipient: recipient, phone: phone, pinpoint: pinpoint, isPrimary: isPrimary });
-   }
-   backToList();
-   }
-  
-   function deleteAddress() {
-   if (!editingId) return;
-   var wasP = addresses.find(function(a) { return a.id === editingId; });
-   addresses = addresses.filter(function(a) { return a.id !== editingId; });
-   if (wasP && wasP.isPrimary && addresses.length > 0) addresses[0].isPrimary = true;
-   backToList();
-   }
-  
-   function setPrimary(id) {
-   addresses.forEach(function(a) { a.isPrimary = a.id === id; });
-   renderList();
-   }
-  
-   function setLabel(val) {
-   var inp = document.getElementById('addrFormLabel');
-   inp.value = val;
-   document.getElementById('addrLabelCount').textContent = val.length;
-   }
-  
-   function openPinpointPicker() {
-   // Render location list
-   var list = document.getElementById('locationOptionsList');
-   list.innerHTML = '';
-   LOCATIONS.forEach(function(loc, i) {
-   var isActive = (tempPinpoint && loc.name === tempPinpoint) || (!tempPinpoint && i === 0);
-   if (isActive) selectedLocationIdx = i;
-   var el = document.createElement('div');
-   el.className = 'location-option' + (isActive ? ' active' : '');
-   el.innerHTML = '<span class="loc-radio"><span class="loc-dot' + (isActive ? ' filled' : '') + '"></span></span>' +
-   '<div style="flex:1;"><div class="loc-name">' + loc.name + '</div><div class="loc-coords">' + loc.coords + '</div></div>';
-   el.onclick = (function(idx) { return function() { selectLocation(idx); }; })(i);
-   list.appendChild(el);
-   });
-  
-   updateMapCoords();
-  
-   document.getElementById('addressFormSidebar').classList.remove('open');
-   document.getElementById('pinpointSidebar').classList.add('open');
-   }
-  
-   function selectLocation(idx) {
-   selectedLocationIdx = idx;
-   document.querySelectorAll('.location-option').forEach(function(el, i) {
-   el.classList.toggle('active', i === idx);
-   var dot = el.querySelector('.loc-dot');
-   if (dot) dot.classList.toggle('filled', i === idx);
-   });
-   updateMapCoords();
-   }
-  
-   function updateMapCoords() {
-   var loc = LOCATIONS[selectedLocationIdx];
-   if (loc) document.getElementById('mapCoords').textContent = loc.coords;
-   }
-  
-   function closePinpointPicker() {
-   document.getElementById('pinpointSidebar').classList.remove('open');
-   document.getElementById('addressFormSidebar').classList.add('open');
-   }
-  
-   function confirmPinpoint() {
-   var loc = LOCATIONS[selectedLocationIdx];
-   if (loc) {
-   tempPinpoint = loc.name;
-   document.getElementById('addrFormPinpoint').textContent = loc.name;
-   }
-   closePinpointPicker();
-   }
-  
-   // init
-   renderProfileSection();
-  
-   return { openList: openList, openForm: openForm, backToList: backToList, saveForm: saveForm,
-   deleteAddress: deleteAddress, setPrimary: setPrimary, setLabel: setLabel,
-   openPinpointPicker: openPinpointPicker, closePinpointPicker: closePinpointPicker, confirmPinpoint: confirmPinpoint };
-  })();
-  </script><script>
-  (function() {
-   const toggleBtns = document.querySelectorAll('.dark-mode-toggle');
-  
-   function spawnRipple(x, y, toDark) {
-   const size = Math.hypot(window.innerWidth, window.innerHeight) * 2.2;
-   const ripple = document.createElement('div');
-   ripple.className = 'theme-ripple';
-   ripple.style.cssText = `
+    @media (max-width: 480px) {
+      .account-tab {
+        font-size: 12px;
+        gap: 16px;
+      }
+
+      .account-tabs {
+        gap: 16px;
+      }
+
+      .profile-section {
+        padding: 16px 16px;
+      }
+
+      .signout-row {
+        padding: 14px 16px;
+      }
+
+      .welcome-heading {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body><!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2 class="cart-title">Cart (<span id="cartItemCount">0</span>)</h2><button class="cart-close"
+        id="cartClose">×</button>
+    </div>
+    <div id="cartContentArea">
+      <div class="cart-empty">
+        <div class="cart-empty-title">Your cart is empty</div>
+        <div class="cart-empty-text">Looks like you haven't added anything yet.</div>
+      </div>
+    </div>
+  </div><!-- Shop Sidebar -->
+  <div class="shop-overlay" id="shopOverlay"></div>
+  <div class="shop-sidebar" id="shopSidebar">
+    <div class="shop-sidebar-header"><span>Menu</span><button class="shop-sidebar-close"
+        id="shopClose">&#x2715;</button></div>
+    <div class="shop-sidebar-banner"><img
+        src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format"
+        alt="New Arrivals">
+      <div class="shop-sidebar-banner-label">New Arrivals</div>
+    </div>
+    <div class="shop-sidebar-body">
+      <div class="shop-section-title">Cycling</div>
+      <div class="shop-category-grid"><a href="shop.php?cat=jerseys" class="shop-category-item"
+          onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75"
+            class="shop-category-icon" alt="Jerseys"> Jerseys
+        </a><a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75"
+            class="shop-category-icon" alt="Bibs"> Bibs
+        </a><a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75"
+            class="shop-category-icon" alt="Jackets"> Jackets &amp; Gilets
+        </a><a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75"
+            class="shop-category-icon" alt="Socks"> Socks
+        </a></div>
+      <div class="shop-divider"></div>
+      <div class="shop-section-title">Off-Race</div>
+      <div class="shop-category-grid"><a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75"
+            class="shop-category-icon" alt="T-Shirts"> T-Shirts
+        </a><a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()"><img
+            src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75"
+            class="shop-category-icon" alt="Sweatshirts"> Sweatshirts
+        </a></div>
+    </div>
+  </div><!-- Mobile Overlay & Menu -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header"><span
+        style="font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Menu</span><button
+        class="mobile-menu-close" id="mobileMenuClose">&#x2715;</button></div><a href="#"
+      id="mobileShopToggle">Shop</a><a href="aboutus.php">About</a><a href="#">Campaign</a><a
+      href="wishlist.php">Wishlist</a><a href="account.php" style="font-weight:500;">Account</a><a href="#"
+      id="mobileCartToggle">Cart</a>
+    <div style="padding: 16px 24px; border-bottom: 1px solid #f0f0f0;"><button class="dark-mode-toggle"
+        id="darkModeToggleMobile" style="font-size:14px;"><span class="toggle-icon"></span><span
+          class="toggle-label">Dark Mode</span></button></div>
+  </div><!-- HEADER (identical to index.html) -->
+  <header id="siteHeader">
+    <div class="header-main"><!-- Hamburger (mobile only) --><button class="hamburger-btn" id="hamburgerBtn"
+        aria-label="Open menu"><span></span><span></span><span></span></button>
+      <div class="header-left"><a href="#" id="shopToggle">Shop</a><a href="aboutus.php">About</a><a
+          href="#">Campaign</a></div>
+      <div class="logo"><a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span
+            style="display:none;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">GLOAMING
+            IMAGINE</span></a></div>
+      <div class="header-right"><button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"><span
+            class="toggle-icon"></span><span class="toggle-label">Dark Mode</span></button>
+        <div class="search-container"><a class="search-toggle" id="searchToggle">Search</a>
+          <div class="search-box" id="searchBox">
+            <div class="search-input-wrapper"><input type="text" class="search-input" placeholder="Search products..."
+                id="searchInput"><button class="search-close" id="searchClose">×</button></div>
+            <div class="search-dropdown" id="searchDropdown"></div>
+          </div>
+        </div><a href="wishlist.php" style="position:relative;display:inline-block;">
+          Wishlist
+          <span id="wishlistHeaderCount" class="badge-count">0</span></a><a href="account.php"
+          style="font-weight:500;">Account</a><a href="#" id="cartToggle"
+          style="position:relative;display:inline-block;">
+          Cart
+          <span id="cartCount" class="badge-count">0</span></a>
+      </div>
+    </div>
+  </header><!-- MAIN -->
+  <div class="page-wrapper"><!-- LEFT: sticky image -->
+    <div class="left-panel" id="leftPanel">
+      <div class="left-sticky"><img class="left-image"
+          src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=900&q=80" alt="Account hero">
+        <div class="left-card-overlay">
+          <div class="icc-card">
+            <div class="icc-card-name">Ela</div>
+            <div class="icc-card-type">Off-Bike Training</div>
+            <div class="icc-card-bg">IRNA<br>CYC</div>
+            <div class="icc-card-bottom">
+              <div class="icc-card-city">Munich</div>
+              <div class="icc-card-logo">INTERNATIONAL<br>CYCLING CLUB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- RIGHT: scrollable profile + footer -->
+    <div class="right-panel" id="rightPanel">
+      <h1 class="welcome-heading">Welcome,<br>Ela</h1><!-- Tabs -->
+      <div class="account-tabs"><button class="account-tab">Orders</button><button class="account-tab active">Profile
+          details</button></div><!-- Basic Information -->
+      <div class="profile-section">
+        <div class="section-header"><span class="section-title">Basic information</span><button
+            class="edit-btn">Edit</button></div>
+        <div class="field-row">
+          <div class="field-label">First Name</div>
+          <div class="field-value">Ela</div>
+        </div>
+        <div class="field-row">
+          <div class="field-label">Last Name</div>
+          <div class="field-value"></div>
+        </div>
+        <div class="field-row">
+          <div class="field-label">Email</div>
+          <div class="field-value">ela@example.com</div>
+        </div>
+        <div class="field-row">
+          <div class="field-label">Phone Number</div>
+          <div class="field-value">085612345678</div>
+        </div>
+        <div class="field-row" style="margin-top:14px;">
+          <div class="field-label">Gender</div>
+          <div class="field-value">Woman</div>
+        </div>
+        <!-- <div class="field-action"><span class="field-action-text">Add your phone number for a easier checkout experience</span><span class="field-action-arrow">›</span></div><div class="field-row"><div class="field-label">Connections</div><div class="field-value">Google<br>Apple</div></div> -->
+      </div><!-- Address -->
+      <div class="profile-section">
+        <div class="section-header"><span class="section-title">Address</span><button class="edit-btn">Edit</button>
+        </div>
+        <div class="field-action"><span class="field-action-text">Add your address for an easier checkout
+            experience</span><span class="field-action-arrow">›</span></div>
+      </div><!-- Sign out -->
+      <div class="signout-row"><button class="signout-btn">Sign out</button></div>
+      <!-- FOOTER (flows naturally after profile content) -->
+    </div><!-- /right-panel -->
+  </div><!-- /page-wrapper -->
+  <div class="footer-area"><!-- Newsletter -->
+    <div class="newsletter-section">
+      <div>
+        <div class="newsletter-label">Newsletter</div>
+        <h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2>
+      </div><button class="newsletter-btn" onclick="alert('Newsletter signup!')">Sign Up</button>
+    </div><!-- Footer links -->
+    <div class="footer-main">
+      <div class="footer-top"><!-- Col 1 -->
+        <div>
+          <div class="shipping-to"><span class="shipping-label">Shipping to:</span><select class="shipping-select"
+              id="shippingRegion">
+              <option>REST OF EU</option>
+              <option>USA</option>
+              <option>UK</option>
+              <option>ASIA</option>
+              <option>AUSTRALIA</option>
+            </select><span class="shipping-arrow">∨</span></div>
+          <ul class="footer-links">
+            <li><a href="#">Destination Everywhere</a></li>
+            <li><a href="#">Sponsored Teams</a></li>
+            <li><a href="#">Find Stores</a></li>
+          </ul>
+        </div><!-- Col 2 -->
+        <div>
+          <div class="footer-col-title">Customer Care</div>
+          <ul class="footer-links">
+            <li><a href="#">Get in Touch</a></li>
+            <li><a href="#">Gift Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Crash Replacement</a></li>
+            <li><a href="#">Care Guide</a></li>
+          </ul>
+        </div><!-- Col 3 -->
+        <div>
+          <div class="footer-col-title">About Gloaming Imagine</div>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">International Cycling Club</a></li>
+            <li><a href="#">Impact &amp; Responsibility</a></li>
+            <li><a href="#">Industry Programme</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Cookie
+            Policy</a><a href="#">Cookie Policy Setting</a></div>
+        <div class="footer-social"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Strava</a><a
+            href="#">LinkedIn</a></div>
+        <div class="footer-copyright">© Gloaming Imagine 2026</div>
+      </div>
+    </div>
+  </div><!-- /footer-area --><!-- EDIT OVERLAY (shared) -->
+  <div class="edit-overlay" id="editOverlay"></div><!-- BASIC INFO SIDEBAR -->
+  <div class="edit-sidebar" id="basicInfoSidebar">
+    <div class="edit-sidebar-header"><span class="edit-sidebar-title">Basic information</span><button
+        class="edit-sidebar-close" id="basicInfoClose">&#x2715;</button></div>
+    <div class="edit-sidebar-body">
+      <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input"
+          id="editFirstName" value="Ela"></div>
+      <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input"
+          id="editLastName" value=""></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input"
+          id="editEmail" value="ellaherwati05@gmail.com"></div>
+      <div class="form-group"><label class="form-label">Phone number</label><input type="tel" class="form-input"
+          id="editPhone" value="" placeholder="+xx country code">
+        <div class="birthday-hint">Your phone number with +xx country prefix</div>
+      </div>
+      <div class="form-group"><label class="form-label">Birthday</label><input type="date" class="form-input"
+          id="editBirthday" value="2004-12-05" readonly style="cursor:default;">
+        <div class="birthday-hint">You can only set your birthday once. Please contact us to make a change.</div>
+      </div>
+      <div class="form-group">
+        <div class="form-label" style="position:static;font-size:11px;margin-bottom:8px;">Gender</div>
+        <div class="gender-options">
+          <div class="gender-opt" data-gender="Man" onclick="selectGender(this)">
+            <div class="gender-dot"></div> Man
+          </div>
+          <div class="gender-opt selected" data-gender="Woman" onclick="selectGender(this)">
+            <div class="gender-dot"></div> Woman
+          </div>
+          <div class="gender-opt" data-gender="Non-binary" onclick="selectGender(this)">
+            <div class="gender-dot"></div> Non-binary
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="edit-sidebar-footer"><button class="save-btn" onclick="saveBasicInfo()">Save</button></div>
+  </div><!-- ADDRESS LIST SIDEBAR -->
+  <div class="edit-sidebar" id="addressSidebar">
+    <div class="edit-sidebar-header"><span class="edit-sidebar-title">Alamat Saya</span><button
+        class="edit-sidebar-close" id="addressClose">&#x2715;</button></div>
+    <div class="edit-sidebar-body" id="addressListBody"></div>
+    <div class="edit-sidebar-footer"><button class="save-btn" onclick="AddrMgr.openForm(null)"
+        style="display:flex;align-items:center;justify-content:center;gap:8px;"><span
+          style="font-size:18px;line-height:1;">+</span> Tambah Alamat Baru
+      </button></div>
+  </div><!-- ADDRESS FORM SIDEBAR -->
+  <div class="edit-sidebar" id="addressFormSidebar">
+    <div class="edit-sidebar-header">
+      <div style="display:flex;align-items:center;gap:10px;"><button onclick="AddrMgr.backToList()"
+          style="background:none;border:none;cursor:pointer;font-size:18px;color:inherit;padding:0;line-height:1;">&#x2190;</button><span
+          class="edit-sidebar-title" id="addrFormTitle">Tambah Alamat</span></div><button class="edit-sidebar-close"
+        id="addressFormClose">&#x2715;</button>
+    </div>
+    <div class="edit-sidebar-body">
+      <div class="form-group" style="margin-bottom:0;">
+        <div style="font-size:11px;color:#888;margin-bottom:8px;letter-spacing:0.3px;">Pinpoint</div>
+        <div class="pinpoint-row" onclick="AddrMgr.openPinpointPicker()"><span class="pinpoint-icon">&#x25CE;</span>
+          <div style="flex:1;min-width:0;">
+            <div class="pinpoint-label">Lokasi</div>
+            <div class="pinpoint-value" id="addrFormPinpoint"
+              style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pilih lokasi...</div>
+          </div><span class="pinpoint-change">Ubah</span>
+        </div>
+      </div>
+      <div class="form-section-divider"></div>
+      <div class="form-group"><label class="form-label">Label Alamat</label><input type="text" class="form-input"
+          id="addrFormLabel" maxlength="30" oninput="updateCount(this,'addrLabelCount')" placeholder=" ">
+        <div class="char-count"><span id="addrLabelCount">0</span>/30</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:-12px;margin-bottom:20px;"><button class="label-chip"
+          onclick="AddrMgr.setLabel('rumah')">rumah</button><button class="label-chip"
+          onclick="AddrMgr.setLabel('kantor')">kantor</button><button class="label-chip"
+          onclick="AddrMgr.setLabel('kos')">kos</button><button class="label-chip"
+          onclick="AddrMgr.setLabel('orang tua')">orang tua</button></div>
+      <div class="form-group"><label class="form-label">Alamat Lengkap</label><textarea class="form-textarea"
+          id="addrFormFull" maxlength="200" oninput="updateCount(this,'addrFullCount')" placeholder=" "></textarea>
+        <div class="char-count"><span id="addrFullCount">0</span>/200</div>
+      </div>
+      <div class="form-group"><label class="form-label">Catatan Untuk Kurir (Opsional)</label><input type="text"
+          class="form-input" id="addrFormNote" maxlength="45" oninput="updateCount(this,'addrNoteCount')"
+          placeholder="Warna rumah, patokan, pesan khusus, dll.">
+        <div class="char-count"><span id="addrNoteCount">0</span>/45</div>
+      </div>
+      <div class="form-section-divider"></div>
+      <div class="form-group"><label class="form-label">Nama Penerima</label><input type="text" class="form-input"
+          id="addrFormRecipient" placeholder=" "></div>
+      <div class="form-group"><label class="form-label">No. HP Penerima</label><input type="tel" class="form-input"
+          id="addrFormPhone" placeholder="+62">
+        <div class="birthday-hint">Nomor telepon dengan kode negara, contoh: +628xxxxxxxxxx</div>
+      </div>
+    </div>
+    <div class="edit-sidebar-footer" style="display:flex;gap:10px;"><button class="save-btn" id="addrDeleteBtn"
+        onclick="AddrMgr.deleteAddress()"
+        style="background:#fff;color:#c00;border:1px solid #e0e0e0;flex:0 0 auto;width:auto;padding:18px 20px;display:none;font-size:12px;letter-spacing:0.5px;">Hapus</button><button
+        class="save-btn" onclick="AddrMgr.saveForm()" style="flex:1;">Simpan</button></div>
+  </div><!-- PINPOINT PICKER SIDEBAR -->
+  <div class="edit-sidebar" id="pinpointSidebar">
+    <div class="edit-sidebar-header">
+      <div style="display:flex;align-items:center;gap:10px;"><button onclick="AddrMgr.closePinpointPicker()"
+          style="background:none;border:none;cursor:pointer;font-size:18px;color:inherit;padding:0;line-height:1;">&#x2190;</button><span
+          class="edit-sidebar-title">Pilih Lokasi</span></div><button class="edit-sidebar-close"
+        id="pinpointClose">&#x2715;</button>
+    </div>
+    <div class="edit-sidebar-body" style="padding:0;overflow-y:auto;">
+      <div
+        style="position:relative;width:100%;height:240px;background:linear-gradient(135deg,#e8f0e8,#d4e6d4 40%,#c8dfc8 70%,#dde8dd);overflow:hidden;flex-shrink:0;">
+        <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.22;">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2d6a2d" stroke-width="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          <path d="M0,130 Q120,110 240,125 T480,120" stroke="#fff" stroke-width="8" fill="none" opacity="0.7" />
+          <path d="M0,130 Q120,110 240,125 T480,120" stroke="#e0d0a0" stroke-width="5" fill="none" opacity="0.5" />
+          <path d="M80,0 Q100,65 95,130 T90,240" stroke="#fff" stroke-width="6" fill="none" opacity="0.5" />
+          <rect x="105" y="55" width="50" height="28" rx="2" fill="#d4c9a8" opacity="0.5" />
+          <rect x="280" y="85" width="40" height="22" rx="2" fill="#d4c9a8" opacity="0.4" />
+        </svg>
+        <div id="mapPin"
+          style="position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));">
+          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22S28 23.333 28 14C28 6.268 21.732 0 14 0z"
+              fill="#e53935" />
+            <circle cx="14" cy="14" r="5" fill="white" />
+          </svg>
+        </div>
+        <div
+          style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.65);color:#fff;font-size:10px;padding:4px 12px;border-radius:20px;letter-spacing:0.3px;"
+          id="mapCoords">-7.8853°, 110.3347°</div>
+      </div>
+      <div style="padding:16px 20px 4px;">
+        <div style="font-size:11px;color:#888;margin-bottom:10px;letter-spacing:0.3px;font-weight:600;">PILIH AREA</div>
+        <div id="locationOptionsList"></div>
+      </div>
+    </div>
+    <div class="edit-sidebar-footer"><button class="save-btn" onclick="AddrMgr.confirmPinpoint()">Konfirmasi
+        Lokasi</button></div>
+  </div>
+  <script>
+    // ════════════════════════════════
+    // EDIT SIDEBARS
+    // ════════════════════════════════
+    (function () {
+      const overlay = document.getElementById('editOverlay');
+
+      function openSidebar(id) {
+        document.getElementById(id).classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeAllSidebars() {
+        document.querySelectorAll('.edit-sidebar').forEach(s => s.classList.remove('open'));
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      var editBtns = document.querySelectorAll('.edit-btn');
+      editBtns[0] && editBtns[0].addEventListener('click', function () { openSidebar('basicInfoSidebar'); });
+      editBtns[1] && editBtns[1].addEventListener('click', function () { AddrMgr.openList(); });
+
+      document.getElementById('basicInfoClose').addEventListener('click', closeAllSidebars);
+      document.getElementById('addressClose').addEventListener('click', closeAllSidebars);
+      document.getElementById('addressFormClose').addEventListener('click', closeAllSidebars);
+      document.getElementById('pinpointClose').addEventListener('click', closeAllSidebars);
+      overlay.addEventListener('click', closeAllSidebars);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAllSidebars(); });
+
+      window.openSidebar = openSidebar;
+      window.closeAllSidebars = closeAllSidebars;
+    })();
+
+    function selectGender(el) {
+      document.querySelectorAll('#basicInfoSidebar .gender-opt').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function updateCount(el, countId) {
+      var span = document.getElementById(countId);
+      if (span) span.textContent = el.value.length;
+    }
+
+    function saveBasicInfo() {
+      var firstName = document.getElementById('editFirstName').value.trim();
+      var lastName = document.getElementById('editLastName').value.trim();
+      var email = document.getElementById('editEmail').value.trim();
+      var phone = document.getElementById('editPhone').value.trim();
+      var genderEl = document.querySelector('#basicInfoSidebar .gender-opt.selected');
+      var gender = genderEl ? genderEl.dataset.gender : '';
+
+      document.querySelectorAll('#rightPanel .profile-section').forEach(function (sec) {
+        var title = sec.querySelector('.section-title');
+        if (title && title.textContent === 'Basic information') {
+          var rows = sec.querySelectorAll('.field-row');
+          if (rows[0]) rows[0].querySelector('.field-value').textContent = firstName;
+          if (rows[1]) rows[1].querySelector('.field-value').textContent = lastName;
+          if (rows[2]) rows[2].querySelector('.field-value').textContent = email;
+          if (rows[3]) rows[3].querySelector('.field-value').textContent = phone;
+          if (rows[4]) rows[4].querySelector('.field-value').textContent = gender;
+        }
+      });
+      if (firstName) {
+        var welcome = document.querySelector('.welcome-heading');
+        if (welcome) welcome.innerHTML = 'Welcome,<br>' + firstName;
+        var cardName = document.querySelector('.icc-card-name');
+        if (cardName) cardName.textContent = firstName;
+      }
+      window.closeAllSidebars();
+    }
+
+    // ════════════════════════════════
+    // ADDRESS MANAGER
+    // ════════════════════════════════
+    var AddrMgr = (function () {
+      var addresses = [
+        {
+          id: 1,
+          pinpoint: 'Sewon, Kab. Bantul, D.I. Yogyakarta',
+          label: 'rumah',
+          full: 'jl kh alimaksum no 258 RT 04 Panggungharjo sewon bantul 55797',
+          note: 'Gmaps, Rumah Nisa Fauzi, Fiber biru.',
+          recipient: 'Pak Yusuf',
+          phone: '',
+          isPrimary: true
+        }
+      ];
+      var nextId = 2;
+      var editingId = null;
+      var tempPinpoint = '';
+
+      var LOCATIONS = [
+        { name: 'Sewon, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8853°, 110.3347°' },
+        { name: 'Depok, Sleman, D.I. Yogyakarta', coords: '-7.7699°, 110.3780°' },
+        { name: 'Gondokusuman, Kota Yogyakarta', coords: '-7.7878°, 110.3740°' },
+        { name: 'Mlati, Sleman, D.I. Yogyakarta', coords: '-7.7560°, 110.3420°' },
+        { name: 'Banguntapan, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8317°, 110.4143°' },
+        { name: 'Umbulharjo, Kota Yogyakarta', coords: '-7.8120°, 110.3950°' },
+        { name: 'Kasihan, Kab. Bantul, D.I. Yogyakarta', coords: '-7.8378°, 110.3325°' },
+        { name: 'Gamping, Sleman, D.I. Yogyakarta', coords: '-7.7900°, 110.3200°' },
+      ];
+
+      var selectedLocationIdx = 0;
+
+      function labelIcon(lbl) { return ''; }
+
+      function renderList() {
+        var body = document.getElementById('addressListBody');
+        if (!body) return;
+
+        if (addresses.length === 0) {
+          body.innerHTML = '<div style="padding:40px 20px;text-align:center;color:#aaa;font-size:13px;">Belum ada alamat tersimpan.<br>Tambahkan alamat pertamamu!</div>';
+          return;
+        }
+
+        var html = '';
+        addresses.forEach(function (addr) {
+          html += '<div class="addr-card" onclick="AddrMgr.openForm(' + addr.id + ')">' +
+            '<div class="addr-card-top">' +
+            '<div class="addr-card-label">' + labelIcon(addr.label) + ' ' + (addr.label || 'Tanpa label') + '</div>' +
+            (addr.isPrimary ? '<span class="addr-primary-badge">Utama</span>' : '<button class="addr-set-primary" onclick="event.stopPropagation();AddrMgr.setPrimary(' + addr.id + ')">Jadikan Utama</button>') +
+            '</div>' +
+            '<div class="addr-card-recipient">' + (addr.recipient || '—') + (addr.phone ? ' · ' + addr.phone : '') + '</div>' +
+            '<div class="addr-card-full">' + (addr.full || '') + '</div>' +
+            (addr.note ? '<div class="addr-card-note">' + addr.note + '</div>' : '') +
+            '<div class="addr-card-pinpoint">&#x25CE; ' + (addr.pinpoint || 'Lokasi belum dipilih') + '</div>' +
+            '<div class="addr-card-edit-hint">Ketuk untuk edit →</div>' +
+            '</div>';
+        });
+
+        body.innerHTML = html;
+        renderProfileSection();
+      }
+
+      function renderProfileSection() {
+        var primary = addresses.find(function (a) { return a.isPrimary; }) || addresses[0];
+        var addrSection = null;
+        document.querySelectorAll('#rightPanel .profile-section').forEach(function (sec) {
+          var t = sec.querySelector('.section-title');
+          if (t && t.textContent === 'Address') addrSection = sec;
+        });
+        if (!addrSection) return;
+
+        if (!primary) {
+          addrSection.innerHTML = '<div class="section-header"><span class="section-title">Address</span><button class="edit-btn" onclick="AddrMgr.openList()">Edit</button></div>' +
+            '<div class="field-action"><span class="field-action-text">Tambahkan alamat untuk kemudahan checkout</span><span class="field-action-arrow">›</span></div>';
+          return;
+        }
+
+        var otherCount = addresses.length - 1;
+        addrSection.innerHTML = '<div class="section-header"><span class="section-title">Address</span><button class="edit-btn" onclick="AddrMgr.openList()">Edit</button></div>' +
+          '<div class="field-row"><div class="field-label">Label</div><div class="field-value">' + labelIcon(primary.label) + ' ' + (primary.label || '—') + '</div></div>' +
+          (primary.pinpoint ? '<div class="field-row"><div class="field-label">Pinpoint</div><div class="field-value">' + primary.pinpoint + '</div></div>' : '') +
+          '<div class="field-row"><div class="field-label">Alamat Lengkap</div><div class="field-value">' + (primary.full || '—') + '</div></div>' +
+          (primary.note ? '<div class="field-row"><div class="field-label">Catatan Kurir</div><div class="field-value">' + primary.note + '</div></div>' : '') +
+          (primary.recipient ? '<div class="field-row"><div class="field-label">Nama Penerima</div><div class="field-value">' + primary.recipient + '</div></div>' : '') +
+          (otherCount > 0 ? '<div class="field-action" onclick="AddrMgr.openList()" style="cursor:pointer;"><span class="field-action-text">+' + otherCount + ' alamat lainnya</span><span class="field-action-arrow">›</span></div>' : '');
+      }
+
+      function openList() {
+        renderList();
+        window.openSidebar('addressSidebar');
+      }
+
+      function openForm(id) {
+        editingId = id;
+        var addr = id ? addresses.find(function (a) { return a.id === id; }) : null;
+
+        document.getElementById('addrFormTitle').textContent = addr ? 'Edit Alamat' : 'Tambah Alamat';
+        document.getElementById('addrFormLabel').value = addr ? addr.label : '';
+        document.getElementById('addrFormFull').value = addr ? addr.full : '';
+        document.getElementById('addrFormNote').value = addr ? addr.note : '';
+        document.getElementById('addrFormRecipient').value = addr ? addr.recipient : '';
+        document.getElementById('addrFormPhone').value = addr ? addr.phone : '';
+        document.getElementById('addrFormPinpoint').textContent = addr && addr.pinpoint ? addr.pinpoint : 'Pilih lokasi...';
+        tempPinpoint = addr ? addr.pinpoint : '';
+
+        document.getElementById('addrLabelCount').textContent = (addr ? addr.label : '').length;
+        document.getElementById('addrFullCount').textContent = (addr ? addr.full : '').length;
+        document.getElementById('addrNoteCount').textContent = (addr ? addr.note : '').length;
+
+        var delBtn = document.getElementById('addrDeleteBtn');
+        delBtn.style.display = addr ? 'flex' : 'none';
+
+        document.querySelectorAll('.edit-sidebar').forEach(function (s) { s.classList.remove('open'); });
+        document.getElementById('addressFormSidebar').classList.add('open');
+        document.getElementById('editOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function backToList() {
+        document.getElementById('addressFormSidebar').classList.remove('open');
+        document.getElementById('pinpointSidebar').classList.remove('open');
+        openList();
+      }
+
+      function saveForm() {
+        var label = document.getElementById('addrFormLabel').value.trim();
+        var full = document.getElementById('addrFormFull').value.trim();
+        var note = document.getElementById('addrFormNote').value.trim();
+        var recipient = document.getElementById('addrFormRecipient').value.trim();
+        var phone = document.getElementById('addrFormPhone').value.trim();
+        var pinpoint = document.getElementById('addrFormPinpoint').textContent.trim();
+        if (pinpoint === 'Pilih lokasi...') pinpoint = tempPinpoint || '';
+
+        if (!full) {
+          document.getElementById('addrFormFull').focus();
+          return;
+        }
+
+        if (editingId) {
+          var addr = addresses.find(function (a) { return a.id === editingId; });
+          if (addr) { addr.label = label; addr.full = full; addr.note = note; addr.recipient = recipient; addr.phone = phone; addr.pinpoint = pinpoint; }
+        } else {
+          var isPrimary = addresses.length === 0;
+          addresses.push({ id: nextId++, label: label, full: full, note: note, recipient: recipient, phone: phone, pinpoint: pinpoint, isPrimary: isPrimary });
+        }
+        backToList();
+      }
+
+      function deleteAddress() {
+        if (!editingId) return;
+        var wasP = addresses.find(function (a) { return a.id === editingId; });
+        addresses = addresses.filter(function (a) { return a.id !== editingId; });
+        if (wasP && wasP.isPrimary && addresses.length > 0) addresses[0].isPrimary = true;
+        backToList();
+      }
+
+      function setPrimary(id) {
+        addresses.forEach(function (a) { a.isPrimary = a.id === id; });
+        renderList();
+      }
+
+      function setLabel(val) {
+        var inp = document.getElementById('addrFormLabel');
+        inp.value = val;
+        document.getElementById('addrLabelCount').textContent = val.length;
+      }
+
+      function openPinpointPicker() {
+        // Render location list
+        var list = document.getElementById('locationOptionsList');
+        list.innerHTML = '';
+        LOCATIONS.forEach(function (loc, i) {
+          var isActive = (tempPinpoint && loc.name === tempPinpoint) || (!tempPinpoint && i === 0);
+          if (isActive) selectedLocationIdx = i;
+          var el = document.createElement('div');
+          el.className = 'location-option' + (isActive ? ' active' : '');
+          el.innerHTML = '<span class="loc-radio"><span class="loc-dot' + (isActive ? ' filled' : '') + '"></span></span>' +
+            '<div style="flex:1;"><div class="loc-name">' + loc.name + '</div><div class="loc-coords">' + loc.coords + '</div></div>';
+          el.onclick = (function (idx) { return function () { selectLocation(idx); }; })(i);
+          list.appendChild(el);
+        });
+
+        updateMapCoords();
+
+        document.getElementById('addressFormSidebar').classList.remove('open');
+        document.getElementById('pinpointSidebar').classList.add('open');
+      }
+
+      function selectLocation(idx) {
+        selectedLocationIdx = idx;
+        document.querySelectorAll('.location-option').forEach(function (el, i) {
+          el.classList.toggle('active', i === idx);
+          var dot = el.querySelector('.loc-dot');
+          if (dot) dot.classList.toggle('filled', i === idx);
+        });
+        updateMapCoords();
+      }
+
+      function updateMapCoords() {
+        var loc = LOCATIONS[selectedLocationIdx];
+        if (loc) document.getElementById('mapCoords').textContent = loc.coords;
+      }
+
+      function closePinpointPicker() {
+        document.getElementById('pinpointSidebar').classList.remove('open');
+        document.getElementById('addressFormSidebar').classList.add('open');
+      }
+
+      function confirmPinpoint() {
+        var loc = LOCATIONS[selectedLocationIdx];
+        if (loc) {
+          tempPinpoint = loc.name;
+          document.getElementById('addrFormPinpoint').textContent = loc.name;
+        }
+        closePinpointPicker();
+      }
+
+      // init
+      renderProfileSection();
+
+      return {
+        openList: openList, openForm: openForm, backToList: backToList, saveForm: saveForm,
+        deleteAddress: deleteAddress, setPrimary: setPrimary, setLabel: setLabel,
+        openPinpointPicker: openPinpointPicker, closePinpointPicker: closePinpointPicker, confirmPinpoint: confirmPinpoint
+      };
+    })();
+  </script>
+  <script>
+    (function () {
+      const toggleBtns = document.querySelectorAll('.dark-mode-toggle');
+
+      function spawnRipple(x, y, toDark) {
+        const size = Math.hypot(window.innerWidth, window.innerHeight) * 2.2;
+        const ripple = document.createElement('div');
+        ripple.className = 'theme-ripple';
+        ripple.style.cssText = `
    width: ${size}px; height: ${size}px;
-   left: ${x - size/2}px; top: ${y - size/2}px;
+   left: ${x - size / 2}px; top: ${y - size / 2}px;
    background: ${toDark ? '#111' : '#fff'};
    transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
    `;
-   document.body.appendChild(ripple);
-   ripple.getBoundingClientRect();
-   ripple.classList.add('expanding');
-   ripple.addEventListener('transitionend', () => ripple.remove(), { once: true });
-   }
-  
-   function applyDarkMode(enabled, animate, originX, originY) {
-   toggleBtns.forEach(btn => {
-   const icon = btn.querySelector('.toggle-icon');
-   const label = btn.querySelector('.toggle-label');
-   if (animate) {
-   btn.classList.remove('spinning');
-   void btn.offsetWidth;
-   btn.classList.add('spinning');
-   btn.addEventListener('animationend', () => btn.classList.remove('spinning'), { once: true });
-   }
-   if (icon) icon.textContent = enabled ? '' : '';
-   if (label) label.textContent = enabled ? 'Light Mode' : 'Dark Mode';
-   });
-  
-   if (animate) {
-   const firstBtn = toggleBtns[0];
-   if (firstBtn) {
-   const rect = firstBtn.getBoundingClientRect();
-   const cx = originX ?? rect.left + rect.width / 2;
-   const cy = originY ?? rect.top + rect.height / 2;
-   spawnRipple(cx, cy, enabled);
-   }
-   }
-  
-   setTimeout(() => {
-   if (enabled) document.body.classList.add('dark-mode');
-   else document.body.classList.remove('dark-mode');
-   localStorage.setItem('darkMode', enabled ? '1' : '0');
-   }, animate ? 80 : 0);
-   }
-  
-   // Restore saved preference
-   const saved = localStorage.getItem('darkMode');
-   if (saved === '1') applyDarkMode(true, false);
-  
-   toggleBtns.forEach(btn => {
-   btn.addEventListener('click', function(e) {
-   applyDarkMode(!document.body.classList.contains('dark-mode'), true, e.clientX, e.clientY);
-   });
-   });
-  })();
-  
-  // ════════════════════════════════
-  // HEADER SCROLL BEHAVIOUR
-  // ════════════════════════════════
-  (function() {
-   const header = document.getElementById('siteHeader');
-   let lastScrollY = window.pageYOffset;
-   header.classList.add('at-top');
-  
-   window.addEventListener('scroll', () => {
-   const currentY = window.pageYOffset;
-   const scrollingDown = currentY > lastScrollY;
-  
-   if (currentY < 10) {
-   header.classList.add('at-top');
-   header.classList.remove('scrolled', 'scrolling-down');
-   } else if (scrollingDown) {
-   header.classList.remove('at-top', 'scrolled');
-   header.classList.add('scrolling-down');
-   } else {
-   header.classList.remove('at-top', 'scrolling-down');
-   header.classList.add('scrolled');
-   }
-   lastScrollY = currentY;
-   }, { passive: true });
-  })();
-  
-  
-  
-  // ════════════════════════════════
-  // SEARCH
-  // ════════════════════════════════
-  document.addEventListener('DOMContentLoaded', function() {
-   const searchToggle = document.getElementById('searchToggle');
-   const searchBox = document.getElementById('searchBox');
-   const searchInput = document.getElementById('searchInput');
-   const searchClose = document.getElementById('searchClose');
-   const searchDropdown = document.getElementById('searchDropdown');
-  
-   if (searchToggle) {
-   searchToggle.addEventListener('click', function(e) {
-   e.preventDefault();
-   searchBox.classList.add('active');
-   searchInput.focus();
-   });
-   }
-   if (searchClose) {
-   searchClose.addEventListener('click', function() {
-   searchBox.classList.remove('active');
-   searchDropdown.classList.remove('active');
-   searchInput.value = '';
-   });
-   }
-   document.addEventListener('click', function(e) {
-   if (searchBox && !searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
-   searchBox.classList.remove('active');
-   searchDropdown.classList.remove('active');
-   if (searchInput) searchInput.value = '';
-   }
-   });
-   document.addEventListener('keydown', function(e) {
-   if (e.key === 'Escape' && searchBox && searchBox.classList.contains('active')) {
-   searchBox.classList.remove('active');
-   searchDropdown.classList.remove('active');
-   if (searchInput) searchInput.value = '';
-   }
-   });
-  
-   // ════════════════════════════════
-   // CART SIDEBAR
-   // ════════════════════════════════
-   const cartSidebar = document.getElementById('cartSidebar');
-   const cartOverlay = document.getElementById('cartOverlay');
-   const cartClose = document.getElementById('cartClose');
-   const cartToggles = document.querySelectorAll('#cartToggle, #mobileCartToggle');
-  
-   cartToggles.forEach(btn => {
-   if (btn) btn.addEventListener('click', function(e) {
-   e.preventDefault();
-   cartSidebar.classList.add('open');
-   cartOverlay.classList.add('open');
-   document.body.style.overflow = 'hidden';
-   });
-   });
-   if (cartClose) cartClose.addEventListener('click', function() {
-   cartSidebar.classList.remove('open');
-   cartOverlay.classList.remove('open');
-   document.body.style.overflow = '';
-   });
-   if (cartOverlay) cartOverlay.addEventListener('click', function(e) {
-   if (e.target === cartOverlay) {
-   cartSidebar.classList.remove('open');
-   cartOverlay.classList.remove('open');
-   document.body.style.overflow = '';
-   }
-   });
-  
-   // ════════════════════════════════
-   // SHOP SIDEBAR
-   // ════════════════════════════════
-   var shopToggles = document.querySelectorAll('#shopToggle, #mobileShopToggle');
-   shopToggles.forEach(function(btn) {
-   if (btn) btn.addEventListener('click', function(e) {
-   e.preventDefault();
-   openShopSidebar();
-   });
-   });
-   var shopClose = document.getElementById('shopClose');
-   if (shopClose) shopClose.addEventListener('click', closeShopSidebar);
-   var shopOverlay = document.getElementById('shopOverlay');
-   if (shopOverlay) shopOverlay.addEventListener('click', function(e) {
-   if (e.target === shopOverlay) closeShopSidebar();
-   });
-  
-   // ════════════════════════════════
-   // MOBILE MENU
-   // ════════════════════════════════
-   const hamburger = document.getElementById('hamburgerBtn');
-   const mobileMenu = document.getElementById('mobileMenu');
-   const mobileOverlay = document.getElementById('mobileOverlay');
-   const mobileMenuClose = document.getElementById('mobileMenuClose');
-  
-   function openMobileMenu() {
-   mobileMenu.classList.add('open');
-   mobileOverlay.style.display = 'block';
-   setTimeout(() => mobileOverlay.classList.add('open'), 10);
-   document.body.style.overflow = 'hidden';
-   }
-   function closeMobileMenu() {
-   mobileMenu.classList.remove('open');
-   mobileOverlay.classList.remove('open');
-   setTimeout(() => { mobileOverlay.style.display = 'none'; }, 350);
-   document.body.style.overflow = '';
-   }
-   if (hamburger) hamburger.addEventListener('click', openMobileMenu);
-   if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-   if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
-  
-   // ════════════════════════════════
-   // TAB SWITCHING
-   // ════════════════════════════════
-   document.querySelectorAll('.account-tab').forEach(function(tab) {
-   tab.addEventListener('click', function() {
-   document.querySelectorAll('.account-tab').forEach(t => t.classList.remove('active'));
-   this.classList.add('active');
-   });
-   });
-  });
-  
-  function openShopSidebar() {
-   document.getElementById('shopSidebar').classList.add('open');
-   document.getElementById('shopOverlay').classList.add('open');
-   document.body.style.overflow = 'hidden';
-  }
-  function closeShopSidebar() {
-   document.getElementById('shopSidebar').classList.remove('open');
-   document.getElementById('shopOverlay').classList.remove('open');
-   document.body.style.overflow = '';
-  }
-  </script></body></html>
+        document.body.appendChild(ripple);
+        ripple.getBoundingClientRect();
+        ripple.classList.add('expanding');
+        ripple.addEventListener('transitionend', () => ripple.remove(), { once: true });
+      }
+
+      function applyDarkMode(enabled, animate, originX, originY) {
+        toggleBtns.forEach(btn => {
+          const icon = btn.querySelector('.toggle-icon');
+          const label = btn.querySelector('.toggle-label');
+          if (animate) {
+            btn.classList.remove('spinning');
+            void btn.offsetWidth;
+            btn.classList.add('spinning');
+            btn.addEventListener('animationend', () => btn.classList.remove('spinning'), { once: true });
+          }
+          if (icon) icon.textContent = enabled ? '' : '';
+          if (label) label.textContent = enabled ? 'Light Mode' : 'Dark Mode';
+        });
+
+        if (animate) {
+          const firstBtn = toggleBtns[0];
+          if (firstBtn) {
+            const rect = firstBtn.getBoundingClientRect();
+            const cx = originX ?? rect.left + rect.width / 2;
+            const cy = originY ?? rect.top + rect.height / 2;
+            spawnRipple(cx, cy, enabled);
+          }
+        }
+
+        setTimeout(() => {
+          if (enabled) document.body.classList.add('dark-mode');
+          else document.body.classList.remove('dark-mode');
+          localStorage.setItem('darkMode', enabled ? '1' : '0');
+        }, animate ? 80 : 0);
+      }
+
+      // Restore saved preference
+      const saved = localStorage.getItem('darkMode');
+      if (saved === '1') applyDarkMode(true, false);
+
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          applyDarkMode(!document.body.classList.contains('dark-mode'), true, e.clientX, e.clientY);
+        });
+      });
+    })();
+
+    // ════════════════════════════════
+    // HEADER SCROLL BEHAVIOUR
+    // ════════════════════════════════
+    (function () {
+      const header = document.getElementById('siteHeader');
+      let lastScrollY = window.pageYOffset;
+      header.classList.add('at-top');
+
+      window.addEventListener('scroll', () => {
+        const currentY = window.pageYOffset;
+        const scrollingDown = currentY > lastScrollY;
+
+        if (currentY < 10) {
+          header.classList.add('at-top');
+          header.classList.remove('scrolled', 'scrolling-down');
+        } else if (scrollingDown) {
+          header.classList.remove('at-top', 'scrolled');
+          header.classList.add('scrolling-down');
+        } else {
+          header.classList.remove('at-top', 'scrolling-down');
+          header.classList.add('scrolled');
+        }
+        lastScrollY = currentY;
+      }, { passive: true });
+    })();
+
+
+
+    // ════════════════════════════════
+    // SEARCH
+    // ════════════════════════════════
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchToggle = document.getElementById('searchToggle');
+      const searchBox = document.getElementById('searchBox');
+      const searchInput = document.getElementById('searchInput');
+      const searchClose = document.getElementById('searchClose');
+      const searchDropdown = document.getElementById('searchDropdown');
+
+      if (searchToggle) {
+        searchToggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          searchBox.classList.add('active');
+          searchInput.focus();
+        });
+      }
+      if (searchClose) {
+        searchClose.addEventListener('click', function () {
+          searchBox.classList.remove('active');
+          searchDropdown.classList.remove('active');
+          searchInput.value = '';
+        });
+      }
+      document.addEventListener('click', function (e) {
+        if (searchBox && !searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+          searchBox.classList.remove('active');
+          searchDropdown.classList.remove('active');
+          if (searchInput) searchInput.value = '';
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && searchBox && searchBox.classList.contains('active')) {
+          searchBox.classList.remove('active');
+          searchDropdown.classList.remove('active');
+          if (searchInput) searchInput.value = '';
+        }
+      });
+
+      // ════════════════════════════════
+      // CART SIDEBAR
+      // ════════════════════════════════
+      const cartSidebar = document.getElementById('cartSidebar');
+      const cartOverlay = document.getElementById('cartOverlay');
+      const cartClose = document.getElementById('cartClose');
+      const cartToggles = document.querySelectorAll('#cartToggle, #mobileCartToggle');
+
+      cartToggles.forEach(btn => {
+        if (btn) btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          cartSidebar.classList.add('open');
+          cartOverlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      if (cartClose) cartClose.addEventListener('click', function () {
+        cartSidebar.classList.remove('open');
+        cartOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      if (cartOverlay) cartOverlay.addEventListener('click', function (e) {
+        if (e.target === cartOverlay) {
+          cartSidebar.classList.remove('open');
+          cartOverlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // ════════════════════════════════
+      // SHOP SIDEBAR
+      // ════════════════════════════════
+      var shopToggles = document.querySelectorAll('#shopToggle, #mobileShopToggle');
+      shopToggles.forEach(function (btn) {
+        if (btn) btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openShopSidebar();
+        });
+      });
+      var shopClose = document.getElementById('shopClose');
+      if (shopClose) shopClose.addEventListener('click', closeShopSidebar);
+      var shopOverlay = document.getElementById('shopOverlay');
+      if (shopOverlay) shopOverlay.addEventListener('click', function (e) {
+        if (e.target === shopOverlay) closeShopSidebar();
+      });
+
+      // ════════════════════════════════
+      // MOBILE MENU
+      // ════════════════════════════════
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        mobileOverlay.style.display = 'block';
+        setTimeout(() => mobileOverlay.classList.add('open'), 10);
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        setTimeout(() => { mobileOverlay.style.display = 'none'; }, 350);
+        document.body.style.overflow = '';
+      }
+      if (hamburger) hamburger.addEventListener('click', openMobileMenu);
+      if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+      if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+
+      // ════════════════════════════════
+      // TAB SWITCHING
+      // ════════════════════════════════
+      document.querySelectorAll('.account-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          document.querySelectorAll('.account-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+
+    function openShopSidebar() {
+      document.getElementById('shopSidebar').classList.add('open');
+      document.getElementById('shopOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeShopSidebar() {
+      document.getElementById('shopSidebar').classList.remove('open');
+      document.getElementById('shopOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+
+</html>

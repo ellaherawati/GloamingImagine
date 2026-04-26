@@ -4,72 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover Gloaming Imagine performance cycling apparel, best sellers, ride collections, and story-driven essentials built for long days on the road.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
     <title>Gloaming Imagine - Performance Cycling</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="img/logo.png">
+    <link rel="preload" as="image" href="img/logogloaming.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="landing-page">
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <!-- Top Banner -->
     <!-- <div class="top-banner">
         Join ICC and receive 10% off your first order
     </div> -->
 
 <!-- Header -->
-    <header>
+    <header class="site-header">
         <div class="header-main">
-            <div class="header-left">
-                <a href="#" id="shopToggle">Shop</a>
+            <nav class="header-left" aria-label="Primary navigation">
+                <button type="button" class="header-link-button nav-trigger" id="shopToggle" aria-controls="shopSidebar"
+                    aria-expanded="false">Shop</button>
                 <a href="aboutus.php">About</a>
                 <a href="explore.html">Campaign</a>
                 <a href="account.html">Account</a>
-            </div>
+            </nav>
 
             <div class="logo">
-                <a href="index.html"><img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image"></a>
+                <a href="index.html" aria-label="Gloaming Imagine home">
+                    <img src="img/logogloaming.png" alt="Gloaming Imagine" class="logo-image" width="312" height="73"
+                        loading="eager" decoding="async" fetchpriority="high" data-critical="true">
+                </a>
             </div>
 
             <div class="header-right">
-                <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
-                    <span class="toggle-icon"></span>
+                <button type="button" class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"
+                    aria-pressed="false">
+                    <span class="toggle-icon" aria-hidden="true"></span>
                     <span class="toggle-label">Dark Mode</span>
                 </button>
-                <div class="search-container">
-                    <a class="search-toggle" id="searchToggle">Search</a>
-                    <div class="search-box" id="searchBox">
+                <div class="search-container" role="search">
+                    <button type="button" class="header-link-button search-toggle" id="searchToggle"
+                        aria-controls="searchBox" aria-expanded="false">Search</button>
+                    <div class="search-box" id="searchBox" aria-hidden="true">
                         <div class="search-input-wrapper">
-                            <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
-                            <button class="search-close" id="searchClose">×</button>
+                            <input type="search" class="search-input" placeholder="Search products..." id="searchInput"
+                                autocomplete="off" enterkeyhint="search" aria-label="Search products">
+                            <button type="button" class="search-close" id="searchClose"
+                                aria-label="Close search">×</button>
                         </div>
                         <div class="search-dropdown" id="searchDropdown">
                             <!-- Results will be populated here by JavaScript -->
                         </div>
                     </div>
                 </div>
-                <a href="wishlist.php" class="header-badge-wrapper">
+                <a href="wishlist.php" class="header-badge-wrapper" aria-label="Wishlist">
                     Wishlist
                     <span id="wishlistHeaderCount" class="header-badge">0</span>
                 </a>
 
-                <a href="#" id="cartToggle" class="header-badge-wrapper">
+                <button type="button" id="cartToggle" class="header-link-button header-badge-wrapper"
+                    aria-controls="cartSidebar" aria-expanded="false">
                     Cart
                     <span id="cartCount" class="header-badge">0</span>
-                </a>
+                </button>
             </div>
             <div id="cartContainer"></div>
         </div>
     </header>
 
     <!-- Cart Sidebar -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+    <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="cartTitle" tabindex="-1">
         <div class="cart-header">
-            <h2 class="cart-title">Cart (<span id="cartItemCount">0</span>)</h2>
-            <button class="cart-close" id="cartClose">×</button>
+            <h2 class="cart-title" id="cartTitle">Cart (<span id="cartItemCount">0</span>)</h2>
+            <button type="button" class="cart-close" id="cartClose" aria-label="Close cart">×</button>
         </div>
 
         <div id="cartContentArea">
@@ -79,18 +95,19 @@
 
 
     <!-- Shop Sidebar -->
-    <div class="shop-overlay" id="shopOverlay"></div>
-    <div class="shop-sidebar" id="shopSidebar">
+    <div class="shop-overlay" id="shopOverlay" aria-hidden="true"></div>
+    <div class="shop-sidebar" id="shopSidebar" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="shopSidebarTitle" tabindex="-1">
 
         <div class="shop-sidebar-header">
-            <span>Menu</span>
-            <button class="shop-sidebar-close" id="shopClose">&#x2715;</button>
+            <span id="shopSidebarTitle">Menu</span>
+            <button type="button" class="shop-sidebar-close" id="shopClose" aria-label="Close menu">&#x2715;</button>
         </div>
 
         <!-- Banner New Arrivals -->
         <div class="shop-sidebar-banner">
             <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=800&q=75&fit=max&auto=format"
-                alt="New Arrivals">
+                alt="New Arrivals" loading="lazy" decoding="async">
             <div class="shop-sidebar-banner-label">New Arrivals</div>
         </div>
 
@@ -99,52 +116,52 @@
             <!-- Cycling -->
             <div class="shop-section-title">Cycling</div>
             <div class="shop-category-grid">
-                <a href="shop.php?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=bundles" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Bundles">
                     All
                 </a>
-                <a href="shop.php?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=jerseys" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/906a70b737b93481ff7d503296d84fcf296a0af2-1920x2400.png?w=80&q=75"
                         class="shop-category-icon" alt="Jerseys">
                     Jerseys
                 </a>
-                <a href="shop.php?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=base-layers" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/679b741ab85a94215020e3abff3370be8b2497d5-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Base Layers">
                     Base Layers
                 </a>
-                <a href="shop.php?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=bibs" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/4e44e9497dee224c1bfbde346726121e50b6e537-1920x2400.png?w=80&q=75"
                         class="shop-category-icon" alt="Bibs">
                     Bibs
                 </a>
-                <a href="shop.php?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=jackets" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/833f664f6599960e45e465265f64b7129ff40d0c-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Jackets">
                     Jackets &amp; Gilets
                 </a>
-                <a href="shop.php?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=speedsuits" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/a4537ab8cea94765f8af7c303574821d73a9260a-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Speedsuits">
                     Speedsuits
                 </a>
-                <a href="shop.php?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=warmers" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/7832c0a863d4188453bc3a1eb6b79b203835231d-1920x2400.png?w=80&q=75"
                         class="shop-category-icon" alt="Warmers">
                     Arm &amp; Leg Warmers
                 </a>
-                <a href="shop.php?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=socks" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/5dad33c8ca27ed6431f29e29be3e29281c1f6305-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Socks">
                     Socks
                 </a>
-                <a href="shop.php?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=accessories" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/148cf7fbd34a0256fb1708fab10d489b21a5bf87-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Accessories">
                     Accessories
                 </a>
-                <a href="shop.php?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=helmets" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/c27f21f50e90f9a7113c759b116e0920418f8810-3200x4000.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Helmets">
                     Helmets
@@ -156,32 +173,32 @@
             <!-- Off-Race -->
             <div class="shop-section-title">Off-Race</div>
             <div class="shop-category-grid">
-                <a href="shop.php" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="T-Shirts">
                     T-Shirts
                 </a>
-                <a href="shop.php?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=sweatshirts" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=80&q=75"
                         class="shop-category-icon" alt="Sweatshirts">
                     Sweatshirts &amp; Hoodies
                 </a>
-                <a href="shop.php?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=outerwear" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/e7d032fe7beb12ca00ca47a48b3c1be73432d3af-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Outerwear">
                     Outerwear
                 </a>
-                <a href="shop.php?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=pants" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/f0546c4f4f756114e628b6fe520ba15f1dff1a20-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Pants">
                     Pants &amp; Shorts
                 </a>
-                <a href="shop.php?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=gym" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/448b32fb36d29886c5cef13aede0ae95806a5d05-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Gym">
                     Gym &amp; Training
                 </a>
-                <a href="shop.php?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
+                <a href="shop.html?cat=offrace-acc" class="shop-category-item" onclick="closeShopSidebar()">
                     <img src="https://cdn.sanity.io/images/k15yl91v/production/9f2fd24d4d3d1ad79988a78b20c3e0e78463edb3-3000x3750.png?w=80&q=75"
                         class="shop-category-icon" alt="Accessories">
                     Accessories
@@ -194,19 +211,19 @@
         </div>
     </div>
 
-<main>
+<main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero hero--primary" aria-labelledby="heroTitle">
             <div class="hero-content">
-                <h1 class="hero-title">
+                <h1 class="hero-title" id="heroTitle">
                     New Season <span class="highlight"> <br> Essential</span>
                 </h1>
                 <div class="hero-subtitle">Breathable comfort. Designed for distance. <br> For long summer days where
                     rhythm matters more than outright <br> speed.</div>
 
                 <div class="hero-buttons">
-                    <a href="shop.php?cat=jerseys" class="btn">SHOP CYCLING</a>
-                    <a href="shop.php" class="btn">SHOP OFF-RACE</a>
+                    <a href="shop.html?cat=jerseys" class="btn">SHOP CYCLING</a>
+                    <a href="shop.html" class="btn">SHOP OFF-RACE</a>
                 </div>
             </div>
         </section>
@@ -227,13 +244,13 @@
                 <a href="detail.html?id=1" class="product-block">
                     <div class="product-badges">
                         <span class="new-arrival-badge">NEW ARRIVAL</span>
-                        <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75"
@@ -256,13 +273,13 @@
                 <a href="detail.html?id=2" class="product-block">
                     <div class="product-badges">
                         <span class="new-arrival-badge">NEW ARRIVAL</span>
-                        <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75"
@@ -284,13 +301,13 @@
                 <!-- Product — ID: 3 -->
                 <a href="detail.html?id=3" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75"
@@ -312,13 +329,13 @@
                 <!-- Product — ID: 4 -->
                 <a href="detail.html?id=4" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75"
@@ -340,13 +357,13 @@
                 <!-- Product — ID: 5 -->
                 <a href="detail.html?id=5" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="5" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/fe7f2f0d61e17a5b3ecd049ad28482a7da728cee-1920x2400.jpg?w=600&q=75"
@@ -368,13 +385,13 @@
                 <!-- Product — ID: 6 -->
                 <a href="detail.html?id=6" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="6" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/3fec4647fb24efcd8de6dfb999f3040eda21caeb-1920x2400.jpg?w=600&q=75"
@@ -396,13 +413,13 @@
                 <!-- Product — ID: 7 -->
                 <a href="detail.html?id=7" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="7" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/62496f7b8af6b3e6dd6278f41c3c91e01cefca01-1920x2400.jpg?w=600&q=75"
@@ -424,13 +441,13 @@
                 <!-- Product — ID: 8 -->
                 <a href="detail.html?id=8" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="8" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/b505ec4eda4f201ca0ad28a89f868a3b00c1a72d-1920x2400.jpg?w=600&q=75"
@@ -459,7 +476,7 @@
         </div>
 
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero hero--compact" aria-label="Performance Cycling Apparel">
             <div class="hero-content">
                 <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
                 <!-- <h1 class="hero-title">
@@ -475,14 +492,16 @@
 
         <!-- PNS Categories Section -->
         <section class="pns-categories-section">
-            <div class="pns-categories-tabs">
-                <button class="pns-tab active" onclick="switchTab(this, 'categories')">Categories</button>
-                <button class="pns-tab" onclick="switchTab(this, 'collections')">Collections</button>
+            <div class="pns-categories-tabs" role="tablist" aria-label="Browse categories and collections">
+                <button type="button" class="pns-tab active" role="tab" aria-selected="true"
+                    aria-controls="tab-categories" onclick="switchTab(this, 'categories')">Categories</button>
+                <button type="button" class="pns-tab" role="tab" aria-selected="false"
+                    aria-controls="tab-collections" onclick="switchTab(this, 'collections')">Collections</button>
             </div>
 
-            <div id="tab-categories" class="pns-tab-content active">
+            <div id="tab-categories" class="pns-tab-content active" role="tabpanel">
                 <div class="pns-grid">
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=bundles" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/3ca8c9b8c53cf1a63dd3fdf88f98d7d08e8f7ad0-1920x2400.png?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'"
@@ -490,7 +509,7 @@
                         </div>
                         <span class="pns-cat-label">Bundles</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=jerseys" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/5a5b72ea39da0e55ed5df5c9c5b3e5c6b7a8f9e0-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80'"
@@ -498,7 +517,7 @@
                         </div>
                         <span class="pns-cat-label">Jerseys</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=bibs" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/7b6a5c4d3e2f1g0h9i8j7k6l5m4n3o2p1q0r9s8t-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80'"
@@ -506,7 +525,7 @@
                         </div>
                         <span class="pns-cat-label">Bibs</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=jackets" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/9c8b7a6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80'"
@@ -514,7 +533,7 @@
                         </div>
                         <span class="pns-cat-label">Jackets & Gilets</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=helmets" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/adb7c6e5f4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1565590080825-2583c7b1f9af?w=400&q=80'"
@@ -522,7 +541,7 @@
                         </div>
                         <span class="pns-cat-label">Helmets</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=accessories" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/bec8d7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'"
@@ -530,7 +549,7 @@
                         </div>
                         <span class="pns-cat-label">Accessories</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=socks" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/cfd9e8f7g6h5i4j3k2l1m0n9o8p7q6r5s4t3u2v1-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'"
@@ -538,7 +557,7 @@
                         </div>
                         <span class="pns-cat-label">Socks</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=outerwear" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/dge0f9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'"
@@ -546,7 +565,7 @@
                         </div>
                         <span class="pns-cat-label">Outerwear</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=sweatshirts" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/ehf1g0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80'"
@@ -554,7 +573,7 @@
                         </div>
                         <span class="pns-cat-label">Sweatshirts & Hoodies</span>
                     </a>
-                    <a href="#" class="pns-cat-item pns-cat-item--active">
+                    <a href="shop.html" class="pns-cat-item pns-cat-item--active">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/fig2h1j0k9l8m7n6o5p4q3r2s1t0u9v8w7x6y5z4-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80'"
@@ -562,7 +581,7 @@
                         </div>
                         <span class="pns-cat-label">T-Shirts</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=pants" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/gjh3i2k1l0m9n8o7p6q5r4s3t2u1v0w9x8y7z6a5-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4b4057?w=400&q=80'"
@@ -570,7 +589,7 @@
                         </div>
                         <span class="pns-cat-label">Pants & Shorts</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="shop.html?cat=gym" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://cdn.sanity.io/images/k15yl91v/production/hki4j3l2m1n0o9p8q7r6s5t4u3v2w1x0y9z8a7b6-1920x2400.jpg?w=600&q=75"
                                 onerror="this.src='https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80'"
@@ -581,44 +600,44 @@
                 </div>
             </div>
 
-            <div id="tab-collections" class="pns-tab-content">
+            <div id="tab-collections" class="pns-tab-content" role="tabpanel">
                 <div class="pns-grid">
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=400&q=80"
                                 alt="Spring/Summer 2025">
                         </div>
                         <span class="pns-cat-label">Spring/Summer 2025</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=400&q=80"
                                 alt="Autumn/Winter 2024">
                         </div>
                         <span class="pns-cat-label">Autumn/Winter 2024</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
                                 alt="Deep Winter">
                         </div>
                         <span class="pns-cat-label">Deep Winter</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=400&q=80"
                                 alt="Limited Edition">
                         </div>
                         <span class="pns-cat-label">Limited Edition</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80"
                                 alt="Collaborations">
                         </div>
                         <span class="pns-cat-label">Collaborations</span>
                     </a>
-                    <a href="#" class="pns-cat-item">
+                    <a href="explore.html" class="pns-cat-item">
                         <div class="pns-cat-img-wrap">
                             <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80"
                                 alt="Archive">
@@ -635,7 +654,7 @@
             </div>
         </section>
 
-        <section class="hero">
+        <section class="hero hero--compact" aria-label="Performance Cycling Apparel">
             <div class="hero-content">
                 <div class="hero-subtitle">PERFORMANCE CYCLING APPAREL</div>
                 <!-- <h1 class="hero-title">
@@ -663,13 +682,13 @@
                 <!-- Product — ID: 9 -->
                 <a href="detail.html?id=9" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="9" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/b6713bdc16ae362a5e8137eb0f65bba19db1f455-1920x2400.jpg?w=600&q=75"
@@ -691,13 +710,13 @@
                 <!-- Product — ID: 10 -->
                 <a href="detail.html?id=10" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="10" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/b47abf6f65495dd2ac71e9e36efaebe3830e8ba8-1920x2400.jpg?w=600&q=75"
@@ -719,13 +738,13 @@
                 <!-- Product — ID: 11 -->
                 <a href="detail.html?id=11" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="11" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/19f0811f303dcad3e99a3ad2f40c781cb2003a20-3000x3750.png?w=600&q=75"
@@ -747,13 +766,13 @@
                 <!-- Product — ID: 12 -->
                 <a href="detail.html?id=12" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="12" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/ecaee966a1a0ae0fb19bc92216eeb8b37d58c303-3000x3750.png?w=600&q=75"
@@ -776,13 +795,13 @@
                 <a href="detail.html?id=13" class="product-block">
                     <div class="product-badges">
                         <span class="new-arrival-badge">NEW ARRIVAL</span>
-                        <button class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="13" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/b5eda6f4ea2aa30f180fdaf34173ea2c869ab848-1920x2400.jpg?w=600&q=75"
@@ -805,13 +824,13 @@
                 <a href="detail.html?id=14" class="product-block">
                     <div class="product-badges">
                         <span class="new-arrival-badge">NEW ARRIVAL</span>
-                        <button class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="14" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/beab8507d7c19cffdd27ddb1c3245bbf205df91b-1920x2400.jpg?w=600&q=75"
@@ -833,13 +852,13 @@
                 <!-- Product — ID: 15 -->
                 <a href="detail.html?id=15" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="15" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/5dd579a9f7923eb85fa97864bcb210f3d9635845-1920x2400.jpg?w=600&q=75"
@@ -861,13 +880,13 @@
                 <!-- Product — ID: 16 -->
                 <a href="detail.html?id=16" class="product-block">
                     <div class="product-badges">
-                        <button class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist">
+                        <span class="wishlist-btn" data-product-id="16" aria-label="Add to wishlist" role="button" tabindex="0">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </span>
                     </div>
                     <div class="product-image-wrapper">
                         <img src="https://cdn.sanity.io/images/k15yl91v/production/8700c37b2da19b204c7678ca8a98dbb22d80d238-1920x2400.jpg?w=600&q=75"
@@ -908,7 +927,7 @@
             <div class="our-story-grid">
 
                 <!-- Card 1 — The Beginning -->
-                <a href="#" class="our-story-card">
+                <a href="explore.html" class="our-story-card">
                     <div class="our-story-img-wrap">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
                             onerror="this.src='https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800&q=80'"
@@ -924,7 +943,7 @@
                 </a>
 
                 <!-- Card 2 — The Craft -->
-                <a href="#" class="our-story-card">
+                <a href="explore.html" class="our-story-card">
                     <div class="our-story-img-wrap">
                         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
                             onerror="this.src='https://images.unsplash.com/photo-1476055439777-977cdf3a5699?w=800&q=80'"
@@ -940,7 +959,7 @@
                 </a>
 
                 <!-- Card 3 — The Community -->
-                <a href="#" class="our-story-card">
+                <a href="explore.html" class="our-story-card">
                     <div class="our-story-img-wrap">
                         <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&q=80"
                             onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80'"
@@ -1142,7 +1161,7 @@
                     Built for the harshest conditions, our Deep Winter collection combines advanced thermal technology
                     with refined aesthetics. Ride through rain, wind, and cold with confidence.
                 </p>
-                <a href="shop.php" class="btn">SHOP COLLECTION</a>
+                <a href="shop.html" class="btn">SHOP COLLECTION</a>
             </div>
         </section>
 
@@ -1156,10 +1175,30 @@
                 <h2 class="newsletter-title">Be the first to know about<br>upcoming drops, events and deals.</h2>
             </div>
             <div class="newsletter-right">
-                <button type="button" class="newsletter-btn" onclick="openNewsletterSignup()">Sign Up</button>
+                <button type="button" class="newsletter-btn" id="newsletterTrigger" aria-haspopup="dialog"
+                    aria-controls="newsletterModal" aria-expanded="false" onclick="openNewsletterSignup()">Sign Up</button>
             </div>
         </div>
     </section>
+
+    <div class="newsletter-modal" id="newsletterModal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="newsletterModalTitle">
+        <div class="newsletter-modal-dialog">
+            <button type="button" class="newsletter-modal-close" id="newsletterModalClose"
+                aria-label="Close newsletter signup">×</button>
+            <div class="newsletter-modal-label">NEWSLETTER</div>
+            <h3 class="newsletter-modal-title" id="newsletterModalTitle">Join for early access to drops and events.</h3>
+            <p class="newsletter-modal-copy">Sign up once and we will keep you posted when new collections and stories
+                arrive.</p>
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+                <label for="newsletterEmail" class="visually-hidden">Email address</label>
+                <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Email address"
+                    autocomplete="email" required>
+                <button type="submit" class="newsletter-submit">Join the list</button>
+            </form>
+            <p class="newsletter-feedback" id="newsletterFeedback" aria-live="polite"></p>
+        </div>
+    </div>
 
     <!-- Main Footer -->
     <footer class="footer">
@@ -1179,9 +1218,9 @@
                         </select>
                     </div>
                     <ul class="footer-links footer-links--spaced">
-                        <li><a href="#">Destination Everywhere</a></li>
-                        <li><a href="#">Sponsored Teams</a></li>
-                        <li><a href="#">Find Stores</a></li>
+                        <li><span class="footer-link-placeholder">Destination Everywhere</span></li>
+                        <li><span class="footer-link-placeholder">Sponsored Teams</span></li>
+                        <li><span class="footer-link-placeholder">Find Stores</span></li>
                     </ul>
                 </div>
 
@@ -1189,13 +1228,13 @@
                 <div class="footer-column">
                     <h3>Customer Care</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Get in Touch</a></li>
-                        <li><a href="#">Gift Guide</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Crash Replacement</a></li>
-                        <li><a href="#">Care Guide</a></li>
+                        <li><span class="footer-link-placeholder">Get in Touch</span></li>
+                        <li><span class="footer-link-placeholder">Gift Guide</span></li>
+                        <li><span class="footer-link-placeholder">FAQ</span></li>
+                        <li><span class="footer-link-placeholder">Returns</span></li>
+                        <li><span class="footer-link-placeholder">Shipping</span></li>
+                        <li><span class="footer-link-placeholder">Crash Replacement</span></li>
+                        <li><span class="footer-link-placeholder">Care Guide</span></li>
                     </ul>
                 </div>
 
@@ -1203,13 +1242,13 @@
                 <div class="footer-column">
                     <h3>About Gloaming Imagine</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Career</a></li>
-                        <li><a href="#">Stores</a></li>
-                        <li><a href="#">International Cycling Club</a></li>
-                        <li><a href="#">Impact & Responsibility</a></li>
-                        <li><a href="#">Industry Programme</a></li>
+                        <li><span class="footer-link-placeholder">About</span></li>
+                        <li><span class="footer-link-placeholder">Press</span></li>
+                        <li><span class="footer-link-placeholder">Career</span></li>
+                        <li><span class="footer-link-placeholder">Stores</span></li>
+                        <li><span class="footer-link-placeholder">International Cycling Club</span></li>
+                        <li><span class="footer-link-placeholder">Impact & Responsibility</span></li>
+                        <li><span class="footer-link-placeholder">Industry Programme</span></li>
                     </ul>
                 </div>
             </div>
@@ -1217,17 +1256,17 @@
             <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-legal">
-                    <a href="#">TERMS & CONDITIONS</a>
-                    <a href="#">PRIVACY POLICY</a>
-                    <a href="#">COOKIE POLICY</a>
-                    <a href="#">COOKIE POLICY SETTING</a>
+                    <span class="footer-link-placeholder">TERMS & CONDITIONS</span>
+                    <span class="footer-link-placeholder">PRIVACY POLICY</span>
+                    <span class="footer-link-placeholder">COOKIE POLICY</span>
+                    <span class="footer-link-placeholder">COOKIE POLICY SETTING</span>
                 </div>
 
                 <div class="footer-social">
-                    <a href="#">INSTAGRAM</a>
-                    <a href="#">YOUTUBE</a>
-                    <a href="#">STRAVA</a>
-                    <a href="#">LINKEDIN</a>
+                    <span class="footer-link-placeholder">INSTAGRAM</span>
+                    <span class="footer-link-placeholder">YOUTUBE</span>
+                    <span class="footer-link-placeholder">STRAVA</span>
+                    <span class="footer-link-placeholder">LINKEDIN</span>
                 </div>
 
                 <div class="footer-copyright">
@@ -1237,10 +1276,10 @@
         </div>
     </footer>
 
-    <script src="products-data.js"></script>
-    <script src="cart.js"></script>
-    <script src="wishlist.js"></script>
-    <script src="main.js"></script>
+    <script src="products-data.js" defer></script>
+    <script src="cart.js" defer></script>
+    <script src="wishlist.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>

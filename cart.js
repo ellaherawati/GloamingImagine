@@ -30,21 +30,38 @@ function updateCartCount() {
 function openCart() {
     const cartSidebar = document.getElementById('cartSidebar');
     const cartOverlay = document.getElementById('cartOverlay');
+    const cartToggle = document.getElementById('cartToggle');
     if (cartSidebar && cartOverlay) {
         cartSidebar.classList.add('open');
         cartOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        cartSidebar.setAttribute('aria-hidden', 'false');
+        cartOverlay.setAttribute('aria-hidden', 'false');
+        if (cartToggle) cartToggle.setAttribute('aria-expanded', 'true');
+        if (typeof syncBodyScrollLock === 'function') {
+            syncBodyScrollLock();
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
         renderCart();
+        requestAnimationFrame(() => cartSidebar.focus());
     }
 }
 
 function closeCart() {
     const cartSidebar = document.getElementById('cartSidebar');
     const cartOverlay = document.getElementById('cartOverlay');
+    const cartToggle = document.getElementById('cartToggle');
     if (cartSidebar && cartOverlay) {
         cartSidebar.classList.remove('open');
         cartOverlay.classList.remove('open');
-        document.body.style.overflow = '';
+        cartSidebar.setAttribute('aria-hidden', 'true');
+        cartOverlay.setAttribute('aria-hidden', 'true');
+        if (cartToggle) cartToggle.setAttribute('aria-expanded', 'false');
+        if (typeof syncBodyScrollLock === 'function') {
+            syncBodyScrollLock();
+        } else {
+            document.body.style.overflow = '';
+        }
     }
 }
 
@@ -120,6 +137,8 @@ function renderCart() {
             <a href="checkout.php" class="cart-checkout">LANJUT KE CHECKOUT</a>
         </div>
     `;
+
+    if (typeof optimizeImages === 'function') optimizeImages(cartContentArea);
 }
 
 function increaseQuantity(index) {

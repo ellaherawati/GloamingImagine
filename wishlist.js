@@ -36,17 +36,13 @@ function removeFromWishlist(productId) {
 
 // Toggle wishlist (add if not exists, remove if exists)
 function toggleWishlist(productId, buttonElement) {
-    console.log('toggleWishlist called for product:', productId);
-    
     if (isInWishlist(productId)) {
-        console.log('Removing from wishlist');
         removeFromWishlist(productId);
         if (buttonElement) {
             buttonElement.classList.remove('active');
         }
         return false;
     } else {
-        console.log('Adding to wishlist');
         addToWishlist(productId);
         if (buttonElement) {
             buttonElement.classList.add('active');
@@ -73,11 +69,9 @@ function updateWishlistCount() {
 // Initialize wishlist buttons on page load
 function initializeWishlistButtons() {
     const wishlistButtons = document.querySelectorAll('.wishlist-btn');
-    console.log('Initializing wishlist buttons, found:', wishlistButtons.length);
     
-    wishlistButtons.forEach((button, index) => {
+    wishlistButtons.forEach(button => {
         const productId = parseInt(button.getAttribute('data-product-id'));
-        console.log(`Button ${index}: product ID = ${productId}`);
         
         // Set initial state
         if (isInWishlist(productId)) {
@@ -93,17 +87,21 @@ function initializeWishlistButtons() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Button clicked for product:', productId);
             toggleWishlist(productId, button);
         }, false);
+
+        button.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleWishlist(productId, button);
+            }
+        }, false);
     });
-    
-    console.log('Wishlist buttons initialized');
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded - wishlist.js');
     updateWishlistCount();
     initializeWishlistButtons();
 });
